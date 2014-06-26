@@ -1,29 +1,29 @@
+<% unless User.find_by(id: session[:user_id]) %>
+	<%= form_tag do %>
+		<% if flash[:alert] %>
+			<p id="notice"><%= flash[:alert] %></p>
+		<% end %>
+		<div>
+			<%= label_tag :username, 'Name:' %> </br>
+			<%= text_field_tag :username, params[:username] %>
+		</div>
+		<div>
+			<%= label_tag :password, 'Password:' %></br>
+			<%= password_field_tag :password, params[:password] %>
+		</div>
+		<div>
+			<%= submit_tag "Login" %>
+		</div>
+	<% end %>
 
- 				<% unless User.find_by(id: session[:user_id]) %>
-					<%= form_tag do %>
-						<% if flash[:alert] %>
-							<p id="notice"><%= flash[:alert] %></p>
-						<% end %>
-						<div>
-							<%= label_tag :username, 'Name:' %> </br>
-							<%= text_field_tag :username, params[:username] %>
-						</div>
-						<div>
-							<%= label_tag :password, 'Password:' %></br>
-							<%= password_field_tag :password, params[:password] %>
-						</div>
-						<div>
-							<%= submit_tag "Login" %>
-						</div>
-					<% end %>
-
-						<div>
-							<%#= link_to "Recuperar Password", new_recover_password_path %>
-							<p><%= link_to "forgotten password?", new_password_reset_path %></p>
+		<div>
+			<%#= link_to "Recuperar Password", new_recover_password_path %>
+			<p><%= link_to "forgotten password?", new_password_reset_path %></p>
 							
-						</div>
-				<% else %>
-					<p>Bienvenido <%= "#{session[:uname]}"%></p>
-					<%= link_to "Cambiar Password", new_cambiar_password_path %>
-					<%= button_to 'Logout', logout_path, method: :delete %>
-				<%end %>
+		</div>
+<% else %>
+	<p>Bienvenido <%= "#{session[:uname]}"%></p>
+	<%= link_to "Cambiar Password", new_cambiar_password_path %>
+	<%= button_to 'Logout', logout_path, method: :delete %>
+<%end %>
+<%= link_to 'New User', new_user_path %>
