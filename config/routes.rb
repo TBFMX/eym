@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
   resources :brands
 
   resources :packages
@@ -11,6 +12,9 @@ Rails.application.routes.draw do
   resources :images
 
   resources :galleries
+
+  resources :equipment
+
 
   get 'welcome/index'
 
