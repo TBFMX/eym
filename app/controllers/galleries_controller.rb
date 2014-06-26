@@ -10,6 +10,11 @@ class GalleriesController < ApplicationController
   # GET /galleries/1
   # GET /galleries/1.json
   def show
+    #@project = Project.find(@gallery.project_id)
+    #add_breadcrumb @project.name.to_s, '/projects/' + @project.id.to_s    
+    #add_breadcrumb I18n.t("breadcrumbs.galleries"), '/projects/galleries/' + @project.id.to_s    
+    @images = Image.where("gallery_id = ?", @gallery.id).group(:image_url)
+    @videos = Video.where("gallery_id = ?", @gallery.id).group(:video_url)
   end
 
   # GET /galleries/new
@@ -25,7 +30,6 @@ class GalleriesController < ApplicationController
   # POST /galleries.json
   def create
     @gallery = Gallery.new(gallery_params)
-
     respond_to do |format|
       if @gallery.save
         format.html { redirect_to @gallery, notice: 'Gallery was successfully created.' }

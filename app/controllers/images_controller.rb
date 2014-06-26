@@ -1,9 +1,12 @@
 class ImagesController < ApplicationController
   before_action :set_image, only: [:show, :edit, :update, :destroy]
+  include Porta
 
-  # GET /images
-  # GET /images.json
+  # GET galleries/images/:id
   def index
+    #if params[:id].nil?
+    #  redirect_to root_path
+    #end
     @images = Image.all
   end
 
@@ -12,23 +15,62 @@ class ImagesController < ApplicationController
   def show
   end
 
-  # GET /images/new
+  #GET images/new/:id 
+  #POST images/new/:id
   def new
-    @image = Image.new
+    @gallery =Gallery.find(params[:id])
+    #@equipment = Equipment.find(@gallery.equipment_id)
+    #add_breadcrumb @equipment.name.to_s, '/equipments/' + @equipment.id.to_s
+    #    add_breadcrumb I18n.t("breadcrumbs.galleries"), '/equipments/galleries/' + @equipment.id.to_s 
+    #add_breadcrumb I18n.t("breadcrumbs.nimage"), '/images/new/' + @gallery.id.to_s 
+    @image = Image.new("gallery_id" => params[:id])
+    #@permiso = check_propiety(@equipment)
+    #unless @permiso 
+    #  redirect_to root_path
+    #end
+
+
+    #@image = Image.new
   end
 
-  # GET /images/1/edit
+  #get images/:id/edit/:equip
+  #post images/:id/edit/:equip
   def edit
   end
 
   # POST /images
   # POST /images.json
   def create
-    @image = Image.new(image_params)
+=begin    
+    @gallery = Gallery.find(params[:image][:gallery_id])
+    @project2 = Project.find(@gallery.project_id)
+    @gallery2 = Gallery.find(@gallery)
+
+    unless @pic.blank?
+      @pics = DataFile.save(@pic,@project2.name,@gallery2.title)
+    end
+=end
+
+
+
+    #@image = Image.new(image_params)
+    @pic = params[:image][:image_url]
+    puts "---------------------------------datos-imagen------------------------------------------------------"
+    puts @pic.inspect
+    puts "---------------------------------------------------------------------------------------------------"
+    unless @pic.blank?
+      @pics = DataFile.save(@pic)
+    else
+      @pics = "/data/dommy.jpg"  
+    end
+
+
+    @image = Image.new("image_url" => @pics, "gallery_id" => params[:image][:gallery_id], "title" => params[:image][:title])
+
 
     respond_to do |format|
       if @image.save
-        format.html { redirect_to @image, notice: 'Image was successfully created.' }
+        format.html { redirect_to '/galleries/' + params[:image][:gallery_id].to_s, notice: 'Image was successfully created.' }
         format.json { render :show, status: :created, location: @image }
       else
         format.html { render :new }
@@ -42,7 +84,7 @@ class ImagesController < ApplicationController
   def update
     respond_to do |format|
       if @image.update(image_params)
-        format.html { redirect_to @image, notice: 'Image was successfully updated.' }
+        format.html { redirect_to  '/galleries/' + params[:gallery_id].to_s, notice: 'Image was successfully updated.' }
         format.json { render :show, status: :ok, location: @image }
       else
         format.html { render :edit }

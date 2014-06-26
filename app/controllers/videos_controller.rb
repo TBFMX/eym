@@ -24,7 +24,17 @@ class VideosController < ApplicationController
   # POST /videos
   # POST /videos.json
   def create
-    @video = Video.new(video_params)
+    @a_video = params[:video][:video_url].split(/\.?\s+/)
+    @url_suprema =""
+    @a_video.each do |vid|
+      unless vid.match("width=") || vid.match("height=")
+        @url_suprema += vid  
+      end
+      
+    end  
+
+    @video = Video.new("video_url"=> @url_suprema, "gallery_id"=> params[:video][:gallery_id], "title"=>[:video][:title])
+
 
     respond_to do |format|
       if @video.save
@@ -40,6 +50,16 @@ class VideosController < ApplicationController
   # PATCH/PUT /videos/1
   # PATCH/PUT /videos/1.json
   def update
+    @a_video = params[:video][:video_url].split(/\.?\s+/)
+    @url_suprema =""
+    @a_video.each do |vid|
+      unless vid.match("width=") || vid.match("height=")
+        @url_suprema = @url_suprema +" " + vid  
+      end
+      
+    end
+    puts @url_suprema
+    params[:video][:video_url] = @url_suprema
     respond_to do |format|
       if @video.update(video_params)
         format.html { redirect_to @video, notice: 'Video was successfully updated.' }

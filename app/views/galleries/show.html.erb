@@ -1,19 +1,52 @@
 <p id="notice"><%= notice %></p>
-
+<!--
 <p>
   <strong>Title:</strong>
-  <%= @gallery.title %>
+  <%#= @gallery.title %>
 </p>
 
 <p>
   <strong>Equipment:</strong>
-  <%= @gallery.equipment %>
+  <%#= @gallery.equipment %>
 </p>
 
 <p>
   <strong>User:</strong>
-  <%= @gallery.user_id %>
+  <%#= @gallery.user_id %>
 </p>
 
-<%= link_to 'Edit', edit_gallery_path(@gallery) %> |
-<%= link_to 'Back', galleries_path %>
+<%#= link_to 'Edit', edit_gallery_path(@gallery) %> |
+<%#= link_to 'Back', galleries_path %>
+-->
+
+<p>imagenes: </p>
+<table>
+	<tr>
+		<% @cont = 0 %>
+		<% @images.each do |img| %>
+		<% if @cont >= 3 %>
+			</tr>
+			<tr>
+			<% @cont = 0 %>	
+		<% end %>		
+			<td><img src="<%= img.image_url %>"  height="42" width="42" > </br> <p><%= img.title %></p></td>
+		<% @cont +=1 %>	
+		<% end %>
+	</tr>
+</table>
+
+<p>videos: </p>
+<table>
+	<tr>
+		<% @cont = 0 %>
+		<% @videos.each do |vid| %>
+		<% if @cont >= 3 %>
+			</tr>
+			<tr>
+			<% @cont = 0 %>	
+		<% end %>		
+			<td ><%= vid.video_url.html_safe %> </br> <p><%= vid.title %></p></td>
+		<% @cont +=1 %>	
+		<% end %>
+	</tr>
+</table>

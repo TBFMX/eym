@@ -74,6 +74,43 @@ Rails.application.routes.draw do
   end 
 
 
+  #preparacion para usar rutas amigables o traducidas segun se ocupe
+
+  controller :galleries do
+    get 'equipment/galleries/:id' => :index
+    get 'galleries/new/:id' => :new
+    post 'galleries/new/:id' => :new
+    get 'galleries/:id/edit/:equip' => :new
+    post 'galleries/:id/edit/:equip' => :new
+  end  
+  controller :videos do
+    get 'galleries/videos/:id' => :index
+    get 'videos/new/:id' => :new
+    post 'videos/new/:id' => :new
+    get 'videos/:id/edit/:equip' => :new
+    post 'videos/:id/edit/:equip' => :new
+  end  
+  controller :images do
+    get 'galleries/images/:id' => :index
+    get 'images/new/:id' => :new
+    post 'images/new/:id' => :new
+    get 'images/:id/edit/:equip' => :edit
+    post 'images/:id/edit/:equip' => :edit
+  end
+=begin  
+  controller :comments do
+    get 'equipment/comments/:id' => :index    
+    get 'comments/new/:id' => :new
+    post 'comments/new/:id' => :new
+    get 'comments/:id/edit/:equip' => :edit
+    post 'comments/:id/edit/:equip' => :edit
+  end   
+=end  
+
+
+  #get '*unmatched_route', :to => 'application#raise_not_found2'
+
+
   #get 'welcome' => 'index#welcome'
   
   # The priority is based upon order of creation: first created -> highest priority.

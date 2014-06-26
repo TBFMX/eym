@@ -17,8 +17,15 @@
         <td><%= gallery.equipment %></td>
         <td><%= gallery.user_id %></td>
         <td><%= link_to 'Show', gallery %></td>
-        <td><%= link_to 'Edit', edit_gallery_path(gallery) %></td>
-        <td><%= link_to 'Destroy', gallery, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <%# if @permiso %>
+          <td> <%= link_to 'Agregar imagen', '/images/new/' + gallery.id.to_s %>  <%#= link_to 'Edit', edit_gallery_path(gallery) %></td>
+          <td><%= link_to 'Agregar Video', '/videos/new/' + gallery.id.to_s %><%#= link_to 'Destroy', gallery, method: :delete, data: { confirm: 'Are you sure?' } %></td> 
+        <%# end %>
+
+
+        <!--<td> <%#= link_to 'Show', gallery %></td>
+        <td><%#= link_to 'Edit', edit_gallery_path(gallery) %></td>
+        <td><%#= link_to 'Destroy', gallery, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
       </tr>
     <% end %>
   </tbody>
