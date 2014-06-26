@@ -11,7 +11,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140626165632) do
+ActiveRecord::Schema.define(version: 20140626180741) do
+
+  create_table "brands", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "comments", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "equipment_id"
+    t.string   "comment"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "data_files", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "equipment", force: true do |t|
     t.string   "name"
@@ -22,6 +41,22 @@ ActiveRecord::Schema.define(version: 20140626165632) do
     t.string   "description"
     t.integer  "publication_type"
     t.integer  "category_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "galleries", force: true do |t|
+    t.string   "title"
+    t.integer  "equipment"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "images", force: true do |t|
+    t.integer  "gallery_id"
+    t.string   "image_url"
+    t.string   "title"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -56,6 +91,14 @@ ActiveRecord::Schema.define(version: 20140626165632) do
     t.datetime "updated_at"
   end
 
+  create_table "packages", force: true do |t|
+    t.string   "name"
+    t.decimal  "price"
+    t.string   "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "rols", force: true do |t|
     t.string   "rol_name"
     t.boolean  "admin"
@@ -81,6 +124,14 @@ ActiveRecord::Schema.define(version: 20140626165632) do
     t.datetime "updated_at"
     t.string   "password_reset_token"
     t.datetime "password_reset_sent_at"
+  end
+
+  create_table "videos", force: true do |t|
+    t.integer  "gallery_id"
+    t.string   "video_url"
+    t.string   "title"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end

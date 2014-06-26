@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
   before_action :authorize
 
 #genera el breadcrumb con sus traducciones y agrega el elemento home.
- add_breadcrumb I18n.t("breadcrumbs.homepage"), :root_path
+ #add_breadcrumb I18n.t("breadcrumbs.homepage"), :root_path
  
   unless Rails.application.config.consider_all_requests_local
     rescue_from Exception, :with => :render_error
