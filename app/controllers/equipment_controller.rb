@@ -142,6 +142,15 @@ class EquipmentController < ApplicationController
   # DELETE /equipment/1
   # DELETE /equipment/1.json
   def destroy
+    #####################
+    #metodos a revizar antes de borrar:
+    #-imagenes
+    #-videos
+    #-galerias
+
+    #######################
+
+    #antes hay que limpiar todo
     @equipment.destroy
     respond_to do |format|
       format.html { redirect_to equipment_index_url, notice: 'Equipment was successfully destroyed.' }
