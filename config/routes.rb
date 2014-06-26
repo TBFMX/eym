@@ -1,5 +1,17 @@
 Rails.application.routes.draw do
 
+  resources :brands
+
+  resources :packages
+
+  resources :comments
+
+  resources :videos
+
+  resources :images
+
+  resources :galleries
+
   get 'welcome/index'
 
   resources :module5s
