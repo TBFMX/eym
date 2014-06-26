@@ -1,0 +1,107 @@
+/* ----Menu desplegable --------*/
+   .menu {
+      width: 960px;
+      min-height: 30px;
+      margin:0 auto 0 auto;  
+      background-color: #ffffff;
+      overflow: hidden; /*--para que el cuadro agarre todo lo interno.---*/    
+      font-size:13px;
+      font-weight:bold; 
+      border-radius: 10px 10px 0px 0px;
+    }
+
+    .menu ul {
+       float:left;
+       list-style:none;
+       margin:0;
+       padding:0;
+    }
+
+    .menu li{
+       float: inherit;
+       padding:0px;
+       width:120px;
+       height: 30px;
+       border-color: #000000;
+       background-color:#000000;
+       border-radius: 10px 10px 0px 0px;
+    }
+
+    .menu li a{
+       color: #FFFFFF; /* Color de la fuente */
+       display:block;
+       margin:0px;
+       padding-top:5px;
+       height: 30px;
+       text-align:center;
+       text-decoration:none;
+     }
+
+    .menu li a:hover, .menu ul li:hover a {
+       background: #666666; /* Color de las pestañas al pasar el cursor va en info y mod */
+       color:#FFFFFF; /* Color del texto al pasar el cursor */
+       height:25px;
+       text-decoration:none;
+       border-radius: 10px 10px 0px 0px;
+    }
+
+    .menu li ul {
+       float:inherit;
+       background:#000000; /* Color de fondo del submenú */
+       display:none;
+       height:auto;
+       padding:0px;
+       margin:0px;
+       position:absolute;
+       width: 300px; /* Ancho del submenú */
+       text-align:right;
+       list-style:circle;
+    }
+      
+    .menu li:hover ul{
+      display:block;
+    }
+    
+    .menu li li {
+       display:block;
+       float:none;
+       margin:0px;
+       padding:0px;
+       width: auto;
+       }
+    
+    .menu li:hover li a {
+       background:none;
+    }
+    
+    .menu li ul a {
+       display:block;
+       height:55px; /*alto entre cada punto de submenu*/
+       font-size:13px;
+       margin:0px;
+       text-align:left;
+       background-color:#FFFFFF;
+    }
+
+    
+    .menu li ul a:hover, .menu li ul li:hover a{
+       background:#666666; /* Color de las subpestañas al pasar el cursor */
+       color:#FFFFFF;
+       text-decoration:none;
+   }
+
+.menu_publica {
+    width: 150px;
+    margin: 0;
+    position: relative;
+    float: right;
+    background-color:#EBEBEB;
+    height: 20px;
+    padding: 5px;
+    border-radius: 10px 10px 0 0;
+    text-align: center;
+}
+
+.menu_publica:hover { 
+    background-color: #BEBEBE;
+}
