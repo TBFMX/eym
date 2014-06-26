@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :equipment
+
   get 'welcome/index'
 
   resources :module5s

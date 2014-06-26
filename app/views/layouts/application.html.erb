@@ -1,29 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Creta</title>
+  <title>Equipos y Maquinas</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
+  <%= render partial: "layouts/header" %>
+  <%= render partial: "layouts/breadcrumb" %>
 <body>
-	<div id="columns">
-		<div id="side">
-			<% if session[:user_id] %>
-				<li><%#= link_to 'Users',users_path%></li>
-				<%#= "#{session[:rol_id]}"%>
-				<%#= "#{session[:uname]}"%>
-				<%#= button_to 'Logout', logout_path, method: :delete %>
-			    <%#= link_to "Cambiar Password", new_cambiar_password_path %>
-			<% else %>
-				<%#= button_to 'Iniciar Sesion', login_path, method: :new %>
-			<% end %>
-		</div>
-	</div>
-	<div id="main">
-		<%= yield %>
-	</div>
-
-
+	<div class="content"><div class="interior"><%= yield %></div></div>
 </body>
+  <%= render partial: "layouts/footer" %>
 </html>
+

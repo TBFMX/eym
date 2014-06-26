@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  year: 1
+  color: MyString
+  brand_id: 1
+  package_id: 1
+  description: MyString
+  publication_type: 1
+  category_id: 1
+
+two:
+  name: MyString
+  year: 1
+  color: MyString
+  brand_id: 1
+  package_id: 1
+  description: MyString
+  publication_type: 1
+  category_id: 1
