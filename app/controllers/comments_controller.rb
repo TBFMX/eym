@@ -2,10 +2,10 @@ class CommentsController < ApplicationController
   before_action :set_comment, only: [:show, :edit, :update, :destroy]
 =begin
   get 'equipment/comments/:id' => :index    
-    get 'comments/new/:id' => :new
-    post 'comments/new/:id' => :new
-    get 'comments/:id/edit/:equip' => :edit
-    post 'comments/:id/edit/:equip' => :edit
+  get 'comments/new/:id' => :new
+  post 'comments/new/:id' => :new
+  get 'comments/:id/edit/:equip' => :edit
+  post 'comments/:id/edit/:equip' => :edit
 =end
 
   # GET /comments
