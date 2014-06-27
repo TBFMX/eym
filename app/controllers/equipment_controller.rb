@@ -143,13 +143,54 @@ class EquipmentController < ApplicationController
   # DELETE /equipment/1
   # DELETE /equipment/1.json
   def destroy
+=begin    
     #####################
     #metodos a revizar antes de borrar:
     #-imagenes
     #-videos
     #-galerias
+    #-comentarios
 
     #######################
+    gal_clean = false
+    img_clean = false
+    vid_clean = false
+    coment_clean = false
+
+    @bye_gallery = Gallery.where("equipment_id"=> @equipment.id)
+    @bye_gallery.each do |gal|
+      @bye_image = Image.where("gallery_id"=>gal.id)
+      @bye_image.each do |image|
+        image.destroy
+        respond_to do |format|
+          format.html { puts "----Imagen eliminada con exito--------" }
+          format.json { head :no_content }
+        end  
+      end
+      @bye_image2 = Image.where("gallery_id"=>gal.id)
+      if @bye_image2.blank?
+        img_clean = true
+      end 
+
+      @bye_video =Video.where("gallery_id"=>gal.id)
+      @bye_video.each do |vid|
+        vid.destroy
+        respond_to do |format|
+          format.html { puts "----video eliminada con exito--------" }
+          format.json { head :no_content }
+        end 
+      end
+      if @bye_video2.blank?
+        vid_clean = true
+      end
+
+      if vid_clean && img_clean
+
+      end
+
+    end  
+=end
+
 
     #antes hay que limpiar todo
     @equipment.destroy

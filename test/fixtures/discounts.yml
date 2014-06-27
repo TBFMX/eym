@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  titulo: MyString
+  precio: 9.99
+  vencimiento: 2014-06-27
+  equipment_id: 
+
+two:
+  titulo: MyString
+  precio: 9.99
+  vencimiento: 2014-06-27
+  equipment_id: 

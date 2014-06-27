@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
 
 
+  resources :discounts
+
+  resources :categories
+
   resources :brands
 
   resources :packages

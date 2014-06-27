@@ -11,4 +11,10 @@ class DataFile < ActiveRecord::Base
 	    File.open(path, "wb") { |f| f.write(upload.read) }
 	    return path2
 	end
+
+	def self.destroy(url)
+		url_dir = "public/" + url.to_s
+		File.delete(url_dir) if File.exist?(url_dir)
+		return true
+	end	
 end
