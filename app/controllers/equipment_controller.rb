@@ -14,6 +14,8 @@ class EquipmentController < ApplicationController
     add_breadcrumb @equipment.name.to_s, '/equipment/' + @equipment.id.to_s   
 
     @image = Image.find(@equipment.image_id)
+    @gallery = Gallery.where('equipment_id' => @equipment.id)
+    
 
   end
 
