@@ -28,3 +28,17 @@ end
 @usuario2 = User.new(username: 'demo', name: 'demo', lastname: 'demo', password: 'demo12' ,  email: 'sebastian@tbf.mx', rol_id: @rol2.id)
 @usuario2.save
 ###################################################################
+
+######################Paquetes#####################################
+@plan1 = Package.new(name:'platino', price: '250.00', description: 'servicio mas cañon')
+@plan2 = Package.new(name:'oro', price: '150.00', description: 'servicio mas semi-cañon' )
+@plan3 = Package.new(name:'plata', price: '100.00', description: 'servicio algo cañon' )
+@plan4 = Package.new(name:'bronce', price: '50.00', description: 'servicio casi nada cañon' )
+@plan5 = Package.new(name:'blanco', price: '0.00', description: 'servicio normal' )
+
+@plan1.save
+@plan2.save
+@plan3.save
+@plan4.save
+@plan5.save
+###################################################################
