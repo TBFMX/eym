@@ -1,6 +1,6 @@
 /*-------reset-----------------*/
 
-body,div,dl,dt,dd,ul,ol,li,pre,code,form,fieldset,legend,input,button,textarea,p,blockquote,th,td{margin:0;padding:0;}
+body,div,dl,dt,dd,ul,ol,li,pre,code,form,fieldset,legend,input,button,textarea,p,blockquote,th,td,h1,h2,h3,h4,h5,h6{margin:0;padding:0;}
 table{border-collapse:collapse;border-spacing:0;}
 fieldset,img{border:0;}
 address,caption,cite,code,dfn,em,strong,th,var,optgroup{font-style:inherit;font-weight:inherit;}
@@ -178,3 +178,5 @@ a:hover{font-weight: bold;}
 input:focus{
   background-color: #f2f2f2;
 }
+
+/*---------------------------------------*/

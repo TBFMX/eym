@@ -10,7 +10,11 @@ class EquipmentController < ApplicationController
   # GET /equipment/1
   # GET /equipment/1.json
   def show
+
     add_breadcrumb @equipment.name.to_s, '/equipment/' + @equipment.id.to_s   
+
+    @image = Image.find(@equipment.image_id)
+
   end
 
   # GET /equipment/new
@@ -210,6 +214,6 @@ class EquipmentController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def equipment_params
-      params.require(:equipment).permit(:name, :year, :color, :brand_id, :package_id, :description, :publication_type, :category_id)
+      params.require(:equipment).permit(:name, :year, :color, :brand_id, :package_id, :description, :publication_type, :precio_venta, :precio_renta, :category_id)
     end
 end

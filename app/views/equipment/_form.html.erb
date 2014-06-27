@@ -64,11 +64,19 @@
   </div>
   <div class="field">
     <%= f.label :description %><br>
-    <%= f.text_field :description %>
+    <%= f.text_area :description, cols: "50", rows: "10" %>
   </div>
   <div class="field">
     <%= f.label :publication_type %><br>
     <%= f.number_field :publication_type %>
+  </div>
+  <div class="field">
+    <%= f.label :precio_venta %><br>
+    <%= f.number_field :precio_venta %>
+  </div>
+    <div class="field">
+    <%= f.label :precio_renta %><br>
+    <%= f.number_field :precio_renta %>
   </div>
   <div class="field">
     <%= f.label :category_id %><br>

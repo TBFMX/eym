@@ -6,9 +6,11 @@ class CreateEquipment < ActiveRecord::Migration
       t.string :color
       t.integer :brand_id
       t.integer :package_id
-      t.string :description
+      t.text :description
       t.integer :publication_type
       t.integer :category_id
+      t.decimal :precio_venta
+      t.decimal :precio_renta
 
       t.timestamps
     end
