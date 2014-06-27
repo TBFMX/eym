@@ -1,44 +1,42 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @equipment.name %>
-</p>
-
-<p>
-  <strong>Year:</strong>
-  <%= @equipment.year %>
-</p>
-
-<p>
-  <strong>Color:</strong>
-  <%= @equipment.color %>
-</p>
-
-<p>
-  <strong>Brand:</strong>
-  <%= @equipment.brand_id %>
-</p>
-
-<p>
-  <strong>Package:</strong>
-  <%= @equipment.package_id %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @equipment.description %>
-</p>
-
-<p>
-  <strong>Publication type:</strong>
-  <%= @equipment.publication_type %>
-</p>
-
-<p>
-  <strong>Category:</strong>
-  <%= @equipment.category_id %>
-</p>
+<div class="show_equipment">
+  <div class="titulo"><h2><%= @equipment.name %></h2></div>
+  <div class="producto">
+    <div class="preview">
+      <table>
+        <tr>
+          <td><img src="<%= @image.image_url %>"></td>
+          <td><img src="<%= @image.image_url %>"></td>
+        </tr>
+        <tr>
+          <td><img src="<%= @image.image_url %>"></td>
+          <td><img src="<%= @image.image_url %>"></td>
+        </tr>
+      </table>
+    </div>
+    <div class="imagen"><img src="<%= @image.image_url %>"></div>
+    <div class="modelo">
+      <table>
+        <tr><th colspan="2">Modelo</th></tr>
+        <tr><td>Año: <%= @equipment.year %></td><td>Color: <%= @equipment.color %></td></tr>
+        <tr><td>Marca: <%= @equipment.brand_id %></td><td> </td></tr>
+        <tr><th colspan="2">Palabras clave</th></tr>
+        <tr><td colspan="2">xxxxx, xxxxx, xxxxx, xxxxx, xxxxx, xxxxx,</td></tr>
+        <tr><th colspan="2">Venta / Renta</th></tr>
+        <tr><td>Precio Venta:</td><td>$<%= @equipment.precio_venta %></td></tr>
+        <tr><td>Precio Renta:</td><td>$<%= @equipment.precio_renta %> (dia)</td></tr>
+        <tr><th colspan="2">Modelo</th></tr> 
+        <tr><td><input type="button" name="Contactar" value="Contactar"></td><td>(Nombre del vendedor)</td></tr>
+        <tr><td></td><td></td></tr>                     
+      </table>
+    </div>
+    </div>
+  <div class="descripcion">
+    <h1>Description:</h1>
+    <p><%= @equipment.description %></p>
+  </div>
+</div>
 
 <%= link_to 'Edit', edit_equipment_path(@equipment) %> |
 <%= link_to 'Back', equipment_index_path %>
