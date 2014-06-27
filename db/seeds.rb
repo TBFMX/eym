@@ -28,7 +28,7 @@ end
 @usuario2 = User.new(username: 'demo', name: 'demo', lastname: 'demo', password: 'demo12' ,  email: 'sebastian@tbf.mx', rol_id: @rol2.id)
 @usuario2.save
 ###################################################################
-
+=begin
 ######################Paquetes#####################################
 @plan1 = Package.new(name:'platino', price: '250.00', description: 'servicio mas cañon')
 @plan2 = Package.new(name:'oro', price: '150.00', description: 'servicio mas semi-cañon' )
@@ -42,3 +42,4 @@ end
 @plan4.save
 @plan5.save
 ###################################################################
+=end

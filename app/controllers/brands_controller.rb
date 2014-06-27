@@ -11,7 +11,7 @@ class BrandsController < ApplicationController
   # GET /brands/1.json
   def show
   end
-
+=begin
   # GET /brands/new
   def new
     @brand = Brand.new
@@ -20,7 +20,7 @@ class BrandsController < ApplicationController
   # GET /brands/1/edit
   def edit
   end
-
+=end
   # POST /brands
   # POST /brands.json
   def create

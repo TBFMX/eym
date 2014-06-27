@@ -1,19 +1,18 @@
 es:
   breadcrumbs:
     homepage: Inicio
-    contact: Contacto 
-    nosotros: Nosotros
-    productos: Productos
-    clientes: Clientes
+    gallery: Galleria
+    newgallery: 'Nueva Galleria' 
+    equipment: 'Equipo'
+    newequipment: 'Nuevo Equipo'
+    editequipment: 'Editar Equipo'
+    image: 'Imagen'
+    newimage: 'New Imagen'
+    video: 'Video'
+    newvideo: 'Nuevo Video'
     comments: 'Comentarios'
-    users: 'User'
-    amends: 'Actualizaciones'
-    galleries: 'Galerias'
-    funders: 'Socios'
-    images: 'Imagen'
-    nimage: 'Nueva Imagen'
-    videos: 'Video'
-    nvideo: 'Nuevo Video'
+    newcomments: 'Nuevo Comentario'
+    dashboard: 'Dashboard'
 
 
   activerecord:

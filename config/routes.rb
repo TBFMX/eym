@@ -101,7 +101,7 @@ Rails.application.routes.draw do
     get 'images/:id/edit/:equip' => :edit
     post 'images/:id/edit/:equip' => :edit
   end
-=begin  
+
   controller :comments do
     get 'equipment/comments/:id' => :index    
     get 'comments/new/:id' => :new
@@ -109,7 +109,6 @@ Rails.application.routes.draw do
     get 'comments/:id/edit/:equip' => :edit
     post 'comments/:id/edit/:equip' => :edit
   end   
-=end  
 
 
   #get '*unmatched_route', :to => 'application#raise_not_found2'
