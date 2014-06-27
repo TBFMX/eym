@@ -10,15 +10,18 @@ class EquipmentController < ApplicationController
   # GET /equipment/1
   # GET /equipment/1.json
   def show
+    add_breadcrumb @equipment.name.to_s, '/equipment/' + @equipment.id.to_s   
   end
 
   # GET /equipment/new
   def new
+    add_breadcrumb 'newequipment', '/equipment/new' 
     @equipment = Equipment.new
   end
 
   # GET /equipment/1/edit
   def edit
+    add_breadcrumb @equipment.name.to_s, '/equipment/' + @equipment.id.to_s + '/edit'
   end
 
   # POST /equipment

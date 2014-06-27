@@ -1,24 +1,44 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: [:show, :edit, :update, :destroy]
+=begin
+  get 'equipment/comments/:id' => :index    
+    get 'comments/new/:id' => :new
+    post 'comments/new/:id' => :new
+    get 'comments/:id/edit/:equip' => :edit
+    post 'comments/:id/edit/:equip' => :edit
+=end
 
   # GET /comments
   # GET /comments.json
+  #equipment/comments/:id
   def index
     @comments = Comment.all
+    add_breadcrumb @equipment.name.to_s, '/equipment/' + @equipment.id.to_s
+    add_breadcrumb 'comment', 'equipment/comments/' + @equipment.id.to_s
+    
   end
 
   # GET /comments/1
   # GET /comments/1.json
   def show
+    add_breadcrumb @equipment.name.to_s, '/equipment/' + @equipment.id.to_s
+    add_breadcrumb 'comment', '/comments/' + @comment.id.to_s
+
   end
 
   # GET /comments/new
+  #comments/new/:id
   def new
     @comment = Comment.new
+        add_breadcrumb @equipment.name.to_s, '/equipment/' + @equipment.id.to_s
+    add_breadcrumb 'newcomment', '/comments/' + @comment.id.to_s
   end
 
   # GET /comments/1/edit
+  #comments/:id/edit/:equip
   def edit
+    add_breadcrumb @equipment.name.to_s, '/equipment/' + @equipment.id.to_s
+    add_breadcrumb 'newcomment', '/comments/' + @comment.id.to_s
   end
 
   # POST /comments

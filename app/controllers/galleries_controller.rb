@@ -10,9 +10,9 @@ class GalleriesController < ApplicationController
   # GET /galleries/1
   # GET /galleries/1.json
   def show
-    #@project = Project.find(@gallery.project_id)
-    #add_breadcrumb @project.name.to_s, '/projects/' + @project.id.to_s    
-    #add_breadcrumb I18n.t("breadcrumbs.galleries"), '/projects/galleries/' + @project.id.to_s    
+    @equip = Equipment.find(@gallery.equipment_id)
+    add_breadcrumb @equip.name.to_s, '/equipment/' + @equip.id.to_s    
+    add_breadcrumb I18n.t("breadcrumbs.gallery"), '/projects/galleries/' + @equip.id.to_s    
     @images = Image.where("gallery_id = ?", @gallery.id).group(:image_url)
     @videos = Video.where("gallery_id = ?", @gallery.id).group(:video_url)
   end
