@@ -23,32 +23,28 @@ es:
           email: 'Correo Electronico'
           password_confirmation: 'Confirmacion De Contraseña'
           nombre: 'Nombre Completo'
-        perk:
-          title: 'Titulo'
-          description: 'Descripcion'
-          delivery_date: 'Fecha De Entrega'
-          price: 'Precio'
-          piece: 'Piezas'
-        project:
+        equipament:
           name: 'Nombre'
-          monetary_goal: 'Objetivo a Recaudar'
-          init_date: 'Fecha De Inicio'
-          finish_date: 'Fechas de Vencimiento'
+          year: 'Año'
+          color: 'Color'
+          brand_id: 'Marca'
+          package_id: 'Paquete'
+          description: 'Descripcion'
+          publication_type: 'Tipo de Publicacion'
+          category_id: 'Categoria'
+          precio_venta: 'Precio de Venta'
+          precio_renta: 'Precio de Renta'
         gallery:
           title: 'Titulo'
           description: 'Descripcion'
         image:
+          title: 'Titulo'
           image_url: 'Imagen'
         video:
+          title: 'Titulo'
           video_url: 'Video'
-        amend:
-          amend: 'Actualizacion'
-          amends: 'Actualizaciones'
-          lista: 'lista'
-          description: 'Descripcion'
-          imagen_id: 'Imagen'
         comments:
-          comments: 'Comentario'
+          comment: 'Comentario'
 
  
   date:

@@ -12,7 +12,8 @@ class CommentsController < ApplicationController
   # GET /comments.json
   #equipment/comments/:id
   def index
-    @comments = Comment.all
+    @equipment = Equipment.find(params[:id])
+    @comments = Comment.where('equipment_id' => @equipment.id)
     add_breadcrumb @equipment.name.to_s, '/equipment/' + @equipment.id.to_s
     add_breadcrumb 'comment', 'equipment/comments/' + @equipment.id.to_s
     
