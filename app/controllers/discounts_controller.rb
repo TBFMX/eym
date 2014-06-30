@@ -26,7 +26,8 @@ class DiscountsController < ApplicationController
   def create
     @discount = Discount.new(discount_params)
     @equipo = Equipment.find(@discount.equipment_id)
-    @equipo.update("precio_venta" => @discount.precio)
+    @discount.update(precio_anterior: @equipo.precio_venta)
+    @equipo.update(precio_venta: @discount.precio)
     #puts "###################################################"
     #puts @discount.equipment.precio_renta
     #puts @equipo.precio_venta
