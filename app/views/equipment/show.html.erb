@@ -4,35 +4,28 @@
   <div class="titulo"><h2><%= @equipment.name %></h2></div>
   <div class="producto">
     <div class="preview">
-      <table>
-        <tr>
-          <td><img src="<%= @image.image_url %>"></td>
-          <td><img src="<%= @image.image_url %>"></td>
-        </tr>
-        <tr>
-          <td><img src="<%= @image.image_url %>"></td>
-          <td><img src="<%= @image.image_url %>"></td>
-        </tr>
-      </table>
       <%
       @gallery.each do |g|
       @images = Image.where('gallery_id' => g.id)
-      link_to g.name, 'equipment/galleries/'+ g.equipment_id
+      link_to g.title, 'equipment/galleries/'+ g.equipment_id.to_s
       %>
+
       <table>
         <tr>
           <% @cont = 0 %>
           <% @images.each do |img| %>
-          <% if @cont >= 3 %>
-            </tr>
-            <tr>
-            <% @cont = 0 %> 
+          <% if @cont >= 2 %>
+        </tr>
+        <tr>
+          <% @cont = 0 %> 
           <% end %>   
             <td><img src="<%= img.image_url %>"  height="42" width="42" > </td>
           <% @cont +=1 %> 
           <% end %>
+          <% if @cont%2 == 0 %> <!-- nada --> <% else %> <td></td><%end%>
         </tr>
       </table>
+
     <% end %>
     </div>
     <div class="imagen"><img src="<%= @image.image_url %>"></div>
@@ -44,8 +37,8 @@
         <tr><th colspan="2">Palabras clave</th></tr>
         <tr><td colspan="2">xxxxx, xxxxx, xxxxx, xxxxx, xxxxx, xxxxx,</td></tr>
         <tr><th colspan="2">Venta / Renta</th></tr>
-        <tr><td>Precio Venta:</td><td>$<%= number_to_currency(@equipment.precio_venta) %></td></tr>
-        <tr><td>Precio Renta:</td><td>$<%= number_to_currency(@equipment.precio_renta) %> (dia)</td></tr>
+        <tr><td>Precio Venta:</td><td><%= number_to_currency(@equipment.precio_venta) %></td></tr>
+        <tr><td>Precio Renta:</td><td><%= number_to_currency(@equipment.precio_renta) %> (dia)</td></tr>
         <tr><th colspan="2">Modelo</th></tr> 
         <tr><td><input type="button" name="Contactar" value="Contactar"></td><td>(Nombre del vendedor)</td></tr>
         <tr><td></td><td></td></tr>                     
