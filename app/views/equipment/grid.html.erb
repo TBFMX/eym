@@ -1,0 +1,83 @@
+
+<!--params.require(:equipment).permit(    :pais, :estado, :ciudad, :category_id)-->
+<%= form_tag reporter_grid_path, :method => 'get' do %>
+  <p>
+    <%#= text_field_tag :search, params[:search] %>
+    <%= label :year %><br>
+    <%= select("equipment", "year", Equipment.all.collect {|p| [ p.year, p.year ] }, {include_blank: 'Todos'}) %>
+    <br>
+    <%= label :color %><br>
+    <%= select("equipment", "color", Equipment.all.collect {|p| [ p.color, p.color ] }, {include_blank: 'Todos'}) %>
+    <br>
+    <%= label :brand_id %><br>
+    <%= select("equipment", "brand_id", Brand.all.collect {|p| [ p.id, p.name ] }, {include_blank: 'Todos'}) %>
+    <br>
+    <%= label :package_id %><br>
+    <%= select("equipment", "package_id", Package.all.collect {|p| [ p.id, p.name ] }, {include_blank: 'Todos'}) %>
+    <br>
+    <%= label :package_id %><br>
+    <%= select("equipment", "package_id", Package.all.collect {|p| [ p.id, p.name ] }, {include_blank: 'Todos'}) %>
+    <br>
+    <%= label :publication_type %><br>
+    <%#= select("equipment", "publication_type", Equipment.all.collect {|p| [ p.publication_type, p.year ] }, {include_blank: 'Todos'}) %>
+    <br>
+    <%= label :precio, "Desde" %><br>
+    <%= select("equipment", "precio", Equipment.all.collect {|p| [ p.precio, number_to_currency(p.precio) ] }, {include_blank: 'Todos'}) %>
+    <br>
+    <%= label :precio, "Hasta" %><br>
+    <%= select("equipment", "precio", Equipment.all.collect {|p| [ p.precio, number_to_currency(p.precio) ] }, {include_blank: 'Todos'}) %>
+    <br>
+    <%= label :modelo %><br>
+    <%= select("equipment", "modelo", Equipment.all.collect {|p| [ p.modelo, p.modelo ] }, {include_blank: 'Todos'}) %>
+    <br>
+    <%= label :moneda %><br>
+    <%= select("equipment", "moneda", Equipment.all.collect {|p| [ p.moneda, p.moneda ] }, {include_blank: 'Todos'}) %>
+    <br>
+
+    <%= label :pais %><br>
+    <%= select("equipment", "pais", Equipment.all.collect {|p| [ p.pais, p.pais) ] }, {include_blank: 'Todos'}) %>
+    <br>
+    <%= label :estado %><br>
+    <%= select("equipment", "estado", Equipment.all.collect {|p| [ p.estado, p.estado ] }, {include_blank: 'Todos'}) %>
+    <br>
+    <%= label :ciudad %><br>
+    <%= select("equipment", "ciudad", Equipment.all.collect {|p| [ p.ciudad, p.ciudad ] }, {include_blank: 'Todos'}) %>
+    <br>
+    <%= label :moneda %><br>
+    <%= select("equipment", "moneda", Equipment.all.collect {|p| [ p.moneda, p.moneda ] }, {include_blank: 'Todos'}) %>
+    <br>
+
+    <%= submit_tag "Filtrar", :name => nil %>
+  </p>
+  
+
+<% end %>
+
+	<table id ="equipments" class ="pretty" >
+		<thead>
+			<tr>
+				<td align="center"> <%= sortable "kind" %></td>
+				<td align="center"><%= sortable "unit_id"  %></td>
+				<td align="center"><%= sortable	"client_id" %></td>
+				<td align="center"><%= sortable "date"  %></td>
+			</tr>
+		</thead>
+		
+
+		<tbody>
+			
+		    <% @equipments.each do |equipment| %>
+		      <tr>
+		        <td align="center"><%= equipment.kind %></td>
+		        <td align="center"><%= equipment.unit_id %></td>
+		        <td align="center"><%= equipment.client_id %></td>
+		        <td align="center"><%= equipment.date %></td>
+		      </tr>
+		    <% end %>
+		
+	  	</tbody>
+    </table>
+
+
+
+<%= will_paginate @equipments %>

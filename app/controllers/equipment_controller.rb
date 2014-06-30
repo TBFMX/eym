@@ -214,6 +214,16 @@ class EquipmentController < ApplicationController
     end
   end
 
+  def reporter_grid
+
+    @equipment = Equipment.query(params[:equipment], params[:date_from], params[:date_to]).order(sort_column + ' ' + sort_direction).paginate(:per_page => 5, :page => params[:page])
+    #@equipment = Equipment.search(params[:search]).order(sort_column + ' ' + sort_direction).paginate(:per_page => 5, :page => params[:page])
+    #respond_to do |format|
+    #  format.html
+    #  format.json { render json: EquipmentsDatatable.new(view_context) }
+    #end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_equipment
@@ -222,6 +232,6 @@ class EquipmentController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def equipment_params
-      params.require(:equipment).permit(:name, :year, :color, :brand_id, :package_id, :description, :publication_type, :precio_venta, :precio_renta, :modelo, :moneda_venta, :moneda_renta, :pais, :estado, :ciudad, :category_id)
+      params.require(:equipment).permit(:name, :year, :color, :brand_id, :package_id, :description, :publication_type, :precio, :modelo, :moneda , :pais, :estado, :ciudad, :category_id)
     end
 end
