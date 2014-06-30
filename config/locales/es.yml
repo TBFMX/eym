@@ -45,6 +45,28 @@ es:
           video_url: 'Video'
         comments:
           comment: 'Comentario'
+        dashboard:
+          index: 'Inicio'
+          username: 'Nombre De Usuario'
+          password: 'Contraseña'
+          email: 'Correo Electronico'
+          password_confirmation: 'Confirmacion De Contraseña'
+          nombre: 'Nombre Completo'
+          name: 'Nombre'
+          year: 'Año'
+          color: 'Color'
+          brand_id: 'Marca'
+          package_id: 'Paquete'
+          description: 'Descripcion'
+          publication_type: 'Tipo de Publicacion'
+          category_id: 'Categoria'
+          precio_venta: 'Precio de Venta'
+          precio_renta: 'Precio de Renta'
+          comment: 'Comentario'
+          title: 'Titulo'
+          video_url: 'Video'
+          image_url: 'Imagen'
+          description: 'Descripcion'
 
  
   date:
