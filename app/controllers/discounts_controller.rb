@@ -25,6 +25,12 @@ class DiscountsController < ApplicationController
   # POST /discounts.json
   def create
     @discount = Discount.new(discount_params)
+    @equipo = Equipment.find(@discount.equipment_id)
+    @equipo.update("precio_venta" => @discount.precio)
+    #puts "###################################################"
+    #puts @discount.equipment.precio_renta
+    #puts @equipo.precio_venta
+    #puts "###################################################"
 
     respond_to do |format|
       if @discount.save
@@ -35,6 +41,7 @@ class DiscountsController < ApplicationController
         format.json { render json: @discount.errors, status: :unprocessable_entity }
       end
     end
+    
   end
 
   # PATCH/PUT /discounts/1

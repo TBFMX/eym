@@ -17,7 +17,7 @@
         <td><%= discount.titulo %></td>
         <td><%= discount.precio %></td>
         <td><%= discount.vencimiento %></td>
-        <td><%= discount.equipment %></td>
+        <td><%= discount.equipment.name %></td>
         <td><%= link_to 'Show', discount %></td>
         <td><%= link_to 'Edit', edit_discount_path(discount) %></td>
         <td><%= link_to 'Destroy', discount, method: :delete, data: { confirm: 'Are you sure?' } %></td>

@@ -25,7 +25,7 @@
   </div>
   <div class="field">
     <%= f.label :equipment_id %><br>
-    <%= f.text_field :equipment_id %>
+    <%= select("discount", "equipment_id", Equipment.all.collect {|p| [ p.name, p.id ] }, {include_blank: 'Seleccione uno'}) %>
   </div>
   <div class="actions">
     <%= f.submit %>
