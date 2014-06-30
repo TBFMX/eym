@@ -1,39 +1,22 @@
-<h1>Listing equipment</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Year</th>
-      <th>Color</th>
-      <th>Brand</th>
-      <th>Package</th>
-      <th>Description</th>
-      <th>Publication type</th>
-      <th>Category</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @equipment.each do |equipment| %>
-      <tr>
-        <td><%= equipment.name %></td>
-        <td><%= equipment.year %></td>
-        <td><%= equipment.color %></td>
-        <td><%= equipment.brand_id %></td>
-        <td><%= equipment.package_id %></td>
-        <td><%= equipment.description %></td>
-        <td><%= equipment.publication_type %></td>
-        <td><%= equipment.category_id %></td>
-        <td><%= link_to 'Show', equipment %></td>
-        <td><%= link_to 'Edit', edit_equipment_path(equipment) %></td>
-        <td><%= link_to 'Destroy', equipment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Equipment', new_equipment_path %>
+<h1>Lista de Anuncios</h1>
+<% @equipment.each do |equipment| %>
+<div class="lista_show_equipment">
+  <div class="lista_image"><img src="jo.jpg"></div>
+  <div class="datos">
+    <div class="titulo">
+      <%= link_to equipment.name, "equipment/" + equipment.id.to_s %>
+    </div>
+    <div class="descripcion">
+      Modelo: <%= equipment.brand_id %> | Año: <%= equipment.year %> | Color: <%= equipment.color %>
+    </div>
+  </div>
+  <div class="precio">
+    Precio Venta: <%= number_to_currency(equipment.precio_venta) %><br>
+    Precio Renta: <%= number_to_currency(equipment.precio_renta) %>
+  </div>
+  <div class="opciones">
+    <%= link_to 'Edit', edit_equipment_path(equipment) %> 
+    <%= link_to 'Destroy', equipment, method: :delete, data: { confirm: 'Are you sure?' } %>
+  </div>    
+</div>
+<% end %>
