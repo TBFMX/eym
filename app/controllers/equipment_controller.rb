@@ -44,11 +44,7 @@ class EquipmentController < ApplicationController
       puts @pic.inspect
     puts "----------------------------------------------"
 
-    unless @pic.nil?
-      @pics = DataFile.save(@pic)
-    else
-      @pics = "/data/dommy.jpg"  
-    end
+    
     puts "-------------------Pics---------------------------"
       puts @pics.inspect
     puts "--------------------------------------------------" 
@@ -61,6 +57,16 @@ class EquipmentController < ApplicationController
           puts "-------------------Equipo---------------------------"
           puts @equipments.inspect
           puts "------------------------------------------------------"
+          ########################
+          
+
+          unless @pic.nil?
+            @pics = DataFile.save(@pic,@equipments.id.to_s, @equipments.name.to_s)
+          else
+            @pics = "/data/dommy.jpg"  
+          end
+          ########################
+
           unless @pic.nil?
           #creo la galleria
             @gallery=Gallery.new("equipment_id"=>@equipments.id, "title" =>"principal")

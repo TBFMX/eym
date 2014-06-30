@@ -41,25 +41,19 @@ class ImagesController < ApplicationController
   # POST /images
   # POST /images.json
   def create
-=begin    
+   
     @gallery = Gallery.find(params[:image][:gallery_id])
-    @project2 = Project.find(@gallery.project_id)
+    @equipment= Equipment.find(@gallery.equipment_id)
     @gallery2 = Gallery.find(@gallery)
 
-    unless @pic.blank?
-      @pics = DataFile.save(@pic,@project2.name,@gallery2.title)
-    end
-=end
-
-
-
+    
     #@image = Image.new(image_params)
     @pic = params[:image][:image_url]
     puts "---------------------------------datos-imagen------------------------------------------------------"
     puts @pic.inspect
     puts "---------------------------------------------------------------------------------------------------"
     unless @pic.blank?
-      @pics = DataFile.save(@pic)
+      @pics = DataFile.save(@pic,@equipment.id.to_s, @equipment.name.to_s)
     else
       @pics = "/data/dommy.jpg"  
     end

@@ -14,7 +14,7 @@ class VideosController < ApplicationController
 
   # GET /videos/new
   def new
-    @video = Video.new
+    @video = Video.new("gallery_id" => params[:id])
   end
 
   # GET /videos/1/edit
@@ -29,22 +29,24 @@ class VideosController < ApplicationController
     @a_video.each do |vid|
       unless vid.match("width=") || vid.match("height=")
         @url_suprema += vid  
-      end
-      
-    end  
+      end 
+    end 
 
-    @video = Video.new("video_url"=> @url_suprema, "gallery_id"=> params[:video][:gallery_id], "title"=>[:video][:title])
+
+    gallery = Gallery.find(params[:video][:gallery_id])
+    @video = Video.new("video_url"=> @url_suprema.to_s, "gallery_id"=> gallery.id.to_i, "title"=>params[:video][:title].to_s)
 
 
     respond_to do |format|
       if @video.save
-        format.html { redirect_to @video, notice: 'Video was successfully created.' }
+        format.html { redirect_to '/galleries/' + params[:video][:gallery_id].to_s, notice: 'Video was successfully created.' }
         format.json { render :show, status: :created, location: @video }
       else
         format.html { render :new }
         format.json { render json: @video.errors, status: :unprocessable_entity }
       end
     end
+   
   end
 
   # PATCH/PUT /videos/1
