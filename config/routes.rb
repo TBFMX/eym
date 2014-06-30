@@ -1,6 +1,18 @@
 Rails.application.routes.draw do
 
 
+  get 'dashboard/index'
+
+  get 'dashboard/login'
+
+  get 'dashboard/equipos'
+
+  get 'dashboard/gallerias'
+
+  get 'dashboard/imagenes'
+
+  get 'dashboard/videos'
+
   resources :discounts
 
   resources :categories
