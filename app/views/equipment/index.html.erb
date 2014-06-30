@@ -7,12 +7,14 @@
       <%= link_to equipment.name, "equipment/" + equipment.id.to_s %>
     </div>
     <div class="descripcion">
-      Modelo: <%= equipment.brand_id %> | Año: <%= equipment.year %> | Color: <%= equipment.color %>
+     Marca:<%= equipment.brand_id %> | Modelo: <%= equipment.modelo %> 
+     <br>
+     Año: <%= equipment.year %> | Color: <%= equipment.color %>
     </div>
   </div>
   <div class="precio">
-    Precio Venta: <%= number_to_currency(equipment.precio_venta) %><br>
-    Precio Renta: <%= number_to_currency(equipment.precio_renta) %>
+    Precio Venta: <%= number_to_currency(equipment.precio_venta) %> <%= equipment.moneda_venta %> <br>
+    Precio Renta: <%= number_to_currency(equipment.precio_renta) %> <%= equipment.moneda_renta %>
   </div>
   <div class="opciones">
     <%= link_to 'Edit', edit_equipment_path(equipment) %> 

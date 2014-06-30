@@ -31,20 +31,27 @@
     <div class="imagen"><img src="<%= @image.image_url %>"></div>
     <div class="modelo">
       <table>
-        <tr><th colspan="2">Modelo</th></tr>
+        <tr><th colspan="2">Modelo: <%= @equipment.modelo %></th></tr>
         <tr><td>Año: <%= @equipment.year %></td><td>Color: <%= @equipment.color %></td></tr>
         <tr><td>Marca: <%= @equipment.brand_id %></td><td> </td></tr>
-        <tr><th colspan="2">Palabras clave</th></tr>
-        <tr><td colspan="2">xxxxx, xxxxx, xxxxx, xxxxx, xxxxx, xxxxx,</td></tr>
         <tr><th colspan="2">Venta / Renta</th></tr>
-        <tr><td>Precio Venta:</td><td><%= number_to_currency(@equipment.precio_venta) %></td></tr>
-        <tr><td>Precio Renta:</td><td><%= number_to_currency(@equipment.precio_renta) %> (dia)</td></tr>
-        <tr><th colspan="2">Modelo</th></tr> 
-        <tr><td><input type="button" name="Contactar" value="Contactar"></td><td>(Nombre del vendedor)</td></tr>
-        <tr><td></td><td></td></tr>                     
+        <tr>
+          <td>Precio Venta:</td>
+          <td><%= number_to_currency(@equipment.precio_venta) %> <%= @equipment.moneda_venta %></td>
+        </tr>
+        <tr><td>Precio Renta:</td><td><%= number_to_currency(@equipment.precio_renta) %> <%= @equipment.moneda_renta %> /dia</td></tr>
+        <tr><th colspan="2">Contacto y localidad</th></tr> 
+        <tr>
+          <td colspan="2">Lugar: <%= @equipment.ciudad %>, <%= @equipment.estado %>, <%= @equipment.pais %></td>
+        </tr>        
+        <tr>
+          <td><input type="button" name="Contactar" value="Contactar"></td>
+          <td>(Nombre del vendedor)</td>
+        </tr>                 
       </table>
     </div>
     </div>
+  <p>Etiquetas: xxxx,xxxx,xxxx,xxxx,xxxx,xxxx</p>
   <div class="descripcion">
     <h1>Description:</h1>
     <p><%= @equipment.description %></p>

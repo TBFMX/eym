@@ -4,7 +4,7 @@ class EquipmentController < ApplicationController
   # GET /equipment
   # GET /equipment.json
   def index
-    @equipment = Equipment.all
+    @equipment = Equipment.all   
   end
 
   # GET /equipment/1
@@ -216,6 +216,6 @@ class EquipmentController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def equipment_params
-      params.require(:equipment).permit(:name, :year, :color, :brand_id, :package_id, :description, :publication_type, :precio_venta, :precio_renta, :category_id)
+      params.require(:equipment).permit(:name, :year, :color, :brand_id, :package_id, :description, :publication_type, :precio_venta, :precio_renta, :modelo, :moneda_venta, :moneda_renta, :pais, :estado, :ciudad, :category_id)
     end
 end

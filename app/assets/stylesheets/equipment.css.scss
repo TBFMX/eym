@@ -4,6 +4,7 @@
 
 /*---------------------*/
 .show_equipment h1{
+   margin: 10px 0px 10px 0px;
    position:relative;
    text-align: left;
    
@@ -54,6 +55,14 @@
 .show_equipment .producto .modelo table{
    width: 300px;
    height: 300px;
+}
+
+.show_equipment .descripcion{
+   position:relative;
+   text-align: left;
+   margin-top:10px;
+   margin-bottom:10px;
+   
 }
 
 /*-------------lista de anuncios-------------*/

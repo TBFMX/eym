@@ -1,92 +1,100 @@
-            <!--aqui-->
-            <script type='text/javascript'>
+<!--aqui validacion de la imagen-->
+<script type='text/javascript'>
            
-            function validateFiles(inputFile) {
-              var maxExceededMessage = "El Archivo excede el limite pérmitido (60 KB)";
-              var extErrorMessage = "Solo se aceptan extenciones: .jpg, .jpeg, .gif or .png ";
-              var allowedExtension = ["jpg", "jpeg", "gif", "png"];
+function validateFiles(inputFile) {
+var maxExceededMessage = "El Archivo excede el limite pérmitido (60 KB)";
+var extErrorMessage = "Solo se aceptan extenciones: .jpg, .jpeg, .gif or .png ";
+var allowedExtension = ["jpg", "jpeg", "gif", "png"];
              
-              var extName;
-              var maxFileSize = $(inputFile).data('max-file-size');
-              var sizeExceeded = false;
-              var extError = false;
+var extName;
+var maxFileSize = $(inputFile).data('max-file-size');
+var sizeExceeded = false;
+var extError = false;
              
-              $.each(inputFile.files, function() {
-                if (this.size && maxFileSize && this.size > parseInt(maxFileSize)) {sizeExceeded=true;};
-                extName = this.name.split('.').pop();
-                if ($.inArray(extName, allowedExtension) == -1) {extError=true;};
-              });
-              if (sizeExceeded) {
-                window.alert(maxExceededMessage);
-                $(inputFile).val('');
-              };
-             
-              if (extError) {
-                window.alert(extErrorMessage);
-                $(inputFile).val('');
-              };
-            }
-            </script>
-            <!-- aqui-->
+$.each(inputFile.files, function() {
+  if (this.size && maxFileSize && this.size > parseInt(maxFileSize)) {sizeExceeded=true;};
+    extName = this.name.split('.').pop();
+  if ($.inArray(extName, allowedExtension) == -1) {extError=true;};});
+    if (sizeExceeded) {
+      window.alert(maxExceededMessage);
+        $(inputFile).val('');
+          };
+    if (extError) {
+      window.alert(extErrorMessage);
+        $(inputFile).val('');
+          };
+          }
+</script>
+<!-- aqui-->
+<div class="alta_equipment">
 
-<%= form_for(@equipment) do |f| %>
-  <% if @equipment.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@equipment.errors.count, "error") %> prohibited this equipment from being saved:</h2>
+  <%= form_for(@equipment) do |f| %>
+    <% if @equipment.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@equipment.errors.count, "error") %> prohibited this equipment from being saved:</h2>
 
-      <ul>
-      <% @equipment.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+        <ul>
+        <% @equipment.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+  <h1>Categoria</h1>
+  <div class="grupo">
+      <%= f.number_field :category_id %>
   </div>
-  <div class="field">
-    <%= f.label :year %><br>
-    <%= f.number_field :year %>
+
+  <h1>Selecciona tu paquete</h1>
+  <div class="grupo">
+      <%= f.number_field :package_id %><br>  
   </div>
-  <div class="field">
-    <%= f.label :color %><br>
-    <%= f.text_field :color %>
+
+  <h1>Servicios</h1>
+  <div class="grupo">
+      <%= f.label :publication_type %><br>
+      <%= f.number_field :publication_type %><br>   
+      <%= f.label :precio_venta %><br>
+      <%= f.number_field :precio_venta %><br>
+      <%= f.label :moneda_renta %><br>
+      <%= f.text_field :moneda_venta %><br>
+      <%= f.label :precio_renta %><br>
+      <%= f.number_field :precio_renta %><br>
+      <%= f.label :moneda_renta %><br>
+      <%= f.text_field :moneda_renta %> <br>  
   </div>
-  <div class="field">
-    <%= f.label :brand_id %><br>
-    <%= f.number_field :brand_id %>
+
+  <h1>Descripción</h1>
+  <div class="grupo">
+      <%= f.label :name, "Titulo del anuncio" %><br>
+      <%= f.text_field :name %><br><br>
+      <%= f.label :description, "Descripción" %><br>
+      <%= f.text_area :description, cols: "90", rows: "10" %><br>
+      <%= f.label :image_id %> <%= f.file_field :image_id ,:onchange =>"validateFiles(this);",:data => {:max_file_size => 60.kilobytes} %>    
   </div>
-  <div class="field">
-    <%= f.label :package_id %><br>
-    <%= f.number_field :package_id %>
+
+  <h1>Detalles</h1>
+  <div class="grupo">
+      <%= f.label :brand_id %><br>
+      <%= f.number_field :brand_id %><br>    
+      <%= f.label :modelo %><br>
+      <%= f.text_field :modelo %><br> 
+      <%= f.label :year %><br>
+      <%= f.number_field :year %><br>
+      <%= f.label :color %><br>
+      <%= f.text_field :color %><br>
+      <%= f.label :ciudad %><br>
+      <%= f.text_field :ciudad %><br>
+      <%= f.label :estado %><br>
+      <%= f.text_field :estado %><br>
+      <%= f.label :pais %><br>
+      <%= f.text_field :pais %><br>            
   </div>
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_area :description, cols: "50", rows: "10" %>
-  </div>
-  <div class="field">
-    <%= f.label :publication_type %><br>
-    <%= f.number_field :publication_type %>
-  </div>
-  <div class="field">
-    <%= f.label :precio_venta %><br>
-    <%= f.number_field :precio_venta %>
-  </div>
-    <div class="field">
-    <%= f.label :precio_renta %><br>
-    <%= f.number_field :precio_renta %>
-  </div>
-  <div class="field">
-    <%= f.label :category_id %><br>
-    <%= f.number_field :category_id %>
-  </div>
-  <div class="field">
-    <%= f.label :image_id %><br>
-    <%= f.file_field :image_id ,:onchange =>"validateFiles(this);",:data => {:max_file_size => 60.kilobytes} %>
-  </div> 
+
   <div class="actions">
     <%= f.submit %>
   </div>
+</div>    
+
 <% end %>
