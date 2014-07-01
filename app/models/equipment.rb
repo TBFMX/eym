@@ -1,16 +1,9 @@
 class Equipment < ActiveRecord::Base
 	has_many :galleries, dependent: :destroy
 	has_many :images
-<<<<<<< HEAD
 	has_many :coments, dependent: :destroy
 	validates :name, presence: true
-=======
 
-	has_many :coments
-	has_many :brands
-	#has_many :coments, dependent: :destroy
-
->>>>>>> 9c23aaa8cd153d3ef6de0ef1768b0c591ae74199
 	validates :precio, numericality: {greater_than_or_equal_to: 0.01}
 
 
