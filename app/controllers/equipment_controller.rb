@@ -1,10 +1,11 @@
 class EquipmentController < ApplicationController
   before_action :set_equipment, only: [:show, :edit, :update, :destroy]
+  helper_method :sort_column, :sort_direction
 
   # GET /equipment
   # GET /equipment.json
   def index
-    @equipment = Equipment.all   
+    @equipment = Equipment.all 
   end
 
   # GET /equipment/1
@@ -157,55 +158,6 @@ class EquipmentController < ApplicationController
   # DELETE /equipment/1
   # DELETE /equipment/1.json
   def destroy
-=begin    
-    #####################
-    #metodos a revizar antes de borrar:
-    #-imagenes
-    #-videos
-    #-galerias
-    #-comentarios
-
-    #######################
-    gal_clean = false
-    img_clean = false
-    vid_clean = false
-    coment_clean = false
-
-    @bye_gallery = Gallery.where("equipment_id"=> @equipment.id)
-    @bye_gallery.each do |gal|
-      @bye_image = Image.where("gallery_id"=>gal.id)
-      @bye_image.each do |image|
-        image.destroy
-        respond_to do |format|
-          format.html { puts "----Imagen eliminada con exito--------" }
-          format.json { head :no_content }
-        end  
-      end
-      @bye_image2 = Image.where("gallery_id"=>gal.id)
-      if @bye_image2.blank?
-        img_clean = true
-      end 
-
-      @bye_video =Video.where("gallery_id"=>gal.id)
-      @bye_video.each do |vid|
-        vid.destroy
-        respond_to do |format|
-          format.html { puts "----video eliminada con exito--------" }
-          format.json { head :no_content }
-        end 
-      end
-      if @bye_video2.blank?
-        vid_clean = true
-      end
-
-      if vid_clean && img_clean
-
-      end
-
-    end  
-=end
-
-
     #antes hay que limpiar todo
     @equipment.destroy
     respond_to do |format|
@@ -214,10 +166,17 @@ class EquipmentController < ApplicationController
     end
   end
 
-  def reporter_grid
-
-    @equipment = Equipment.query(params[:equipment], params[:date_from], params[:date_to]).order(sort_column + ' ' + sort_direction).paginate(:per_page => 5, :page => params[:page])
-    #@equipment = Equipment.search(params[:search]).order(sort_column + ' ' + sort_direction).paginate(:per_page => 5, :page => params[:page])
+  def grid
+    #@equipments = Equipment.all
+    puts "-------parametros---------"
+    puts params.inspect
+    puts "--------------------------"
+    @equipments = Equipment.query(params[:equipment]).order(sort_column + ' ' + sort_direction)
+    #@equipments = Equipment.query(params[:equipment]).order(sort_column + ' ' + sort_direction).paginate(:per_page => 10, :page => params[:page])
+    puts "-------equipments---------"
+    puts @equipments.inspect
+    puts "--------------------------"
+    #@equipments = Equipment.search(params[:search]).order(sort_column + ' ' + sort_direction).paginate(:per_page => 5, :page => params[:page])
     #respond_to do |format|
     #  format.html
     #  format.json { render json: EquipmentsDatatable.new(view_context) }
@@ -233,5 +192,21 @@ class EquipmentController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def equipment_params
       params.require(:equipment).permit(:name, :year, :color, :brand_id, :package_id, :description, :publication_type, :precio, :modelo, :moneda , :pais, :estado, :ciudad, :category_id)
+    end
+
+    def manejador
+      #logger.error "hubo un problema xxyy"
+      #redirect_to "/equipment/reporter_grid"
+      render action: 'grid'
+      @equipment = Equipment.all
+      puts "entre al manejador"
+    end
+
+    def sort_column
+      params[:sort] || "name"
+    end
+
+    def sort_direction
+        params[:direction] || "asc"
     end
 end

@@ -28,10 +28,9 @@ class DashboardController < ApplicationController
 
   private
     def charge_all
-      @equips = Equipment.where("user_id = ?" => session[:user_id])
-      @equip_id = @equips.id
-      @galleries = Gallery.where("equipment_id = ?" => @equip_id)
-      @images = Image.where("gallery_id = ?" => @galleries.id)
-      @videos = Video.where("gallery_id = ?" => @galleries.id)
+      @equips = Equipment.where("user_id = ?" , session[:user_id])
+      @galleries = Gallery.find_by("equipment_id = ?" , @equip_id)
+      @images = Image.where("gallery_id = ?" , @galleries.id)
+      @videos = Video.where("gallery_id = ?" , @galleries.id)
     end  
 end
