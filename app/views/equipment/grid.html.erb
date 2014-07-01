@@ -1,50 +1,44 @@
 
-<!--params.require(:equipment).permit(    :pais, :estado, :ciudad, :category_id)-->
-<%= form_tag reporter_grid_path, :method => 'get' do %>
+
+<%= form_tag '/venta', :method => 'get' do %>
   <p>
     <%#= text_field_tag :search, params[:search] %>
-    <%= label :year %><br>
-    <%= select("equipment", "year", Equipment.all.collect {|p| [ p.year, p.year ] }, {include_blank: 'Todos'}) %>
+    <%= label :year, "Año" %><br>
+    <%= select("equipment", "year", Equipment.all.collect {|p| [ p.year, p.year ] }.uniq, {include_blank: 'Todos'}) %>
     <br>
-    <%= label :color %><br>
-    <%= select("equipment", "color", Equipment.all.collect {|p| [ p.color, p.color ] }, {include_blank: 'Todos'}) %>
+    <%= label :color, "Color" %><br>
+    <%= select("equipment", "color", Equipment.all.collect {|p| [ p.color, p.color ] }.uniq, {include_blank: 'Todos'}) %>
     <br>
-    <%= label :brand_id %><br>
-    <%= select("equipment", "brand_id", Brand.all.collect {|p| [ p.id, p.name ] }, {include_blank: 'Todos'}) %>
+    <%= label :brand_id, "Marca" %><br>
+    <%= select("equipment", "brand_id", Brand.all.collect {|p| [ p.id, p.name ] }.uniq, {include_blank: 'Todos'}) %>
     <br>
-    <%= label :package_id %><br>
-    <%= select("equipment", "package_id", Package.all.collect {|p| [ p.id, p.name ] }, {include_blank: 'Todos'}) %>
+    <%= label :package_id, "Paquete" %><br>
+    <%= select("equipment", "package_id", Package.all.collect {|p| [ p.id, p.name ] }.uniq, {include_blank: 'Todos'}) %>
     <br>
-    <%= label :package_id %><br>
-    <%= select("equipment", "package_id", Package.all.collect {|p| [ p.id, p.name ] }, {include_blank: 'Todos'}) %>
+    <%= label :preciod, "Desde" %><br>
+    <%= select("equipment", "preciod", Equipment.all.collect {|p| [ p.precio, number_to_currency(p.precio) ] }.uniq, {include_blank: 'Todos'}) %>
     <br>
-    <%= label :publication_type %><br>
-    <%#= select("equipment", "publication_type", Equipment.all.collect {|p| [ p.publication_type, p.year ] }, {include_blank: 'Todos'}) %>
+    <%= label :precioh, "Hasta" %><br>
+    <%= select("equipment", "precioh", Equipment.all.collect {|p| [ p.precio, number_to_currency(p.precio) ] }.uniq, {include_blank: 'Todos'}) %>
     <br>
-    <%= label :precio, "Desde" %><br>
-    <%= select("equipment", "precio", Equipment.all.collect {|p| [ p.precio, number_to_currency(p.precio) ] }, {include_blank: 'Todos'}) %>
+    <%= label :modelo , "Modelo" %><br>
+    <%= select("equipment", "modelo", Equipment.all.collect {|p| [ p.modelo, p.modelo ] }.uniq, {include_blank: 'Todos'}) %>
     <br>
-    <%= label :precio, "Hasta" %><br>
-    <%= select("equipment", "precio", Equipment.all.collect {|p| [ p.precio, number_to_currency(p.precio) ] }, {include_blank: 'Todos'}) %>
-    <br>
-    <%= label :modelo %><br>
-    <%= select("equipment", "modelo", Equipment.all.collect {|p| [ p.modelo, p.modelo ] }, {include_blank: 'Todos'}) %>
-    <br>
-    <%= label :moneda %><br>
-    <%= select("equipment", "moneda", Equipment.all.collect {|p| [ p.moneda, p.moneda ] }, {include_blank: 'Todos'}) %>
+    <%= label :moneda , "Moneda" %><br>
+    <%= select("equipment", "moneda", Equipment.all.collect {|p| [ p.moneda, p.moneda ] }.uniq, {include_blank: 'Todos'}) %>
     <br>
 
-    <%= label :pais %><br>
-    <%= select("equipment", "pais", Equipment.all.collect {|p| [ p.pais, p.pais) ] }, {include_blank: 'Todos'}) %>
+    <%= label :pais , "Pais"%><br>
+    <%= select("equipment", "pais", Equipment.all.collect {|p| [ p.pais, p.pais ] }.uniq, {include_blank: 'Todos'}) %>
     <br>
-    <%= label :estado %><br>
-    <%= select("equipment", "estado", Equipment.all.collect {|p| [ p.estado, p.estado ] }, {include_blank: 'Todos'}) %>
+    <%= label :estado ,"Estado"%><br>
+    <%= select("equipment", "estado", Equipment.all.collect {|p| [ p.estado, p.estado ] }.uniq, {include_blank: 'Todos'}) %>
     <br>
-    <%= label :ciudad %><br>
-    <%= select("equipment", "ciudad", Equipment.all.collect {|p| [ p.ciudad, p.ciudad ] }, {include_blank: 'Todos'}) %>
+    <%= label :ciudad ,"Ciudad"%><br>
+    <%= select("equipment", "ciudad", Equipment.all.collect {|p| [ p.ciudad, p.ciudad ] }.uniq, {include_blank: 'Todos'}) %>
     <br>
-    <%= label :moneda %><br>
-    <%= select("equipment", "moneda", Equipment.all.collect {|p| [ p.moneda, p.moneda ] }, {include_blank: 'Todos'}) %>
+    <%= label :category_id ,"Categoria"%><br>
+    <%= select("equipment", "category_id", Category.all.collect {|p| [ p.id, p.title ] }.uniq, {include_blank: 'Todos'}) %>
     <br>
 
     <%= submit_tag "Filtrar", :name => nil %>
@@ -52,14 +46,23 @@
   
 
 <% end %>
-
+<!-- params.require(:equipment).permit(:name, :year, :color, :brand_id, :package_id, :description, :publication_type, :precio, :modelo, :moneda , :pais, :estado, :ciudad, :category_id) -->
 	<table id ="equipments" class ="pretty" >
 		<thead>
 			<tr>
-				<td align="center"> <%= sortable "kind" %></td>
-				<td align="center"><%= sortable "unit_id"  %></td>
-				<td align="center"><%= sortable	"client_id" %></td>
-				<td align="center"><%= sortable "date"  %></td>
+				<td align="center"> <%= sortable "Nombre" %></td>
+				<td align="center"> <%= sortable "Año" %></td>
+				<td align="center"> <%= sortable "Color" %></td>
+				<td align="center"> <%= sortable "Marca" %></td>
+				<td align="center"> <%= sortable "Paquete" %></td>
+				<td align="center"> <%= sortable "Precio" %></td>
+				<td align="center"> <%= sortable "Modelo" %></td>
+				<td align="center"> <%= sortable "Moneda" %></td>
+				<td align="center"> <%= sortable "Pais" %></td>
+				<td align="center"> <%= sortable "Estado" %></td>
+				<td align="center"> <%= sortable "Ciudad" %></td>
+				<td align="center"> <%= sortable "Categoria" %></td>
+				
 			</tr>
 		</thead>
 		
@@ -68,10 +71,19 @@
 			
 		    <% @equipments.each do |equipment| %>
 		      <tr>
-		        <td align="center"><%= equipment.kind %></td>
-		        <td align="center"><%= equipment.unit_id %></td>
-		        <td align="center"><%= equipment.client_id %></td>
-		        <td align="center"><%= equipment.date %></td>
+		        <td align="center"><%= equipment.name %></td>
+		        <td align="center"><%= equipment.year %></td>
+		        <td align="center"><%= equipment.color %></td>
+		        <td align="center"><%= equipment.brand_id %></td>
+		        <td align="center"><%= equipment.package_id %></td>
+		        <td align="center"><%= number_to_currency(equipment.precio) %></td>
+		        <td align="center"><%= equipment.modelo %></td>
+		        <td align="center"><%= equipment.moneda %></td>
+		        <td align="center"><%= equipment.pais %></td>
+		        <td align="center"><%= equipment.estado %></td>
+		        <td align="center"><%= equipment.ciudad %></td>
+		        <td align="center"><%= equipment.category_id %></td>
+		        
 		      </tr>
 		    <% end %>
 		
@@ -80,4 +92,4 @@
 
 
 
-<%= will_paginate @equipments %>
+<%#= will_paginate @equipments %>

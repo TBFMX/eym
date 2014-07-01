@@ -122,7 +122,9 @@ Rails.application.routes.draw do
     post 'comments/:id/edit/:equip' => :edit
   end   
 
-
+  controller :equipment do
+    get 'venta' => :grid
+  end
   #get '*unmatched_route', :to => 'application#raise_not_found2'
 
 
