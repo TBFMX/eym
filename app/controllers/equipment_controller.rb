@@ -5,7 +5,7 @@ class EquipmentController < ApplicationController
   # GET /equipment
   # GET /equipment.json
   def index
-    @equipment = Equipment.all   
+    @equipment = Equipment.all 
   end
 
   # GET /equipment/1

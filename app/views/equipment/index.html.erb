@@ -1,6 +1,7 @@
 <h1>Lista de Anuncios</h1>
 <% @equipment.each do |equipment| %>
 <div class="lista_show_equipment">
+  <% @image = Image.find(equipment.image) %>
   <div class="lista_image"><img src="jo.jpg"></div>
   <div class="datos">
     <div class="titulo">
