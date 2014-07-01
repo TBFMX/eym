@@ -124,6 +124,7 @@ Rails.application.routes.draw do
 
   controller :equipment do
     get 'venta' => :grid
+    post '/equipment/contact' => :contact
   end
   #get '*unmatched_route', :to => 'application#raise_not_found2'
 

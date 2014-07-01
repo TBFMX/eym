@@ -17,7 +17,7 @@ class EquipmentController < ApplicationController
     @image = Image.find(@equipment.image_id)
      @gallery = Gallery.where('equipment_id' => @equipment.id)
 
-
+     @user = User.find(@equipment.user_id)
   end
 
   # GET /equipment/new
@@ -181,6 +181,15 @@ class EquipmentController < ApplicationController
     #  format.html
     #  format.json { render json: EquipmentsDatatable.new(view_context) }
     #end
+  end
+
+  def contact
+    if params[:equipment]
+      @equipment = Equipment.find(params[:equipment]) 
+      @user = User.find(@equipment.user_id)
+    else
+      redirect_to root_path
+    end
   end
 
   private

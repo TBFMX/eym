@@ -44,8 +44,8 @@
           <td colspan="2">Lugar: <%= @equipment.ciudad %>, <%= @equipment.estado %>, <%= @equipment.pais %></td>
         </tr>        
         <tr>
-          <td><input type="button" name="Contactar" value="Contactar"></td>
-          <td>(Nombre del vendedor)</td>
+          <td><%= button_to "contacto", equipment_contact_path(:user_id => session[:user_id], :equipment => @equipment), :method => :post %></td>
+          <td><img src="/images/iconos/usuario_icono.png" height="12" width="12"> <%= @user.username %></td>
         </tr>                 
       </table>
     </div>
