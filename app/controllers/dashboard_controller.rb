@@ -30,7 +30,9 @@ class DashboardController < ApplicationController
     def charge_all
       @equips = Equipment.where("user_id = ?" , session[:user_id])
       @galleries = Gallery.find_by("equipment_id = ?" , @equip_id)
-      @images = Image.where("gallery_id = ?" , @galleries.id)
-      @videos = Video.where("gallery_id = ?" , @galleries.id)
+      unless @galleries.blank?
+        @images = Image.where("gallery_id = ?" , @galleries.id)
+        @videos = Video.where("gallery_id = ?" , @galleries.id)
+      end
     end  
 end

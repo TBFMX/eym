@@ -23,7 +23,7 @@ class EquipmentController < ApplicationController
   # GET /equipment/new
   def new
     add_breadcrumb 'newequipment', '/equipment/new' 
-    @equipment = Equipment.new
+    @equipment = Equipment.new('user_id' => session[:user_id])
   end
 
   # GET /equipment/1/edit
@@ -214,7 +214,7 @@ class EquipmentController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def equipment_params
-      params.require(:equipment).permit(:name, :year, :color, :brand_id, :package_id, :description, :publication_type, :precio, :modelo, :moneda , :pais, :estado, :ciudad, :category_id)
+      params.require(:equipment).permit(:name, :year, :color, :brand_id, :package_id, :description, :publication_type, :precio, :modelo, :moneda , :pais, :estado, :ciudad, :category_id, :etiquetas)
     end
 
     def manejador

@@ -1,6 +1,11 @@
 class Equipment < ActiveRecord::Base
 	has_many :galleries, dependent: :destroy
 	has_many :images
+	has_one :currencies
+	has_one :countries
+	has_one :states
+	has_one :brand
+	
 
 	validates :name, presence: true, uniqueness: true
 

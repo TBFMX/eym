@@ -43,7 +43,7 @@
         <tr><th colspan="2">Venta / Renta</th></tr>
         <tr>
           <td>Precio Venta:</td>
-          <td><%= number_to_currency(@equipment.precio) %> <%= @equipment.moneda %></td>
+          <td><%= number_to_currency(@equipment.precio) %> <%= @equipment.moneda.name %></td>
         </tr>
         <tr><th colspan="2">Contacto y localidad</th></tr> 
         <tr>
@@ -56,7 +56,7 @@
       </table>
     </div>
     </div>
-  <p>Etiquetas: xxxx,xxxx,xxxx,xxxx,xxxx,xxxx</p>
+  <p>Etiquetas: <%= @equipment.etiquetas %></p>
   <div class="descripcion">
     <h1>Description:</h1>
     <p><%= @equipment.description %></p>
