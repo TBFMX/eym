@@ -13,39 +13,50 @@ class DataFile < ActiveRecord::Base
 		upload.original_filename = @yolo2.to_s + "_" + @yolo.to_s + "_" +upload.original_filename 
 	    name =  upload.original_filename
 	    
-		unless Dir.pwd === "/home/sebastian/Eym/public/data"
+		
+	    @path2 = ""
 
-
-	    	directory = "public/data"
-	    	Dir.chdir(directory)
+    	directory = "public/data"
+    	Dir.chdir(directory) do
 	    	directory = carpeta.to_s
 	    	path = File.join(directory, name)
 			puts "-----------------direccion actual-2--------------"
 			puts Dir.pwd
 			puts "------------------------------------------------"
-	    else 
-	    	directory = carpeta.to_s 
-	    	path = File.join(directory, name)	
-		end
+		   
 
-		##############
-		Dir.mkdir(carpeta,0700) unless File.exists?(carpeta)
-		##############
+			##############
+			Dir.mkdir(carpeta,0700) unless File.exists?(carpeta)
+			##############
 
-	    dir ="/data/" + carpeta.to_s
-	    path2 = File.join(dir, name)
-	    # write the file
-	    File.open(path, "wb") { |f| f.write(upload.read) }
+		    dir ="/data/" + carpeta.to_s
+		    @path2 = File.join(dir, name)
+		    # write the file
+		    File.open(path, "wb") { |f| f.write(upload.read) }
 
-	    
+	    end
 
-	    return path2
+	    return @path2
 	end
 
 	def self.destroy(url)
-		url_dir = "public/" + url.to_s
-		File.delete(url_dir) if File.exist?(url_dir)
-		return true
+		url_dir = "public" + url.to_s
+		
+
+		if File.exist?(url_dir)
+			if File.delete(url_dir) 
+				puts '-------Destrui la pic ' + url_dir + 'y ya no debe estar NNNNNNNNNNNNNNNNOOOOOOOOOOOOOOOOOOOO---------------'
+				return true
+			else
+				return false	
+			end	
+		else
+		puts "no existe " + url_dir.to_s
+		puts url.to_s
+		puts Dir.pwd	
+		end	
+		
+		#return true
 	end	
 
 

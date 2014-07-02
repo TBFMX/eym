@@ -6,6 +6,7 @@ class GalleriesController < ApplicationController
   def index
     if params[:id]
       @galleries = Gallery.where('equipment_id' => params[:id])
+      @e_id = params[:id]
     else
       redirect_to root_path
     end
@@ -16,14 +17,20 @@ class GalleriesController < ApplicationController
   def show
     @equip = Equipment.find(@gallery.equipment_id)
     add_breadcrumb @equip.name.to_s, '/equipment/' + @equip.id.to_s    
-    add_breadcrumb I18n.t("breadcrumbs.gallery"), '/projects/galleries/' + @equip.id.to_s    
+    add_breadcrumb I18n.t("breadcrumbs.gallery"), '/equipment/galleries/' + @equip.id.to_s    
     @images = Image.where("gallery_id = ?", @gallery.id).group(:image_url)
     @videos = Video.where("gallery_id = ?", @gallery.id).group(:video_url)
   end
 
   # GET /galleries/new
   def new
-    @gallery = Gallery.new
+    
+    if params[:id]
+      @gallery = Gallery.new('equipment_id' => params[:id])
+      @e_id = params[:id]
+    else
+      redirect_to root_path
+    end
   end
 
   # GET /galleries/1/edit
@@ -62,6 +69,16 @@ class GalleriesController < ApplicationController
   # DELETE /galleries/1
   # DELETE /galleries/1.json
   def destroy
+    #borramos archivos
+    @image = Image.where('gallery_id = ?', @gallery.id)
+    @image.each do |image|
+      pic = image.image_url
+      unless pic.equal?("/data/dummy.jpg")
+        pics = DataFile.destroy(pic)
+        
+      end
+    end  
+
     @gallery.destroy
     respond_to do |format|
       format.html { redirect_to galleries_url, notice: 'Gallery was successfully destroyed.' }

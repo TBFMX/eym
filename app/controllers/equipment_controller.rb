@@ -159,6 +159,20 @@ class EquipmentController < ApplicationController
   # DELETE /equipment/1.json
   def destroy
     #antes hay que limpiar todo
+    @gallery = Gallery.where('equipment_id = ?', @equipment.id)
+    @gallery.each do |gallery|
+      @image = Image.where('gallery_id', gallery.id)
+      @image.each do |image|
+        pic = image.image_url
+        unless pic.equal?("/data/dummy.jpg")
+          pics = DataFile.destroy(pic)
+          puts '-------Destrui la pic ' + pic + 'y ya no debe estar'
+        end
+      end
+    end  
+
+
+
     @equipment.destroy
     respond_to do |format|
       format.html { redirect_to equipment_index_url, notice: 'Equipment was successfully destroyed.' }

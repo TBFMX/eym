@@ -24,8 +24,8 @@
 
 
         <!--<td> <%#= link_to 'Show', gallery %></td>
-        <td><%#= link_to 'Edit', edit_gallery_path(gallery) %></td>
-        <td><%#= link_to 'Destroy', gallery, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
+        <td><%#= link_to 'Edit', edit_gallery_path(gallery) %></td>-->
+        <td><%= link_to 'Destroy', gallery, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -33,4 +33,4 @@
 
 <br>
 
-<%= link_to 'New Gallery', new_gallery_path %>
+<%= link_to 'Nueva Galeria', '/galleries/new/' + @e_id  %>
