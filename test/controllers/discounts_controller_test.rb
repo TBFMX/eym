@@ -3,6 +3,12 @@ require 'test_helper'
 class DiscountsControllerTest < ActionController::TestCase
   setup do
     @discount = discounts(:one)
+    @update = {
+      titulo:       'holaholahola',
+      precio:       2,
+      vencimiento:  2014-06-27,
+      equipment_id: 1
+    }
   end
 
   test "should get index" do
@@ -18,7 +24,8 @@ class DiscountsControllerTest < ActionController::TestCase
 
   test "should create discount" do
     assert_difference('Discount.count') do
-      post :create, discount: { equipment_id: @discount.equipment_id, precio: @discount.precio, titulo: @discount.titulo, vencimiento: @discount.vencimiento }
+      post :create, discount: @update
+      #post :create, discount: { equipment_id: @discount.equipment_id, precio: @discount.precio, titulo: @discount.titulo, vencimiento: @discount.vencimiento }
     end
 
     assert_redirected_to discount_path(assigns(:discount))

@@ -4,10 +4,10 @@ one:
   titulo: MyString
   precio: 9.99
   vencimiento: 2014-06-27
-  equipment_id: 
+  equipment_id: 1
 
 two:
-  titulo: MyString
+  titulo: MyString2
   precio: 9.99
   vencimiento: 2014-06-27
-  equipment_id: 
+  equipment_id: 1
