@@ -90,11 +90,7 @@ class ImagesController < ApplicationController
   # DELETE /images/1
   # DELETE /images/1.json
   def destroy
-    #me preparo para borrar la imagen
-    pic = @image.images_url
-    unless pic.equals("/data/dummy.jpg")
-      pics = DataFile.destroy(pic)
-    end  
+    #me preparo para borrar la imagen  
 
     @image.destroy
     respond_to do |format|

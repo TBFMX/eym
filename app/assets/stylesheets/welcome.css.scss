@@ -1,3 +1,45 @@
 // Place all the styles related to the welcome controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+/*------------ welcome -----------------*/
+
+.welcome_show_cuadro{
+   width: 198px;
+   height: 298px;
+   border: 1px solid #A4A4A4;
+   margin: 10px 10px 10px 10px;
+   float: left;
+}
+
+.welcome_show_cuadro .centra_img{
+   width: 180px;
+   height: 150px;
+   margin:10px 10px 0px 10px;
+}
+
+.welcome_show_cuadro .centra_img img{
+   max-width: 150px;
+   max-height: 150px;
+   display: block;
+   margin: auto;  
+}
+
+.welcome_show_cuadro .ajustar_titulo{
+   width: 190px;
+   margin: 10px 0px 0px 3px;
+   font-size: 15px;
+   text-overflow:ellipsis; 
+   white-space:nowrap;
+   overflow:hidden;  
+}
+
+.welcome_show_cuadro .ajustar_titulo a{
+   text-decoration: none;
+}
+
+.welcome_show_cuadro .detalles{
+   width: 190px;
+   margin: 0px 5px 0px 5px;  
+}
