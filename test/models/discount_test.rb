@@ -9,4 +9,19 @@ class DiscountTest < ActiveSupport::TestCase
     assert discount.errors[:vencimiento].any?
     assert discount.errors[:equipment_id].any?
   end
+
+  test "discount price must be positive" do
+	discount = Discount.new(titulo:"My Book Title",
+							vencimiento: 2014-06-27,
+							equipment_id: 1)
+	discount.precio = -1
+	assert discount.invalid?
+	assert_equal ["must be greater than or equal to 0.01"], discount.errors[:precio]
+	discount.precio = 0
+	assert discount.invalid?
+	assert_equal ["must be greater than or equal to 0.01"], discount.errors[:precio]
+	discount.precio = 1
+	assert discount.valid?
+  end
+
 end

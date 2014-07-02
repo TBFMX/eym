@@ -19,7 +19,7 @@
 		<div>
 			<%#= link_to "Recuperar Password", new_recover_password_path %>
 			<p><%= link_to "forgotten password?", new_password_reset_path %></p>
-							
+
 		</div>
 <% else %>
 	<p>Bienvenido <%= "#{session[:uname]}"%></p>
@@ -27,75 +27,66 @@
 	<%= button_to 'Logout', logout_path, method: :delete %>
 <%end %>
 
-<div>
-<table>
-	<tr>
-		<% @cont = 0 %>
-		<% @zone1.each do |zone| %>
-		<% if @cont >= 3 %>
-			</tr>
-			<tr>
-			<% @cont = 0 %>	
-		<% end %>
-		<%if zone.image_id	
-				@imagen = Image.find(zone.image_id)
-				@image = @imagen.image_url
-			else 
-				@image ="/data/dommy.jpg"
-			end %>	
-			<td><img src="<%= @image  %>"  height="42" width="42" > </br> <p><%= zone.name %></p> </br> <p><%= zone.precio %></p></td>
-		<% @cont +=1 %>	
-		<% end %>
-	</tr>
-</table>
-</div>	
 
-<div>
-	<table>
-	<tr>
-		<% @cont = 0 %>
-		<% @zone2.each do |zone| %>
-		<% if @cont >= 3 %>
-			</tr>
-			<tr>
-			<% @cont = 0 %>	
-		<% end %>
-		<%if zone.image_id	
-				@imagen = Image.find(zone.image_id)
-				@image = @imagen.image_url
-			else 
-				@image ="/data/dommy.jpg"
-			end %>	
-			<td><img src="<%= @image  %>"  height="42" width="42" > </br> <p><%= zone.name %></p> </br> <p><%= zone.precio %></p></td>
-		<% @cont +=1 %>	
-		<% end %>
-	</tr>
-</table>
+<% @zone1.each do |zone| %>
+<div class="welcome_show_cuadro">
+	<%if zone.image_id	
+		@imagen = Image.find(zone.image_id)
+		@image = @imagen.image_url
+	else 
+		@image ="/data/dommy.jpg"
+	end %>	
 
-</div>
-<div>
-	<table>
-	<tr>
-		<% @cont = 0 %>
-		<% @zone3.each do |zone| %>
-		<% if @cont >= 3 %>
-			</tr>
-			<tr>
-			<% @cont = 0 %>	
-		<% end %>
-		<%if zone.image_id	
-				@imagen = Image.find(zone.image_id)
-				@image = @imagen.image_url
-			else 
-				@image ="/data/dommy.jpg"
-			end %>	
-			<td><img src="<%= @image  %>"  height="42" width="42" > </br> <p><%= zone.name %></p> </br> <p><%= zone.precio %></p></td>
-		<% @cont +=1 %>	
-		<% end %>
-	</tr>
-</table>
+	<div class="centra_img"><%= link_to image_tag(@image), "equipment/" + zone.id.to_s %></div>
+	<div class="ajustar_titulo"><%= link_to zone.name, "equipment/" + zone.id.to_s, class: "ajustar_titulo" %></div>
+	<div class="detalles">
+		Marca: <%= zone.brand_id %><br>
+		Modelo: <%= zone.modelo %><br>		
+		Año: <%= zone.year %><br>
+		<%= zone.package_id %>: <%= number_to_currency(zone.precio) %> <%= zone.moneda %><br>
+		Ubicación: <%= zone.ciudad %>, <%= zone.estado %>
+	</div>
+</div>		
+<% end %>
 
-</div>
+<% @zone2.each do |zone| %>
+<div class="welcome_show_cuadro">
+	<%if zone.image_id	
+		@imagen = Image.find(zone.image_id)
+		@image = @imagen.image_url
+	else 
+		@image ="/data/dommy.jpg"
+	end %>	
 
+	<div class="centra_img"><%= link_to image_tag(@image), "equipment/" + zone.id.to_s %></div>
+	<div class="ajustar_titulo"><%= link_to zone.name, "equipment/" + zone.id.to_s, class: "ajustar_titulo" %></div>
+	<div class="detalles">
+		Marca: <%= zone.brand_id %><br>
+		Modelo: <%= zone.modelo %><br>		
+		Año: <%= zone.year %><br>
+		<%= zone.package_id %>: <%= number_to_currency(zone.precio) %> <%= zone.moneda %><br>
+		Ubicación: <%= zone.ciudad %>, <%= zone.estado %>
+	</div>
+</div>		
+<% end %>
 
-<%= link_to 'New User', new_user_path %>
+<% @zone3.each do |zone| %>
+<div class="welcome_show_cuadro">
+	<%if zone.image_id	
+		@imagen = Image.find(zone.image_id)
+		@image = @imagen.image_url
+	else 
+		@image ="/data/dommy.jpg"
+	end %>	
+
+	<div class="centra_img"><%= link_to image_tag(@image), "equipment/" + zone.id.to_s %></div>
+	<div class="ajustar_titulo"><%= link_to zone.name, "equipment/" + zone.id.to_s, class: "ajustar_titulo" %></div>
+	<div class="detalles">
+		Marca: <%= zone.brand_id %><br>
+		Modelo: <%= zone.modelo %><br>		
+		Año: <%= zone.year %><br>
+		<%= zone.package_id %>: <%= number_to_currency(zone.precio) %> <%= zone.moneda %><br>
+		Ubicación: <%= zone.ciudad %>, <%= zone.estado %>
+	</div>
+</div>		
+<% end %>

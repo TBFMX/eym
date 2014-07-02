@@ -1,12 +1,15 @@
 class Equipment < ActiveRecord::Base
 	has_many :galleries, dependent: :destroy
 	has_many :images
-	has_many :coments
+
+	validates :name, presence: true, uniqueness: true
+
+	has_many :comments
 	#has_many :coments, dependent: :destroy
-	validates :name, presence: true
+
 
 	validates :precio, numericality: {greater_than_or_equal_to: 0.01}
-
+	validates :moneda, :description, presence: true
 
 
 
