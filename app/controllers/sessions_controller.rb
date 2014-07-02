@@ -21,7 +21,7 @@ class SessionsController < ApplicationController
       session[:mod4] =rol.module_4
       session[:mod5] =rol.module_5
       #termina variables de rol
-      unless redirect_to session[:lasurl].blank?
+      unless session[:lasurl].blank?
         aux = session[:lasurl]
         session[:lasurl] = ""
   		  redirect_to aux
