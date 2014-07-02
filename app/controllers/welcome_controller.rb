@@ -1,6 +1,11 @@
 class WelcomeController < ApplicationController
   skip_before_action :authorize
   def index
+    @zone1 = frontpage(1)
+    @zone2 = frontpage(2)
+    @zone3 = frontpage(3)
+    #@zone4 = frontpage(4)
+    
   end
 
   def new
@@ -41,7 +46,9 @@ class WelcomeController < ApplicationController
   	session[:user_id] = nil
   	redirect_to login_url, notice: "Logged out"
   end
-
-
-
+  private
+      def frontpage(pack)
+        @equip = Equipment.where('package_id =?',pack).group('rank').order('priority ASC')
+        return @equip
+      end
 end

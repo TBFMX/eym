@@ -218,4 +218,6 @@ class EquipmentController < ApplicationController
     def sort_direction
         params[:direction] || "asc"
     end
+
+
 end

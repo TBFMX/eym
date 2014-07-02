@@ -26,4 +26,76 @@
 	<%= link_to "Cambiar Password", new_cambiar_password_path %>
 	<%= button_to 'Logout', logout_path, method: :delete %>
 <%end %>
+
+<div>
+<table>
+	<tr>
+		<% @cont = 0 %>
+		<% @zone1.each do |zone| %>
+		<% if @cont >= 3 %>
+			</tr>
+			<tr>
+			<% @cont = 0 %>	
+		<% end %>
+		<%if zone.image_id	
+				@imagen = Image.find(zone.image_id)
+				@image = @imagen.image_url
+			else 
+				@image ="/data/dommy.jpg"
+			end %>	
+			<td><img src="<%= @image  %>"  height="42" width="42" > </br> <p><%= zone.name %></p> </br> <p><%= zone.precio %></p></td>
+		<% @cont +=1 %>	
+		<% end %>
+	</tr>
+</table>
+</div>	
+
+<div>
+	<table>
+	<tr>
+		<% @cont = 0 %>
+		<% @zone2.each do |zone| %>
+		<% if @cont >= 3 %>
+			</tr>
+			<tr>
+			<% @cont = 0 %>	
+		<% end %>
+		<%if zone.image_id	
+				@imagen = Image.find(zone.image_id)
+				@image = @imagen.image_url
+			else 
+				@image ="/data/dommy.jpg"
+			end %>	
+			<td><img src="<%= @image  %>"  height="42" width="42" > </br> <p><%= zone.name %></p> </br> <p><%= zone.precio %></p></td>
+		<% @cont +=1 %>	
+		<% end %>
+	</tr>
+</table>
+
+</div>
+<div>
+	<table>
+	<tr>
+		<% @cont = 0 %>
+		<% @zone3.each do |zone| %>
+		<% if @cont >= 3 %>
+			</tr>
+			<tr>
+			<% @cont = 0 %>	
+		<% end %>
+		<%if zone.image_id	
+				@imagen = Image.find(zone.image_id)
+				@image = @imagen.image_url
+			else 
+				@image ="/data/dommy.jpg"
+			end %>	
+			<td><img src="<%= @image  %>"  height="42" width="42" > </br> <p><%= zone.name %></p> </br> <p><%= zone.precio %></p></td>
+		<% @cont +=1 %>	
+		<% end %>
+	</tr>
+</table>
+
+</div>
+
+
 <%= link_to 'New User', new_user_path %>

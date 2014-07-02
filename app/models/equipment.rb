@@ -8,15 +8,16 @@ class Equipment < ActiveRecord::Base
 
 
 
-=begin
+
 	def self.search(search)
 	  if search
-	    find(:all, :conditions => ['name LIKE ?', "%#{search}%"])
+	    find(:all, :conditions => ['description LIKE ? or description LIKE ?', "%#{search}%","%#{search}%" ])
 	  else
 	    find(:all)
 	  end
 	end
-=end	
+
+
 	def self.query(equipment)
 
 	    @aux= " 1 = 1 "

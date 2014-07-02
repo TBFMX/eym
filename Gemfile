@@ -48,3 +48,4 @@ gem "breadcrumbs_on_rails"
 gem 'jquery-ui-rails'
 gem 'will_paginate'
 gem 'jquery-rails'
+#gem 'google-search'

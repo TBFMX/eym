@@ -18,8 +18,10 @@
         </tr>
         <tr>
           <% @cont = 0 %> 
-          <% end %>   
+          <% end %>
+          <% if img.image_url %>
             <td><img src="<%= img.image_url %>"  height="42" width="42" > </td>
+          <% end %> 
           <% @cont +=1 %> 
           <% end %>
           <% if @cont%2 == 0 %> <!-- nada --> <% else %> <td></td><%end%>
@@ -28,7 +30,11 @@
 
     <% end %>
     </div>
-    <div class="imagen"><img src="<%= @image.image_url %>"></div>
+    <% if @image.image_url %>
+        <div class="imagen"><img src="<%= @image.image_url %>"></div>
+    <%else %>
+        <div class="imagen"><img src="/data/dummy.jpg"></div>  
+    <% end %>        
     <div class="modelo">
       <table>
         <tr><th colspan="2">Modelo: <%= @equipment.modelo %></th></tr>

@@ -4,7 +4,11 @@ class GalleriesController < ApplicationController
   # GET /galleries
   # GET /galleries.json
   def index
-    @galleries = Gallery.all
+    if params[:id]
+      @galleries = Gallery.where('equipment_id' => params[:id])
+    else
+      redirect_to root_path
+    end
   end
 
   # GET /galleries/1
