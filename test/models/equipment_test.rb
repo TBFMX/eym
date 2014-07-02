@@ -1,8 +1,20 @@
 require 'test_helper'
 
 class EquipmentTest < ActiveSupport::TestCase
+  test "equipment attributes must not be empty" do
+	equipment = Equipment.new
+	assert equipment.invalid?
+	assert equipment.errors[:name].any?
+	assert equipment.errors[:precio].any?
+	assert equipment.errors[:moneda].any?
+	assert equipment.errors[:description].any?
+  end
+
   test "equipment price must be positive" do
-	equipment = Equipment.new(name:"My Book Title")
+	equipment = Equipment.new(name:"My Book Title",
+							  precio: 10,
+							  moneda: "hola",
+							  description: "adios")
 	equipment.precio = -1
 	assert equipment.invalid?
 	assert_equal ["must be greater than or equal to 0.01"], equipment.errors[:precio]
