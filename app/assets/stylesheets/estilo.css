@@ -179,53 +179,5 @@ input:focus{
   background-color: #f2f2f2;
 }
 
-/*-------------------Formulario---------------*/
+/*------------Dashboard-----------------*/
 
-.forma_contacto{
-   width: 800px;
-   height: 450px;
-   border: 1px solid #A4A4A4;
-   margin: 20px auto 20px auto;
-}
-
-.forma_contacto p{
-   margin: 5px 50px 0px 50px;
-}
-
-.forma_contacto .datos_comprador{
-   width: 400px;
-   height: 350px;
-   float: left;
-}
-
-.forma_contacto .datos_comprador  input{
-   width:300px;
-   height: 20px;
-   margin: 5px 50px 10px 50px;
-}
-
-.forma_contacto .datos_comprador  textarea{
-   width:300px;
-   height: 100px;
-   margin: 0px 50px 15px 50px;
-}
-
-.forma_contacto .datos_anuncio{
-   width: 400px;
-   height: 350px;
-   float: left;     
-}
-
-.forma_contacto .capcha{
-   width: 400px;
-   height: 80px;  
-   background-color: #d1d1d1;  
-   float: left;     
-}
-
-.forma_contacto .botonera{
-   width: 400px;
-   height: 80px;   
-   background-color: #ff0000;  
-   float: left;    
-}
