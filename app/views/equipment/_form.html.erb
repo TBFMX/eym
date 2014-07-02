@@ -61,14 +61,14 @@ $.each(inputFile.files, function() {
         <%= f.label :precio, "Precio de (Tipo Publicacion)" %><br>
         <%= f.number_field :precio %><br><br>
         <%= f.label :moneda, "Tipo de Moneda"  %><br>
-        <%= f.text_field :moneda %><br><br>
+        <%= select("equipment", "moneda", Currency.all.collect {|p| [ p.name, p.id ] }.uniq, {include_blank: 'Todos'}) %><br><br>
       </div> 
   </div>
 
   <h1>Descripción</h1>
   <div class="grupo">
       <%= f.label :image_id, "Seleccione una imagen" %> 
-      <%= f.file_field :image_id ,:onchange =>"validateFiles(this);",:data => {:max_file_size => 60.kilobytes} %><br><br>
+      <%= f.file_field :image_id ,:onchange =>"validateFiles(this);",:data => {:max_file_size => 1.megabytes} %><br><br>
       <%= f.label :name, "Titulo del anuncio" %><br>
       <%= f.text_field :name %><br><br>
       <%= f.label :description, "Descripción" %><br>
@@ -79,7 +79,7 @@ $.each(inputFile.files, function() {
   <div class="grupo">
       <div class="grupo_1">      
         <%= f.label :brand_id %><br>
-        <%= f.number_field :brand_id %><br>    
+        <%= select("equipment", "brand_id", Brand.all.collect {|p| [ p.name, p.id ] }.uniq, {include_blank: 'Todos'}) %><br>    
         <%= f.label :modelo %><br>
         <%= f.text_field :modelo %><br> 
         <%= f.label :year %><br>
@@ -91,9 +91,9 @@ $.each(inputFile.files, function() {
         <%= f.label :ciudad %><br>
         <%= f.text_field :ciudad %><br>
         <%= f.label :estado %><br>
-        <%= f.text_field :estado %><br>
+        <%= select("equipment", "estado", State.all.collect {|p| [ p.name, p.id ] }.uniq, {include_blank: 'Todos'}) %><br>
         <%= f.label :pais %><br>
-        <%= f.text_field :pais %><br>   
+        <%= select("equipment", "pais", Country.all.collect {|p| [ p.name, p.id ] }.uniq, {include_blank: 'Todos'}) %><br>   
       </div>               
   </div>
 

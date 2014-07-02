@@ -21,8 +21,13 @@ class SessionsController < ApplicationController
       session[:mod4] =rol.module_4
       session[:mod5] =rol.module_5
       #termina variables de rol
-
-  		redirect_to session[:lasurl]
+      unless redirect_to session[:lasurl].blank?
+        aux = session[:lasurl]
+        session[:lasurl] = ""
+  		  redirect_to aux
+      else
+        redirect_to root_path
+      end    
   	else
   		redirect_to root_path, alert: "Invalid user/password combination"
   	end

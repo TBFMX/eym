@@ -23,7 +23,7 @@ class EquipmentController < ApplicationController
   # GET /equipment/new
   def new
     add_breadcrumb 'newequipment', '/equipment/new' 
-    @equipment = Equipment.new
+    @equipment = Equipment.new('user_id' => session[:user_id])
   end
 
   # GET /equipment/1/edit
