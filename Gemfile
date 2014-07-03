@@ -49,3 +49,4 @@ gem 'jquery-ui-rails'
 gem 'will_paginate'
 gem 'jquery-rails'
 #gem 'google-search'
+#gem "friendly_id", "~> 4.0.0.beta8"

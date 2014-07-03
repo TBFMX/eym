@@ -7,11 +7,17 @@
 
 .welcome_show_cuadro{
    width: 198px;
-   height: 298px;
+   height: 328px;
    border: 1px solid #A4A4A4;
    margin: 10px 10px 10px 10px;
+   overflow: hidden;
    float: left;
 }
+
+.welcome_show_cuadro strong{
+   font-weight: bold;
+}
+
 
 .welcome_show_cuadro .centra_img{
    width: 180px;

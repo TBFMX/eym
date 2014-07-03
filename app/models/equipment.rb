@@ -1,10 +1,14 @@
 class Equipment < ActiveRecord::Base
+	#######################################
+	#extend FriendlyId
+	#friendly_id :name, :use => :slugged
+	#######################################
 	has_many :galleries, dependent: :destroy
 	has_many :images
-	has_one :currencies
-	has_one :countries
-	has_one :states
-	has_one :brand
+	belongs_to :currency 
+	belongs_to :country
+	belongs_to :state
+	belongs_to :brand
 	
 
 	validates :name, presence: true, uniqueness: true
@@ -14,7 +18,7 @@ class Equipment < ActiveRecord::Base
 
 
 	validates :precio, numericality: {greater_than_or_equal_to: 0.01}
-	validates :moneda, :description, presence: true
+	validates :currency_id, :description, presence: true
 
 
 
@@ -59,20 +63,20 @@ class Equipment < ActiveRecord::Base
 		    	@aux2[@cont]=  equipment[:modelo]
 		    	@cont=@cont+1
 		    end
-		    if !equipment[:moneda].blank?
-		    	@aux= @aux + 'and moneda = ? '
-		    	@aux2[@cont]= equipment[:moneda]
+		    if !equipment[:currency_id].blank?
+		    	@aux= @aux + 'and currency_id = ? '
+		    	@aux2[@cont]= equipment[:currency_id]
 		    	@cont=@cont+1
 		    end
 
-		    if !equipment[:pais].blank?
-		    	@aux= @aux + 'and pais = ? '
-		    	@aux2[@cont]=  equipment[:pais]
+		    if !equipment[:country_id].blank?
+		    	@aux= @aux + 'and country_id = ? '
+		    	@aux2[@cont]=  equipment[:country_id]
 		    	@cont=@cont+1
 		    end
-		    if !equipment[:estado].blank?
-		    	@aux= @aux + 'and estado = ? '
-		    	@aux2[@cont]=  equipment[:estado]
+		    if !equipment[:state_id].blank?
+		    	@aux= @aux + 'and state_id = ? '
+		    	@aux2[@cont]=  equipment[:state_id]
 		    	@cont=@cont+1
 		    end
 		    if !equipment[:ciudad].blank?
