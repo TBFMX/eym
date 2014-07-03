@@ -1,8 +1,8 @@
 require 'test_helper'
 
 class SessionsControllerTest < ActionController::TestCase
-  test "should get new" do
-    get :new
+  test "should log in" do
+    User.stubs(:authenticate).returns true
     assert_response :success
   end
 
