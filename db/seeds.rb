@@ -45,6 +45,9 @@ end
 @plan5.save
 ###################################################################
 =end
+unless Country.count > 0
+	Image.create(title: 'dommy', image_url: '/data/dommy.jpg')
+end
 
 ########################Paises####################################
 unless Country.count > 0

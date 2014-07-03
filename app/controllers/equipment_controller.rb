@@ -13,11 +13,15 @@ class EquipmentController < ApplicationController
   def show
 
     add_breadcrumb @equipment.name.to_s, '/equipment/' + @equipment.id.to_s   
-
-    @image = Image.find(@equipment.image_id)
+    if @equipment.image_id
+      @image = Image.find(@equipment.image_id)
+    else
+      @image = Image.find_by(image_url: '/data/dommy.jpg')  
+    end  
      @gallery = Gallery.where('equipment_id' => @equipment.id)
 
      @user = User.find(@equipment.user_id)
+     @currency = Currency.find(@equipment.moneda)
   end
 
   # GET /equipment/new
