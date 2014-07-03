@@ -18,7 +18,7 @@
     </div>
   </div>
   <div class="precio">
-    Precio <%if equipment.publication_type == 1 %>Venta<% else %>Renta<% end %>: <%= number_to_currency(equipment.precio) %> <%= equipment.moneda %>
+    Precio <%if equipment.publication_type == 1 %>Venta<% else %>Renta<% end %>: <%= number_to_currency(equipment.precio) %> <%= equipment.currency_id %>
   </div>
   <div class="opciones">
     <%= link_to 'Edit', edit_equipment_path(equipment) %> 

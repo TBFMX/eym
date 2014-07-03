@@ -10,6 +10,7 @@
 	<div class="centra_img"><%= link_to image_tag(@image), equipment_path(zone) %></div>
 	<div class="ajustar_titulo"><%= link_to zone.name, equipment_path(zone), class: "ajustar_titulo" %></div>
 	<div class="detalles">
+<<<<<<< HEAD
 		Marca: <%= zone.brand_id %><br>
 		Modelo: <%= zone.modelo %><br>		
 		Año: <%= zone.year %><br>
@@ -57,6 +58,13 @@
 		Año: <%= zone.year %><br>
 		<%= zone.package_id %>: <%= number_to_currency(zone.precio) %> <%= zone.moneda %><br>
 		Ubicación: <%= zone.ciudad %>, <%= zone.estado %>
+=======
+		<strong>Marca:</strong> <%= zone.brand.name %><br>
+		<strong>Modelo:</strong> <%= zone.modelo %><br>		
+		<strong>Año:</strong> <%= zone.year %><br>
+		<%if zone.publication_type == 1 %>Venta<% else %>Renta<% end %>: <%= number_to_currency(zone.precio) %><br/> <%= zone.currency.name %><br>
+		<strong>Ubicación:</strong><br/> <%= zone.country.name %>, <%= zone.state.name %>
+>>>>>>> 023f58bef49b3dd9eecb0361c69ffc6a89557831
 	</div>
 </div>		
 <% end %>

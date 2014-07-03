@@ -24,15 +24,15 @@
     <%= label :modelo , "Modelo" %><br>
     <%= select("equipment", "modelo", Equipment.all.collect {|p| [ p.modelo, p.modelo ] }.uniq, {include_blank: 'Todos'}) %>
     <br>
-    <%= label :moneda , "Moneda" %><br>
-    <%= select("equipment", "moneda", Equipment.all.collect {|p| [ p.moneda, p.moneda ] }.uniq, {include_blank: 'Todos'}) %>
+    <%= label :currency_id , "Moneda" %><br>
+    <%= select("equipment", "currency_id", Equipment.all.collect {|p| [ p.currency_id, p.currency_id ] }.uniq, {include_blank: 'Todos'}) %>
     <br>
 
-    <%= label :pais , "Pais"%><br>
-    <%= select("equipment", "pais", Equipment.all.collect {|p| [ p.pais, p.pais ] }.uniq, {include_blank: 'Todos'}) %>
+    <%= label :country_id , "Pais"%><br>
+    <%= select("equipment", "country_id", Equipment.all.collect {|p| [ p.country_id, p.country_id ] }.uniq, {include_blank: 'Todos'}) %>
     <br>
-    <%= label :estado ,"Estado"%><br>
-    <%= select("equipment", "estado", Equipment.all.collect {|p| [ p.estado, p.estado ] }.uniq, {include_blank: 'Todos'}) %>
+    <%= label :state_id ,"Estado"%><br>
+    <%= select("equipment", "state_id", Equipment.all.collect {|p| [ p.state_id, p.state_id ] }.uniq, {include_blank: 'Todos'}) %>
     <br>
     <%= label :ciudad ,"Ciudad"%><br>
     <%= select("equipment", "ciudad", Equipment.all.collect {|p| [ p.ciudad, p.ciudad ] }.uniq, {include_blank: 'Todos'}) %>
@@ -46,7 +46,7 @@
   
 
 <% end %>
-<!-- params.require(:equipment).permit(:name, :year, :color, :brand_id, :package_id, :description, :publication_type, :precio, :modelo, :moneda , :pais, :estado, :ciudad, :category_id) -->
+<!-- params.require(:equipment).permit(:name, :year, :color, :brand_id, :package_id, :description, :publication_type, :precio, :modelo, :currency_id , :pais, :state_id, :ciudad, :category_id) -->
 	<table id ="equipments" class ="pretty" >
 		<thead>
 			<tr>
@@ -78,9 +78,9 @@
 		        <td align="center"><%= equipment.package_id %></td>
 		        <td align="center"><%= number_to_currency(equipment.precio) %></td>
 		        <td align="center"><%= equipment.modelo %></td>
-		        <td align="center"><%= equipment.moneda %></td>
-		        <td align="center"><%= equipment.pais %></td>
-		        <td align="center"><%= equipment.estado %></td>
+		        <td align="center"><%= equipment.currency_id %></td>
+		        <td align="center"><%= equipment.country_id %></td>
+		        <td align="center"><%= equipment.state_id %></td>
 		        <td align="center"><%= equipment.ciudad %></td>
 		        <td align="center"><%= equipment.category_id %></td>
 		        
