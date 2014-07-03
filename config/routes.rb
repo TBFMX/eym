@@ -93,38 +93,42 @@ Rails.application.routes.draw do
   #preparacion para usar rutas amigables o traducidas segun se ocupe
 
   controller :galleries do
-    get 'equipment/galleries/:id' => :index
-    get 'galleries/new/:id' => :new
-    post 'galleries/new/:id' => :new
-    get 'galleries/:id/edit/:equip' => :new
-    post 'galleries/:id/edit/:equip' => :new
+    get ':id/galerias' => :index , :as => 'galeria_index'
+    get ':equip/galerias/:id' => :show , :as => 'galeria_show'
+    get ':equip/galeria_nueva/:id' => :new , :as => 'galeria_nueva'
+    post ':equip/galeria_nueva/:id' => :new
+    get ':equip/galeria/:id/editar' => :edit , :as => 'galeria_edit'
+    post ':equip/galeria/:id/editar' => :edit
   end  
   controller :videos do
-    get 'galleries/videos/:id' => :index
-    get 'videos/new/:id' => :new
-    post 'videos/new/:id' => :new
-    get 'videos/:id/edit/:equip' => :new
-    post 'videos/:id/edit/:equip' => :new
+    get ':id/videos' => :index , :as => 'video_index'
+    get ':equip/videos/:id' => :show , :as => 'video_show'
+    get ':id/video_nuevo' => :new, :as => 'video_nuevo'
+    post ':id/video_nuevo' => :new
+    get ':equip/:id/editar' => :new , :as => 'video_edit'
+    post ':equip/:id/editar' => :new
   end  
   controller :images do
-    get 'galleries/images/:id' => :index
-    get 'images/new/:id' => :new
-    post 'images/new/:id' => :new
-    get 'images/:id/edit/:equip' => :edit
-    post 'images/:id/edit/:equip' => :edit
+    get ':id/imagenes' => :index, :as => 'imagen_index'
+    get ':equip/imagenes/:id' => :index , :as => 'imagen_show'
+    get ':id/imagen_nueva' => :new, :as => 'imagen_nueva'
+    post ':id/imagen_nueva' => :new
+    get ':equip/editar/:id' => :edit, :as => 'imagen_editar'
+    post ':equip/editar/:id' => :edit
   end
 
   controller :comments do
-    get 'equipment/comments/:id' => :index    
-    get 'comments/new/:id' => :new
-    post 'comments/new/:id' => :new
-    get 'comments/:id/edit/:equip' => :edit
-    post 'comments/:id/edit/:equip' => :edit
+    get ':id/comentarios' => :index, :as => 'comentarios_index'
+    get ':equip/comentarios/:id' => :show, :as => 'comentarios_show'
+    get ':id/comentario_nuevo' => :new, :as => 'comentario_nuevo'
+    post ':id/comentartio_nuevo' => :new
+    get ':equip/editar/:id' => :edit, :as => 'comentario_editar'
+    post ':equip/editar/:id' => :edit
   end   
 
   controller :equipment do
     get 'venta' => :grid
-    post '/equipment/contact' => :contact
+    post '/equipo/contacto' => :contact
   end
   #get '*unmatched_route', :to => 'application#raise_not_found2'
 

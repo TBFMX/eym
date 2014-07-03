@@ -18,8 +18,8 @@
 <%#= link_to 'Edit', edit_gallery_path(@gallery) %> |
 <%#= link_to 'Back', galleries_path %>
 -->
-	<td><%= link_to 'Agregar Imagen', '/images/new/' + @gallery.id.to_s %></td>
-    <td><%= link_to 'Agregar Video', '/videos/new/' + @gallery.id.to_s %></td> 
+	<td><%= link_to 'Agregar Imagen', imagen_nueva_path(@gallery) %></td>
+    <td><%= link_to 'Agregar Video', video_nuevo_path(@gallery) %></td> 
 <p>imagenes: </p>
 <table>
 	<tr>

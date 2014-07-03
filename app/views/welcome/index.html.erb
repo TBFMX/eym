@@ -7,8 +7,8 @@
 		@image ="/data/dommy.jpg"
 	end %>	
 
-	<div class="centra_img"><%= link_to image_tag(@image), "equipment/" + zone.id.to_s %></div>
-	<div class="ajustar_titulo"><%= link_to zone.name, "equipment/" + zone.id.to_s, class: "ajustar_titulo" %></div>
+	<div class="centra_img"><%= link_to image_tag(@image), equipment_path(zone) %></div>
+	<div class="ajustar_titulo"><%= link_to zone.name, equipment_path(zone), class: "ajustar_titulo" %></div>
 	<div class="detalles">
 		Marca: <%= zone.brand_id %><br>
 		Modelo: <%= zone.modelo %><br>		
@@ -28,8 +28,8 @@
 		@image ="/data/dommy.jpg"
 	end %>	
 
-	<div class="centra_img"><%= link_to image_tag(@image), "equipment/" + zone.id.to_s %></div>
-	<div class="ajustar_titulo"><%= link_to zone.name, "equipment/" + zone.id.to_s, class: "ajustar_titulo" %></div>
+	<div class="centra_img"><%= link_to image_tag(@image), equipment_path(zone) %></div>
+	<div class="ajustar_titulo"><%= link_to zone.name, equipment_path(zone), class: "ajustar_titulo" %></div>
 	<div class="detalles">
 		Marca: <%= zone.brand_id %><br>
 		Modelo: <%= zone.modelo %><br>		
@@ -49,8 +49,8 @@
 		@image ="/data/dommy.jpg"
 	end %>	
 
-	<div class="centra_img"><%= link_to image_tag(@image), "equipment/" + zone.id.to_s %></div>
-	<div class="ajustar_titulo"><%= link_to zone.name, "equipment/" + zone.id.to_s, class: "ajustar_titulo" %></div>
+	<div class="centra_img"><%= link_to image_tag(@image), equipment_path(zone) %></div>
+	<div class="ajustar_titulo"><%= link_to zone.name, equipment_path(zone), class: "ajustar_titulo" %></div>
 	<div class="detalles">
 		Marca: <%= zone.brand_id %><br>
 		Modelo: <%= zone.modelo %><br>		

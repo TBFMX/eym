@@ -1,7 +1,7 @@
 class Gallery < ActiveRecord::Base
 	##########################################
-	#extend FriendlyId
-	#friendly_id :title, :use => :slugged
+	extend FriendlyId
+	friendly_id :title, :use => :slugged
 	##########################################
 	belongs_to :equipment
 	has_many :images, dependent: :destroy

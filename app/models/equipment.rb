@@ -1,7 +1,6 @@
 class Equipment < ActiveRecord::Base
-	#######################################
-	#extend FriendlyId
-	#friendly_id :name, :use => :slugged
+	extend FriendlyId
+  	friendly_id :name, :use => :slugged
 	#######################################
 	has_many :galleries, dependent: :destroy
 	has_many :images
@@ -20,7 +19,9 @@ class Equipment < ActiveRecord::Base
 	validates :precio, numericality: {greater_than_or_equal_to: 0.01}
 	validates :moneda, :description, presence: true
 
-
+	def should_generate_new_friendly_id?
+    	new_record?
+  	end
 
 	def self.search(search)
 	  if search

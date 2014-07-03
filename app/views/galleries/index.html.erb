@@ -16,7 +16,7 @@
         <td><%= gallery.title %></td>
         <td><%= gallery.equipment_id %></td>
         <td><%= gallery.user_id %></td>
-        <td><%= link_to 'Show', gallery %></td>
+        <td><%= link_to 'Show', galeria_show_path(@equipment,gallery) %></td>
         <%# if @permiso %>
           <td> <%= link_to 'Agregar imagen', '/images/new/' + gallery.id.to_s %>  <%#= link_to 'Edit', edit_gallery_path(gallery) %></td>
           <td><%= link_to 'Agregar Video', '/videos/new/' + gallery.id.to_s %><%#= link_to 'Destroy', gallery, method: :delete, data: { confirm: 'Are you sure?' } %></td> 

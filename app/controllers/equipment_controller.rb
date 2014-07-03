@@ -12,7 +12,7 @@ class EquipmentController < ApplicationController
   # GET /equipment/1.json
   def show
 
-    add_breadcrumb @equipment.name.to_s, '/equipment/' + @equipment.id.to_s   
+    add_breadcrumb @equipment.name.to_s, equipment_path(@equipment)   
     if @equipment.image_id
       @image = Image.find(@equipment.image_id)
     else
@@ -26,13 +26,13 @@ class EquipmentController < ApplicationController
 
   # GET /equipment/new
   def new
-    add_breadcrumb 'newequipment', '/equipment/new' 
+    add_breadcrumb 'newequipment', new_equipment_path
     @equipment = Equipment.new('user_id' => session[:user_id])
   end
 
   # GET /equipment/1/edit
   def edit
-    add_breadcrumb @equipment.name.to_s, '/equipment/' + @equipment.id.to_s + '/edit'
+    add_breadcrumb @equipment.name.to_s, edit_equipment_path(@equipment)
   end
 
   # POST /equipment
@@ -213,7 +213,8 @@ class EquipmentController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_equipment
-      @equipment = Equipment.find(params[:id])
+      @equipment = Equipment.friendly.find(params[:id])
+
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

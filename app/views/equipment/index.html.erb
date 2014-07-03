@@ -9,7 +9,7 @@
   <% end %>
   <div class="datos">
     <div class="titulo">
-      <%= link_to equipment.name, "equipment/" + equipment.id.to_s %>
+      <%= link_to equipment.name, equipment_path(equipment) %>
     </div>
     <div class="descripcion">
      Marca:<%= equipment.brand_id %> | Modelo: <%= equipment.modelo %> 
@@ -22,7 +22,7 @@
   </div>
   <div class="opciones">
     <%= link_to 'Edit', edit_equipment_path(equipment) %> 
-    <%= link_to 'Imagenes', 'equipment/galleries/' + equipment.id.to_s %> 
+    <%= link_to 'Imagenes', 'equipment/galleries/' + equipment.name.to_s %> 
     <%= link_to 'Destroy', equipment, method: :delete, data: { confirm: 'Are you sure?' } %>
   </div>    
 </div>

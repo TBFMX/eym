@@ -11,20 +11,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140702213335) do
+ActiveRecord::Schema.define(version: 20140703162959) do
 
   create_table "brands", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "slug"
   end
+
+  add_index "brands", ["slug"], name: "index_brands_on_slug"
 
   create_table "categories", force: true do |t|
     t.string   "title"
     t.integer  "father_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "slug"
   end
+
+  add_index "categories", ["slug"], name: "index_categories_on_slug"
 
   create_table "comments", force: true do |t|
     t.integer  "user_id"
@@ -84,7 +90,10 @@ ActiveRecord::Schema.define(version: 20140702213335) do
     t.integer  "priority"
     t.string   "modelo"
     t.string   "etiquetas"
+    t.string   "slug"
   end
+
+  add_index "equipment", ["slug"], name: "index_equipment_on_slug"
 
   create_table "galleries", force: true do |t|
     t.string   "title"
@@ -92,7 +101,10 @@ ActiveRecord::Schema.define(version: 20140702213335) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "equipment_id"
+    t.string   "slug"
   end
+
+  add_index "galleries", ["slug"], name: "index_galleries_on_slug"
 
   create_table "images", force: true do |t|
     t.integer  "gallery_id"
@@ -100,7 +112,10 @@ ActiveRecord::Schema.define(version: 20140702213335) do
     t.string   "title"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "slug"
   end
+
+  add_index "images", ["slug"], name: "index_images_on_slug"
 
   create_table "module1s", force: true do |t|
     t.string   "name"
@@ -180,6 +195,9 @@ ActiveRecord::Schema.define(version: 20140702213335) do
     t.string   "title"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "slug"
   end
+
+  add_index "videos", ["slug"], name: "index_videos_on_slug"
 
 end

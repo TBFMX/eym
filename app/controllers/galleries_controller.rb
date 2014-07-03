@@ -5,7 +5,11 @@ class GalleriesController < ApplicationController
   # GET /galleries.json
   def index
     if params[:id]
-      @galleries = Gallery.where('equipment_id' => params[:id])
+      @equipment = Equipment.friendly.find(params[:id])
+      add_breadcrumb @equipment.name.to_s, equipment_path(@equipment)    
+      add_breadcrumb I18n.t("breadcrumbs.gallery"), galeria_index_path(@equipment.name)
+      
+      @galleries = Gallery.where('equipment_id' => @equipment)
       @e_id = params[:id]
     else
       redirect_to root_path
@@ -16,25 +20,35 @@ class GalleriesController < ApplicationController
   # GET /galleries/1.json
   def show
     @equip = Equipment.find(@gallery.equipment_id)
-    add_breadcrumb @equip.name.to_s, '/equipment/' + @equip.id.to_s    
-    add_breadcrumb I18n.t("breadcrumbs.gallery"), '/equipment/galleries/' + @equip.id.to_s    
+    add_breadcrumb @equip.name.to_s, equipment_path(@equip)    
+    add_breadcrumb I18n.t("breadcrumbs.gallery"), galeria_index_path(@equip.name)    
     @images = Image.where("gallery_id = ?", @gallery.id).group(:image_url)
     @videos = Video.where("gallery_id = ?", @gallery.id).group(:video_url)
   end
 
-  # GET /galleries/new
+  # GET :equip/galeria_nueva/
   def new
-    
-    if params[:id]
-      @gallery = Gallery.new('equipment_id' => params[:id])
-      @e_id = params[:id]
+    if params[:equip]
+      @equip = Equipment.find(params[:equip])
+      add_breadcrumb @equip.name.to_s, equipment_path(@equip)    
+      add_breadcrumb I18n.t("breadcrumbs.gallery"), galeria_index_path(@equip.name) 
+      @gallery = Gallery.new('equipment_id' => equip.id)
+      @e_id = params[:equip]
     else
       redirect_to root_path
     end
   end
 
-  # GET /galleries/1/edit
+  # GET :equip/galeria/:id/editar
   def edit
+    if params[:id] && params[:equip]
+      @equip = Equipment.find(params[:equip])
+      add_breadcrumb @equip.name.to_s, equipment_path(@equip)    
+      add_breadcrumb I18n.t("breadcrumbs.gallery"), galeria_index_path(@equip.name) 
+      @e_id = params[:equip]
+    else
+      redirect_to root_path
+    end
   end
 
   # POST /galleries
@@ -89,7 +103,7 @@ class GalleriesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_gallery
-      @gallery = Gallery.find(params[:id])
+      @gallery = Gallery.friendly.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
