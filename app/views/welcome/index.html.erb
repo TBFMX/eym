@@ -10,7 +10,7 @@
 	<div class="centra_img"><%= link_to image_tag(@image), "equipment/" + zone.id.to_s %></div>
 	<div class="ajustar_titulo"><%= link_to zone.name, "equipment/" + zone.id.to_s, class: "ajustar_titulo" %></div>
 	<div class="detalles">
-		Marca: <%= zone.brand_id %><br>
+		Marca: <%= zone.brand.name %><br>
 		Modelo: <%= zone.modelo %><br>		
 		Año: <%= zone.year %><br>
 		<%= zone.package_id %>: <%= number_to_currency(zone.precio) %> <%= zone.moneda %><br>
