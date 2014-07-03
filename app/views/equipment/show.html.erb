@@ -47,7 +47,7 @@
         </tr>
         <tr><th colspan="2">Contacto y localidad</th></tr> 
         <tr>
-          <td colspan="2">Lugar: <%= @equipment.ciudad %>, <%= @equipment.estado %>, <%= @equipment.pais %></td>
+          <td colspan="2">Lugar: <%= @equipment.ciudad %>, <%= @equipment.state_id %>, <%= @equipment.country_id %></td>
         </tr>        
         <tr>
           <td><%= button_to "contacto", equipment_contact_path(:user_id => session[:user_id], :equipment => @equipment), :method => :post %></td>
