@@ -5,7 +5,6 @@ class DashboardController < ApplicationController
 
   def index
     @user = User.find(session[:user_id])
-
   end
 
   def login
@@ -14,7 +13,7 @@ class DashboardController < ApplicationController
   #mis equipos
   #GET /dashboard/Mis_equipos
   def equipos
-    
+    @equipment = @equips
   end
 
   def gallerias

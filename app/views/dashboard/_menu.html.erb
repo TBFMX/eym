@@ -1,11 +1,12 @@
 Opciones
 <ul>
-	<li>Index</li>
-	<li>Anuncios</li>
-	<li>Galería</li>
-	<li>Equipos</li>
-	<li>Paquetes</li>
-	<li>transacciones</li>	
-	<li>comentarios</li>
-	<li>administrar cuenta</li>		
+	<li><%= link_to "Index", dashboard_index_path%></li>
+	<li><%= link_to "Galería", dashboard_gallerias_path%></li>
+	<li><%= link_to "Imagenes", dashboard_imagenes_path%></li>
+	<li><%= link_to "Videos", dashboard_videos_path%></li>	
+	<li><%= link_to "Equipos", dashboard_equipos_path%></li>
+	<li><%= link_to "Descuentos", discounts_path%></li>
+	<li>Transacciones</li>	
+	<li>Comentarios</li>
+	<li><%= link_to "Administrar cuenta", dashboard_login_path%></li>		
 </ul>
