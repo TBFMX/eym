@@ -22,7 +22,7 @@
   </div>
   <div class="opciones">
     <%= link_to 'Edit', edit_equipment_path(equipment) %> 
-    <%= link_to 'Imagenes', 'equipment/galleries/' + equipment.name.to_s %> 
+    <%= link_to 'Imagenes', galeria_index_path(equipment) %> 
     <%= link_to 'Destroy', equipment, method: :delete, data: { confirm: 'Are you sure?' } %>
   </div>    
 </div>

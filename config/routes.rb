@@ -95,8 +95,8 @@ Rails.application.routes.draw do
   controller :galleries do
     get ':id/galerias' => :index , :as => 'galeria_index'
     get ':equip/galerias/:id' => :show , :as => 'galeria_show'
-    get ':equip/galeria_nueva/:id' => :new , :as => 'galeria_nueva'
-    post ':equip/galeria_nueva/:id' => :new
+    get ':equip/galeria_nueva/' => :new , :as => 'galeria_nueva'
+    post ':equip/galeria_nueva/' => :new
     get ':equip/galeria/:id/editar' => :edit , :as => 'galeria_edit'
     post ':equip/galeria/:id/editar' => :edit
   end  
