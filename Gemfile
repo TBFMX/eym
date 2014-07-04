@@ -50,3 +50,4 @@ gem 'will_paginate'
 #gem 'jquery-rails'
 #gem 'google-search'
 gem "friendly_id", "~> 5.0.0.rc2"
+gem "magic_encoding"
