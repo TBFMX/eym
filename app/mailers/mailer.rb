@@ -42,6 +42,13 @@ class Mailer < ActionMailer::Base
     mail :to => user.email, :subject => "Su usuario a sido destruido", :from => "\"Arturito Lopez\" ", :reply_to =>"arturito@tbf.mx"
   end
 
+#intento de mailer
+  def equipment_contact(buyer,seller,equipment)
+    @buyer = buyer
+    @seller = seller
+    @equipment = equipment        
+    mail :to => seller.email, :subject => "Nueva notificacion EYM anuncio" + equipment.name, :from => "\"EYM\" ", :reply_to =>"arturito@tbf.mx"
+    mail :to => buyer.email, :subject => "Nueva notificacion EYM anuncio" + equipment.name, :from => "\"EYM\" ", :reply_to =>"arturito@tbf.mx"
+  end  
 
-  
 end

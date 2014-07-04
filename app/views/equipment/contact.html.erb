@@ -11,15 +11,22 @@
       <textarea rows="4" cols="20"></textarea>           
   </div>
   <div class="datos_anuncio">
-      <p>Titulo del anuncio: <%= @equipment.name %></p>
-      <p>Detalles del producto: </p>
-      <p>Descripción: <%= @equipment.description %></p>     
+      <h1><%= @equipment.name %></h1>
+      <p><strong>Detalles del producto:</strong></p>
+      <div class="detalles">
+        <p><strong>Marca: </strong><%= @equipment.modelo %>  |  <strong>Modelo: </strong><%= @equipment.brand.name %></p>
+        <p><strong>Año: </strong><%= @equipment.year %>  |  <strong>Color: </strong><%= @equipment.color %></p>  
+      </div>          
+      <p><strong>Descripción:</strong></p>
+      <div class="detalles">
+        <p><%= @equipment.description %></p>
+      </div>     
   </div>
   <div class="capcha">
     <p> Lugar para el capcha </p>
   </div>
   <div class="botonera">
-    <input type="button" value="Enviar">
-    <input type="button" value="Regresar">    
+    <p>Enviar datos de contacto al vendedor <%= @user.username %>: </p>
+    <p><input type="button" value="Enviar"> <input type="button" value="Regresar"> </p>   
   </div>  
 </div>

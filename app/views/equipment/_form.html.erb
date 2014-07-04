@@ -41,16 +41,6 @@ $.each(inputFile.files, function() {
       </div>
     <% end %>
 
-  <h1>Categoria</h1>
-  <div class="grupo">
-      <%= f.number_field :category_id %>
-  </div>
-
-  <h1>Selecciona tu paquete</h1>
-  <div class="grupo">
-      <%= f.number_field :package_id %><br>  
-  </div>
-
   <h1>Servicios</h1>
   <div class="grupo">
       <div class="grupo_1">
@@ -63,6 +53,16 @@ $.each(inputFile.files, function() {
         <%= f.label :currency_id, "Tipo de Moneda"  %><br>
         <%= select("equipment", "currency_id", Currency.all.collect {|p| [ p.name, p.id ] }.uniq, {include_blank: 'Todos'}) %><br><br>
       </div> 
+  </div>    
+
+  <h1>Categoria</h1>
+  <div class="grupo">
+      <%= f.number_field :category_id %>
+  </div>
+
+  <h1>Selecciona tu paquete</h1>
+  <div class="grupo"> 
+      <%= select("equipment", "package_id", Package.all.collect {|p| [ p.name, p.id ] }.uniq, {include_blank: 'Todos'}) %>
   </div>
 
   <h1>Descripción</h1>
@@ -90,12 +90,12 @@ $.each(inputFile.files, function() {
         <%= f.text_field :color %><br>
       </div>
       <div class="grupo_1">                    
-        <%= f.label :ciudad %><br>
-        <%= f.text_field :ciudad %><br>
-        <%= f.label :state_id %><br>
-        <%= select("equipment", "state_id", State.all.collect {|p| [ p.name, p.id ] }.uniq, {include_blank: 'Todos'}) %><br>
         <%= f.label :country_id %><br>
         <%= select("equipment", "country_id", Country.all.collect {|p| [ p.name, p.id ] }.uniq, {include_blank: 'Todos'}) %><br>   
+        <%= f.label :state_id %><br>
+        <%= select("equipment", "state_id", State.all.collect {|p| [ p.name, p.id ] }.uniq, {include_blank: 'Todos'}) %><br>      
+        <%= f.label :ciudad %><br>
+        <%= f.text_field :ciudad %><br>
       </div>               
   </div>
 
