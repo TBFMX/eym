@@ -18,8 +18,8 @@
         <td><%= gallery.user_id %></td>
         <td><%= link_to 'Show', galeria_show_path(@equipment,gallery) %></td>
         <%# if @permiso %>
-          <td> <%= link_to 'Agregar imagen', '/images/new/' + gallery.id.to_s %>  <%#= link_to 'Edit', edit_gallery_path(gallery) %></td>
-          <td><%= link_to 'Agregar Video', '/videos/new/' + gallery.id.to_s %><%#= link_to 'Destroy', gallery, method: :delete, data: { confirm: 'Are you sure?' } %></td> 
+          <td> <%= link_to 'Agregar imagen', imagen_nueva_path(@equipment,gallery.title) %>  <%#= link_to 'Edit', edit_gallery_path(gallery) %></td>
+          <td><%= link_to 'Agregar Video', video_nuevo_path(@equipment,gallery.title) %><%#= link_to 'Destroy', gallery, method: :delete, data: { confirm: 'Are you sure?' } %></td> 
         <%# end %>
 
 
@@ -33,4 +33,4 @@
 
 <br>
 
-<%= link_to 'Nueva Galeria', '/galleries/new/' + @e_id  %>
+<%= link_to 'Nueva Galeria', galeria_nueva_path(@e_id)  %>

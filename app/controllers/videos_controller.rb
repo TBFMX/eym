@@ -14,11 +14,11 @@ class VideosController < ApplicationController
 
   # GET /videos/new
   def new
-    @gallery =Gallery.find(params[:gal])
+    @gallery =Gallery.friendly.find(params[:gal])
     @equipment = Equipment.find(@gallery.equipment_id)
-    add_breadcrumb @equip.name.to_s, equipment_path(@equip)    
+    add_breadcrumb @equipment.name.to_s, equipment_path(@equipment)    
     add_breadcrumb I18n.t("breadcrumbs.gallery"), galeria_index_path(@equipment)   
-    add_breadcrumb I18n.t("breadcrumbs.nvideo"), video_nuevo_path(@equipment.name, @gallery.title)
+    add_breadcrumb I18n.t("breadcrumbs.newvideo"), video_nuevo_path(@equipment.name, @gallery.title)
     @video = Video.new("gallery_id" => @gallery.id)
   end
 

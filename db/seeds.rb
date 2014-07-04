@@ -30,7 +30,7 @@ unless User.count > 0
 	@usuario2.save
 end
 ###################################################################
-=begin
+
 ######################Paquetes#####################################
 @plan1 = Package.new(name:'platino', price: '250.00', description: 'servicio mas cañon')
 @plan2 = Package.new(name:'oro', price: '150.00', description: 'servicio mas semi-cañon' )
@@ -44,7 +44,7 @@ end
 @plan4.save
 @plan5.save
 ###################################################################
-=end
+
 unless Country.count > 0
 	Image.create(title: 'dommy', image_url: '/data/dommy.jpg')
 end

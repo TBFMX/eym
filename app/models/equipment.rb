@@ -33,7 +33,6 @@ class Equipment < ActiveRecord::Base
 
 
 	def self.query(equipment)
-
 	    @aux= " 1 = 1 "
 	    @aux2= Array.new
 	    @cont=1

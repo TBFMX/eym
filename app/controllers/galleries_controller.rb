@@ -29,10 +29,10 @@ class GalleriesController < ApplicationController
   # GET :equip/galeria_nueva/
   def new
     if params[:equip]
-      @equip = Equipment.find(params[:equip])
+      @equip = Equipment.friendly.find(params[:equip])
       add_breadcrumb @equip.name.to_s, equipment_path(@equip)    
       add_breadcrumb I18n.t("breadcrumbs.gallery"), galeria_index_path(@equip.name) 
-      @gallery = Gallery.new('equipment_id' => equip.id)
+      @gallery = Gallery.new('equipment_id' => @equip.id)
       @e_id = params[:equip]
     else
       redirect_to root_path
@@ -42,7 +42,7 @@ class GalleriesController < ApplicationController
   # GET :equip/galeria/:id/editar
   def edit
     if params[:id] && params[:equip]
-      @equip = Equipment.find(params[:equip])
+      @equip = Equipment.friendly.find(params[:equip])
       add_breadcrumb @equip.name.to_s, equipment_path(@equip)    
       add_breadcrumb I18n.t("breadcrumbs.gallery"), galeria_index_path(@equip.name) 
       @e_id = params[:equip]

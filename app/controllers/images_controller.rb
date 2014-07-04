@@ -18,11 +18,11 @@ class ImagesController < ApplicationController
   #GET images/new/:id 
   #POST images/new/:id
   def new
-    @gallery =Gallery.find(params[:gal])
+    @gallery =Gallery.friendly.find(params[:gal])
     @equipment = Equipment.find(@gallery.equipment_id)
-    add_breadcrumb @equip.name.to_s, equipment_path(@equip)    
-    add_breadcrumb I18n.t("breadcrumbs.gallery"), galeria_index_path(@equipment)   
-    add_breadcrumb I18n.t("breadcrumbs.nimage"), imagen_nueva_path(@equipment.name, @gallery.title) 
+    add_breadcrumb @equipment.name.to_s, equipment_path(@equipment)    
+    add_breadcrumb @gallery.title, galeria_index_path(@equipment)   
+    add_breadcrumb I18n.t("breadcrumbs.newimage"), imagen_nueva_path(@equipment.name, @gallery.title) 
     @image = Image.new("gallery_id" => @gallery.id)
     #@permiso = check_propiety(@equipment)
     #unless @permiso 
