@@ -101,20 +101,20 @@ Rails.application.routes.draw do
     post ':equip/galeria/:id/editar' => :edit
   end  
   controller :videos do
-    get ':id/videos' => :index , :as => 'video_index'
-    get ':equip/videos/:id' => :show , :as => 'video_show'
-    get ':id/video_nuevo' => :new, :as => 'video_nuevo'
-    post ':id/video_nuevo' => :new
-    get ':equip/:id/editar' => :new , :as => 'video_edit'
-    post ':equip/:id/editar' => :new
+    get ':equip/:gal/videos' => :index , :as => 'video_index'
+    get ':equip/:gal//videos/:id' => :show , :as => 'video_show'
+    get ':equip/:gal/video_nuevo' => :new, :as => 'video_nuevo'
+    post ':equip/:gal/video_nuevo' => :new
+    get ':equip/:gal/:id/editar' => :new , :as => 'video_edit'
+    post ':equip/:gal/:id/editar' => :new
   end  
   controller :images do
-    get ':id/imagenes' => :index, :as => 'imagen_index'
-    get ':equip/imagenes/:id' => :index , :as => 'imagen_show'
-    get ':id/imagen_nueva' => :new, :as => 'imagen_nueva'
-    post ':id/imagen_nueva' => :new
-    get ':equip/editar/:id' => :edit, :as => 'imagen_editar'
-    post ':equip/editar/:id' => :edit
+    get ':equip/:gal/imagenes' => :index, :as => 'imagen_index'
+    get ':equip/:gal/imagenes/:id' => :index , :as => 'imagen_show'
+    get ':equip/:gal/imagen_nueva' => :new, :as => 'imagen_nueva'
+    post ':equip/:gal/imagen_nueva' => :new
+    get ':equip/:gal/editar/:id' => :edit, :as => 'imagen_editar'
+    post ':equip/:gal/editar/:id' => :edit
   end
 
   controller :comments do
