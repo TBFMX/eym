@@ -18,12 +18,12 @@ class ImagesController < ApplicationController
   #GET images/new/:id 
   #POST images/new/:id
   def new
-    @gallery =Gallery.find(params[:id])
-    #@equipment = Equipment.find(@gallery.equipment_id)
-    #add_breadcrumb @equipment.name.to_s, '/equipments/' + @equipment.id.to_s
-    #    add_breadcrumb I18n.t("breadcrumbs.galleries"), '/equipments/galleries/' + @equipment.id.to_s 
-    #add_breadcrumb I18n.t("breadcrumbs.nimage"), '/images/new/' + @gallery.id.to_s 
-    @image = Image.new("gallery_id" => params[:id])
+    @gallery =Gallery.find(params[:gal])
+    @equipment = Equipment.find(@gallery.equipment_id)
+    add_breadcrumb @equip.name.to_s, equipment_path(@equip)    
+    add_breadcrumb I18n.t("breadcrumbs.gallery"), galeria_index_path(@equipment)   
+    add_breadcrumb I18n.t("breadcrumbs.nimage"), imagen_nueva_path(@equipment.name, @gallery.title) 
+    @image = Image.new("gallery_id" => @gallery.id)
     #@permiso = check_propiety(@equipment)
     #unless @permiso 
     #  redirect_to root_path

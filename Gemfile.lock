@@ -39,7 +39,7 @@ GEM
       execjs
     coffee-script-source (1.7.0)
     erubis (2.7.0)
-    execjs (2.2.1)
+    execjs (2.2.0)
     friendly_id (5.0.4)
       activerecord (>= 4.0.0)
     hike (1.2.3)
