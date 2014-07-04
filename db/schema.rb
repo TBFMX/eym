@@ -11,11 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 20140703162959) do
-=======
 ActiveRecord::Schema.define(version: 20140703171433) do
->>>>>>> 023f58bef49b3dd9eecb0361c69ffc6a89557831
 
   create_table "brands", force: true do |t|
     t.string   "name"
@@ -92,13 +88,10 @@ ActiveRecord::Schema.define(version: 20140703171433) do
     t.integer  "priority"
     t.string   "modelo"
     t.string   "etiquetas"
-<<<<<<< HEAD
-    t.string   "slug"
-=======
     t.string   "currency_id"
     t.string   "country_id"
     t.string   "state_id"
->>>>>>> 023f58bef49b3dd9eecb0361c69ffc6a89557831
+    t.string   "slug"
   end
 
   add_index "equipment", ["slug"], name: "index_equipment_on_slug"

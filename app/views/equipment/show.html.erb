@@ -47,10 +47,10 @@
         </tr>
         <tr><th colspan="2">Contacto y localidad</th></tr> 
         <tr>
-          <td colspan="2">Lugar: <%= @equipment.ciudad %>, <%= @equipment.state_id %>, <%= @equipment.country_id %></td>
+          <td colspan="2">Lugar: <%= @equipment.ciudad %>, <%= @equipment.state.name %>, <%= @equipment.country.name %></td>
         </tr>        
         <tr>
-          <td><%= button_to "contacto", equipment_contact_path(:user_id => session[:user_id], :equipment => @equipment), :method => :post %></td>
+          <td><%= button_to "contacto", equipo_contacto_path(:user_id => session[:user_id], :equipment => @equipment), :method => :post %></td>
           <td><img src="/images/iconos/usuario_icono.png" height="12" width="12"> <%= @user.username %></td>
         </tr>                 
       </table>
