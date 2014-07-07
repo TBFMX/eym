@@ -21,9 +21,9 @@
     Precio <%if equipment.publication_type == 1 %>Venta<% else %>Renta<% end %>: <%= number_to_currency(equipment.precio) %> <%= equipment.currency_id %>
   </div>
   <div class="opciones">
-    <%= link_to 'Edit', edit_equipment_path(equipment) %> 
+    <%#= link_to 'Edit', edit_equipment_path(equipment) %> 
     <%= link_to 'Imagenes', galeria_index_path(equipment) %> 
-    <%= link_to 'Destroy', equipment, method: :delete, data: { confirm: 'Are you sure?' } %>
+    <%#= link_to 'Destroy', equipment, method: :delete, data: { confirm: 'Are you sure?' } %>
   </div>    
 </div>
 <% end %>
