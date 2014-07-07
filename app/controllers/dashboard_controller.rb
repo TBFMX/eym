@@ -24,10 +24,14 @@ class DashboardController < ApplicationController
   end
 
   def imagenes
+    @images = Image.where("gallery_id = ?" , @galleries.id)
   end
 
   def videos
   end
+
+  def cuenta
+  end  
 
   private
     def charge_all
