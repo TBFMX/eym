@@ -4,8 +4,9 @@ class WelcomeController < ApplicationController
     @zone1 = frontpage(1)
     @zone2 = frontpage(2)
     @zone3 = frontpage(3)
-    #@zone4 = frontpage(4)
-    
+    @zone4 = frontpage(4)
+    @zone5 = frontpage(5)
+    @zone6 = frontpage(6) 
   end
 
   def new
