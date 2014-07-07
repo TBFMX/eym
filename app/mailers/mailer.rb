@@ -43,12 +43,42 @@ class Mailer < ActionMailer::Base
   end
 
 #intento de mailer
-  def equipment_contact(buyer,seller,equipment)
-    @buyer = buyer
+  def equipment_contact(buyer_m,buyer_n,buyer_ms,buyer_p,seller,equipment)
+
+    # puts "----------------------buyer_m-----------------------------------"
+    # puts buyer_m.inspect
+    # puts "----------------------------------------------------------------"
+
+    # puts "----------------------buyer_n-----------------------------------"
+    # puts buyer_n.inspect
+    # puts "----------------------------------------------------------------"
+
+    # puts "----------------------buyer_ms----------------------------------"
+    # puts buyer_ms.inspect
+    # puts "----------------------------------------------------------------"
+
+    # puts "----------------------buyer_p-----------------------------------"
+    # puts buyer_p.inspect
+    # puts "----------------------------------------------------------------"
+
+    # puts "----------------------seller------------------------------------"
+    # puts seller.inspect
+    # puts "----------------------------------------------------------------"
+
+    # puts "----------------------equipment---------------------------------"
+    # puts equipment.inspect
+    # puts "----------------------------------------------------------------"
+
+    @buyer_m = buyer_m
+    @buyer_ms = buyer_ms
+    @buyer_n = buyer_n
+    @buyer_p = buyer_p
     @seller = seller
     @equipment = equipment        
-    mail :to => seller.email, :subject => "Nueva notificacion EYM anuncio" + equipment.name, :from => "\"EYM\" ", :reply_to =>"arturito@tbf.mx"
-    mail :to => buyer.email, :subject => "Nueva notificacion EYM anuncio" + equipment.name, :from => "\"EYM\" ", :reply_to =>"arturito@tbf.mx"
+    mail(:to => @seller.email, :subject => "Nueva notificacion EYM anuncio", :from => "\"EYM\" ", :reply_to =>"arturito@tbf.mx")
+    puts "---------------------pase el primero---------------------"
+    mail(:to => buyer_m, :subject => "Nueva notificacion EYM anuncio" + equipment.name.to_s, :from => "\"EYM\" ", :reply_to =>"arturito@tbf.mx")
+    puts "---------------------pase el segundo---------------------"
   end  
 
 end

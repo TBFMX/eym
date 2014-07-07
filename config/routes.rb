@@ -93,42 +93,44 @@ Rails.application.routes.draw do
   #preparacion para usar rutas amigables o traducidas segun se ocupe
 
   controller :galleries do
-    get ':id/galerias' => :index , :as => 'galeria_index'
-    get ':equip/galerias/:id' => :show , :as => 'galeria_show'
-    get ':equip/galeria_nueva/' => :new , :as => 'galeria_nueva'
-    post ':equip/galeria_nueva/' => :new
-    get ':equip/galeria/:id/editar' => :edit , :as => 'galeria_edit'
-    post ':equip/galeria/:id/editar' => :edit
+    get 'panel/:id/galerias' => :index , :as => 'galeria_index'
+    get 'panel/:equip/galerias/:id' => :show , :as => 'galeria_show'
+    get 'panel/:equip/galeria_nueva/' => :new , :as => 'galeria_nueva'
+    post 'panel/:equip/galeria_nueva/' => :new
+    get 'panel/:equip/galeria/:id/editar' => :edit , :as => 'galeria_edit'
+    post 'panel/:equip/galeria/:id/editar' => :edit
   end  
   controller :videos do
-    get ':equip/:gal/videos' => :index , :as => 'video_index'
-    get ':equip/:gal//videos/:id' => :show , :as => 'video_show'
-    get ':equip/:gal/video_nuevo' => :new, :as => 'video_nuevo'
-    post ':equip/:gal/video_nuevo' => :new
-    get ':equip/:gal/:id/editar' => :new , :as => 'video_edit'
-    post ':equip/:gal/:id/editar' => :new
+    get 'panel/:equip/:gal/videos' => :index , :as => 'video_index'
+    get 'panel/:equip/:gal//videos/:id' => :show , :as => 'video_show'
+    get 'panel/:equip/:gal/video_nuevo' => :new, :as => 'video_nuevo'
+    post 'panel/:equip/:gal/video_nuevo' => :new
+    get 'panel/:equip/:gal/:id/editar' => :new , :as => 'video_edit'
+    post 'panel/:equip/:gal/:id/editar' => :new
   end  
   controller :images do
-    get ':equip/:gal/imagenes' => :index, :as => 'imagen_index'
-    get ':equip/:gal/imagenes/:id' => :index , :as => 'imagen_show'
-    get ':equip/:gal/imagen_nueva' => :new, :as => 'imagen_nueva'
-    post ':equip/:gal/imagen_nueva' => :new
-    get ':equip/:gal/editar/:id' => :edit, :as => 'imagen_editar'
-    post ':equip/:gal/editar/:id' => :edit
+    get 'panel/:equip/:gal/imagenes' => :index, :as => 'imagen_index'
+    get 'panel/:equip/:gal/imagenes/:id' => :index , :as => 'imagen_show'
+    get 'panel/:equip/:gal/imagen_nueva' => :new, :as => 'imagen_nueva'
+    post 'panel/:equip/:gal/imagen_nueva' => :new
+    get 'panel/:equip/:gal/editar/:id' => :edit, :as => 'imagen_editar'
+    post 'panel/:equip/:gal/editar/:id' => :edit
   end
 
   controller :comments do
-    get ':id/comentarios' => :index, :as => 'comentarios_index'
-    get ':equip/comentarios/:id' => :show, :as => 'comentarios_show'
-    get ':id/comentario_nuevo' => :new, :as => 'comentario_nuevo'
-    post ':id/comentartio_nuevo' => :new
-    get ':equip/editar/:id' => :edit, :as => 'comentario_editar'
-    post ':equip/editar/:id' => :edit
+    get 'panel/:id/comentarios' => :index, :as => 'comentarios_index'
+    get 'panel/:equip/comentarios/:id' => :show, :as => 'comentarios_show'
+    get 'panel/:id/comentario_nuevo' => :new, :as => 'comentario_nuevo'
+    post 'panel/:id/comentartio_nuevo' => :new
+    get 'panel/:equip/editar/:id' => :edit, :as => 'comentario_editar'
+    post 'panel/:equip/editar/:id' => :edit
   end   
 
   controller :equipment do
     get 'venta' => :grid
+    get '/equipo/contacto' => :contact
     post '/equipo/contacto' => :contact
+    post '/send' => :sender
   end
   #get '*unmatched_route', :to => 'application#raise_not_found2'
 

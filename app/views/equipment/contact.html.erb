@@ -1,14 +1,16 @@
+
+<%= form_tag("/send", method: "post") do%>
 <div class="forma_contacto">
   <div class="datos_comprador">
-      <p>Nombre:</p>
-      <%= %>
-      <input type="text" name="Nombre">
-      <p>Email:</p>
-      <input type="text" name="firstname">
-      <p>Teléfono:</p>
-      <input type="text" name="firstname">
-      <p>Mensaje:</p>     
-      <textarea rows="4" cols="20"></textarea>           
+      <%= label_tag(:name, "Nombre: ") %>
+      <%= text_field_tag(:name) %>
+      <%= label_tag(:email, "Email: ") %>
+      <%= text_field_tag(:email) %>
+      <%= label_tag(:phone, "Teléfono: ") %>
+      <%= text_field_tag(:phone) %>
+      <%= label_tag(:message, "Mensaje: ") %>
+      <%= text_area_tag(:message,"" ,size: "24x6") %>
+      <%= hidden_field_tag :equipment, @equipment.name %>           
   </div>
   <div class="datos_anuncio">
       <h1><%= @equipment.name %></h1>
@@ -27,6 +29,7 @@
   </div>
   <div class="botonera">
     <p>Enviar datos de contacto al vendedor <%= @user.username %>: </p>
-    <p><input type="button" value="Enviar"> <input type="button" value="Regresar"> </p>   
+    <p><%= submit_tag("Enviar") %><input type="button" value="Regresar"> </p>   
   </div>  
 </div>
+<% end %>

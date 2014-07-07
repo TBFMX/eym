@@ -210,6 +210,22 @@ class EquipmentController < ApplicationController
     end
   end
 
+  def sender
+    buyer_m = params[:email]
+    buyer_n = params[:name]
+    buyer_ms = params[:message]
+    buyer_p = params[:phone]
+    equipment = Equipment.friendly.find(params[:equipment])
+    @user = User.find(equipment.user_id)
+    seller = @user
+
+    #puts "----------------------parametros--------------------------------"
+    #puts params.inspect
+    #puts "----------------------------------------------------------------"
+    Mailer.equipment_contact(buyer_m,buyer_n,buyer_ms,buyer_p,seller,equipment).deliver
+    redirect_to equipment_path(equipment)
+  end  
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_equipment
