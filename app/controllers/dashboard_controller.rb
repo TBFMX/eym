@@ -13,10 +13,14 @@ class DashboardController < ApplicationController
   #mis equipos
   #GET /dashboard/Mis_equipos
   def equipos
-    @equipment = @equips
+    @equipment = @equipsWhere
   end
 
   def gallerias
+    puts "---------------- equipment -----------------"
+    puts @equips.inspect
+    puts "---------------------------------"
+      @e_id = @equips.name
   end
 
   def imagenes
@@ -27,11 +31,29 @@ class DashboardController < ApplicationController
 
   private
     def charge_all
-      @equips = Equipment.where("user_id = ?" , session[:user_id])
-      @galleries = Gallery.find_by("equipment_id = ?" , @equip_id)
+    #puts "---------------------------------"
+    #puts session[:user_id]   
+    #puts "---------------------------------"    
+
+      @equips = Equipment.find_by("user_id = ?" , session[:user_id])
+      @equipsWhere = Equipment.where("user_id = ?" , session[:user_id])      
+    # puts "---------------------------------"
+    # puts @equips.inspect
+    # puts "---------------------------------"  
+      @galleries = Gallery.find_by("equipment_id = ?" , @equips.id)                 
+      @galleriesWhere = Gallery.where("equipment_id = ?" , @equips.id)
       unless @galleries.blank?
+     puts "----------Gallery-----------------------"
+     puts @galleries.inspect
+     puts "---------------------------------"                 
         @images = Image.where("gallery_id = ?" , @galleries.id)
+    # puts "---------------------------------"
+    # puts @images.inspect
+    # puts "---------------------------------"                
         @videos = Video.where("gallery_id = ?" , @galleries.id)
+    # puts "---------------------------------"
+    # puts @videos.inspect
+    # puts "---------------------------------"           
       end
     end  
 end
