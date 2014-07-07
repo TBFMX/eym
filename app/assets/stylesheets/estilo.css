@@ -196,3 +196,8 @@ input:focus{
    max-height:100%;
    float: left;
 }
+
+.dashboard_contenido table{
+   width: 790px;
+   margin: 10px auto 10px auto;
+}
