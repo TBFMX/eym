@@ -203,7 +203,7 @@ class EquipmentController < ApplicationController
 
   def contact
     if params[:equipment]
-      @equipment = Equipment.find(params[:equipment]) 
+      @equipment = Equipment.friendly.find(params[:equipment]) 
       @user = User.find(@equipment.user_id)
     else
       redirect_to root_path

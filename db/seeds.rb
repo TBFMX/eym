@@ -35,10 +35,10 @@ end
 ###################################################################
 
 ######################Paquetes#####################################
-@plan1 = Package.new(name:'platino', price: '250.00', description: 'servicio mas cañon')
-@plan2 = Package.new(name:'oro', price: '150.00', description: 'servicio mas semi-cañon' )
-@plan3 = Package.new(name:'plata', price: '100.00', description: 'servicio algo cañon' )
-@plan4 = Package.new(name:'bronce', price: '50.00', description: 'servicio casi nada cañon' )
+@plan1 = Package.new(name:'platino', price: '250.00', description: 'servicio mas canon')
+@plan2 = Package.new(name:'oro', price: '150.00', description: 'servicio mas semi-canon' )
+@plan3 = Package.new(name:'plata', price: '100.00', description: 'servicio algo canon' )
+@plan4 = Package.new(name:'bronce', price: '50.00', description: 'servicio casi nada canon' )
 @plan5 = Package.new(name:'blanco', price: '0.00', description: 'servicio normal' )
 
 @plan1.save
