@@ -94,7 +94,8 @@ Rails.application.routes.draw do
   #preparacion para usar rutas amigables o traducidas segun se ocupe
 
   controller :galleries do
-    get 'Mi_Panel/:id/galerias' => :index , :as => 'galeria_index'
+    get ':id/galerias' => :index , :as => 'galeria_index'
+    get ':equip/galerias/:id' => :show , :as => 'galeria_show_p'
     get 'Mi_Panel/:equip/galerias/:id' => :show , :as => 'galeria_show'
     get 'Mi_Panel/:equip/galeria_nueva/' => :new , :as => 'galeria_nueva'
     post 'Mi_Panel/:equip/galeria_nueva/' => :new
@@ -138,7 +139,7 @@ Rails.application.routes.draw do
     get 'Mi_Panel' => :index, :as => 'dashboard_index' 
     get 'Mi_Panel/login' =>:login, :as => 'dashboard_login'
     get 'Mi_Panel/equipos' => :equipos, :as => 'dashboard_equipos'
-    get 'Mi_Panel/:equip/:gal' => :gallerias, :as => 'dashboard_gallerias'
+    get 'Mi_Panel/:equip/galerias' => :gallerias, :as => 'dashboard_gallerias'
     get 'Mi_Panel/:equip/:gal/imagenes' => :imagenes, :as => 'dashboard_imagenes'
     get 'Mi_Panel/:equip/:gal/videos' => :videos, :as => 'dashboard_videos'
   end  

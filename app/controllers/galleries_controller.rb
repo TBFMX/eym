@@ -19,7 +19,15 @@ class GalleriesController < ApplicationController
   # GET /galleries/1
   # GET /galleries/1.json
   def show
-    @equip = Equipment.friendly.find(params[:equip])
+    #@equip = Equipment.friendly.find(params[:equip])
+    puts "-------------------------equipo-----------------------------------------------------"
+    puts @equip.inspect
+    puts "------------------------------------------------------------------------------------"
+    puts "-------------------------galeria----------------------------------------------------"
+    puts @gallery.inspect
+    puts "------------------------------------------------------------------------------------"
+
+
     add_breadcrumb @equip.name.to_s, equipment_path(@equip)    
     add_breadcrumb I18n.t("breadcrumbs.gallery"), galeria_index_path(@equip.name)    
     @images = Image.where("gallery_id = ?", @gallery.id).group(:image_url)
@@ -55,9 +63,10 @@ class GalleriesController < ApplicationController
   # POST /galleries.json
   def create
     @gallery = Gallery.new(gallery_params)
+    @equip = Equipment.find(params[:gallery][:equipment_id])
     respond_to do |format|
       if @gallery.save
-        format.html { redirect_to @gallery, notice: 'Gallery was successfully created.' }
+        format.html { redirect_to galeria_show_path(@equip.slug,@gallery.slug), notice: 'Su nueva galeria esta lista para usarse.' }
         format.json { render :show, status: :created, location: @gallery }
       else
         format.html { render :new }

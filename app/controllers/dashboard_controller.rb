@@ -18,13 +18,18 @@ class DashboardController < ApplicationController
   end
 
   def gallerias
-    if params[:gal]
-      @galleries = Gallery.friendly.find(params[:gal])
-    end  
-      @equips = Equipment.friendly.find(params[:equip])
-      puts "---------------- equipment -----------------"
-      puts @equips.inspect
-      puts "---------------------------------"
+    @equips = Equipment.friendly.find(params[:equip])
+    @galleries = Gallery.where("equipment_id = ?", @equips)
+    #if params[:gal]
+    #  @galleries = Gallery.friendly.find(params[:gal])
+    #end  
+    puts "----------Gallery-----------------------"
+    puts @galleries.inspect
+    puts "---------------------------------"                   
+
+    puts "---------------- equipment -----------------"
+    puts @equips.inspect
+    puts "---------------------------------"
       @e_id = @equips.name
   end
 
@@ -49,12 +54,12 @@ class DashboardController < ApplicationController
     # puts "---------------------------------"
     # puts @equips.inspect
     # puts "---------------------------------"  
-      @galleries = Gallery.find_by("equipment_id = ?" , @equips.id)                 
+      #@galleries = Gallery.find_by("equipment_id = ?" , @equips.id)                 
       @galleriesWhere = Gallery.where("equipment_id = ?" , @equips.id)
       unless @galleries.blank?
-     puts "----------Gallery-----------------------"
-     puts @galleries.inspect
-     puts "---------------------------------"                 
+    # puts "----------Gallery-----------------------"
+    # puts @galleries.inspect
+    # puts "---------------------------------"                 
         @images = Image.where("gallery_id = ?" , @galleries.id)
     # puts "---------------------------------"
     # puts @images.inspect
