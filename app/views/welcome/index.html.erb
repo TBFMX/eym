@@ -1,4 +1,3 @@
-<h1> Platino </h1>
 <div class="welcome_zona">
 	<% @zone1.each do |zone| %>
 	<%if zone.image_id	
@@ -15,13 +14,12 @@
 		<strong>Modelo:</strong> <%= zone.modelo %><br>		
 		<strong>Año:</strong> <%= zone.year %><br>
 		<%if zone.publication_type == 1 %>Venta<% else %>Renta<% end %>: <%= number_to_currency(zone.precio) %><br/> <%= zone.currency.name %><br>
-		<strong>Ubicación:</strong><br/> <%= zone.country.name %>, <%= zone.state.name %>
+		<img src="/images/iconos/mapa.png"> <%= zone.state.name %>, <%= zone.country.name %>
 	</div>
 	</div>		
 	<% end %>
 </div>	
 
-<h1> Oro </h1>
 <div class="welcome_zona">
 <% @zone2.each do |zone| %>
 	<%if zone.image_id	
@@ -38,13 +36,12 @@
 		<strong>Modelo:</strong> <%= zone.modelo %><br>		
 		<strong>Año:</strong> <%= zone.year %><br>
 		<%if zone.publication_type == 1 %>Venta<% else %>Renta<% end %>: <%= number_to_currency(zone.precio) %><br/> <%= zone.currency.name %><br>
-		<strong>Ubicación:</strong><br/> <%= zone.country.name %>, <%= zone.state.name %>
+		<img src="/images/iconos/mapa.png"> <%= zone.state.name %>, <%= zone.country.name %>
 	</div>
 	</div>		
 <% end %>
 </div>	
 
-<h1> Plata </h1>
 <div class="welcome_zona">
 <% @zone3.each do |zone| %>
 	<%if zone.image_id	
@@ -61,7 +58,7 @@
 		<strong>Modelo:</strong> <%= zone.modelo %><br>		
 		<strong>Año:</strong> <%= zone.year %><br>
 		<%if zone.publication_type == 1 %>Venta<% else %>Renta<% end %>: <%= number_to_currency(zone.precio) %><br/> <%= zone.currency.name %><br>
-		<strong>Ubicación:</strong><br/> <%= zone.country.name %>, <%= zone.state.name %>
+		<img src="/images/iconos/mapa.png"> <%= zone.state.name %>, <%= zone.country.name %>
 	</div>
 	</div>		
 <% end %>

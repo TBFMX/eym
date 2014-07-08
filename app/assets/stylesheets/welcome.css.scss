@@ -47,6 +47,7 @@
 }
 
 .welcome_show_cuadro .detalles{
+   display:block;
    width: 200px;
    margin: 0px 5px 0px 5px;  
    text-overflow:ellipsis; 
@@ -54,16 +55,16 @@
    overflow:hidden;   
 }
 
-.welcome_show_cuadro .detalles{
-   width: 200px;
-   margin: 0px 5px 0px 5px;  
-   text-overflow:ellipsis; 
-   white-space:nowrap;
-   overflow:hidden;   
+.welcome_show_cuadro .detalles img{
+   width: 12px;
+   height: 12px;
 }
+
+
+
 
 .welcome_zona{
-   max-width: 920px; 
+   width: 920px; 
    /*max-height: 350px;*/
    float: left;  
    overflow:hidden; 
