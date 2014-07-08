@@ -8,6 +8,9 @@ class ImagesController < ApplicationController
       redirect_to root_path
     end
     @gallery = Gallery.friendly.find(params[:gal])
+    puts "----------Gallery-----------------------"
+    puts  params[:gal]
+    puts "----------------------------------------"
     @images = Image.where("gallery_id = ?", @gallery.id)
     @equip = Equipment.friendly.find(params[:equip])
   end
@@ -24,7 +27,7 @@ class ImagesController < ApplicationController
     @equipment = Equipment.find(@gallery.equipment_id)
     add_breadcrumb @equipment.name.to_s, equipment_path(@equipment)    
     add_breadcrumb @gallery.title, galeria_index_path(@equipment)   
-    add_breadcrumb I18n.t("breadcrumbs.newimage"), imagen_nueva_path(@equipment.name, @gallery.title) 
+    add_breadcrumb I18n.t("breadcrumbs.newimage"), imagen_nueva_path(@equipment.name, @gallery.slug) 
     @image = Image.new("gallery_id" => @gallery.id)
     #@permiso = check_propiety(@equipment)
     #unless @permiso 

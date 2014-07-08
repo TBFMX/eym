@@ -22,13 +22,13 @@
     <tbody>
       <% @galleries.each do |gallery| %>
         <tr>
-          <td><%= gallery.title %></td>
+          <td><%= gallery.slug %></td>
           <td><%= gallery.equipment_id %></td>
           <td><%= gallery.user_id %></td>
           <td><%= link_to 'Show', galeria_show_path(@equips,gallery) %></td>
           <%# if @permiso %>
-          <td> <%= link_to 'Imagen', dashboard_imagenes_path(@equips,gallery.title) %>  <%#= link_to 'Edit', edit_gallery_path(gallery) %></td>
-          <td><%= link_to 'Video', dashboard_videos_path(@equips,gallery.title) %><%#= link_to 'Destroy', gallery, method: :delete, data: { confirm: 'Are you sure?' } %></td> 
+          <td> <%= link_to 'Imagen', dashboard_imagenes_path(@equips,gallery.slug) %>  <%#= link_to 'Edit', edit_gallery_path(gallery) %></td>
+          <td><%= link_to 'Video', dashboard_videos_path(@equips,gallery.slug) %><%#= link_to 'Destroy', gallery, method: :delete, data: { confirm: 'Are you sure?' } %></td> 
           <%# end %>
           <!--<td> <%#= link_to 'Show', gallery %></td>
           <td><%#= link_to 'Edit', edit_gallery_path(gallery) %></td>-->

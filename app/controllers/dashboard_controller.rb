@@ -25,7 +25,7 @@ class DashboardController < ApplicationController
     #end  
     puts "----------Gallery-----------------------"
     puts @galleries.inspect
-    puts "---------------------------------"                   
+    puts "----------------------------------------"
 
     puts "---------------- equipment -----------------"
     puts @equips.inspect
@@ -34,10 +34,22 @@ class DashboardController < ApplicationController
   end
 
   def imagenes
-    @images = Image.where("gallery_id = ?" , @galleries.id)
+    @equips = Equipment.friendly.find(params[:equip])
+    if params[:gal]
+      puts "----------Gallery-----------------------"
+      puts  params[:gal]
+      puts "----------------------------------------"
+      @galleries = Gallery.friendly.find(params[:gal])
+      @images = Image.where("gallery_id = ?" , @galleries.id)
+    else
+      redirect_to root_path  
+    end  
   end
 
   def videos
+    @equips = Equipment.friendly.find(params[:equip])
+    @galleries = Gallery.friendly.find(params[:gal])
+    @videos = Video.where("gallery_id = ?" , @galleries.id)
   end
 
   def cuenta
