@@ -21,6 +21,7 @@ class DashboardController < ApplicationController
     if params[:gal]
       @galleries = Gallery.friendly.find(params[:gal])
     end  
+      @equips = Equipment.friendly.find(params[:equip])
       puts "---------------- equipment -----------------"
       puts @equips.inspect
       puts "---------------------------------"

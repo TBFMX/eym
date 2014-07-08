@@ -53,11 +53,11 @@ $.each(inputFile.files, function() {
         <%= f.label :currency_id, "Tipo de Moneda"  %><br>
         <%= select("equipment", "currency_id", Currency.all.collect {|p| [ p.name, p.id ] }.uniq, {include_blank: 'Todos'}) %><br><br>
       </div> 
-  </div>    
+  </div>
 
   <h1>Categoria</h1>
   <div class="grupo">
-      <%= f.number_field :category_id %>
+      <%= select("equipment", "category_id", Category.all.collect {|p| [ p.title, p.id ] }.uniq, {include_blank: 'Todos'}) %>    
   </div>
 
   <h1>Selecciona tu paquete</h1>

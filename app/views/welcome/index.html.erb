@@ -1,12 +1,13 @@
-<% @zone1.each do |zone| %>
-<div class="welcome_show_cuadro">
+<h1> Platino </h1>
+<div class="welcome_zona">
+	<% @zone1.each do |zone| %>
 	<%if zone.image_id	
 		@imagen = Image.find(zone.image_id)
 		@image = @imagen.image_url
 	else 
 		@image ="/data/dommy.jpg"
 	end %>	
-
+	<div class="welcome_show_cuadro">
 	<div class="centra_img"><%= link_to image_tag(@image), equipment_path(zone) %></div>
 	<div class="ajustar_titulo"><%= link_to zone.name, equipment_path(zone), class: "ajustar_titulo" %></div>
 	<div class="detalles">
@@ -16,18 +17,20 @@
 		<%if zone.publication_type == 1 %>Venta<% else %>Renta<% end %>: <%= number_to_currency(zone.precio) %><br/> <%= zone.currency.name %><br>
 		<strong>Ubicación:</strong><br/> <%= zone.country.name %>, <%= zone.state.name %>
 	</div>
-</div>		
-<% end %>
+	</div>		
+	<% end %>
+</div>	
 
+<h1> Oro </h1>
+<div class="welcome_zona">
 <% @zone2.each do |zone| %>
-<div class="welcome_show_cuadro">
 	<%if zone.image_id	
 		@imagen = Image.find(zone.image_id)
 		@image = @imagen.image_url
 	else 
 		@image ="/data/dommy.jpg"
 	end %>	
-
+	<div class="welcome_show_cuadro">
 	<div class="centra_img"><%= link_to image_tag(@image), equipment_path(zone) %></div>
 	<div class="ajustar_titulo"><%= link_to zone.name, equipment_path(zone), class: "ajustar_titulo" %></div>
 	<div class="detalles">
@@ -37,19 +40,20 @@
 		<%if zone.publication_type == 1 %>Venta<% else %>Renta<% end %>: <%= number_to_currency(zone.precio) %><br/> <%= zone.currency.name %><br>
 		<strong>Ubicación:</strong><br/> <%= zone.country.name %>, <%= zone.state.name %>
 	</div>
-</div>		
+	</div>		
 <% end %>
+</div>	
 
-
+<h1> Plata </h1>
+<div class="welcome_zona">
 <% @zone3.each do |zone| %>
-<div class="welcome_show_cuadro">
 	<%if zone.image_id	
 		@imagen = Image.find(zone.image_id)
 		@image = @imagen.image_url
 	else 
 		@image ="/data/dommy.jpg"
 	end %>	
-
+	<div class="welcome_show_cuadro">
 	<div class="centra_img"><%= link_to image_tag(@image), equipment_path(zone) %></div>
 	<div class="ajustar_titulo"><%= link_to zone.name, equipment_path(zone), class: "ajustar_titulo" %></div>
 	<div class="detalles">
@@ -59,70 +63,6 @@
 		<%if zone.publication_type == 1 %>Venta<% else %>Renta<% end %>: <%= number_to_currency(zone.precio) %><br/> <%= zone.currency.name %><br>
 		<strong>Ubicación:</strong><br/> <%= zone.country.name %>, <%= zone.state.name %>
 	</div>
-</div>		
+	</div>		
 <% end %>
-
-<% @zone4.each do |zone| %>
-<div class="welcome_show_cuadro">
-	<%if zone.image_id	
-		@imagen = Image.find(zone.image_id)
-		@image = @imagen.image_url
-	else 
-		@image ="/data/dommy.jpg"
-	end %>	
-
-	<div class="centra_img"><%= link_to image_tag(@image), equipment_path(zone) %></div>
-	<div class="ajustar_titulo"><%= link_to zone.name, equipment_path(zone), class: "ajustar_titulo" %></div>
-	<div class="detalles">
-		<strong>Marca:</strong> <%= zone.brand.name %><br>
-		<strong>Modelo:</strong> <%= zone.modelo %><br>		
-		<strong>Año:</strong> <%= zone.year %><br>
-		<%if zone.publication_type == 1 %>Venta<% else %>Renta<% end %>: <%= number_to_currency(zone.precio) %><br/> <%= zone.currency.name %><br>
-		<strong>Ubicación:</strong><br/> <%= zone.country.name %>, <%= zone.state.name %>
-	</div>
-</div>		
-<% end %>
-
-
-<% @zone5.each do |zone| %>
-<div class="welcome_show_cuadro">
-	<%if zone.image_id	
-		@imagen = Image.find(zone.image_id)
-		@image = @imagen.image_url
-	else 
-		@image ="/data/dommy.jpg"
-	end %>	
-
-	<div class="centra_img"><%= link_to image_tag(@image), equipment_path(zone) %></div>
-	<div class="ajustar_titulo"><%= link_to zone.name, equipment_path(zone), class: "ajustar_titulo" %></div>
-	<div class="detalles">
-		<strong>Marca:</strong> <%= zone.brand.name %><br>
-		<strong>Modelo:</strong> <%= zone.modelo %><br>		
-		<strong>Año:</strong> <%= zone.year %><br>
-		<%if zone.publication_type == 1 %>Venta<% else %>Renta<% end %>: <%= number_to_currency(zone.precio) %><br/> <%= zone.currency.name %><br>
-		<strong>Ubicación:</strong><br/> <%= zone.country.name %>, <%= zone.state.name %>
-	</div>
-</div>		
-<% end %>
-
-
-<% @zone6.each do |zone| %>
-<div class="welcome_show_cuadro">
-	<%if zone.image_id	
-		@imagen = Image.find(zone.image_id)
-		@image = @imagen.image_url
-	else 
-		@image ="/data/dommy.jpg"
-	end %>	
-
-	<div class="centra_img"><%= link_to image_tag(@image), equipment_path(zone) %></div>
-	<div class="ajustar_titulo"><%= link_to zone.name, equipment_path(zone), class: "ajustar_titulo" %></div>
-	<div class="detalles">
-		<strong>Marca:</strong> <%= zone.brand.name %><br>
-		<strong>Modelo:</strong> <%= zone.modelo %><br>		
-		<strong>Año:</strong> <%= zone.year %><br>
-		<%if zone.publication_type == 1 %>Venta<% else %>Renta<% end %>: <%= number_to_currency(zone.precio) %><br/> <%= zone.currency.name %><br>
-		<strong>Ubicación:</strong><br/> <%= zone.country.name %>, <%= zone.state.name %>
-	</div>
-</div>		
-<% end %>
+</div>	

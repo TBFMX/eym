@@ -97,6 +97,9 @@
    width: 350px;
    height: 40px;  
    margin-top: 10px;
+   text-overflow:ellipsis; 
+   white-space:nowrap;
+   overflow:hidden;      
 }
 
 .lista_show_equipment .datos .descripcion{
