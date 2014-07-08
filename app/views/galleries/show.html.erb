@@ -18,8 +18,8 @@
 <%#= link_to 'Edit', edit_gallery_path(@gallery) %> |
 <%#= link_to 'Back', galleries_path %>
 -->
-	<td><%= link_to 'Agregar Imagen', imagen_nueva_path(@equipment,gallery.title) %></td>
-    <td><%= link_to 'Agregar Video', video_nuevo_path(@equipment,gallery.title) %></td> 
+	<td><%= link_to 'Agregar Imagen', imagen_nueva_path(@equip,@gallery.title) %></td>
+    <td><%= link_to 'Agregar Video', video_nuevo_path(@equip,@gallery.title) %></td> 
 <p>imagenes: </p>
 <table>
 	<tr>
@@ -46,7 +46,8 @@
 			<tr>
 			<% @cont = 0 %>	
 		<% end %>		
-			<td ><%= vid.video_url.html_safe %> </br> <p><%= vid.title %></p></td>
+			<td><%= vid.video_url.html_safe %> </br> 
+				<p><%= vid.title %></p></td>
 		<% @cont +=1 %>	
 		<% end %>
 	</tr>

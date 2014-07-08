@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-
+=begin
   get 'dashboard/index'
 
   get 'dashboard/login'
@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get 'dashboard/imagenes'
 
   get 'dashboard/videos'
+=end
 
   resources :discounts
 
@@ -93,37 +94,37 @@ Rails.application.routes.draw do
   #preparacion para usar rutas amigables o traducidas segun se ocupe
 
   controller :galleries do
-    get 'panel/:id/galerias' => :index , :as => 'galeria_index'
-    get 'panel/:equip/galerias/:id' => :show , :as => 'galeria_show'
-    get 'panel/:equip/galeria_nueva/' => :new , :as => 'galeria_nueva'
-    post 'panel/:equip/galeria_nueva/' => :new
-    get 'panel/:equip/galeria/:id/editar' => :edit , :as => 'galeria_edit'
-    post 'panel/:equip/galeria/:id/editar' => :edit
+    get 'Mi_Panel/:id/galerias' => :index , :as => 'galeria_index'
+    get 'Mi_Panel/:equip/galerias/:id' => :show , :as => 'galeria_show'
+    get 'Mi_Panel/:equip/galeria_nueva/' => :new , :as => 'galeria_nueva'
+    post 'Mi_Panel/:equip/galeria_nueva/' => :new
+    get 'Mi_Panel/:equip/galeria/:id/editar' => :edit , :as => 'galeria_edit'
+    post 'Mi_Panel/:equip/galeria/:id/editar' => :edit
   end  
   controller :videos do
-    get 'panel/:equip/:gal/videos' => :index , :as => 'video_index'
-    get 'panel/:equip/:gal//videos/:id' => :show , :as => 'video_show'
-    get 'panel/:equip/:gal/video_nuevo' => :new, :as => 'video_nuevo'
-    post 'panel/:equip/:gal/video_nuevo' => :new
-    get 'panel/:equip/:gal/:id/editar' => :new , :as => 'video_edit'
-    post 'panel/:equip/:gal/:id/editar' => :new
+    get 'Mi_Panel/:equip/:gal/videos' => :index , :as => 'video_index'
+    get 'Mi_Panel/:equip/:gal//videos/:id' => :show , :as => 'video_show'
+    get 'Mi_Panel/:equip/:gal/video_nuevo' => :new, :as => 'video_nuevo'
+    post 'Mi_Panel/:equip/:gal/video_nuevo' => :new
+    get 'Mi_Panel/:equip/:gal/:id/editar' => :new , :as => 'video_edit'
+    post 'Mi_Panel/:equip/:gal/:id/editar' => :new
   end  
   controller :images do
-    get 'panel/:equip/:gal/imagenes' => :index, :as => 'imagen_index'
-    get 'panel/:equip/:gal/imagenes/:id' => :index , :as => 'imagen_show'
-    get 'panel/:equip/:gal/imagen_nueva' => :new, :as => 'imagen_nueva'
-    post 'panel/:equip/:gal/imagen_nueva' => :new
-    get 'panel/:equip/:gal/editar/:id' => :edit, :as => 'imagen_editar'
-    post 'panel/:equip/:gal/editar/:id' => :edit
+    get 'Mi_Panel/:equip/:gal/imagenes' => :index, :as => 'imagen_index'
+    get 'Mi_Panel/:equip/:gal/imagenes/:id' => :index , :as => 'imagen_show'
+    get 'Mi_Panel/:equip/:gal/imagen_nueva' => :new, :as => 'imagen_nueva'
+    post 'Mi_Panel/:equip/:gal/imagen_nueva' => :new
+    get 'Mi_Panel/:equip/:gal/editar/:id' => :edit, :as => 'imagen_editar'
+    post 'Mi_Panel/:equip/:gal/editar/:id' => :edit
   end
 
   controller :comments do
-    get 'panel/:id/comentarios' => :index, :as => 'comentarios_index'
-    get 'panel/:equip/comentarios/:id' => :show, :as => 'comentarios_show'
-    get 'panel/:id/comentario_nuevo' => :new, :as => 'comentario_nuevo'
-    post 'panel/:id/comentartio_nuevo' => :new
-    get 'panel/:equip/editar/:id' => :edit, :as => 'comentario_editar'
-    post 'panel/:equip/editar/:id' => :edit
+    get 'Mi_Panel/:id/comentarios' => :index, :as => 'comentarios_index'
+    get 'Mi_Panel/:equip/comentarios/:id' => :show, :as => 'comentarios_show'
+    get 'Mi_Panel/:id/comentario_nuevo' => :new, :as => 'comentario_nuevo'
+    post 'Mi_Panel/:id/comentartio_nuevo' => :new
+    get 'Mi_Panel/:equip/editar/:id' => :edit, :as => 'comentario_editar'
+    post 'Mi_Panel/:equip/editar/:id' => :edit
   end   
 
   controller :equipment do
@@ -132,6 +133,15 @@ Rails.application.routes.draw do
     post '/equipo/contacto' => :contact
     post '/send' => :sender
   end
+
+  controller :dashboard do
+    get 'Mi_Panel' => :index, :as => 'dashboard_index' 
+    get 'Mi_Panel/login' =>:login, :as => 'dashboard_login'
+    get 'Mi_Panel/equipos' => :equipos, :as => 'dashboard_equipos'
+    get 'Mi_Panel/:equip/:gal' => :gallerias, :as => 'dashboard_gallerias'
+    get 'Mi_Panel/:equip/:gal/imagenes' => :imagenes, :as => 'dashboard_imagenes'
+    get 'Mi_Panel/:equip/:gal/videos' => :videos, :as => 'dashboard_videos'
+  end  
   #get '*unmatched_route', :to => 'application#raise_not_found2'
 
 

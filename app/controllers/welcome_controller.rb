@@ -30,7 +30,6 @@ class WelcomeController < ApplicationController
       session[:mod5] =rol.module_5
       #termina variables de rol
 
-
       unless session[:lasurl].nil? || session[:lasurl].empty?
   		  redirect_to session[:lasurl]
       else 

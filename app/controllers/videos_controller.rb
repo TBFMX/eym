@@ -31,9 +31,16 @@ class VideosController < ApplicationController
   def create
     @a_video = params[:video][:video_url].split(/\.?\s+/)
     @url_suprema =""
+    puts "----------------------------------------------------------------------"
+    puts @a_video.inspect
+    puts "----------------------------------------------------------------------"
     @a_video.each do |vid|
-      unless vid.match("width=") || vid.match("height=")
-        @url_suprema += vid  
+      if not vid.match("width=") || vid.match("height=")
+        @url_suprema += " " + vid
+      #elsif vid.match("width=")
+      #  @url_suprema += " width=\"125\""
+      #elsif vid.match("height=")    
+      #  @url_suprema += " height=\"70\""
       end 
     end 
 
