@@ -38,9 +38,14 @@ body{
    float: left;
 }
 
-.header .header_parte2 img, .header .header_parte3 img{
+.header .header_parte2 img{
    width: 30px;
    height: 30px;
+}
+
+.header .header_parte3 img{
+   width: 15px;
+   height: 15px;
 }
 
 .header .header_parte3{
@@ -80,14 +85,14 @@ body{
 .content{
    width: 960px;
    min-height: 400px;
-   min-height: auto;
+   max-height: auto;
    margin:0 auto 0 auto;  
    background-color: #f2f2f2;
    overflow: hidden; /*--para que el cuadro agarre todo lo interno.---*/
 }
 
 .content .interior{
-   padding: 20px; 
+   padding: 20px;   
 }
 
 .footer{
@@ -183,21 +188,68 @@ input:focus{
    max-width: 200px;
    margin: 10px auto 10px auto;
 }
-/*------------Dashboard-----------------*/
 
-.dashboard_menu{
-   width: 120px;
-   height: 100%;
+/*------------Imagenes-----------------*/
+
+.contenedorImagenes{
+   width: 906px;
+   height: 350px;
+   margin: 10px auto 0px auto;   
+}
+
+.contenedorImagenes .imagenesTituloGaleria{
+   width: 906px;
+   height: 25px;
+   padding-top: 5px;
+   text-align: center;
+   font-size: 18px;
+   text-transform: capitalize; 
+   font-weight: bold;
+   background-color: #a6a6a6;
+   color: #FFFFFF;
    float: left;
 }
 
-.dashboard_contenido{
-   width: 800px;
-   max-height:100%;
+.contenedorImagenes .imagenesContenido{
+   width: 300px;
+   height: 320px;
+   border: 1px solid #a6a6a6;  
    float: left;
 }
 
-.dashboard_contenido table{
-   width: 790px;
-   margin: 10px auto 10px auto;
+.contenedorImagenes .imagenesContenido .imagenesGaleria{
+   width: 250px;
+   height: 250px;   
+   text-align: center;     
+   margin: 10px auto 0px auto;    
 }
+
+.contenedorImagenes .imagenesContenido .imagenesGaleria img{
+   max-width: 250px;
+   max-height: 250px;           
+}
+
+.contenedorImagenes .imagenesContenido .imagenesTitulo{
+   width: 300px;
+   height: 40px;
+   font-size: 15px;
+   text-align: center;
+   text-overflow:ellipsis; 
+   white-space:nowrap;
+   overflow:hidden;  
+}
+
+.contenedorImagenes .imagenesContenido .imagenesboton{
+   width: 300px;
+   height: 20px;
+   text-align: center;      
+}
+
+
+/*
+imagenes
+tituloGaleria
+imagenes img
+tituloImagen
+BorrarImagen
+*/

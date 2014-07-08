@@ -19,7 +19,7 @@ class GalleriesController < ApplicationController
   # GET /galleries/1
   # GET /galleries/1.json
   def show
-    @equip = Equipment.find(@gallery.equipment_id)
+    @equip = Equipment.friendly.find(params[:equip])
     add_breadcrumb @equip.name.to_s, equipment_path(@equip)    
     add_breadcrumb I18n.t("breadcrumbs.gallery"), galeria_index_path(@equip.name)    
     @images = Image.where("gallery_id = ?", @gallery.id).group(:image_url)
@@ -103,7 +103,8 @@ class GalleriesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_gallery
-      @gallery = Gallery.friendly.find(params[:id])
+      @equip = Equipment.friendly.find(params[:equip])      
+      @gallery = Gallery.find_by("slug" => params[:id], "equipment_id" => @equip)
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

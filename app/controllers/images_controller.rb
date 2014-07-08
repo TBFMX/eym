@@ -4,10 +4,12 @@ class ImagesController < ApplicationController
 
   # GET galleries/images/:id
   def index
-    #if params[:id].nil?
-    #  redirect_to root_path
-    #end
-    @images = Image.all
+    if params[:gal].nil?
+      redirect_to root_path
+    end
+    @gallery = Gallery.friendly.find(params[:gal])
+    @images = Image.where("gallery_id = ?", @gallery.id)
+    @equip = Equipment.friendly.find(params[:equip])
   end
 
   # GET /images/1
