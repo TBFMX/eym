@@ -35,23 +35,23 @@ end
 ###################################################################
 
 ######################Paquetes#####################################
-@plan1 = Package.new(name:'platino', price: '250.00', description: 'servicio mas canon')
-@plan2 = Package.new(name:'oro', price: '150.00', description: 'servicio mas semi-canon' )
-@plan3 = Package.new(name:'plata', price: '100.00', description: 'servicio algo canon' )
-@plan4 = Package.new(name:'bronce', price: '50.00', description: 'servicio casi nada canon' )
-@plan5 = Package.new(name:'blanco', price: '0.00', description: 'servicio normal' )
+unless Package.count > 0
+	@plan1 = Package.new(name:'Basico', price: '0.00', description: 'primeros 2 anuncios gratuitos')
+	@plan2 = Package.new(name:'Avanzado', price: '199.00', description: 'hasta 20 anuncios simultaneos', botton_one: '<form action=\"https://www.sandbox.paypal.com/cgi-bin/webscr\" method=\"post\" target=\"_top\"><input type=\"hidden\" name=\"cmd\" value=\"_s-xclick\"><input type=\"hidden\" name=\"hosted_button_id\" value=\"ML5XDPX3H5WE6\"><input type=\"image\" src=\"https://www.sandbox.paypal.com/es_XC/MX/i/btn/btn_buynowCC_LG.gif\" border=\"0\" name=\"submit\" alt=\"PayPal, la forma más segura y rápida de pagar en línea.\"><img alt=\"\" border=\"0\" src=\"https://www.sandbox.paypal.com/es_XC/i/scr/pixel.gif\" width=\"1\" height=\"1\"></form>', botton_suscription: '<form action=\"https://www.sandbox.paypal.com/cgi-bin/webscr\" method=\"post\" target=\"_top\"><input type=\"hidden\"name=\"cmd\" value=\"_s-xclick\"><input type=\"hidden\" name=\"hosted_button_id\" value=\"HMNLZDMBLKQBY\"><input type=\"image\" src=\"https://www.sandbox.paypal.com/es_XC/MX/i/btn/btn_subscribeCC_LG.gif\" border=\"0\" name=\"submit\" alt=\"PayPal, la forma más segura y rápida de pagar en línea.\"><img alt=\"\" border=\"0\" src=\"https://www.sandbox.paypal.com/es_XC/i/scr/pixel.gif\" width=\"1\" height=\"1\"></form>' )
+	@plan3 = Package.new(name:'Business', price: '350.00', description: 'hasta 200 anuncios simultaneos', botton_one: '<form action=\"https://www.sandbox.paypal.com/cgi-bin/webscr\" method=\"post\" target=\"_top\"><input type=\"hidden\" name=\"cmd\" value=\"_s-xclick\"><input type=\"hidden\" name=\"hosted_button_id\" value=\"7M8LJJ6NJ5BS8\"><input type=\"image\" src=\"https://www.sandbox.paypal.com/es_XC/MX/i/btn/btn_buynowCC_LG.gif\" border=\"0\" name=\"submit\" alt=\"PayPal, la forma más segura y rápida de pagar en línea.\"><img alt=\"\" border=\"0\" src=\"https://www.sandbox.paypal.com/es_XC/i/scr/pixel.gif\" width=\"1\" height=\"1\"></form>', botton_suscription: '<form action=\"https://www.sandbox.paypal.com/cgi-bin/webscr\" method=\"post\" target=\"_top\"><input type=\"hidden\" name=\"cmd\" value=\"_s-xclick\"><input type=\"hidden\" name=\"hosted_button_id\" value=\"SERWHP8SW3AQS\"><input type=\"image\" src=\"https://www.sandbox.paypal.com/es_XC/MX/i/btn/btn_subscribeCC_LG.gif\" border=\"0\" name=\"submit\" alt=\"PayPal, la forma más segura y rápida de pagar en línea.\"><img alt=\"\" border=\"0\" src=\"https://www.sandbox.paypal.com/es_XC/i/scr/pixel.gif\" width=\"1\" height=\"1\"></form>')
+	@plan4 = Package.new(name:'Ilimitado', price: '1100.00', description: 'anuncios ilimitados', botton_one: '<form action=\"https://www.sandbox.paypal.com/cgi-bin/webscr\" method=\"post\" target=\"_top\"><input type=\"hidden\" name=\"cmd\" value=\"_s-xclick\"><input type=\"hidden\" name=\"hosted_button_id\" value=\"QMY8KL37C9DBE\"><input type=\"image\" src=\"https://www.sandbox.paypal.com/es_XC/MX/i/btn/btn_buynowCC_LG.gif\" border=\"0\" name=\"submit\" alt=\"PayPal, la forma más segura y rápida de pagar en línea.\"><img alt=\"\" border=\"0\" src=\"https://www.sandbox.paypal.com/es_XC/i/scr/pixel.gif\" width=\"1\" height=\"1\"></form>', botton_suscription: '<form action=\"https://www.sandbox.paypal.com/cgi-bin/webscr\" method=\"post\" target=\"_top\"><input type=\"hidden\" name=\"cmd\" value=\"_s-xclick\"><input type=\"hidden\" name=\"hosted_button_id\" value=\"7Z75VDRKQMSUL\"><input type=\"image\" src=\"https://www.sandbox.paypal.com/es_XC/MX/i/btn/btn_subscribeCC_LG.gif\" border=\"0\" name=\"submit\" alt=\"PayPal, la forma más segura y rápida de pagar en línea.\"><img alt=\"\" border=\"0\" src=\"https://www.sandbox.paypal.com/es_XC/i/scr/pixel.gif\" width=\"1\" height=\"1\"></form>' )
 
-@plan1.save
-@plan2.save
-@plan3.save
-@plan4.save
-@plan5.save
-###################################################################
+	@plan1.save
+	@plan2.save
+	@plan3.save
+	@plan4.save
+end	
+##################################################################
 
+########################Imagenes##################################
 unless Image.count > 0
 	Image.create(title: 'dommy', image_url: '/data/dommy.jpg')
 end
-
 ########################Paises####################################
 unless Country.count > 0
 	Country.create(name: 'Mexico')
@@ -67,8 +67,8 @@ end
 ##################################################################
 
 ########################Estados###################################
-unless State.count > 0 
-############################Mexico####################################
+unless State.count > 0 	
+########################Mexico####################################
 	State.create(name: 'Aguascalientes', country: 1)
 	State.create(name: 'Baja California', country: 1)
 	State.create(name: 'Baja California Sur', country: 1)
@@ -100,7 +100,7 @@ unless State.count > 0
 	State.create(name: 'Veracruz', country: 1)
 	State.create(name: 'Yucatan', country: 1)
 	State.create(name: 'Zacatecas', country: 1)
-########estados unidos #########################
+######################Estados Unidos #########################
 	State.create(name: 'Alabama', country: 2)
 	State.create(name: 'Hawaii', country: 2)
 	State.create(name: 'Massachusetts', country: 2)

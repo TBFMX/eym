@@ -11,7 +11,6 @@ class EquipmentController < ApplicationController
   # GET /equipment/1
   # GET /equipment/1.json
   def show
-
     add_breadcrumb @equipment.name.to_s, equipment_path(@equipment)   
     if @equipment.image_id
       @image = Image.find(@equipment.image_id)
@@ -19,7 +18,6 @@ class EquipmentController < ApplicationController
       @image = Image.find_by(image_url: '/data/dommy.jpg')  
     end  
      @gallery = Gallery.where('equipment_id' => @equipment.id)
-
      @user = User.find(@equipment.user_id)
      @currency = Currency.find(@equipment.currency_id)
   end
