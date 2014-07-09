@@ -200,7 +200,7 @@ class EquipmentController < ApplicationController
   end
 
   def search
-    @equiṕment = Equipment.search(params[:search])
+    @equipment = Equipment.search(params[:search])
   end  
 
   def contact
