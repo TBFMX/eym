@@ -3,11 +3,9 @@
 		<li><%= link_to 'Inicio', root_url %></li>
 		<li><a href="#">Categorias</a>
 			<ul>
-				<li><a href="#">&nbsp;&nbsp;&nbsp;sub categoria 1</a></li>
-				<li><a href="#">&nbsp;&nbsp;&nbsp;sub categoria 2</a></li>
-				<li><a href="#">&nbsp;&nbsp;&nbsp;sub categoria 3</a></li>
-				<li><a href="#">&nbsp;&nbsp;&nbsp;sub categoria 4</a></li>
-				<li><a href="#">&nbsp;&nbsp;&nbsp;sub categoria 5</a></li>
+			<% @category.each do |category| %>
+				<li><a href="#">&nbsp;&nbsp;&nbsp;<%= category.title %></a></li>
+			<% end %>
 			</ul>
 		</li>
 		<li><a href="#">Industria</a>

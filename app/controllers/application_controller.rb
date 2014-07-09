@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   before_action :authorize
-  
+  before_action :menu_categorias
 
 #aplico las traducciones
  before_action :set_locale
@@ -115,6 +115,10 @@ class ApplicationController < ActionController::Base
               #session[:lasurl]= request.original_url
               redirect_to login_url , notice: "Please log in"
           end        
+      end
+
+      def menu_categorias
+        @category = Category.all
       end
 
 
