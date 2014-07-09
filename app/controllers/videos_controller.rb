@@ -4,7 +4,9 @@ class VideosController < ApplicationController
   # GET /videos
   # GET /videos.json
   def index
-    @videos = Video.all
+    @equip = Equipment.friendly.find(params[:equip])
+    @gallery = Gallery.friendly.find(params[:gal])
+    @videos = Video.where("gallery_id = ?", @gallery.id)
   end
 
   # GET /videos/1
@@ -98,7 +100,7 @@ class VideosController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_video
-      @video = Video.find(params[:id])
+      @video = Video.friendly.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

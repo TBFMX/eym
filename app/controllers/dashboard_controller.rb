@@ -8,6 +8,10 @@ class DashboardController < ApplicationController
   end
 
   def login
+     @user = User.find(session[:user_id])  
+     puts "---------------------------------"
+     puts @user.inspect
+     puts "---------------------------------"     
   end
 
   #mis equipos
@@ -30,7 +34,7 @@ class DashboardController < ApplicationController
     puts "---------------- equipment -----------------"
     puts @equips.inspect
     puts "---------------------------------"
-      @e_id = @equips.name
+      @e_id = @equips.slug
   end
 
   def imagenes
@@ -52,7 +56,7 @@ class DashboardController < ApplicationController
     @videos = Video.where("gallery_id = ?" , @galleries.id)
   end
 
-  def cuenta
+  def cuenta       
   end  
 
   private

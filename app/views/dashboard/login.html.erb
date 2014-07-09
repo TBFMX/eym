@@ -3,3 +3,7 @@
 <div class="dashboard_menu">
 	<%= render 'menu' %>
 </div>
+
+<div class="dashboard_contenido">
+	<%= render partial: 'users/form', locals: {user: @user} %>
+</div>

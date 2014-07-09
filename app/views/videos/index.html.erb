@@ -1,29 +1,18 @@
-<h1>Listing videos</h1>
+<h1>Lista de videos</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Gallery</th>
-      <th>Video url</th>
-      <th>Title</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<div class="galeriaShowBotones">
+	<%= link_to 'Agregar Video', video_nuevo_path(@equip,@gallery.title) %>
+</div>
 
-  <tbody>
-    <% @videos.each do |video| %>
-      <tr>
-        <td><%= video.gallery_id %></td>
-        <td><%= video.video_url %></td>
-        <td><%= video.title %></td>
-        <td><%= link_to 'Show', video %></td>
-        <td><%= link_to 'Edit', edit_video_path(video) %></td>
-        <td><%= link_to 'Destroy', video, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
+<div class="contenedorVideos">
+  <div class="VideosTituloGaleria">Videos</div>
+  <% @videos.each do |vid| %>
+  <div class="VideosContenido">
+    <div class="VideosGaleria"><%= vid.video_url.html_safe %></div>
+    <div class="VideosTitulo"><%= vid.title %></div>
+    <div class="Videosboton"><%= link_to 'Borrar Video', vid, method: :delete, data: { confirm: 'Are you sure?' } %></div>    
+  </div>
+  <% end %>
+</div>  
 
 <%#= link_to 'New Video', new_video_path %>

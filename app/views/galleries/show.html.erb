@@ -1,54 +1,29 @@
 <p id="notice"><%= notice %></p>
-<!--
-<p>
-  <strong>Title:</strong>
-  <%#= @gallery.title %>
-</p>
 
-<p>
-  <strong>Equipment:</strong>
-  <%#= @gallery.equipment_id %>
-</p>
+<h1>Galeria: <%= @gallery.title %></h1>
 
-<p>
-  <strong>User:</strong>
-  <%#= @gallery.user_id %>
-</p>
+<div class="galeriaShowBotones"><%= link_to 'Agregar Imagen', imagen_nueva_path(@equip,@gallery.title) %> | 
+    <%= link_to 'Agregar Video', video_nuevo_path(@equip,@gallery.title) %></div>
 
-<%#= link_to 'Edit', edit_gallery_path(@gallery) %> |
-<%#= link_to 'Back', galleries_path %>
--->
-	<td><%= link_to 'Agregar Imagen', imagen_nueva_path(@equip,@gallery.title) %></td>
-    <td><%= link_to 'Agregar Video', video_nuevo_path(@equip,@gallery.title) %></td> 
-<p>imagenes: </p>
-<table>
-	<tr>
-		<% @cont = 0 %>
-		<% @images.each do |img| %>
-		<% if @cont >= 3 %>
-			</tr>
-			<tr>
-			<% @cont = 0 %>	
-		<% end %>		
-			<td><img src="<%= img.image_url %>"  height="42" width="42" > </br> <p><%= img.title %></p></td>
-		<% @cont +=1 %>	
-		<% end %>
-	</tr>
-</table>
+<div class="contenedorImagenes">
+  <div class="imagenesTituloGaleria">Imagenes</div>
+  <% @images.each do |image| %>
+  <div class="imagenesContenido">
+    <div class="imagenesGaleria"><img src="<%= image.image_url %>"></div>
+    <div class="imagenesTitulo"><%= image.title %></div>
+    <div class="imagenesboton"><%= link_to 'Borrar Imagen', image, method: :delete, data: { confirm: 'Are you sure?' } %></div>    
+  </div>
+  <% end %>
+</div>  
 
-<p>videos: </p>
-<table>
-	<tr>
-		<% @cont = 0 %>
-		<% @videos.each do |vid| %>
-		<% if @cont >= 3 %>
-			</tr>
-			<tr>
-			<% @cont = 0 %>	
-		<% end %>		
-			<td><%= vid.video_url.html_safe %> </br> 
-				<p><%= vid.title %></p></td>
-		<% @cont +=1 %>	
-		<% end %>
-	</tr>
-</table>
+
+<div class="contenedorVideos">
+  <div class="VideosTituloGaleria">Videos</div>
+  <% @videos.each do |vid| %>
+  <div class="VideosContenido">
+    <div class="VideosGaleria"><%= vid.video_url.html_safe %></div>
+    <div class="VideosTitulo"><%= vid.title %></div>
+    <div class="Videosboton"><%= link_to 'Borrar Video', vid, method: :delete, data: { confirm: 'Are you sure?' } %></div>    
+  </div>
+  <% end %>
+</div>  
