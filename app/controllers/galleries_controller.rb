@@ -19,6 +19,7 @@ class GalleriesController < ApplicationController
   # GET /galleries/1
   # GET /galleries/1.json
   def show
+    add_breadcrumb I18n.t("breadcrumbs.equipment"), dashboard_equipos_path()
     @equip = Equipment.friendly.find(params[:equip])
     @gallery = Gallery.find_by("slug" => params[:id], "equipment_id" => @equip)    
     puts "-------------------------equipo-----------------------------------------------------"
@@ -29,7 +30,7 @@ class GalleriesController < ApplicationController
     puts "------------------------------------------------------------------------------------"
 
 
-    add_breadcrumb @equip.name.to_s, equipment_path(@equip)    
+    #add_breadcrumb @equip.name.to_s, equipment_path(@equip)    
     add_breadcrumb I18n.t("breadcrumbs.gallery"), galeria_index_path(@equip.name)    
     @images = Image.where("gallery_id = ?", @gallery.id).group(:image_url)
     @videos = Video.where("gallery_id = ?", @gallery.id).group(:video_url)
@@ -39,7 +40,7 @@ class GalleriesController < ApplicationController
   def new
     if params[:equip]
       @equip = Equipment.friendly.find(params[:equip])
-      add_breadcrumb @equip.name.to_s, equipment_path(@equip)    
+      add_breadcrumb @equip.name.to_s, equipment_path(@equip)   
       add_breadcrumb I18n.t("breadcrumbs.gallery"), galeria_index_path(@equip.name) 
       @gallery = Gallery.new('equipment_id' => @equip.id)
       @e_id = params[:equip]

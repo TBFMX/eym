@@ -4,10 +4,13 @@ class ImagesController < ApplicationController
 
   # GET galleries/images/:id
   def index
+    add_breadcrumb I18n.t("breadcrumbs.equipment"), dashboard_equipos_path()
+
     if params[:gal].nil?
       redirect_to root_path
     end
     @gallery = Gallery.friendly.find(params[:gal])
+    add_breadcrumb I18n.t("breadcrumbs.gallery"), dashboard_gallerias_path(params[:equip])
     puts "----------Gallery-----------------------"
     puts  params[:gal]
     puts "----------------------------------------"
@@ -18,6 +21,8 @@ class ImagesController < ApplicationController
   # GET /images/1
   # GET /images/1.json
   def show
+    add_breadcrumb I18n.t("breadcrumbs.equipment"), dashboard_equipos_path()
+    add_breadcrumb I18n.t("breadcrumbs.gallery"), dashboard_gallerias_path(params[:equip])
   end
 
   #GET images/new/:id 

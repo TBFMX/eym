@@ -8,6 +8,7 @@ class DashboardController < ApplicationController
   end
 
   def login
+    add_breadcrumb I18n.t("breadcrumbs.equipment"), dashboard_equipos_path()
      @user = User.find(session[:user_id])  
      puts "---------------------------------"
      puts @user.inspect
@@ -22,6 +23,7 @@ class DashboardController < ApplicationController
   end
 
   def gallerias
+    add_breadcrumb I18n.t("breadcrumbs.equipment"), dashboard_equipos_path()    
     @equips = Equipment.friendly.find(params[:equip])
     @galleries = Gallery.where("equipment_id = ?", @equips)
     #if params[:gal]
