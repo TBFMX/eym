@@ -24,11 +24,13 @@
 }
 
 
-.show_equipment .producto .preview table{
-   width: 120px;
+.show_equipment .producto .preview .imagenprevia{
+   width: 60px;
+   height: 60px;
+   float: left;
 }
 
-.show_equipment .producto .preview img{
+.show_equipment .producto .preview .imagenprevia img{
    width: 50px;
    height: 50px;
 }

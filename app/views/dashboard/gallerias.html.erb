@@ -11,11 +11,7 @@
       <tr>
         <th>Title</th>
         <th>Equipment</th>
-        <th>User</th>
-        <th></th>
-        <th colspan="2">Agregar</th>
-        <th></th>
-        <th></th>                        
+        <th colspan="5">Agregar</th>                      
       </tr>
     </thead>
 
@@ -25,14 +21,16 @@
           <td><%= gallery.slug %></td>
           <td><%= gallery.equipment_id %></td>
           <td><%= gallery.user_id %></td>
-          <td><%= link_to 'Show', galeria_show_path(@equips,gallery) %></td>
+          <td><%= link_to 'Mostrar Galeria', galeria_show_path(@equips,gallery) %></td>
           <%# if @permiso %>
-          <td> <%= link_to 'Imagen', dashboard_imagenes_path(@equips,gallery.slug) %>  <%#= link_to 'Edit', edit_gallery_path(gallery) %></td>
-          <td><%= link_to 'Video', dashboard_videos_path(@equips,gallery.slug) %><%#= link_to 'Destroy', gallery, method: :delete, data: { confirm: 'Are you sure?' } %></td> 
+          <td> <%= link_to 'Mostrar Imagenes', dashboard_imagenes_path(@equips,gallery.slug) %>  <%#= link_to 'Edit', edit_gallery_path(gallery) %></td>
+          <td><%= link_to 'Mostrar Video', dashboard_videos_path(@equips,gallery.slug) %><%#= link_to 'Destroy', gallery, method: :delete, data: { confirm: 'Are you sure?' } %></td> 
           <%# end %>
           <!--<td> <%#= link_to 'Show', gallery %></td>
           <td><%#= link_to 'Edit', edit_gallery_path(gallery) %></td>-->
-          <td><%= link_to 'Borrar', gallery, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <% unless gallery.title == "principal" %>
+            <td><%= link_to 'Borrar Galeria', gallery, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <% end %>
         </tr>
       <% end %>
     </tbody>

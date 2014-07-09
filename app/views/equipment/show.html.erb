@@ -2,7 +2,9 @@
 
 <div class="show_equipment">
   <div class="titulo"><h2><%= @equipment.name %></h2></div>
+
   <div class="producto">
+
     <div class="preview">
       <%
       @gallery.each do |g|
@@ -10,31 +12,19 @@
       link_to g.title, 'equipment/galleries/'+ g.equipment_id.to_s
       %>
 
-      <table>
-        <tr>
-          <% @cont = 0 %>
-          <% @images.each do |img| %>
-          <% if @cont >= 2 %>
-        </tr>
-        <tr>
-          <% @cont = 0 %> 
-          <% end %>
-          <% if img.image_url %>
-            <td><img src="<%= img.image_url %>"  height="42" width="42" > </td>
-          <% end %> 
-          <% @cont +=1 %> 
-          <% end %>
-          <% if @cont%2 == 0 %> <!-- nada --> <% else %> <td></td><%end%>
-        </tr>
-      </table>
+        <% @images.each do |img| %>
+          <div class="imagenprevia"><img src="<%= img.image_url %>"></div>
+        <% end %>
 
-    <% end %>
+      <% end %>
     </div>
+
     <% if @image.image_url %>
         <div class="imagen"><img src="<%= @image.image_url %>"></div>
     <%else %>
         <div class="imagen"><img src="/data/dummy.jpg"></div>  
     <% end %>        
+
     <div class="modelo">
       <table>
         <tr><th colspan="2">Modelo: <%= @equipment.modelo %></th></tr>
@@ -48,15 +38,18 @@
         <tr><th colspan="2">Contacto y localidad</th></tr> 
         <tr>
           <td colspan="2">Lugar: <%= @equipment.ciudad %>, <%= @equipment.state.name %>, <%= @equipment.country.name %></td>
-        </tr>        
+        </tr>
         <tr>
           <td><%= button_to "contacto", equipo_contacto_path(:user_id => session[:user_id], :equipment => @equipment), :method => :post %></td>
           <td><img src="/images/iconos/usuario_icono.png" height="12" width="12"> <%= @user.username %></td>
-        </tr>                 
+        </tr>              
       </table>
     </div>
-    </div>
+
+  </div>
+
   <p>Etiquetas: <%= @equipment.etiquetas %></p>
+
   <div class="descripcion">
     <h1>Description:</h1>
     <p><%= @equipment.description %></p>
