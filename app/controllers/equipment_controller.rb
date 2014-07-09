@@ -199,10 +199,15 @@ class EquipmentController < ApplicationController
     #end
   end
 
+  def search
+    @equiṕment = Equipment.search(params[:search])
+  end  
+
   def contact
     if params[:equipment]
       @equipment = Equipment.friendly.find(params[:equipment]) 
       @user = User.find(@equipment.user_id)
+      add_breadcrumb @equipment.name.to_s, equipment_path(@equipment)
     else
       redirect_to root_path
     end

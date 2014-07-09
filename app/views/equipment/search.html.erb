@@ -1,0 +1,45 @@
+<% form_tag search_path, :method => 'get' do %>
+  <p>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search", :name => nil %>
+  </p>
+<% end %>
+
+<table id ="equipments" class ="pretty" >
+		<thead>
+			<tr>
+				<td align="center"> <%= sortable "Nombre" %></td>
+				<td align="center"> <%= sortable "Año" %></td>
+				<td align="center"> <%= sortable "Color" %></td>
+				<td align="center"> <%= sortable "Marca" %></td>
+				<td align="center"> <%= sortable "Paquete" %></td>
+				<td align="center"> <%= sortable "Precio" %></td>
+				<td align="center"> <%= sortable "Modelo" %></td>
+				<td align="center"> <%= sortable "Moneda" %></td>
+				<td align="center"> <%= sortable "Pais" %></td>
+				<td align="center"> <%= sortable "Estado" %></td>
+				<td align="center"> <%= sortable "Ciudad" %></td>
+				<td align="center"> <%= sortable "Categoria" %></td>
+			</tr>
+		</thead>
+		
+
+		<tbody>			
+		    <% @equipments.each do |equipment| %>
+		      <tr>
+		        <td align="center"><%= equipment.name %></td>
+		        <td align="center"><%= equipment.year %></td>
+		        <td align="center"><%= equipment.color %></td>
+		        <td align="center"><%= equipment.brand_id %></td>
+		        <td align="center"><%= equipment.package_id %></td>
+		        <td align="center"><%= number_to_currency(equipment.precio) %></td>
+		        <td align="center"><%= equipment.modelo %></td>
+		        <td align="center"><%= equipment.currency_id %></td>
+		        <td align="center"><%= equipment.country_id %></td>
+		        <td align="center"><%= equipment.state_id %></td>
+		        <td align="center"><%= equipment.ciudad %></td>
+		        <td align="center"><%= equipment.category_id %></td>
+		      </tr>
+		    <% end %>
+	  	</tbody>
+    </table>
