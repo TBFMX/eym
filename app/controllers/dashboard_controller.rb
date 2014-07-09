@@ -30,7 +30,7 @@ class DashboardController < ApplicationController
     puts "---------------- equipment -----------------"
     puts @equips.inspect
     puts "---------------------------------"
-      @e_id = @equips.name
+      @e_id = @equips.slug
   end
 
   def imagenes
