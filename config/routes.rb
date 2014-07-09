@@ -133,6 +133,8 @@ Rails.application.routes.draw do
     get '/equipo/contacto' => :contact
     post '/equipo/contacto' => :contact
     post '/send' => :sender
+    get 'Mi_Panel/:equip/upgrade' => :master_console, :as => 'master_console'
+    post 'Mi_Panel/:equip/upgrade' => :master_console_exe , :as => 'master_console_exe'
   end
 
   controller :dashboard do

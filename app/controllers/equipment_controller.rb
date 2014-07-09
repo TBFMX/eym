@@ -148,7 +148,7 @@ class EquipmentController < ApplicationController
   def update
     respond_to do |format|
       if @equipment.update(equipment_params)
-        format.html { redirect_to @equipment, notice: 'Equipment was successfully updated.' }
+        format.html { redirect_to @equipment, notice: 'Los cambios se han guardado con exito' }
         format.json { render :show, status: :ok, location: @equipment }
       else
         format.html { render :edit }
@@ -177,7 +177,7 @@ class EquipmentController < ApplicationController
 
     @equipment.destroy
     respond_to do |format|
-      format.html { redirect_to equipment_index_url, notice: 'Equipment was successfully destroyed.' }
+      format.html { redirect_to equipment_index_url, notice: 'El equipo fue borrado exitosamente' }
       format.json { head :no_content }
     end
   end
@@ -201,6 +201,23 @@ class EquipmentController < ApplicationController
 
   def search
     @equipment = Equipment.search(params[:search])
+  end  
+
+  def master_console
+    @equipment = Equipment.friendly.find(params[:equip])
+  end
+
+  def master_console_exe
+    @equipment = Equipment.friendly.find(params[:equip])
+    respond_to do |format|
+      if @equipment.update("priority" => params[:priority], "rank" => params[:rank] )
+        format.html { redirect_to @equipment, notice: 'las prioridades para el equipo ' + @equipment.name + ' se han cambiado con exito ' }
+        format.json { render :show, status: :ok, location: @equipment }
+      else
+        format.html { render :edit }
+        format.json { render json: @equipment.errors, status: :unprocessable_entity }
+      end
+    end
   end  
 
   def contact
