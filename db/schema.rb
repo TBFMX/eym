@@ -88,10 +88,10 @@ ActiveRecord::Schema.define(version: 20140708160640) do
     t.integer  "priority"
     t.string   "modelo"
     t.string   "etiquetas"
-    t.string   "slug"
     t.string   "currency_id"
     t.string   "country_id"
     t.string   "state_id"
+    t.string   "slug"
     t.string   "pagado"
   end
 

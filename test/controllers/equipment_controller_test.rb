@@ -3,6 +3,12 @@ require 'test_helper'
 class EquipmentControllerTest < ActionController::TestCase
   setup do
     @equipment = equipment(:one)
+    @update = {
+      name:             'holahola',
+      precio:           12,
+      currency_id:      980190962,
+      description:      'hola'
+    }
   end
 
   test "should get index" do
@@ -18,7 +24,8 @@ class EquipmentControllerTest < ActionController::TestCase
 
   test "should create equipment" do
     assert_difference('Equipment.count') do
-      post :create, equipment: { brand_id: @equipment.brand_id, category_id: @equipment.category_id, color: @equipment.color, description: @equipment.description, name: @equipment.name, package_id: @equipment.package_id, publication_type: @equipment.publication_type, year: @equipment.year }
+      post :create, equipment: @update
+      #post :create, equipment: { brand_id: @equipment.brand_id, category_id: @equipment.category_id, color: @equipment.color, description: @equipment.description, name: @equipment.name, package_id: @equipment.package_id, publication_type: @equipment.publication_type, year: @equipment.year }
     end
 
     assert_redirected_to equipment_path(assigns(:equipment))

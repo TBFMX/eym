@@ -5,9 +5,9 @@ class DiscountsControllerTest < ActionController::TestCase
     @discount = discounts(:one)
     @update = {
       titulo:       'holaholahola',
-      precio:       2,
+      precio:       9.99,
       vencimiento:  2014-06-27,
-      equipment_id: 1
+      equipment_id: 298486374
     }
   end
 
