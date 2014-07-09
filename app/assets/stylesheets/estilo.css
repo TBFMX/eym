@@ -124,6 +124,7 @@ h1,h2,h3,h4,h5,h6{
    color: #000000;
    text-align: center;
    font-weight:bold;
+   text-transform: capitalize;
 }
 
 h1{font-size: 20px;}
@@ -131,7 +132,9 @@ h2{font-size: 25px;}
 h3{font-size: 30px;}
 h4{font-size: 30px;text-align: left;}
 h5{font-size: 40px;}
-h6{font-size: 45px;}
+h6{font-size: 20px;
+ text-align: left;
+}
 
 .boton {   
    font-size: 13px;
@@ -189,67 +192,11 @@ input:focus{
    margin: 10px auto 10px auto;
 }
 
-/*------------Imagenes-----------------*/
+/*-------------Galeria--------------------*/
 
-.contenedorImagenes{
-   width: 906px;
-   height: 350px;
-   margin: 10px auto 0px auto;   
+.galeriaShowBotones{
+   width: 100%;
+   text-align: right;
+   margin: 0px auto 0px auto;
 }
 
-.contenedorImagenes .imagenesTituloGaleria{
-   width: 906px;
-   height: 25px;
-   padding-top: 5px;
-   text-align: center;
-   font-size: 18px;
-   text-transform: capitalize; 
-   font-weight: bold;
-   background-color: #a6a6a6;
-   color: #FFFFFF;
-   float: left;
-}
-
-.contenedorImagenes .imagenesContenido{
-   width: 300px;
-   height: 320px;
-   border: 1px solid #a6a6a6;  
-   float: left;
-}
-
-.contenedorImagenes .imagenesContenido .imagenesGaleria{
-   width: 250px;
-   height: 250px;   
-   text-align: center;     
-   margin: 10px auto 0px auto;    
-}
-
-.contenedorImagenes .imagenesContenido .imagenesGaleria img{
-   max-width: 250px;
-   max-height: 250px;           
-}
-
-.contenedorImagenes .imagenesContenido .imagenesTitulo{
-   width: 300px;
-   height: 40px;
-   font-size: 15px;
-   text-align: center;
-   text-overflow:ellipsis; 
-   white-space:nowrap;
-   overflow:hidden;  
-}
-
-.contenedorImagenes .imagenesContenido .imagenesboton{
-   width: 300px;
-   height: 20px;
-   text-align: center;      
-}
-
-
-/*
-imagenes
-tituloGaleria
-imagenes img
-tituloImagen
-BorrarImagen
-*/

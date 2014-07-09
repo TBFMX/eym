@@ -19,7 +19,8 @@ class GalleriesController < ApplicationController
   # GET /galleries/1
   # GET /galleries/1.json
   def show
-    #@equip = Equipment.friendly.find(params[:equip])
+    @equip = Equipment.friendly.find(params[:equip])
+    @gallery = Gallery.find_by("slug" => params[:id], "equipment_id" => @equip)    
     puts "-------------------------equipo-----------------------------------------------------"
     puts @equip.inspect
     puts "------------------------------------------------------------------------------------"
@@ -112,8 +113,8 @@ class GalleriesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_gallery
-      @equip = Equipment.friendly.find(params[:equip])      
-      @gallery = Gallery.find_by("slug" => params[:id], "equipment_id" => @equip)
+      #@equip = Equipment.friendly.find(params[:equip])      
+      @gallery = Gallery.find_by("slug" => params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
