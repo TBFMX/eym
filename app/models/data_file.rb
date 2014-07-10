@@ -26,7 +26,7 @@ class DataFile < ActiveRecord::Base
 		   
 
 			##############
-			Dir.mkdir(carpeta,0700) unless File.exists?(carpeta)
+			Dir.mkdir(carpeta,0755) unless File.exists?(carpeta)
 			##############
 
 		    dir ="/data/" + carpeta.to_s
