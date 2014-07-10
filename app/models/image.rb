@@ -3,4 +3,6 @@ class Image < ActiveRecord::Base
   	friendly_id :title, :use => :slugged
 	####################################
 	belongs_to :gallery
+
+	validates :gallery_id, presence: true
 end

@@ -4,7 +4,7 @@ class EquipmentControllerTest < ActionController::TestCase
   setup do
     @equipment = equipment(:one)
     @update = {
-      name:             'holahola',
+      name:             'adfsadfasf',
       precio:           12,
       currency_id:      980190962,
       description:      'hola'

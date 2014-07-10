@@ -6,4 +6,7 @@ class Gallery < ActiveRecord::Base
 	has_many :images, dependent: :destroy
 	has_many :videos, dependent: :destroy
 
+	validates :equipment_id, presence: true
+	validates :title, presence: true
+
 end

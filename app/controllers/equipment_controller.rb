@@ -199,6 +199,10 @@ class EquipmentController < ApplicationController
     #end
   end
 
+  def preview
+    @equipment = Equipment.new(set_equipment)
+  end  
+
   def search
     @equipment = Equipment.search(params[:search])
   end  

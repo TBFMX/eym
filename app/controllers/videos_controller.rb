@@ -14,7 +14,7 @@ class VideosController < ApplicationController
   # GET /videos/1
   # GET /videos/1.json
   def show
-        add_breadcrumb I18n.t("breadcrumbs.equipment"), dashboard_equipos_path()
+    add_breadcrumb I18n.t("breadcrumbs.equipment"), dashboard_equipos_path()
     add_breadcrumb I18n.t("breadcrumbs.gallery"), dashboard_gallerias_path(params[:equip])
   end
 
@@ -24,7 +24,7 @@ class VideosController < ApplicationController
     @equipment = Equipment.find(@gallery.equipment_id)
     add_breadcrumb I18n.t("breadcrumbs.equipment"), dashboard_equipos_path()
     add_breadcrumb I18n.t("breadcrumbs.gallery"), dashboard_gallerias_path(params[:equip])   
-    add_breadcrumb I18n.t("breadcrumbs.gallery"), galeria_index_path(@equipment)   
+    #add_breadcrumb I18n.t("breadcrumbs.gallery"), galeria_index_path(@equipment)   
     add_breadcrumb I18n.t("breadcrumbs.newvideo"), video_nuevo_path(@equipment.name, @gallery.title)
     @video = Video.new("gallery_id" => @gallery.id)
   end
