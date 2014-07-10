@@ -29,4 +29,14 @@ class EquipmentTest < ActiveSupport::TestCase
   	equipment = Equipment.new
   	assert_not equipment.save, "Save without name"
   end
+
+	test "equipment is not valid without a unique title" do
+		equipment = Equipment.new(name:     	 "MyString",
+			        			  precio: 		 9,
+								  currency_id:	 298486374,
+								  description: 	 "fred")
+		assert equipment.invalid?
+		assert_equal ["ya existe"], equipment.errors[:name]
+	end
+
 end
