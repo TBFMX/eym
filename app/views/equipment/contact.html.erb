@@ -2,13 +2,13 @@
 <div class="forma_contacto">
   <div class="datos_comprador">
       <%= label_tag(:name, "Nombre: ") %>
-      <%= text_field_tag(:name) %>
+      <%= text_field_tag(:name,nil, required: true, pattern: "|^([a-zA-ZñÑáéíóúÁÉÍÓÚüÜ\s])*$|", title: "Este campo no permite caractéres especiales") %>
       <%= label_tag(:email, "Email: ") %>
-      <%= text_field_tag(:email) %>
+      <%= text_field_tag(:email,nil, required: true, pattern: "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+([\.][a-zA-Z0-9-]{2,3}){1,2}$", title: "Ingrese un formato válido Micorreo@tupagina.com" ) %>
       <%= label_tag(:phone, "Teléfono: ") %>
-      <%= text_field_tag(:phone) %>
+      <%= text_field_tag(:phone,nil, required: true, pattern: "[0-9]*", title: "Ingrese solo números") %>
       <%= label_tag(:message, "Mensaje: ") %>
-      <%= text_area_tag(:message,"" ,size: "24x6") %>
+      <%= text_area_tag(:message,"" ,size: "24x6", required: true) %>
       <%= hidden_field_tag :equipment, @equipment.slug %>           
   </div>
   <div class="datos_anuncio">

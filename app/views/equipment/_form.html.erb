@@ -48,7 +48,7 @@ $.each(inputFile.files, function() {
         <%= f.number_field :publication_type %><br>
       </div> 
       <div class="grupo_1">
-        <%= f.label :precio, "Precio de (Tipo Publicacion)" %><br>
+        <%= f.label :precio, "Precio de (Tipo Publicacion)", pattern: "/^\d{1,2}(\.\d{1,3})?$/" %><br>
         <%= f.number_field :precio %><br><br>
         <%= f.label :currency_id, "Tipo de Moneda"  %><br>
         <%= select("equipment", "currency_id", Currency.all.collect {|p| [ p.name, p.id ] }.uniq, {include_blank: 'Todos'}) %><br><br>
@@ -81,21 +81,21 @@ $.each(inputFile.files, function() {
   <div class="grupo">
       <div class="grupo_1">      
         <%= f.label :brand_id %><br>
-        <%= select("equipment", "brand_id", Brand.all.collect {|p| [ p.name, p.id ] }.uniq, {include_blank: 'Todos'}) %><br>    
+        <%= select("equipment", "brand_id", Brand.all.collect {|p| [ p.name, p.id ] }.uniq, {include_blank: 'Todos'}, required: true) %><br>    
         <%= f.label :modelo %><br>
-        <%= f.text_field :modelo %><br> 
+        <%= f.text_field :modelo, required: true  %><br> 
         <%= f.label :year %><br>
-        <%= f.number_field :year %><br>
+        <%= f.number_field :year, maxlength: "4", required: true %><br>
         <%= f.label :color %><br>
-        <%= f.text_field :color %><br>
+        <%= f.text_field :color, required: true %><br>
       </div>
       <div class="grupo_1">                    
         <%= f.label :country_id %><br>
-        <%= select("equipment", "country_id", Country.all.collect {|p| [ p.name, p.id ] }.uniq, {include_blank: 'Todos'}) %><br>   
+        <%= select("equipment", "country_id", Country.all.collect {|p| [ p.name, p.id ] }.uniq, {include_blank: 'Todos'}, required: true ) %><br>   
         <%= f.label :state_id %><br>
-        <%= select("equipment", "state_id", State.all.collect {|p| [ p.name, p.id ] }.uniq, {include_blank: 'Todos'}) %><br>      
+        <%= select("equipment", "state_id", State.all.collect {|p| [ p.name, p.id ] }.uniq, {include_blank: 'Todos', required: true }) %><br>      
         <%= f.label :ciudad %><br>
-        <%= f.text_field :ciudad %><br>
+        <%= f.text_field :ciudad, required: true  %><br>
       </div>               
   </div>
 
