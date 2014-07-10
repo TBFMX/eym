@@ -28,7 +28,8 @@
 	  </div>
 	  <div class="opciones">
 	    <%= link_to 'Edit', edit_equipment_path(equipment) %> 
-	    <%= link_to 'Imagenes', dashboard_gallerias_path(equipment, @galleries) %> 
+	    <%= link_to 'Imagenes', dashboard_gallerias_path(equipment, @galleries) %>
+	    <%= link_to 'Impulsar', master_console_path(equipment) %> 
 	    <%= link_to 'Destroy', equipment, method: :delete, data: { confirm: 'Are you sure?' } %>
 	  </div>    
 	</div>
