@@ -10,14 +10,24 @@ class Equipment < ActiveRecord::Base
 	belongs_to :brand
 	
 
-	validates :name, presence: true, uniqueness: true
+	#validates :equipment_id, presence: true, uniqueness: true
+	validates :name, presence: true
+	validates :currency_id, presence: true
+	validates :modelo ,presence: true
+	validates :state_id, presence: true
+	validates :brand_id, presence: true
+	validates :country_id, presence: true
+	validates :publication_type, presence: true
+	validates :category_id, presence: true
+	validates :ciudad, presence: true
+	#validates :package_id, presence: true
 
 	has_many :comments
 	#has_many :coments, dependent: :destroy
 
 
 	validates :precio, numericality: {greater_than_or_equal_to: 0.01}
-	validates :currency_id, :description, presence: true
+	#validates :currency_id, :description, presence: true
 
 	def should_generate_new_friendly_id?
     	new_record?

@@ -64,7 +64,7 @@ class EquipmentController < ApplicationController
           
 
           unless @pic.nil?
-            @pics = DataFile.save(@pic,@equipments.id.to_s, @equipments.name.to_s)
+            @pics = DataFile.save(@pic,@equipments.id.to_s, @equipments.slug.to_s)
           else
             @pics = "/data/dommy.jpg"  
           end
