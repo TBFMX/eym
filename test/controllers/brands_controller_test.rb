@@ -3,6 +3,9 @@ require 'test_helper'
 class BrandsControllerTest < ActionController::TestCase
   setup do
     @brand = brands(:one)
+    @update = {
+      name:   'holahola'
+    }
   end
 
   test "should get index" do
@@ -18,7 +21,8 @@ class BrandsControllerTest < ActionController::TestCase
 
   test "should create brand" do
     assert_difference('Brand.count') do
-      post :create, brand: { name: 'titulo'}
+      post :create, brand: @update
+      #post :create, brand: { name: 'titulo'}
       #post :create, brand: { name: @brand.name }
     end
 
