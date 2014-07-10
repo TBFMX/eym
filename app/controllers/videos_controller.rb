@@ -54,11 +54,11 @@ class VideosController < ApplicationController
 
     gallery = Gallery.find(params[:video][:gallery_id])
     @video = Video.new("video_url"=> @url_suprema.to_s, "gallery_id"=> gallery.id.to_i, "title"=>params[:video][:title].to_s)
-
+    @equip = Equipment.find(gallery.equipment_id)
 
     respond_to do |format|
       if @video.save
-        format.html { redirect_to '/galleries/' + params[:video][:gallery_id].to_s, notice: 'Video was successfully created.' }
+        format.html { redirect_to dashboard_gallerias_path(@equip.slug), notice: 'Video was successfully created.' }
         format.json { render :show, status: :created, location: @video }
       else
         format.html { render :new }
@@ -95,9 +95,12 @@ class VideosController < ApplicationController
   # DELETE /videos/1
   # DELETE /videos/1.json
   def destroy
+    gallery = Gallery.find(@video.gallery_id)
+    @equip = Equipment.find(gallery.equipment_id)
+
     @video.destroy
     respond_to do |format|
-      format.html { redirect_to videos_url, notice: 'Video was successfully destroyed.' }
+      format.html { redirect_to galeria_show_path(@equip.slug,gallery.slug), notice: 'Video was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

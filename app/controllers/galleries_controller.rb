@@ -31,7 +31,7 @@ class GalleriesController < ApplicationController
 
 
     #add_breadcrumb @equip.name.to_s, equipment_path(@equip)    
-    add_breadcrumb I18n.t("breadcrumbs.gallery"), galeria_index_path(@equip.name)    
+    add_breadcrumb I18n.t("breadcrumbs.gallery"), dashboard_gallerias_path(@equip.slug)    
     @images = Image.where("gallery_id = ?", @gallery.id).group(:image_url)
     @videos = Video.where("gallery_id = ?", @gallery.id).group(:video_url)
   end
