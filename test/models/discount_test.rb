@@ -24,4 +24,13 @@ class DiscountTest < ActiveSupport::TestCase
 	assert discount.valid?
   end
 
+  	test "discount is not valid without a unique title" do
+		discount = Discount.new(titulo:     	 "primerdescuento",
+			        			precio: 		 9,
+								vencimiento:	 2014-06-26,
+								equipment_id:    298486374)
+		assert discount.invalid?
+		assert_equal ["ya existe"], discount.errors[:titulo]
+	end
+
 end
