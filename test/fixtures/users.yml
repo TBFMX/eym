@@ -17,3 +17,11 @@ two:
   lastname: MyString
   email: MyString@gmail.com
   rol_id: 1
+
+three:
+  username: demo
+  password_digest: demo12
+  name: MyString
+  lastname: MyString
+  email: MyString@hotmail.com
+  rol_id: 1
