@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140708160640) do
+ActiveRecord::Schema.define(version: 20140711141641) do
 
   create_table "brands", force: true do |t|
     t.string   "name"
@@ -61,7 +61,6 @@ ActiveRecord::Schema.define(version: 20140708160640) do
     t.string   "titulo"
     t.decimal  "precio"
     t.date     "vencimiento"
-    t.decimal  "precio_anterior"
     t.integer  "equipment_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -88,10 +87,10 @@ ActiveRecord::Schema.define(version: 20140708160640) do
     t.integer  "priority"
     t.string   "modelo"
     t.string   "etiquetas"
+    t.string   "slug"
     t.string   "currency_id"
     t.string   "country_id"
     t.string   "state_id"
-    t.string   "slug"
     t.string   "pagado"
   end
 
@@ -173,7 +172,7 @@ ActiveRecord::Schema.define(version: 20140708160640) do
 
   create_table "states", force: true do |t|
     t.string   "name"
-    t.integer  "country"
+    t.integer  "country_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -148,7 +148,7 @@ class EquipmentController < ApplicationController
   def update
     respond_to do |format|
       if @equipment.update(equipment_params)
-        format.html { redirect_to @equipment, notice: 'Los cambios se han guardado con exito' }
+        format.html { redirect_to dashboard_equipos_path, notice: 'Los cambios se han guardado con exito' }
         format.json { render :show, status: :ok, location: @equipment }
       else
         format.html { render :edit }
@@ -177,7 +177,7 @@ class EquipmentController < ApplicationController
 
     @equipment.destroy
     respond_to do |format|
-      format.html { redirect_to equipment_index_url, notice: 'El equipo fue borrado exitosamente' }
+      format.html { redirect_to dashboard_equipos_path, notice: 'El equipo fue borrado exitosamente' }
       format.json { head :no_content }
     end
   end
@@ -207,15 +207,16 @@ class EquipmentController < ApplicationController
     @equipment = Equipment.search(params[:search])
   end  
 
+  # GET upgrade
   def master_console
     @equipment = Equipment.friendly.find(params[:equip])
   end
-
+  # Post Upgrade
   def master_console_exe
     @equipment = Equipment.friendly.find(params[:equip])
     respond_to do |format|
       if @equipment.update("priority" => params[:priority], "rank" => params[:rank] )
-        format.html { redirect_to @equipment, notice: 'las prioridades para el equipo ' + @equipment.name + ' se han cambiado con exito ' }
+        format.html { redirect_to dashboard_equipos_path , notice: 'las prioridades para el equipo ' + @equipment.name + ' se han cambiado con exito ' }
         format.json { render :show, status: :ok, location: @equipment }
       else
         format.html { render :edit }
