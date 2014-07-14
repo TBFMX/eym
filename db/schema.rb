@@ -61,6 +61,7 @@ ActiveRecord::Schema.define(version: 20140711141641) do
     t.string   "titulo"
     t.decimal  "precio"
     t.date     "vencimiento"
+    t.decimal  "precio_anterior"
     t.integer  "equipment_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -87,10 +88,10 @@ ActiveRecord::Schema.define(version: 20140711141641) do
     t.integer  "priority"
     t.string   "modelo"
     t.string   "etiquetas"
-    t.string   "slug"
     t.string   "currency_id"
     t.string   "country_id"
     t.string   "state_id"
+    t.string   "slug"
     t.string   "pagado"
   end
 

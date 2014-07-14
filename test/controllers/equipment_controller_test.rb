@@ -7,7 +7,8 @@ class EquipmentControllerTest < ActionController::TestCase
       name:             'adfsadfasf',
       precio:           12,
       currency_id:      980190962,
-      description:      'hola'
+      description:      'hola',
+      user_id:          113629430
     }
   end
 
