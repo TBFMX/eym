@@ -38,6 +38,7 @@ class EquipmentController < ApplicationController
   def create
     #@equipment = Equipment.new(equipment_params)
     session[:url_to_return] = ""
+    @user = User.find(session[:user_id])
     @equipment = Equipment.new(equipment_params)
     puts "-------------------Equipo---------------------------"
       puts @equipment.inspect
@@ -46,8 +47,6 @@ class EquipmentController < ApplicationController
     puts "-------------------Pic---------------------------"
       puts @pic.inspect
     puts "----------------------------------------------"
-
-    
     puts "-------------------Pics---------------------------"
       puts @pics.inspect
     puts "--------------------------------------------------" 
@@ -95,6 +94,7 @@ class EquipmentController < ApplicationController
                               if @equipments.update("image_id" => @image.id)
                                 format.html { 
                                  #me voy al show del equipo
+                                  Mailer.create_equip(@user,@equipment).deliver
                                   redirect_to @equipment, notice: 'Equipment was successfully created.'
                                 }
                                 format.json { }

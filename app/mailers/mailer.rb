@@ -36,6 +36,11 @@ class Mailer < ActionMailer::Base
     @user = user
     mail :to => user.email, :subject => "Se creo su usuario", :from => "\"Arturito Lopez\" ", :reply_to =>"arturito@tbf.mx"
   end
+  def create_equip(user,equip)
+    @user = user
+    @equipment = equip
+    mail :to => user.email, :subject => "Se creo su Anuncio", :from => "\"Arturito Lopez\" ", :reply_to =>"arturito@tbf.mx"
+  end
 
   def destroy_user(user)
     @user = user
