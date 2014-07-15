@@ -133,6 +133,7 @@ Rails.application.routes.draw do
     get '/equipo/contacto' => :contact
     post '/equipo/contacto' => :contact
     post '/send' => :sender
+    delete '/equipment/:id' => :destroy
     get 'Mi_Panel/:equip/upgrade' => :master_console, :as => 'master_console'
     post 'Mi_Panel/:equip/upgrade' => :master_console_exe , :as => 'master_console_exe'
   end
@@ -147,6 +148,17 @@ Rails.application.routes.draw do
   end  
   #get '*unmatched_route', :to => 'application#raise_not_found2'
 
+  get 'auth/:provider/callback', to: 'sessions#createfb'
+  post 'auth/:provider/callback', to: 'sessions#createfb'
+  #, via: [:get, :post]
+  get 'auth/failure', to: redirect('/')
+  post 'auth/failure', to: redirect('/')
+  #, via: [:get, :post]
+  get 'signout', to: 'sessions#destroy'
+  post 'signout', to: 'sessions#destroy'
+  #, as: 'signout', via: [:get, :post]
+
+  get 'auth/google_oauth2/callback?error=access_denied', to: redirect('/')
 
   #get 'welcome' => 'index#welcome'
   

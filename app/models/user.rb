@@ -19,6 +19,40 @@ class User < ActiveRecord::Base
 	  Mailer.password_reset(self).deliver
   end
 
+  def self.from_omniauth(auth)
+
+    @aux = User.find_by(email: auth.info.email)
+
+    if @aux.blank?
+      where(auth.slice(:provider, :uid)).first_or_initialize.tap do |user|
+
+          user.provider = auth.provider
+          user.username = auth.info.name
+          user.uid = auth.uid
+          user.name = auth.info.first_name
+        if :provider == "facebook"  
+          user.password = "FBzRGEbIp-"
+        elsif :provider == "google_oauth2"
+          user.password = "GLOTzRGEbIp-"
+        else
+          user.password = "OTzRGEbIp-"    
+        end  
+          user.email = auth.info.email
+          user.lastname = auth.info.last_name
+          @rol = Rol.find_by(rol_name: 'usuario')
+          user.rol_id = @rol.id
+          user.oauth_token = auth.credentials.token
+          user.oauth_expires_at = Time.at(auth.credentials.expires_at)
+          puts "--------------------------------------------------------------"
+          puts auth.inspect
+          puts "--------------------------------------------------------------"
+          user.save!             
+      end
+    #else
+    #  user = @aux  
+    end
+  end
+
   def generate_token(column)
     begin
       self[column] = SecureRandom.urlsafe_base64

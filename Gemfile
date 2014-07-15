@@ -15,7 +15,7 @@ gem 'coffee-rails', '~> 4.0.0'
 # gem 'therubyracer',  platforms: :ruby
 
 # Use jquery as the JavaScript library
-#gem 'jquery-rails'
+gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -51,3 +51,8 @@ gem 'will_paginate'
 gem "friendly_id", "~> 5.0.0.rc2"
 gem "magic_encoding"
 #gem "galetahub-simple_captcha", :require => "simple_captcha"
+
+gem 'omniauth-facebook', '1.4.0'
+gem 'omniauth-google-oauth2'
+gem 'omniauth-twitter'
+gem 'omniauth-identity'

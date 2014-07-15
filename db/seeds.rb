@@ -20,6 +20,9 @@ unless Rol.count > 0
 	#Rol.create(rol_name: 'tecnico', admin: false, module_1: true, module_2: true, module_3: true, module_4: true, module_5: true)
 	@rol2 = Rol.new(rol_name: 'tecnico', admin: false, module_1: true, module_2: true, module_3: true, module_4: true, module_5: true)
 	@rol2.save
+
+	@rol3 = Rol.new(rol_name: 'usuario', admin: false, module_1: true, module_2: true, module_3: true, module_4: true, module_5: true)
+	@rol3.save
 end
 ###################################################################
 
