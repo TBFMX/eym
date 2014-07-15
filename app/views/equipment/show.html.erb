@@ -6,25 +6,27 @@
   <div class="producto">
 
     <div class="preview">
-      <%
-      @gallery.each do |g|
-      @images = Image.where('gallery_id' => g.id)
-      link_to g.title, 'equipment/galleries/'+ g.equipment_id.to_s
-      %>
 
-        <% @images.each do |img| %>
-          <div class="imagenprevia"><img src="<%= img.image_url %>"></div>
+      <%unless @gallery.blank?
+        @gallery.each do |g|
+        @images = Image.where('gallery_id' => g.id)
+        link_to g.title, 'equipment/galleries/'+ g.equipment_id.to_s
+        %>
+
+          <% unless @images.blank?
+           @images.each do |img| %>
+            <div class="imagenprevia"><img src="<%= img.image_url %>"></div>
+            <% end %>
+          <% end %>
         <% end %>
-
+      </div>
       <% end %>
-    </div>
-
-    <% if @image.image_url %>
-        <div class="imagen"><img src="<%= @image.image_url %>"></div>
-    <%else %>
-        <div class="imagen"><img src="/data/dummy.jpg"></div>  
-    <% end %>        
-
+      <% if @image.image_url %>
+          <div class="imagen"><img src="<%= @image.image_url %>"></div>
+      <%else %>
+          <div class="imagen"><img src="/data/dummy.jpg"></div>  
+      <% end %>        
+    
     <div class="modelo">
       <table>
         <tr><th colspan="2">Modelo: <%= @equipment.modelo %></th></tr>

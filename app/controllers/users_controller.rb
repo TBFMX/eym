@@ -95,7 +95,7 @@ class UsersController < ApplicationController
   def recover_password
     @user = User.where(["username= ? and email= ?",params[:username],params[:email]])
     if @user.empty?
-      redirect_to "http://www.google.com/"
+      redirect_to root_path
     else
       #puts @user.inspect
 
@@ -121,6 +121,7 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
+      params[:user][:username] = params[:user][:email]
       params.require(:user).permit(:username, :password, :password_confirmation, :name, :lastname, :email, :login_date, :password_date, :rol_id)
     end
 end
