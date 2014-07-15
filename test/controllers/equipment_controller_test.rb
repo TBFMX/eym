@@ -4,11 +4,16 @@ class EquipmentControllerTest < ActionController::TestCase
   setup do
     @equipment = equipment(:one)
     @update = {
-      name:             'adfsadfasf',
-      precio:           12,
-      currency_id:      980190962,
-      description:      'hola',
-      user_id:          113629430
+      name:"My Book Title",
+      currency_id: 1,
+      modelo: 1,
+      state_id: 1,
+      brand_id: 1,
+      country_id: 1,
+      publication_type: 1,
+      category_id: 1,
+      ciudad: "1",
+      precio: 10
     }
   end
 
@@ -44,7 +49,7 @@ class EquipmentControllerTest < ActionController::TestCase
 
   test "should update equipment" do
     patch :update, id: @equipment, equipment: { brand_id: @equipment.brand_id, category_id: @equipment.category_id, color: @equipment.color, description: @equipment.description, name: @equipment.name, package_id: @equipment.package_id, publication_type: @equipment.publication_type, year: @equipment.year }
-    assert_redirected_to equipment_path(assigns(:equipment))
+    assert_redirected_to dashboard_equipos_path#(assigns(:equipment))
   end
 
   test "should destroy equipment" do
@@ -52,6 +57,6 @@ class EquipmentControllerTest < ActionController::TestCase
       delete :destroy, id: @equipment
     end
 
-    assert_redirected_to equipment_index_path
+    assert_redirected_to dashboard_equipos_path
   end
 end
