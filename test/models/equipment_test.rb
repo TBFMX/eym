@@ -5,16 +5,29 @@ class EquipmentTest < ActiveSupport::TestCase
 	equipment = Equipment.new
 	assert equipment.invalid?
 	assert equipment.errors[:name].any?
-	assert equipment.errors[:precio].any?
 	assert equipment.errors[:currency_id].any?
-	assert equipment.errors[:description].any?
+	assert equipment.errors[:modelo].any?
+	assert equipment.errors[:state_id].any?
+	assert equipment.errors[:brand_id].any?
+	assert equipment.errors[:country_id].any?
+	assert equipment.errors[:publication_type].any?
+	assert equipment.errors[:category_id].any?
+	assert equipment.errors[:ciudad].any?
+	assert equipment.errors[:precio].any?
+	#assert equipment.errors[:description].any?
   end
 
   test "equipment price must be positive" do
 	equipment = Equipment.new(name:"My Book Title",
-							  precio: 10,
-							  currency_id: "hola",
-							  description: "adios")
+							  currency_id: 1,
+							  modelo: 1,
+							  state_id: 1,
+							  brand_id: 1,
+							  country_id: 1,
+							  publication_type: 1,
+							  category_id: 1,
+							  ciudad: "1",
+							  precio: 10)
 	equipment.precio = -1
 	assert equipment.invalid?
 	assert_equal ["must be greater than or equal to 0.01"], equipment.errors[:precio]
@@ -31,10 +44,16 @@ class EquipmentTest < ActiveSupport::TestCase
   end
 
 	test "equipment is not valid without a unique title" do
-		equipment = Equipment.new(name:     	 "MyString",
-			        			  precio: 		 9,
-								  currency_id:	 298486374,
-								  description: 	 "fred")
+		equipment = Equipment.new(name: "MyString",
+							  	  currency_id: 1,
+							  	  modelo: 1,
+							  	  state_id: 1,
+							  	  brand_id: 1,
+							  	  country_id: 1,
+							  	  publication_type: 1,
+							  	  category_id: 1,
+							  	  ciudad: "1",
+							  	  precio: 10)
 		assert equipment.invalid?
 		assert_equal ["ya existe"], equipment.errors[:name]
 	end

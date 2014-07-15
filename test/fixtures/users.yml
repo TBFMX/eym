@@ -7,7 +7,7 @@ one:
   name: MyString
   lastname: MyString
   email: MyString@hotmail.com
-  rol_id: 1
+  rol_id: 298486374
 
 two:
   username: MyStringlalala
@@ -16,12 +16,12 @@ two:
   name: MyString
   lastname: MyString
   email: MyString@gmail.com
-  rol_id: 1
+  rol_id: 298486374
 
-three:
-  username: demo
-  password_digest: demo12
-  name: MyString
-  lastname: MyString
-  email: MyString@hotmail.com
-  rol_id: 1
+#three:
+#  username: demo
+#  password_digest: demo12
+#  name: MyString
+#  lastname: MyString
+#  email: MyString@hotmail.com
+#  rol_id: 298486374
