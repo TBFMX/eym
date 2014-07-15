@@ -11,9 +11,11 @@ one:
   #category_id: 1
   precio: 9.99
   currency_id: 298486374
+  user_id: 113629430
+  image_id: 298486374
 
 two:
-  name: MyString
+  name: MyString2
   #year: 1
   #color: MyString
   #brand_id: 1
@@ -23,3 +25,5 @@ two:
   #category_id: 1
   precio: 9.99
   currency_id: 298486374
+  user_id: 113629430
+  image_id: 298486374
