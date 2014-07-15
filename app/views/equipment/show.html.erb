@@ -1,3 +1,12 @@
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=<%=OORConstant.facebook_app_id%>";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
 <p id="notice"><%= notice %></p>
 
 <div class="show_equipment">
@@ -46,9 +55,9 @@
           <td><img src="/images/iconos/usuario_icono.png" height="12" width="12"> <%= @user.username %></td>
         </tr>              
       </table>
-       <%= tweet_button %>
- <%= like_button(1451557391770177) %>
-<%= google_plus_button %></div>
+        <%= render 'layouts/social_section', :title => "I wanna share this", :url => request.original_url %>
+
+</div>
       
     </div>
 
