@@ -162,11 +162,28 @@ class EquipmentController < ApplicationController
   def destroy
     #antes hay que limpiar todo
     @gallery = Gallery.where('equipment_id = ?', @equipment.id)
+    puts"---------------------galerias del equipo---------------------------------"
+    puts @gallery.inspect
+    puts"-------------------------------------------------------------------------"
     @gallery.each do |gallery|
-      @image = Image.where('gallery_id', gallery.id)
+      puts"--------------------galeria--------------------------------------------"
+      puts gallery.inspect
+      puts"-----------------------------------------------------------------------"
+      @image = Image.where('gallery_id = ?', gallery.id)
+      puts"--------------------imagenes de la galeria-----------------------------"
+      puts @image.inspect
+      puts"-----------------------------------------------------------------------"
       @image.each do |image|
+        puts"-------------------imagen--------------------------------------------"
+        puts image.inspect
+        puts"---------------------------------------------------------------------"
         pic = image.image_url
+        puts"----------------------url de la imagen-------------------------------"
+        puts pic
+        puts"---------------------------------------------------------------------"
         unless pic.equal?("/data/dummy.jpg")
+          #puts"-------------------------------------------------"
+          #puts"-------------------------------------------------"
           pics = DataFile.destroy(pic)
           puts '-------Destrui la pic ' + pic + 'y ya no debe estar'
         end

@@ -41,8 +41,6 @@ class DataFile < ActiveRecord::Base
 
 	def self.destroy(url)
 		url_dir = "public" + url.to_s
-		
-
 		if File.exist?(url_dir)
 			if File.delete(url_dir) 
 				puts '-------Destrui la pic ' + url_dir + 'y ya no debe estar NNNNNNNNNNNNNNNNOOOOOOOOOOOOOOOOOOOO---------------'
