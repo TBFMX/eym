@@ -40,7 +40,9 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.save
         Mailer.create_user(@user).deliver
-        format.html { redirect_to @user, notice: "El usuario #{@user.username} fue creado exitosamente." }
+        format.html { login2(@user.email,@user.password)
+         #redirect_to @user, notice: "El usuario #{@user.username} fue creado exitosamente." 
+       }
         format.json { render :show, status: :created, location: @user }
       else
         format.html { render :new }
@@ -117,6 +119,33 @@ class UsersController < ApplicationController
         end
     end
 
+    def login2(email, password) 
+      user = User.find_by(username: email)
+      if user and user.authenticate(password)
+        session[:user_id] = user.id
+        session[:uname] = user.username
+        session[:rol_id] = user.rol_id
+         puts "---------------------holaaaaaaaaaaa222222222222-------------------"
+        #variables de rol
+        rol =Rol.find_by(id: user.rol_id)
+        session[:mod0] =rol.admin
+        session[:mod1] =rol.module_1
+        session[:mod2] =rol.module_2
+        session[:mod3] =rol.module_3
+        session[:mod4] =rol.module_4
+        session[:mod5] =rol.module_5
+        #termina variables de rol
+        unless session[:lasurl].blank?
+          aux = session[:lasurl]
+          session[:lasurl] = ""
+          redirect_to aux
+        else
+          redirect_to root_path
+        end    
+      else
+        redirect_to root_path, alert: "Invalid user/password combination"
+      end
+    end
     
 
     # Never trust parameters from the scary internet, only allow the white list through.

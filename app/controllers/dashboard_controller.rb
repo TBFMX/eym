@@ -65,27 +65,36 @@ class DashboardController < ApplicationController
     def charge_all
     #puts "---------------------------------"
     #puts session[:user_id]   
-    #puts "---------------------------------"    
-
-      @equips = Equipment.find_by("user_id = ?" , session[:user_id])
-      @equipsWhere = Equipment.where("user_id = ?" , session[:user_id])      
-    # puts "---------------------------------"
-    # puts @equips.inspect
-    # puts "---------------------------------"  
-      #@galleries = Gallery.find_by("equipment_id = ?" , @equips.id)                 
-      @galleriesWhere = Gallery.where("equipment_id = ?" , @equips.id)
-      unless @galleries.blank?
-    # puts "----------Gallery-----------------------"
-    # puts @galleries.inspect
-    # puts "---------------------------------"                 
-        @images = Image.where("gallery_id = ?" , @galleries.id)
-    # puts "---------------------------------"
-    # puts @images.inspect
-    # puts "---------------------------------"                
-        @videos = Video.where("gallery_id = ?" , @galleries.id)
-    # puts "---------------------------------"
-    # puts @videos.inspect
-    # puts "---------------------------------"           
+    #puts "---------------------------------"  
+    @equips = Equipment.find_by("user_id = ?" , session[:user_id])  
+    unless  @equips.blank?
+        @equipsWhere = Equipment.where("user_id = ?" , session[:user_id])      
+      # puts "---------------------------------"
+      # puts @equips.inspect
+      # puts "---------------------------------"  
+        #@galleries = Gallery.find_by("equipment_id = ?" , @equips.id)                 
+        @galleriesWhere = Gallery.where("equipment_id = ?" , @equips.id)
+        unless @galleries.blank?
+      # puts "----------Gallery-----------------------"
+      # puts @galleries.inspect
+      # puts "---------------------------------"                 
+          @images = Image.where("gallery_id = ?" , @galleries.id)
+      # puts "---------------------------------"
+      # puts @images.inspect
+      # puts "---------------------------------"                
+          @videos = Video.where("gallery_id = ?" , @galleries.id)
+      # puts "---------------------------------"
+      # puts @videos.inspect
+      # puts "---------------------------------"           
+        end
+        @verificado = true
+      else
+        @verificado = false
       end
+      @verificado
+      
     end  
+
+    
+
 end
