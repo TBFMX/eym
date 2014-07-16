@@ -1,73 +1,181 @@
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=<%=OORConstant.facebook_app_id%>";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
-
 <p id="notice"><%= notice %></p>
 
-<!--      REDES SOCIALES          -->
+   <article id="slider">
+      <input checked type="radio" name="slider" id="slide1" />
+      <input type="radio" name="slider" id="slide2" />
+      <input type="radio" name="slider" id="slide3" />
+      <input type="radio" name="slider" id="slide4" />
+      <input type="radio" name="slider" id="slide5" />
 
-<%= render 'layouts/social_section', :title => "I wanna share this", :url => request.original_url %>  
-
-<!--      Vista del equipo          -->
-<div class="show_equipment">
-  <!--      titulo del equipo          -->
-  <div class="titulo"><h2><%= @equipment.name %></h2></div>
-  <!--      imagenes y detalles del equipo          -->
-  <div class="producto">
-    <div class="preview">
-      <%
-        @gallery.each do |g|
-        @images = Image.where('gallery_id' => g.id)
-        link_to g.title, 'equipment/galleries/'+ g.equipment_id.to_s
-        %>
-          <% unless @images.blank?
-           @images.each do |img| %>
-            <div class="imagenprevia"><img src="<%= img.image_url %>"></div>
-            <% end %>
-          <% end %>
-        <% end %>
-    </div>
-      
-      <% if @image.image_url %>
-          <div class="imagen"><img src="<%= @image.image_url %>"></div>
-      <%else %>
-          <div class="imagen"><img src="/data/dummy.jpg"></div>  
-      <% end %>        
-    
-    <div class="modelo">
-      <table>
-        <tr><th colspan="2">Modelo: <%= @equipment.modelo %></th></tr>
-        <tr><td>Año: <%= @equipment.year %></td><td>Color: <%= @equipment.color %></td></tr>
-        <tr><td>Marca: <%= @equipment.brand_id %></td><td> </td></tr>
-        <tr><th colspan="2">Venta / Renta</th></tr>
-        <tr>
-          <td>Precio Venta:</td>
-          <td><%= number_to_currency(@equipment.precio) %> <%= @currency.name %></td>
-        </tr>
-        <tr><th colspan="2">Contacto y localidad</th></tr> 
-        <tr>
-          <td colspan="2">Lugar: <%= @equipment.ciudad %>, <%= @equipment.state.name %>, <%= @equipment.country.name %></td>
-        </tr>
-        <tr>
-          <td><%= button_to "contacto", equipo_contacto_path(:user_id => session[:user_id], :equipment => @equipment), :method => :post %></td>
-          <td><img src="/images/iconos/usuario_icono.png" height="12" width="12"> <%= @user.username %></td>
-        </tr>            
-      </table>
-      </div> 
-    </div>
-    
-  <p>Etiquetas: <%= @equipment.etiquetas %></p>
-
-  <div class="descripcion">
-    <h1>Description:</h1>
-    <textarea readonly><%= @equipment.description %></textarea>
-  </div>
+<div id="slides">
+<div id="overflow">
+<div class="inner">
+   <% contador = 0 %>
+   <% @zone1.each do |zone| %>
+   <% contador += 1 %>
+   <%if zone.image_id   
+      @imagen = Image.find(zone.image_id)
+      @image = @imagen.image_url
+   else 
+      @image ="/data/dommy.jpg"
+   end %>   
+   <div class="welcome_show_cuadro">
+      <div class="centra_img"><%= link_to image_tag(@image), equipment_path(zone) %></div>
+      <div class="ajustar_titulo"><%= link_to zone.name, equipment_path(zone), class: "ajustar_titulo" %></div>
+      <div class="detalles">
+         <strong>Marca:</strong> <%= zone.brand.name %><br>
+         <strong>Modelo:</strong> <%= zone.modelo %><br>    
+         <strong>Año:</strong> <%= zone.year %><br>
+         <%if zone.publication_type == 1 %>Venta<% else %>Renta<% end %>: <%= number_to_currency(zone.precio) %><br/> <%= zone.currency.name %><br>
+         <img src="/images/iconos/mapa.png"> <%= zone.state.name %>, <%= zone.country.name %>
+      </div>
+   </div>      
+   <% end %>
 </div>
+</div>
+</div>
+</article>
+      <div id="active">
+         <% case contador %>
+         <% when 0..4 %>
+         <% when 5..8 %>
+            <label for="slide1"></label>         
+            <label for="slide2"></label>
+         <% when 9..12 %>
+            <label for="slide1"></label>         
+            <label for="slide2"></label> 
+            <label for="slide3"></label>                    
+         <% when 13..16 %>
+            <label for="slide1"></label>         
+            <label for="slide2"></label> 
+            <label for="slide3"></label>
+            <label for="slide4"></label>                       
+         <% else %>   
+            <label for="slide1"></label>         
+            <label for="slide2"></label> 
+            <label for="slide3"></label>
+            <label for="slide4"></label>               
+            <label for="slide5"></label>
+         <% end %>  
+      </div> <!-- #active -->
 
-<%= link_to 'Edit', edit_equipment_path(@equipment) %> |
-<%= link_to 'Back', dashboard_equipos_path %>
+<!-- ---------------------------------------- Zona 2 ----------------------------------------- -->
+   <article id="slider2">
+      <input checked type="radio" name="slider2" id="slide21" />
+      <input type="radio" name="slider2" id="slide22" />
+      <input type="radio" name="slider2" id="slide23" />
+      <input type="radio" name="slider2" id="slide24" />
+      <input type="radio" name="slider2" id="slide25" />
+
+<div id="slides2">
+<div id="overflow2">
+<div class="inner2">
+   <% contador = 0 %>
+   <% @zone2.each do |zone| %>
+   <% contador += 1 %>
+   <%if zone.image_id   
+      @imagen = Image.find(zone.image_id)
+      @image = @imagen.image_url
+   else 
+      @image ="/data/dommy.jpg"
+   end %>   
+   <div class="welcome_show_cuadro">
+      <div class="centra_img"><%= link_to image_tag(@image), equipment_path(zone) %></div>
+      <div class="ajustar_titulo"><%= link_to zone.name, equipment_path(zone), class: "ajustar_titulo" %></div>
+      <div class="detalles">
+         <strong>Marca:</strong> <%= zone.brand.name %><br>
+         <strong>Modelo:</strong> <%= zone.modelo %><br>    
+         <strong>Año:</strong> <%= zone.year %><br>
+         <%if zone.publication_type == 1 %>Venta<% else %>Renta<% end %>: <%= number_to_currency(zone.precio) %><br/> <%= zone.currency.name %><br>
+         <img src="/images/iconos/mapa.png"> <%= zone.state.name %>, <%= zone.country.name %>
+      </div>
+   </div>      
+   <% end %>
+</div>
+</div>
+</div>
+</article>
+      <div id="active2">
+         <% case contador %>
+         <% when 0..4 %>
+         <% when 5..8 %>
+            <label for="slide21"></label>         
+            <label for="slide22"></label>
+         <% when 9..12 %>
+            <label for="slide21"></label>         
+            <label for="slide22"></label> 
+            <label for="slide23"></label>                    
+         <% when 13..16 %>
+            <label for="slide21"></label>         
+            <label for="slide22"></label> 
+            <label for="slide23"></label>
+            <label for="slide24"></label>                       
+         <% else %>   
+            <label for="slide21"></label>         
+            <label for="slide22"></label> 
+            <label for="slide23"></label>
+            <label for="slide24"></label>               
+            <label for="slide25"></label>
+         <% end %>  
+      </div> <!-- #active -->
+
+
+<!-- ---------------------------------------- Zona 3 ----------------------------------------- -->
+   <article id="slider2">
+      <input checked type="radio" name="slider3" id="slide31" />
+      <input type="radio" name="slider3" id="slide32" />
+      <input type="radio" name="slider3" id="slide33" />
+      <input type="radio" name="slider3" id="slide34" />
+      <input type="radio" name="slider3" id="slide35" />
+
+<div id="slides3">
+<div id="overflow3">
+<div class="inner3">
+   <% contador = 0 %>
+   <% @zone3.each do |zone| %>
+   <% contador += 1 %>
+   <%if zone.image_id   
+      @imagen = Image.find(zone.image_id)
+      @image = @imagen.image_url
+   else 
+      @image ="/data/dommy.jpg"
+   end %>   
+   <div class="welcome_show_cuadro">
+      <div class="centra_img"><%= link_to image_tag(@image), equipment_path(zone) %></div>
+      <div class="ajustar_titulo"><%= link_to zone.name, equipment_path(zone), class: "ajustar_titulo" %></div>
+      <div class="detalles">
+         <strong>Marca:</strong> <%= zone.brand.name %><br>
+         <strong>Modelo:</strong> <%= zone.modelo %><br>    
+         <strong>Año:</strong> <%= zone.year %><br>
+         <%if zone.publication_type == 1 %>Venta<% else %>Renta<% end %>: <%= number_to_currency(zone.precio) %><br/> <%= zone.currency.name %><br>
+         <img src="/images/iconos/mapa.png"> <%= zone.state.name %>, <%= zone.country.name %>
+      </div>
+   </div>      
+   <% end %>
+</div>
+</div>
+</div>
+</article>
+      <div id="active3">
+         <% case contador %>
+         <% when 0..4 %>
+         <% when 5..8 %>
+            <label for="slide31"></label>         
+            <label for="slide32"></label>
+         <% when 9..12 %>
+            <label for="slide31"></label>         
+            <label for="slide32"></label> 
+            <label for="slide33"></label>                    
+         <% when 13..16 %>
+            <label for="slide31"></label>         
+            <label for="slide32"></label> 
+            <label for="slide33"></label>
+            <label for="slide34"></label>                       
+         <% else %>   
+            <label for="slide31"></label>         
+            <label for="slide32"></label> 
+            <label for="slide33"></label>
+            <label for="slide34"></label>               
+            <label for="slide35"></label>
+         <% end %>  
+      </div> <!-- #active -->
