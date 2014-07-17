@@ -130,6 +130,7 @@ Rails.application.routes.draw do
 
   controller :equipment do
     get 'venta' => :grid
+    post 'venta' => :grid    
     get '/equipo/contacto' => :contact
     post '/equipo/contacto' => :contact
     post '/send' => :sender

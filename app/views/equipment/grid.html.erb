@@ -38,7 +38,7 @@
     <%= select("equipment", "ciudad", Equipment.all.collect {|p| [ p.ciudad, p.ciudad ] }.uniq, {include_blank: 'Todos'}) %>
     <br>
     <%= label :category_id ,"Categoria"%><br>
-    <%= select("equipment", "category_id", Category.all.collect {|p| [ p.id, p.title ] }.uniq, {include_blank: 'Todos'}) %>
+    <%= select("equipment", "category_id", Category.all.collect {|p| [ p.title, p.id ] }.uniq, {include_blank: 'Todos'}) %>
     <br>
 
     <%= submit_tag "Filtrar", :name => nil %>
