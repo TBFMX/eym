@@ -48,7 +48,7 @@ class WelcomeController < ApplicationController
   end
   private
       def frontpage(pack)
-        @equip = Equipment.where('package_id =?',pack).order('rank ASC, priority ASC')
+        @equip = Equipment.where('package_id = ?',pack).order('rank ASC, priority ASC').limit(20) 
         return @equip
       end
 end
