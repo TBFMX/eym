@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140714150106) do
+ActiveRecord::Schema.define(version: 20140717152134) do
 
   create_table "brands", force: true do |t|
     t.string   "name"
@@ -155,8 +155,8 @@ ActiveRecord::Schema.define(version: 20140714150106) do
     t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "botton_one"
-    t.string   "botton_suscription"
+    t.text     "botton_one"
+    t.text     "botton_suscription"
   end
 
   create_table "rols", force: true do |t|

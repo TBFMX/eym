@@ -72,7 +72,7 @@ end
 ########################Estados###################################
 unless State.count > 0 	
 ########################Mexico####################################
-	State.create(name: 'Aguascalientes', country_id_id: 1)
+	State.create(name: 'Aguascalientes', country_id: 1)
 	State.create(name: 'Baja California', country_id: 1)
 	State.create(name: 'Baja California Sur', country_id: 1)
 	State.create(name: 'Campeche', country_id: 1)
