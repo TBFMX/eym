@@ -203,6 +203,7 @@ class EquipmentController < ApplicationController
   end
 
   def grid
+
     aux = params[:format]      
     cat = Category.find_by('categories.title' => aux)    
     
@@ -224,6 +225,7 @@ class EquipmentController < ApplicationController
     #  format.html
     #  format.json { render json: EquipmentsDatatable.new(view_context) }
     #end
+
   end
 
   def preview

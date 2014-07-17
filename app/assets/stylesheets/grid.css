@@ -1,0 +1,54 @@
+// Place all the styles related to the Admin controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.grid{
+	width: 920px;
+	height: 100%;
+}
+
+.grid .filtros{
+	width: 120px;
+	margin-left:10px;
+	float: left;
+	min-height: 100px;	
+}
+
+.grid .filtros select, .grid .filtros input{
+	width: 100px;
+}
+
+.grid .galeria{
+	width: 790px;
+	float: right;
+	min-height: 100px;
+}
+
+.grid .galeria .equipos{
+	width: 148px;
+	height: 198px;
+	margin: 10px 4px 10px 4px;
+	float: left;
+	border: 1px solid #666666;
+}
+
+.grid .galeria .equipos img{
+	width: 150px;
+	height: 150px;
+}
+
+.grid .galeria .equipos .imagenes{
+	width: 140px;
+	height: 140px;
+	margin: 5px 4px 5px 4px;	
+	overflow: hidden;
+}
+
+.grid .galeria .equipos .datos{
+	max-width: 140px;
+	max-height: 140px;
+	margin: 5px 4px 5px 4px;
+   	text-overflow:ellipsis; 
+   	white-space:nowrap;
+   	overflow:hidden;  	
+}

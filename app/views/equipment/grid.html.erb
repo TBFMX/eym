@@ -1,95 +1,61 @@
-
-
-<%= form_tag '/venta', :method => 'get' do %>
-  <p>
+<div class="grid">
+    <div class="filtros">
+    <%= form_tag '/venta', :method => 'get' do %>
     <%#= text_field_tag :search, params[:search] %>
-    <%= label :year, "Año" %><br>
-    <%= select("equipment", "year", Equipment.all.collect {|p| [ p.year, p.year ] }.uniq, {include_blank: 'Todos'}) %>
+    <%= select("equipment", "year", Equipment.all.collect {|p| [ p.year, p.year ] }.uniq, {include_blank: 'Año'}) %>
     <br>
-    <%= label :color, "Color" %><br>
-    <%= select("equipment", "color", Equipment.all.collect {|p| [ p.color, p.color ] }.uniq, {include_blank: 'Todos'}) %>
+    <%= select("equipment", "color", Equipment.all.collect {|p| [ p.color, p.color ] }.uniq, {include_blank: 'Color'}) %>
     <br>
-    <%= label :brand_id, "Marca" %><br>
-    <%= select("equipment", "brand_id", Brand.all.collect {|p| [ p.id, p.name ] }.uniq, {include_blank: 'Todos'}) %>
+    <%= select("equipment", "brand_id", Brand.all.collect {|p| [ p.id, p.name ] }.uniq, {include_blank: 'Marca'}) %>
     <br>
-    <%= label :package_id, "Paquete" %><br>
-    <%= select("equipment", "package_id", Package.all.collect {|p| [ p.id, p.name ] }.uniq, {include_blank: 'Todos'}) %>
+    <%= select("equipment", "package_id", Package.all.collect {|p| [ p.id, p.name ] }.uniq, {include_blank: 'Paquete'}) %>
     <br>
-    <%= label :preciod, "Desde" %><br>
-    <%= select("equipment", "preciod", Equipment.all.collect {|p| [ p.precio, number_to_currency(p.precio) ] }.uniq, {include_blank: 'Todos'}) %>
+    <%= select("equipment", "preciod", Equipment.all.collect {|p| [ p.precio, number_to_currency(p.precio) ] }.uniq, {include_blank: 'Desde'}) %>
     <br>
-    <%= label :precioh, "Hasta" %><br>
-    <%= select("equipment", "precioh", Equipment.all.collect {|p| [ p.precio, number_to_currency(p.precio) ] }.uniq, {include_blank: 'Todos'}) %>
+    <%= select("equipment", "precioh", Equipment.all.collect {|p| [ p.precio, number_to_currency(p.precio) ] }.uniq, {include_blank: 'Hasta'}) %>
     <br>
-    <%= label :modelo , "Modelo" %><br>
-    <%= select("equipment", "modelo", Equipment.all.collect {|p| [ p.modelo, p.modelo ] }.uniq, {include_blank: 'Todos'}) %>
+    <%= select("equipment", "modelo", Equipment.all.collect {|p| [ p.modelo, p.modelo ] }.uniq, {include_blank: 'Modelo'}) %>
     <br>
-    <%= label :currency_id , "Moneda" %><br>
-    <%= select("equipment", "currency_id", Equipment.all.collect {|p| [ p.currency_id, p.currency_id ] }.uniq, {include_blank: 'Todos'}) %>
+    <%= select("equipment", "currency_id", Equipment.all.collect {|p| [ p.currency_id, p.currency_id ] }.uniq, {include_blank: 'Moneda'}) %>
     <br>
 
-    <%= label :country_id , "Pais"%><br>
-    <%= select("equipment", "country_id", Equipment.all.collect {|p| [ p.country_id, p.country_id ] }.uniq, {include_blank: 'Todos'}) %>
+    <%= select("equipment", "country_id", Equipment.all.collect {|p| [ p.country_id, p.country_id ] }.uniq, {include_blank: 'Pais'}) %>
     <br>
-    <%= label :state_id ,"Estado"%><br>
-    <%= select("equipment", "state_id", Equipment.all.collect {|p| [ p.state_id, p.state_id ] }.uniq, {include_blank: 'Todos'}) %>
+    <%= select("equipment", "state_id", Equipment.all.collect {|p| [ p.state_id, p.state_id ] }.uniq, {include_blank: 'Estado'}) %>
     <br>
-    <%= label :ciudad ,"Ciudad"%><br>
-    <%= select("equipment", "ciudad", Equipment.all.collect {|p| [ p.ciudad, p.ciudad ] }.uniq, {include_blank: 'Todos'}) %>
+    <%= select("equipment", "ciudad", Equipment.all.collect {|p| [ p.ciudad, p.ciudad ] }.uniq, {include_blank: 'Ciudad'}) %>
     <br>
-    <%= label :category_id ,"Categoria"%><br>
-    <%= select("equipment", "category_id", Category.all.collect {|p| [ p.title, p.id ] }.uniq, {include_blank: 'Todos'}) %>
+
+    <%#= select("equipment", "category_id", Category.all.collect {|p| [ p.title, p.id ] }.uniq, {include_blank: 'Categoria'}) %>
     <br>
 
     <%= submit_tag "Filtrar", :name => nil %>
-  </p>
-  
-
-<% end %>
-<!-- params.require(:equipment).permit(:name, :year, :color, :brand_id, :package_id, :description, :publication_type, :precio, :modelo, :currency_id , :pais, :state_id, :ciudad, :category_id) -->
-	<table id ="equipments" class ="pretty" >
-		<thead>
-			<tr>
-				<td align="center"> <%= sortable "Nombre" %></td>
-				<td align="center"> <%= sortable "Año" %></td>
-				<td align="center"> <%= sortable "Color" %></td>
-				<td align="center"> <%= sortable "Marca" %></td>
-				<td align="center"> <%= sortable "Paquete" %></td>
-				<td align="center"> <%= sortable "Precio" %></td>
-				<td align="center"> <%= sortable "Modelo" %></td>
-				<td align="center"> <%= sortable "Moneda" %></td>
-				<td align="center"> <%= sortable "Pais" %></td>
-				<td align="center"> <%= sortable "Estado" %></td>
-				<td align="center"> <%= sortable "Ciudad" %></td>
-				<td align="center"> <%= sortable "Categoria" %></td>
-				
-			</tr>
-		</thead>
-		
-
-		<tbody>
-			
-		    <% @equipments.each do |equipment| %>
-		      <tr>
-		        <td align="center"><%= equipment.name %></td>
-		        <td align="center"><%= equipment.year %></td>
-		        <td align="center"><%= equipment.color %></td>
-		        <td align="center"><%= equipment.brand_id %></td>
-		        <td align="center"><%= equipment.package_id %></td>
-		        <td align="center"><%= number_to_currency(equipment.precio) %></td>
-		        <td align="center"><%= equipment.modelo %></td>
-		        <td align="center"><%= equipment.currency_id %></td>
-		        <td align="center"><%= equipment.country_id %></td>
-		        <td align="center"><%= equipment.state_id %></td>
-		        <td align="center"><%= equipment.ciudad %></td>
-		        <td align="center"><%= equipment.category_id %></td>
-		        
-		      </tr>
-		    <% end %>
-		
-	  	</tbody>
-    </table>
+    <% end %>
+    </div>
 
 
+    <div class="galeria">
+    <% @equipments.each do |equipment| %>
+        <div class="equipos">
+            <div class="imagenes">
+                <% @images = Image.find(equipment.image_id) %>
+                <% if @images.image_url %>
+                    <div class="imagen">
+                        <%= link_to image_tag(@images.image_url ), equipment_path(equipment) %>
+                    </div>
+                <%else %>
+                    <div class="imagen"><img src="/data/dummy.jpg"></div>  
+                <% end %>  
+            </div>
+            <div class="datos"><%= link_to equipment.name, equipment_path(equipment) %>
+                <%#= equipment.name %><br />
+                <%= number_to_currency(equipment.currency_id) %>
+            </div>
+        </div>
+     <% end %>                                      
+    </div>   
 
-<%#= will_paginate @equipments %>
+
+</div>
+
+

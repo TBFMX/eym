@@ -61,6 +61,7 @@ ActiveRecord::Schema.define(version: 20140717152134) do
     t.string   "titulo"
     t.decimal  "precio"
     t.date     "vencimiento"
+    t.decimal  "precio_anterior"
     t.integer  "equipment_id"
     t.datetime "created_at"
     t.datetime "updated_at"
