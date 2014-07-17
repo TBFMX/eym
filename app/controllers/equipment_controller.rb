@@ -1,6 +1,7 @@
 class EquipmentController < ApplicationController
   before_action :set_equipment, only: [:show, :edit, :update, :destroy]
   helper_method :sort_column, :sort_direction
+  skip_before_action :authorize, only: [:show,:grid]
 
   # GET /equipment
   # GET /equipment.json
@@ -190,7 +191,13 @@ class EquipmentController < ApplicationController
 
     @equipment.destroy
     respond_to do |format|
-      format.html { redirect_to dashboard_equipos_path, notice: 'El equipo fue borrado exitosamente' }
+      format.html {    @equips = Equipment.find_by("user_id = ?" , session[:user_id])  
+        unless  @equips.blank?
+          redirect_to dashboard_equipos_path, notice: 'El equipo fue borrado exitosamente'
+        else
+          redirect_to dashboard_index_path, notice: 'El equipo fue borrado exitosamente' 
+        end
+      }
       format.json { head :no_content }
     end
   end
