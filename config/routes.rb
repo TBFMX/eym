@@ -134,6 +134,7 @@ Rails.application.routes.draw do
     get '/equipo/contacto' => :contact
     post '/equipo/contacto' => :contact
     post '/send' => :sender
+    get '/preview/:id' => :preview , as: 'preview'
     #delete '/equipo/:id' => :destroy , :as =>'destroy_equip'
     get 'Mi_Panel/:equip/upgrade' => :master_console, :as => 'master_console'
     post 'Mi_Panel/:equip/upgrade' => :master_console_exe , :as => 'master_console_exe'

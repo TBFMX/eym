@@ -53,7 +53,6 @@ class EquipmentController < ApplicationController
     puts "--------------------------------------------------" 
     respond_to do |format|
       if secure_save(@equipment)
-
         format.html { 
           #saco la id del proyecto
           @equipments = Equipment.find(@equipment)
@@ -61,15 +60,12 @@ class EquipmentController < ApplicationController
           puts @equipments.inspect
           puts "------------------------------------------------------"
           ########################
-          
-
           unless @pic.nil?
             @pics = DataFile.save(@pic,@equipments.id.to_s, @equipments.slug.to_s)
           else
             @pics = "/data/dommy.jpg"  
           end
           ########################
-
           unless @pic.nil?
           #creo la galleria
             @gallery=Gallery.new("equipment_id"=>@equipments.id, "title" =>"principal")
@@ -231,7 +227,17 @@ class EquipmentController < ApplicationController
   end
 
   def preview
-    @equipment = Equipment.new(set_equipment)
+    @equipment = Equipment.friendly.find(params[:id])
+    if @equipment.image_id
+      @image = Image.find(@equipment.image_id)
+    else
+      @image = Image.find_by(image_url: '/data/dommy.jpg')  
+    end  
+      @gallery = Gallery.where('equipment_id' => @equipment.id)
+      @user = User.find(@equipment.user_id)
+      @currency = Currency.find(@equipment.currency_id)
+      @pack = Package.find(@equipment.package_id)
+
   end  
 
   def search
@@ -280,6 +286,11 @@ class EquipmentController < ApplicationController
     #puts "----------------------------------------------------------------"
     Mailer.equipment_contact(buyer_m,buyer_n,buyer_ms,buyer_p,seller,equipment).deliver
     redirect_to equipment_path(equipment)
+  end
+
+  def ver_payment
+    #recibe la respuesta de paypal
+    
   end  
 
   private

@@ -5,19 +5,6 @@
 
   <div class="producto">
 
-    <div class="preview">
-      <%
-      @gallery.each do |g|
-      @images = Image.where('gallery_id' => g.id)
-      link_to g.title, 'equipment/galleries/'+ g.equipment_id.to_s
-      %>
-
-        <% @images.each do |img| %>
-          <div class="imagenprevia"><img src="<%= img.image_url %>"></div>
-        <% end %>
-
-      <% end %>
-    </div>
 
     <% if @image.image_url %>
         <div class="imagen"><img src="<%= @image.image_url %>"></div>
@@ -58,23 +45,31 @@
 
 <%#= link_to 'Edit', edit_equipment_path(@equipment) %> |
 <%#= link_to 'Back', dashboard_equipos_path %>
-<% form_tag equipment_path %>
-  <%= hidden_field_tag :publication_type %>
-  <%= hidden_field_tag :precio %>
-  <%= hidden_field_tag :currency_id %>
-  <%= hidden_field_tag :category_id %>
-  <%= hidden_field_tag :package_id %>
-  <%= hidden_field_tag :image_id %>
-  <%= hidden_field_tag :name %>
-  <%= hidden_field_tag :etiquetas %>
-  <%= hidden_field_tag :description %>    
-  <%= hidden_field_tag :brand_id %>
-  <%= hidden_field_tag :modelo %>
-  <%= hidden_field_tag :year %>
-  <%= hidden_field_tag :color %>
-  <%= hidden_field_tag :country_id %>
-  <%= hidden_field_tag :state_id %>
-  <%= hidden_field_tag :ciudad %>
-  <%= hidden_field_tag :user_id %>
-  <%= submit_tag "Guardar"  %>
-<% end %>
+
+<%# form_tag equipment_path do%>
+  <%#= hidden_field_tag :publication_type %>
+  <%#= hidden_field_tag :precio %>
+  <%#= hidden_field_tag :currency_id %>
+  <%#= hidden_field_tag :category_id %>
+  <%#= hidden_field_tag :package_id %>
+  <%#= hidden_field_tag :image_id %>
+  <%#= hidden_field_tag :name %>
+  <%#= hidden_field_tag :etiquetas %>
+  <%#= hidden_field_tag :description %>    
+  <%#= hidden_field_tag :brand_id %>
+  <%#= hidden_field_tag :modelo %>
+  <%#= hidden_field_tag :year %>
+  <%#= hidden_field_tag :color %>
+  <%#= hidden_field_tag :country_id %>
+  <%#= hidden_field_tag :state_id %>
+  <%#= hidden_field_tag :ciudad %>
+  <%#= hidden_field_tag :user_id %>
+  <%#= submit_tag "Guardar"  %>
+<%# end %>
+</br>
+<div>
+<%= @pack.botton_one.html_safe%>
+
+<%= @pack.botton_suscription.html_safe%>
+
+</div>
