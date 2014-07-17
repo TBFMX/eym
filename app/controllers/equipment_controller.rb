@@ -237,6 +237,9 @@ class EquipmentController < ApplicationController
       @user = User.find(@equipment.user_id)
       @currency = Currency.find(@equipment.currency_id)
       @pack = Package.find(@equipment.package_id)
+      puts "-------------------pack---------------------------"
+      puts @pack.inspect
+      puts "--------------------------------------------------" 
 
   end  
 

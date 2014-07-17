@@ -3,7 +3,7 @@
 <head>
   <title>Equipos y Maquinas</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+
   <%= csrf_meta_tags %>
 </head>
   <%= render partial: "layouts/header" %>
@@ -13,5 +13,6 @@
 	<div class="content"><div class="interior"><%= yield %></div></div>
 </body>
   <%= render partial: "layouts/footer" %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>  
 </html>
 
