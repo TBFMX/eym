@@ -203,12 +203,19 @@ class EquipmentController < ApplicationController
   end
 
   def grid
+    aux = params[:format]      
+    cat = Category.find_by('categories.title' => aux)    
+    
     #@equipments = Equipment.all
     puts "-------parametros---------"
     puts params.inspect
     puts "--------------------------"
-    @equipments = Equipment.query(params[:equipment]).order(sort_column + ' ' + sort_direction)
-    #@equipments = Equipment.query(params[:equipment]).order(sort_column + ' ' + sort_direction).paginate(:per_page => 10, :page => params[:page])
+    unless cat.blank?
+      @equipments = Equipment.where('category_id' => cat.id).order(sort_column + ' ' + sort_direction)
+    else  
+      @equipments = Equipment.query(params[:equipment]).order(sort_column + ' ' + sort_direction)
+      #@equipments = Equipment.query(params[:equipment]).order(sort_column + ' ' + sort_direction).paginate(:per_page => 10, :page => params[:page])
+    end
     puts "-------equipments---------"
     puts @equipments.inspect
     puts "--------------------------"

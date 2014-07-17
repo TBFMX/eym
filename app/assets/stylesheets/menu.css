@@ -88,6 +88,7 @@
        text-align:left;
        background-color:#FFFFFF;
        z-index: 1;
+       padding-left: 10px;
     }
 
     
@@ -96,6 +97,7 @@
        color:#FFFFFF;
        text-decoration:none;
        z-index: 1;
+
    }
 
 .menu_publica {

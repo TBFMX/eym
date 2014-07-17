@@ -4,7 +4,7 @@
 		<li><a href="#">Categorias</a>
 			<ul>
 			<% @category.each do |category| %>
-				<li><a href="#">&nbsp;&nbsp;&nbsp;<%= category.title %></a></li>
+				<li><%= link_to category.title, venta_path(category.title), method: :post %></a></li>
 			<% end %>
 			</ul>
 		</li>
