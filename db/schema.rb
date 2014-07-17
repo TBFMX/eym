@@ -11,7 +11,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140717152134) do
+
+ActiveRecord::Schema.define(version: 20140716232622) do
+
 
   create_table "brands", force: true do |t|
     t.string   "name"
@@ -61,7 +63,6 @@ ActiveRecord::Schema.define(version: 20140717152134) do
     t.string   "titulo"
     t.decimal  "precio"
     t.date     "vencimiento"
-    t.decimal  "precio_anterior"
     t.integer  "equipment_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -93,6 +94,7 @@ ActiveRecord::Schema.define(version: 20140717152134) do
     t.string   "country_id"
     t.string   "state_id"
     t.string   "pagado"
+    t.integer  "status"
   end
 
   add_index "equipment", ["slug"], name: "index_equipment_on_slug"
@@ -196,6 +198,7 @@ ActiveRecord::Schema.define(version: 20140717152134) do
     t.string   "provider"
     t.string   "oauth_token"
     t.datetime "oauth_expires_at"
+    t.integer  "active"
   end
 
   create_table "videos", force: true do |t|
