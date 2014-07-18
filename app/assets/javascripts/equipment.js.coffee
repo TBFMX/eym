@@ -10,10 +10,10 @@ jQuery ->
 	    options = $(states).filter("optgroup[label='#{escaped_country}']").html()
 	    if options
 	      $('#equipment_state_id').html(options)
-	      $('#equipment_state_id').parent().show()
+#	      $('#equipment_state_id').parent().show()
 	    else
 	      $('#equipment_state_id').empty()
-	      $('#equipment_state_id').parent().hide()
+#	      $('#equipment_state_id').parent().hide()
 
 
 			

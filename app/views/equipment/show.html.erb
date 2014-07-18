@@ -68,6 +68,7 @@
     <textarea readonly><%= @equipment.description %></textarea>
   </div>
 </div>
-
+<div class="fb-share-button" data-href="<%= request.original_url%>"></div>
+<p>url : <%= request.original_url%></p>
 <%= link_to 'Edit', edit_equipment_path(@equipment) %> |
 <%= link_to 'Back', dashboard_equipos_path %>

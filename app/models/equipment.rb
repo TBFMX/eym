@@ -1,5 +1,6 @@
 class Equipment < ActiveRecord::Base
 	extend FriendlyId
+	before_save :default_values
   	friendly_id :name, :use => :slugged
 	#######################################
 	has_many :galleries, dependent: :destroy
@@ -28,6 +29,12 @@ class Equipment < ActiveRecord::Base
 
 	validates :precio, numericality: {greater_than_or_equal_to: 0.01}
 	#validates :currency_id, :description, presence: true
+
+
+  	def default_values
+   	 self.status ||= '0'
+  	end
+
 
 	def should_generate_new_friendly_id?
     	new_record?
