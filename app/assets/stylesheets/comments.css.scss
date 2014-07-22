@@ -1,3 +1,38 @@
 // Place all the styles related to the Comments controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+/*-------------Comentarios---------------*/
+
+.comentarios_formulario{
+   width: 100%;
+}
+
+.comentarios_formulario textarea{
+   width: 100%;
+   margin: 10px auto 0px auto;
+}
+
+.comentarios{
+   width: 100%;
+   max-height: 250px;
+   overflow: scroll;
+}
+
+.comentarios_usuario{
+   width: 70%;
+   float: left;
+}
+
+.comentarios_destroy{
+   width: 30%;
+   text-align: right;
+   float: right;
+}
+
+.comentarios_comentario{
+   width: 100%;
+   margin: 10px 0px 10px 0px; 
+   border-bottom: 1px solid #666666;  
+}

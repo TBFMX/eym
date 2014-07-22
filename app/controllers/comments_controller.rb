@@ -15,7 +15,7 @@ class CommentsController < ApplicationController
     @equipment = Equipment.friendly.find(params[:id])
     @comments = Comment.where('equipment_id' => @equipment.id)
     add_breadcrumb @equipment.name.to_s, equipment_path(@equipment)
-    add_breadcrumb 'comment',comentarios_index(@equipment.name)
+    add_breadcrumb 'comment',comentarios_index_path(@equipment.name)
     
   end
 
@@ -31,8 +31,8 @@ class CommentsController < ApplicationController
   #comments/new/:id
   def new
     @comment = Comment.new
-        add_breadcrumb @equipment.name.to_s, '/equipment/' + @equipment.id.to_s
-    add_breadcrumb 'newcomment', '/comments/' + @comment.id.to_s
+   #     add_breadcrumb @equipment.name.to_s, '/equipment/' + @equipment.id.to_s
+    #add_breadcrumb 'newcomment', '/comments/' + @comment.id.to_s
   end
 
   # GET /comments/1/edit
@@ -49,7 +49,7 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to @comment, notice: 'Comment was successfully created.' }
+        format.html { redirect_to equipment_path(@comment.equipment.id), notice: 'Comment was successfully created.' }
         format.json { render :show, status: :created, location: @comment }
       else
         format.html { render :new }
@@ -75,9 +75,10 @@ class CommentsController < ApplicationController
   # DELETE /comments/1
   # DELETE /comments/1.json
   def destroy
+    @equipment = Equipment.find(@comment.equipment_id)
     @comment.destroy
     respond_to do |format|
-      format.html { redirect_to comments_url, notice: 'Comment was successfully destroyed.' }
+      format.html { redirect_to equipment_path(@equipment), notice: 'Comment was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

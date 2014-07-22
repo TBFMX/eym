@@ -12,15 +12,22 @@ class EquipmentController < ApplicationController
   # GET /equipment/1
   # GET /equipment/1.json
   def show
-    add_breadcrumb @equipment.name.to_s, equipment_path(@equipment)   
+    add_breadcrumb @equipment.slug.to_s, equipment_path(@equipment)   
     if @equipment.image_id
       @image = Image.find(@equipment.image_id)
     else
       @image = Image.find_by(image_url: '/data/dommy.jpg')  
     end  
-     @gallery = Gallery.where('equipment_id' => @equipment.id)
+     @gallery = Gallery.where('equipment_id = ?', @equipment.id)
      @user = User.find(@equipment.user_id)
      @currency = Currency.find(@equipment.currency_id)
+     @comments = Comment.where('equipment_id = ?', @equipment.id)
+     
+     puts "-------------------Comments---------------------------"
+    puts @comments.inspect
+     puts "----------------------------------------------"    
+
+     @comment = Comment.new('user_id' => session[:user_id],"equipment_id" => @equipment.id)
   end
 
   # GET /equipment/new
