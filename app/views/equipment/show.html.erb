@@ -67,6 +67,12 @@
     <h1>Description:</h1>
     <textarea readonly><%= @equipment.description %></textarea>
   </div>
+
+
+  <h1>Comentarios:</h1>
+    <%= render partial: '/comments/form', locals: {equipment: @equipment.slug, comment: @comment} %> 
+    <%= render partial: '/comments/index', locals: {equipment: @equipment.slug, comments: @comments} %>
+
 </div>
 
 <%#= link_to 'Edit', edit_equipment_path(@equipment) %>
