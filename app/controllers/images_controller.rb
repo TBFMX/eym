@@ -102,21 +102,29 @@ class ImagesController < ApplicationController
   def destroy
     #me preparo para borrar la imagen  
     @equip = Equipment.find_by('image_id' => @image.id)
+    @gal = Gallery.find(@image.gallery_id)
+    
     @image.destroy
     respond_to do |format|
       format.html { 
         unless @equip.nil?
+          n_image = Image.find_by('gallery_id' => @gal.id)
+          puts "-----------------------------------------------------------------------------------------"
+          puts "entro id: " + n_image.id.to_s
+          puts "-----------------------------------------------------------------------------------------"
           respond_to do |format|
-            if @equip.update(:image_id => nil)  
+            if @equip.update(:image_id => n_image.id)
+              puts "asigno"
               format.html {  redirect_to dashboard_index_url, notice: 'Image was successfully destroyed.'} 
               format.json {}  
             else
+              puts "no asigno"
               format.html { redirect_to dashboard_index_url, notice: 'Image wasnt successfully destroyed.' }
               format.json { render json: @image.errors, status: :unprocessable_entity }
             end
           end 
         else
-          redirect_to dashboard__index_url, notice: 'Image was successfully destroyed.'  
+          redirect_to dashboard_index_url, notice: 'Image was successfully destroyed.'  
         end
       }
       format.json { head :no_content }

@@ -81,9 +81,9 @@ class Mailer < ActionMailer::Base
     @seller = seller
     @equipment = equipment        
     mail(:to => @seller.email, :subject => "Nueva notificacion EYM anuncio", :from => "\"EYM\" ", :reply_to =>"arturito@tbf.mx")
-    puts "---------------------pase el primero---------------------"
-    mail(:to => buyer_m, :subject => "Nueva notificacion EYM anuncio" + equipment.name.to_s, :from => "\"EYM\" ", :reply_to =>"arturito@tbf.mx")
-    puts "---------------------pase el segundo---------------------"
+    #puts "---------------------pase el primero---------------------"
+    #mail(:to => buyer_m, :subject => "Nueva notificacion EYM anuncio" + equipment.name.to_s, :from => "\"EYM\" ", :reply_to =>"arturito@tbf.mx")
+    #puts "---------------------pase el segundo---------------------"
   end  
 
 end

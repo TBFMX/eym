@@ -15,6 +15,11 @@
 			    Bienvenido <strong> <%= session[:uname] %> | <%= link_to "Mi Cuenta", dashboard_index_path %></strong> | <%= link_to 'Logout', logout_path, method: :delete %>
 			<%end %>
 		</div>
-		<div class="buscador"></div>
+		<div class="buscador">
+			<%#=form_tag equipment/search  do  %>
+				<%#= text_field_tag :search %>
+				<%#= submit_tag %>
+			<%#end%>	
+		</div>
 	</div>		
 </div>
