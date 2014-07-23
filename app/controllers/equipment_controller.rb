@@ -377,8 +377,12 @@ class EquipmentController < ApplicationController
 
   def users_view
     user = params[:user_id]
+    @users = User.find(user)
     @equips = Equipment.where('user_id = ?', user)
-
+      puts params.inspect
+      puts "-------------------equips---------------------------"
+      puts @equips.inspect
+      puts "--------------------------------------------------" 
   end
 
   def ver_payment

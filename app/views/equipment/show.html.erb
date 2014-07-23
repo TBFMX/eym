@@ -55,7 +55,7 @@
         </tr>
         <tr>
           <td><%= button_to "contacto", equipo_contacto_path(:user_id => session[:user_id], :equipment => @equipment), :method => :post %></td>
-          <td><img src="/images/iconos/usuario_icono.png" height="12" width="12"> <%= @user.username %></td>
+          <td><img src="/images/iconos/usuario_icono.png" height="12" width="12"> <%= link_to @user.username, users_view_path(:user_id => @equipment.user_id) %></td>
         </tr>            
       </table>
       </div> 

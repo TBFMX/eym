@@ -18,7 +18,7 @@ class UsersController < ApplicationController
 
   # GET /users/new
   def new
-    @user = User.new
+    @user = User.new('rol_id' => 2)
   end
 
   # GET /users/1/edit
@@ -151,6 +151,7 @@ class UsersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
       params[:user][:username] = params[:user][:email]
+      params[:user][:rol_id] = 2
       params.require(:user).permit(:username, :password, :password_confirmation, :name, :lastname, :email, :login_date, :password_date, :rol_id)
     end
 end

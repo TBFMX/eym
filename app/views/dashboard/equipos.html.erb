@@ -1,11 +1,11 @@
-<h1>Lista de Anuncios</h1>
+<h1>Lista de Anuncios2</h1>
 
 <div class="dashboard_menu">
 	<%= render 'menu' %>
 </div>
 
 <div class="dashboard_contenido">
-	<% @equipment.each do |equipment| %>
+	<% @equips.each do |equipment| %>
 	<div class="lista_show_equipment">
 	  <% if equipment.image_id %>
 	    <% @image = Image.find(equipment.image_id) %>
