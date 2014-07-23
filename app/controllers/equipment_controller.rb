@@ -164,7 +164,7 @@ class EquipmentController < ApplicationController
           unless @pic.nil?
             @pics = DataFile.save(@pic,@equipment.id.to_s, @equipment.slug.to_s)
           else
-            @pics = "/data/dommy.jpg"  
+            @pics = nil
           end
 
           unless @pics.nil?
@@ -309,7 +309,6 @@ class EquipmentController < ApplicationController
     #  format.html
     #  format.json { render json: EquipmentsDatatable.new(view_context) }
     #end
-
   end
 
   def preview
@@ -326,7 +325,6 @@ class EquipmentController < ApplicationController
       puts "-------------------pack---------------------------"
       puts @pack.inspect
       puts "--------------------------------------------------" 
-
   end  
 
   def search
