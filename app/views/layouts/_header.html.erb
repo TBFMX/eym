@@ -16,10 +16,10 @@
 			<%end %>
 		</div>
 		<div class="buscador">
-			<%#=form_tag equipment/search  do  %>
-				<%#= text_field_tag :search %>
-				<%#= submit_tag %>
-			<%#end%>	
+			<%=form_tag 'equipos/resultados'  do  %>
+				<%= text_field_tag :search %>
+				<%= submit_tag 'Buscar'%>
+			<%end%>	
 		</div>
 	</div>		
 </div>

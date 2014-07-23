@@ -24,7 +24,7 @@ class EquipmentController < ApplicationController
      @comments = Comment.where('equipment_id = ?', @equipment.id)
      
      puts "-------------------Comments---------------------------"
-    puts @comments.inspect
+     puts @comments.inspect
      puts "----------------------------------------------"    
 
      @comment = Comment.new('user_id' => session[:user_id],"equipment_id" => @equipment.id)
@@ -328,7 +328,7 @@ class EquipmentController < ApplicationController
   end  
 
   def search
-    @equipment = Equipment.search(params[:search])
+    @equipments = Equipment.search(params[:search])
   end  
 
   # GET upgrade
@@ -373,6 +373,12 @@ class EquipmentController < ApplicationController
     #puts "----------------------------------------------------------------"
     Mailer.equipment_contact(buyer_m,buyer_n,buyer_ms,buyer_p,seller,equipment).deliver
     redirect_to equipment_path(equipment)
+  end
+
+  def users_view
+    user = params[:user_id]
+    @equips = Equipment.where('user_id = ?', user)
+
   end
 
   def ver_payment

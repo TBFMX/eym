@@ -59,8 +59,38 @@ class DashboardController < ApplicationController
   end
 
   def cuenta       
-  end  
+  end 
 
+  def contact_rep
+    #@contacts = Contact.find_by_sql("select c.* from contactos c, equipment e where e.user_id = ? and e.id == c.equipment_id group by c.equipment_id order by c.name")
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render :pdf => "report", :layout => 'pdf.html.haml'
+      end
+    end
+  end 
+=begin  
+  def operations_rep
+    @operations = Product.all
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render :pdf => "report", :layout => 'pdf.html.haml'
+      end
+    end
+  end 
+=end
+  def equipments_status_rep
+    @equips = Equipment.where('user_id = ?', seesion[:user_id])
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render :pdf => "report", :layout => 'pdf.html.erb'
+      end
+    end
+  end 
+  
   private
     def charge_all
     #puts "---------------------------------"

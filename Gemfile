@@ -60,3 +60,8 @@ gem 'omniauth-identity'
 #gem "social-buttons", '~> 0.3'
 gem "social-buttons", git: "git://github.com/kristianmandrup/social-buttons.git"
 #gem "sms_fu"
+
+#generar pdfs
+gem 'wkhtmltopdf-binary'
+gem 'wicked_pdf'
+#fin generar pdfs

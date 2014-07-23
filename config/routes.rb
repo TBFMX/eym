@@ -138,6 +138,8 @@ Rails.application.routes.draw do
     #delete '/equipo/:id' => :destroy , :as =>'destroy_equip'
     get 'Mi_Panel/:equip/upgrade' => :master_console, :as => 'master_console'
     post 'Mi_Panel/:equip/upgrade' => :master_console_exe , :as => 'master_console_exe'
+    get  'equipos/resultados' => :search , :as => 'search'
+    post 'equipos/resultados' => :search
   end
 
   controller :dashboard do

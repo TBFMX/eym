@@ -24,7 +24,8 @@
 		</thead>
 		
 
-		<tbody>			
+		<tbody>	
+		<% unless @equipments.nil? %>		
 		    <% @equipments.each do |equipment| %>
 		      <tr>
 		        <td align="center"><%= equipment.name %></td>
@@ -41,5 +42,9 @@
 		        <td align="center"><%= equipment.category_id %></td>
 		      </tr>
 		    <% end %>
+		<% else %>
+			<tr> <td> No hay resultados a su busqueda</td> </tr>	    
+		<% end %>    
+
 	  	</tbody>
     </table>

@@ -42,10 +42,10 @@ class Equipment < ActiveRecord::Base
 
 	def self.search(search)
 	  if search
-	    find(:all, :conditions => ['description LIKE ? or etiquetas LIKE ?', "%#{search}%","%#{search}%" ])
+	    where('description LIKE ? or etiquetas LIKE ?', search,search)
 	    #.order('package DESC,rank ASC, priority ASC')
 	  else
-	    find(:all)
+	    all
 	  end
 	end
 
