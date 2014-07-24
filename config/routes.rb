@@ -140,6 +140,7 @@ Rails.application.routes.draw do
     post 'Mi_Panel/:equip/upgrade' => :master_console_exe , :as => 'master_console_exe'
     get  'equipos/resultados' => :search , :as => 'search'
     post 'equipos/resultados' => :search
+    get 'equipos/listado' => :users_view, :as => 'users_view'
   end
 
   controller :dashboard do
