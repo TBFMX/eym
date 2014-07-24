@@ -40,6 +40,56 @@ class Equipment < ActiveRecord::Base
     	new_record?
   	end
 
+  	def self.s_charge(zona)
+  		aux =Equipment.where("zona = ? and status <> 0", zona).cont()
+  		if aux > 4
+	  		count = 0
+	  		content_aux = " 1 = 1"
+	  		array_aux = Array.new
+	  		if aux >= 20
+		  		while cont < 20 do
+		  			esta = false
+		  			i_aux = rand(0..aux)
+		  			content_aux.each do |ar|
+		  				if ar == i_aux
+		  					esta = true
+		  				end	
+		  			end	
+		  			unless esta
+		  				ar[cont] = i_aux
+		  				cont += 1
+		  			end	
+		  		end
+		  	elsif aux < 20
+		  		while cont < aux do
+		  			i_aux = rand(0..aux)
+		  			content_aux.each do |ar|
+		  				if ar == i_aux
+		  					esta = true
+		  				end	
+		  			end	
+		  			unless esta
+		  				ar[cont] = i_aux
+		  				cont += 1
+		  			end	
+		  		end		
+	  		end
+	  		where(id: content_aux)
+	  	else
+	  		where("zona = ? and status <> 0", zona)
+	  	end	
+
+  	end	
+
+  	def self.find_custom(equip)
+  		aux = Equipment.find(equip)
+  		if aux.status == 2
+  			find(equip)
+  		else
+  			nil
+  		end	
+  	end
+
 	def self.search(search)
 	  if search
 	    where('description LIKE ? or etiquetas LIKE ?', search,search)

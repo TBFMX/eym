@@ -272,16 +272,19 @@ class EquipmentController < ApplicationController
 
 
 
-    @equipment.destroy
+    #@equipment.destroy
     respond_to do |format|
-      format.html {    @equips = Equipment.find_by("user_id = ?" , session[:user_id])  
-        unless  @equips.blank?
-          redirect_to dashboard_equipos_path, notice: 'El equipo fue borrado exitosamente'
-        else
-          redirect_to dashboard_index_path, notice: 'El equipo fue borrado exitosamente' 
-        end
-      }
-      format.json { head :no_content }
+      if @equipment.update("status" => 0)
+        format.html {    
+          @equips = Equipment.find_by("user_id = ?" , session[:user_id])  
+          unless  @equips.blank?
+            redirect_to dashboard_equipos_path, notice: 'El equipo fue borrado exitosamente'
+          else
+            redirect_to dashboard_index_path, notice: 'El equipo fue borrado exitosamente' 
+          end
+        }
+        format.json { head :no_content }
+      end
     end
   end
 
