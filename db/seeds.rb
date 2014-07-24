@@ -191,17 +191,21 @@ end
 
 ########################Marcas####################################
 unless Category.count > 0
-	Category.create(title: 'MONTACARGAS')
-	Category.create(title: 'PLATAFORMAS')
-	Category.create(title: 'TRANSFORMADORES')
-	Category.create(title: 'TRATAMIENTO DE AGUA')
-	Category.create(title: 'ELECTRODUCTO')
-	Category.create(title: 'EQUIPO INDUSTRIAL')
-	Category.create(title: 'GRUAS VIAJERAS DATOS TECNICOS')
-	Category.create(title: 'UNIDADES')
-	Category.create(title: 'EQUIPO CHATARRERO')
-	Category.create(title: 'BOMBAS Y MOTORES')		
-	Category.create(title: 'FUSIBLES')
-	Category.create(title: 'MAQUINAS CNC')									
+	Category.create(title: 'Camiones')			
+	Category.create(title: 'Contenedores')		
+	Category.create(title: 'Equipos de Energía')	
+	Category.create(title: 'Maquinaria para Construcción')
+	Category.create(title: 'Maquinaria Agrícola')
+	Category.create(title: 'Maquinaria Compacta')
+	Category.create(title: 'Maquinaria para Mineria')
+	Category.create(title: 'Maquinaria Ligera')
+	Category.create(title: 'Remolques')								
 end
 ##################################################################
+
+
+
+
+
+
+

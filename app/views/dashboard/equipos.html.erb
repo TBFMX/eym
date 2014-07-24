@@ -5,7 +5,7 @@
 </div>
 
 <div class="dashboard_contenido">
-	<% @equips.each do |equipment| %>
+	<% @equipment.each do |equipment| %>
 	<div class="lista_show_equipment">
 	  <% if equipment.image_id %>
 	    <% @image = Image.find(equipment.image_id) %>
