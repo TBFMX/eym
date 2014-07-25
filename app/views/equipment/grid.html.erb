@@ -6,9 +6,9 @@
     <br>
     <%= select("equipment", "color", Equipment.all.collect {|p| [ p.color, p.color ] }.uniq, {include_blank: 'Color'}) %>
     <br>
-    <%= select("equipment", "brand_id", Brand.all.collect {|p| [ p.id, p.name ] }.uniq, {include_blank: 'Marca'}) %>
+    <%= select("equipment", "brand_id", Brand.all.collect {|p| [  p.name ,p.id] }.uniq, {include_blank: 'Marca'}) %>
     <br>
-    <%= select("equipment", "package_id", Package.all.collect {|p| [ p.id, p.name ] }.uniq, {include_blank: 'Paquete'}) %>
+    <%= select("equipment", "package_id", Package.all.collect {|p| [ p.name ,p.id ] }.uniq, {include_blank: 'Paquete'}) %>
     <br>
     <%= select("equipment", "preciod", Equipment.all.collect {|p| [ p.precio, number_to_currency(p.precio) ] }.uniq, {include_blank: 'Desde'}) %>
     <br>
@@ -16,12 +16,12 @@
     <br>
     <%= select("equipment", "modelo", Equipment.all.collect {|p| [ p.modelo, p.modelo ] }.uniq, {include_blank: 'Modelo'}) %>
     <br>
-    <%= select("equipment", "currency_id", Equipment.all.collect {|p| [ p.currency_id, p.currency_id ] }.uniq, {include_blank: 'Moneda'}) %>
+    <%= select("equipment", "currency_id", Currency.all.collect {|p| [ p.name, p.id ] }.uniq, {include_blank: 'Moneda'}) %>
     <br>
 
-    <%= select("equipment", "country_id", Equipment.all.collect {|p| [ p.country_id, p.country_id ] }.uniq, {include_blank: 'Pais'}) %>
+    <%= select("equipment", "country_id", Country.all.collect {|p| [p.name ,p.id] }.uniq, {include_blank: 'Pais'}) %>
     <br>
-    <%= select("equipment", "state_id", Equipment.all.collect {|p| [ p.state_id, p.state_id ] }.uniq, {include_blank: 'Estado'}) %>
+    <%= select("equipment", "state_id", State.all.collect {|p| [ p.name ,p.id ] }.uniq, {include_blank: 'Estado'}) %>
     <br>
     <%= select("equipment", "ciudad", Equipment.all.collect {|p| [ p.ciudad, p.ciudad ] }.uniq, {include_blank: 'Ciudad'}) %>
     <br>
