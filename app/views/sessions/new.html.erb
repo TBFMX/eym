@@ -3,12 +3,12 @@
 <% end %>
 <%= form_tag do %>
 	<div>
-		<%= label_tag :username, 'Name:' %>
-		<%= text_field_tag :username, params[:username] %>
+		<%= label_tag :username, 'Correo:' %>
+		<%= text_field_tag :username, params[:username],required: true, pattern: "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+([\.][a-zA-Z0-9-]{2,3}){1,2}$", title: "Ingrese un formato válido Micorreo@tupagina.com" %>
 	</div>
 	<div>
 		<%= label_tag :password, 'Password:' %>
-		<%= password_field_tag :password, params[:password] %>
+		<%= password_field_tag :password, params[:password], required: true %>
 	</div>
 	<div>
 		<%= submit_tag "Login" %>

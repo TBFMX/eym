@@ -8,7 +8,7 @@ class DashboardController < ApplicationController
   end
 
   def login
-    add_breadcrumb I18n.t("breadcrumbs.equipment"), dashboard_equipos_path()
+    add_breadcrumb "Administrar cuenta"
      @user = User.find(session[:user_id])  
      puts "---------------------------------"
      puts @user.inspect

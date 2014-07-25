@@ -13,6 +13,7 @@ es:
     comments: 'Comentarios'
     newcomments: 'Nuevo Comentario'
     dashboard: 'Dashboard'
+    login: 'Cuenta'
 
 
   activerecord:
