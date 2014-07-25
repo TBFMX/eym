@@ -78,7 +78,6 @@ class Equipment < ActiveRecord::Base
 	  	else
 	  		where("zona = ? and status <> 0", zona)
 	  	end	
-
   	end	
 
   	def self.find_custom(equip)
@@ -90,9 +89,23 @@ class Equipment < ActiveRecord::Base
   		end	
   	end
 
+  	def self.find_by_custom(arg)
+  		aux = Equipment.find_by(arg)
+  		if aux.status == 2
+  			find_by(arg)
+  		else
+  			nil
+  		end	
+  	end
+
+  	def self.where_custom
+  		where("status = 2")
+  	end	
+
 	def self.search(search)
 	  if search
-	    where('description LIKE ? or etiquetas LIKE ?', search,search)
+	  	aux = '%' + search + '%'
+	    where('description LIKE ? or etiquetas LIKE ?', aux,aux)
 	    #.order('package DESC,rank ASC, priority ASC')
 	  else
 	    all
