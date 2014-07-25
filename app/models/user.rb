@@ -48,8 +48,8 @@ class User < ActiveRecord::Base
           puts "--------------------------------------------------------------"
           user.save!             
       end
-    #else
-    #  user = @aux  
+    else
+      user = @aux  
     end
   end
 

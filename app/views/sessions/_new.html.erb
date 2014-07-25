@@ -2,7 +2,7 @@
 <% unless User.find_by(id: session[:user_id]) %>
 <%= form_tag do %>
 	<div>
-		<%= label_tag :username, 'Name:' %>
+		<%= label_tag :username, 'Email:' %>
 		<%= text_field_tag :username, params[:username] %>
 	</div>
 	<div>
