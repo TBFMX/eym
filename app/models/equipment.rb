@@ -41,7 +41,7 @@ class Equipment < ActiveRecord::Base
   	end
 
   	def self.s_charge(zona)
-  		aux =Equipment.where("zona = ? and status <> 0", zona).cont()
+  		aux =Equipment.where("package_id = ? and status <> 0", zona).count()
   		if aux > 4
 	  		count = 0
 	  		content_aux = " 1 = 1"
@@ -76,7 +76,7 @@ class Equipment < ActiveRecord::Base
 	  		end
 	  		where(id: content_aux)
 	  	else
-	  		where("zona = ? and status <> 0", zona)
+	  		where("package_id = ? and status <> 0", zona)
 	  	end	
   	end	
 

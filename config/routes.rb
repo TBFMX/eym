@@ -150,6 +150,7 @@ Rails.application.routes.draw do
     get 'Mi_Panel/:equip/galerias' => :gallerias, :as => 'dashboard_gallerias'
     get 'Mi_Panel/:equip/:gal/imagenes' => :imagenes, :as => 'dashboard_imagenes'
     get 'Mi_Panel/:equip/:gal/videos' => :videos, :as => 'dashboard_videos'
+    get 'Mi_Panel/Mis_Equipos' => :equip_history, :as => 'dashboard_equip_history'
   end  
   #get '*unmatched_route', :to => 'application#raise_not_found2'
 

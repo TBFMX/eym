@@ -8,7 +8,7 @@ Rails.application.config.middleware.use OmniAuth::Builder do
 	provider :facebook, '1451557391770177', '3607dfa33038469e7d37bd1b60961343'
 	#provider :facebook, '281783672006763', '6a63c1628abe7157f9d673c975bad6aa'
 	#produccion
-	#provider :facebook, '725899564148428', 'fecb9b6639957af381cbc55db2005c0f'
+	provider :facebook, '490103561092106', '6254ea4d5f447c698ddab1d51241f0e5'
 	#provider :identity, on_failed_registration: lambda { |env|    UsersController.action(:new).call(env)}
 end
 
