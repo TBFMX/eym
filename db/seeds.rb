@@ -191,21 +191,89 @@ end
 
 ########################Marcas####################################
 unless Category.count > 0
-	Category.create(title: 'Camiones')			
-	Category.create(title: 'Contenedores')		
-	Category.create(title: 'Equipos de Energía')	
-	Category.create(title: 'Maquinaria para Construcción')
-	Category.create(title: 'Maquinaria Agrícola')
-	Category.create(title: 'Maquinaria Compacta')
-	Category.create(title: 'Maquinaria para Mineria')
-	Category.create(title: 'Maquinaria Ligera')
-	Category.create(title: 'Remolques')								
+	@cat1 = Category.new(title: 'Camiones', father_id: '0')		
+	@cat2 = Category.new(title: 'Contenedores', father_id: '0')		
+	@cat3 = Category.new(title: 'Equipos de Energía', father_id: '0')	
+	@cat4 = Category.new(title: 'Maquinaria para Construcción', father_id: '0')
+	@cat5 = Category.new(title: 'Maquinaria Agrícola', father_id: '0')
+	@cat6 = Category.new(title: 'Maquinaria Compacta', father_id: '0')
+	@cat7 = Category.new(title: 'Maquinaria para Mineria', father_id: '0')
+	@cat8 = Category.new(title: 'Maquinaria Ligera', father_id: '0')
+	@cat9 = Category.new(title: 'Remolques', father_id: '0')		
+	@cat10 = Category.new(title: 'Reciclaje', father_id: '0')	
+	@cat11 = Category.new(title: 'Otros', father_id: '0')			
+	@cat1.save	
+	@cat2.save
+	@cat3.save
+	@cat4.save
+	@cat5.save
+	@cat6.save
+	@cat7.save
+	@cat8.save
+	@cat9.save	
+	@cat10.save	
+	@cat11.save				
+	Category.new(title: 'Camion de volteo', father_id: cat1.id)
+	Category.new(title: 'Gondolas', father_id: cat1.id)
+	Category.new(title: 'Plataformas', father_id: cat1.id)
+	Category.new(title: 'Camion de Basura', father_id: cat1.id)
+	Category.new(title: 'Retroexcavadoras', father_id: cat.id)
+	Category.new(title: 'Compactadoras', father_id: cat2.id)
+	Category.new(title: 'Vibradores', father_id: cat2.id)
+	Category.new(title: 'Pavimentadoras', father_id: cat2.id)
+	Category.new(title: 'Motoconformadoras', father_id: cat2.id)
+	Category.new(title: 'Zanjadoras', father_id: cat2.id)
+	Category.new(title: 'Demolición y derribo', father_id: cat2.id)
+	Category.new(title: 'Grúas', father_id: cat2.id)
+	Category.new(title: 'Grúas articuladas', father_id: cat2.id)
+	Category.new(title: 'Grúas chatarreras', father_id: cat2.id)
+	Category.new(title: 'Excavadoras', father_id: cat2.id)
+	Category.new(title: 'Revolvedoras', father_id: cat2.id)
+	Category.new(title: 'Maquinaria pesada', father_id: cat2.id)
+	Category.new(title: 'Montacargas telescopico', father_id: cat2.id)
+	Category.new(title: 'Minicargadores', father_id: cat2.id)
+	Category.new(title: 'Cargadores frontales', father_id: cat2.id)
+	Category.new(title: 'Perforación', father_id: cat2.id)
+	Category.new(title: 'Cargadores sobre oruga', father_id: cat2.id)
+	Category.new(title: 'Cargadores sobre ruedas', father_id: cat2.id)
+	Category.new(title: 'Tractores', father_id: cat3.id)
+	Category.new(title: 'Equipo para agricultura', father_id: cat3.id)
+	Category.new(title: 'Bailarinas', father_id: cat4.id)
+	Category.new(title: 'Minicargadores', father_id: cat4.id)
+	Category.new(title: 'Dumpers', father_id: cat5.id)
+	Category.new(title: 'Track drill', father_id: cat5.id)
+	Category.new(title: 'Bulldozer', father_id: cat5.id)
+	Category.new(title: 'Maquinaria pesada', father_id: cat5.id)
+	Category.new(title: 'Cargadores frontales', father_id: cat5.id)
+	Category.new(title: 'Perforación', father_id: cat5.id)
+	Category.new(title: 'Cargadores sobre oruga', father_id: cat5.id)
+	Category.new(title: 'Cargadores sobre ruedas', father_id: cat5.id)
+	Category.new(title: 'Compresores', father_id: cat6.id)
+	Category.new(title: 'Montacargas', father_id: cat7.id)
+	Category.new(title: 'Brazo articulado', father_id: cat7.id)
+	Category.new(title: 'Montacargas telescopico', father_id: cat7.id)
+	Category.new(title: 'Minicargadores', father_id: cat7.id)
+	Category.new(title: 'Cargadores frontales', father_id: cat7.id)
+	Category.new(title: 'Recicladoras', father_id: cat11.id)
+	Category.new(title: 'Manejo de chatarra', father_id: cat11.id)
+	Category.new(title: 'Telescópicos', father_id: cat11.id)
+	Category.new(title: 'Barredoras', father_id: cat11.id)
+	Category.new(title: 'Equipo industrial', father_id: cat11.id)
+	Category.new(title: 'Transporte de tierra', father_id: cat11.id)
+	Category.new(title: 'Transporte de materiales', father_id: cat11.id)
+	Category.new(title: 'Tratamiento de agua', father_id: cat11.id)
+	Category.new(title: 'Trascabo', father_id: cat11.id)
+	Category.new(title: 'Todo terreno', father_id: cat11.id)
+	Category.new(title: 'Manejo de materiales', father_id: cat11.id)
+	Category.new(title: 'Vehiculos pesados', father_id: cat11.id)
+	Category.new(title: 'Manejo de materiales', father_id: cat11.id)
+	Category.new(title: 'Máquinas para extender', father_id: cat11.id)
+	Category.new(title: 'Maquinas para compactar', father_id: cat11.id)
+	Category.new(title: 'Plumas', father_id: cat11.id)
+	Category.new(title: 'Equipos de cargas', father_id: cat11.id)
+	Category.new(title: 'Equipos de elevación', father_id: cat11.id)
+	Category.new(title: 'Escrepas', father_id: cat11.id)
+	Category.new(title: 'Trascabo', father_id: cat11.id)
+	Category.new(title: 'Carretera', father_id: cat11.id)		
 end
 ##################################################################
-
-
-
-
-
-
-
