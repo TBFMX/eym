@@ -92,7 +92,7 @@ class DashboardController < ApplicationController
   end
 
   def equip_history
-    @equipment = Equipment.where("user_id = ?", session[:user_id])
+    @equipment = Equipment.where("user_id = ?", session[:user_id]).order('created_at ASC')
   end  
   
   private
