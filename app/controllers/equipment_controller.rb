@@ -6,7 +6,7 @@ class EquipmentController < ApplicationController
   # GET /equipment
   # GET /equipment.json
   def index
-    @equipment = Equipment.all 
+    @equipment = Equipment.where_custom
   end
 
   # GET /equipment/1
@@ -269,9 +269,6 @@ class EquipmentController < ApplicationController
         end
       end
     end  
-
-
-
     #@equipment.destroy
     respond_to do |format|
       if @equipment.update("status" => 0)
@@ -299,9 +296,9 @@ class EquipmentController < ApplicationController
     puts params.inspect
     puts "--------------------------"
     unless cat.blank?
-      @equipments = Equipment.where('category_id = ?', cat.id).order(sort_column + ' ' + sort_direction)
+      @equipments = Equipment.where('category_id = ?', cat.id).where_custom.order(sort_column + ' ' + sort_direction)
     else  
-      @equipments = Equipment.query(params[:equipment]).order(sort_column + ' ' + sort_direction)
+      @equipments = Equipment.query(params[:equipment]).where_custom.order(sort_column + ' ' + sort_direction)
       #@equipments = Equipment.query(params[:equipment]).order(sort_column + ' ' + sort_direction).paginate(:per_page => 10, :page => params[:page])
     end
     puts "-------equipments---------"
@@ -331,7 +328,7 @@ class EquipmentController < ApplicationController
   end  
 
   def search
-    @equipments = Equipment.search(params[:search])
+    @equipments = Equipment.search(params[:search]).where_custom
   end  
 
   # GET upgrade

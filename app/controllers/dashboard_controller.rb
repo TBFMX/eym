@@ -16,7 +16,7 @@ class DashboardController < ApplicationController
   end
 
   #mis equipos
-  #GET /dashboard/Mis_equipos
+  
   def equipos
     add_breadcrumb I18n.t("breadcrumbs.equipment"), dashboard_equipos_path()
     @equipment = @equipsWhere
@@ -89,14 +89,18 @@ class DashboardController < ApplicationController
         render :pdf => "report", :layout => 'pdf.html.erb'
       end
     end
-  end 
+  end
+
+  def equip_history
+    @equipment = Equipment.where("user_id = ?", session[:user_id]).order('created_at ASC')
+  end  
   
   private
     def charge_all
     #puts "---------------------------------"
     #puts session[:user_id]   
     #puts "---------------------------------"  
-    @equips = Equipment.find_by("user_id = ?" , session[:user_id])  
+    @equips = Equipment.find_by("user_id = ?" , session[:user_id])
     unless  @equips.blank?
         @equipsWhere = Equipment.where("user_id = ?" , session[:user_id])      
       # puts "---------------------------------"
