@@ -18,7 +18,7 @@
     <tbody>
       <% @galleries.each do |gallery| %>
         <tr>
-          <td><%= gallery.slug %></td>
+          <td><%= gallery.title %></td>
           <td><%= gallery.equipment_id %></td>
           <td><%= gallery.user_id %></td>
           <td><%= link_to 'Mostrar Galeria', galeria_show_path(@equips,gallery) %></td>

@@ -2,8 +2,8 @@
 
 <h1>Galeria: <%= @gallery.title %></h1>
 
-<div class="galeriaShowBotones"><%= link_to 'Agregar Imagen', imagen_nueva_path(@equip,@gallery.title) %> | 
-    <%= link_to 'Agregar Video', video_nuevo_path(@equip,@gallery.title) %></div>
+<div class="galeriaShowBotones"><%= link_to 'Agregar Imagen', imagen_nueva_path(@equip,@gallery.slug) %> | 
+    <%= link_to 'Agregar Video', video_nuevo_path(@equip,@gallery.slug) %></div>
 
 <div class="contenedorImagenes">
   <div class="imagenesTituloGaleria">Imagenes</div>

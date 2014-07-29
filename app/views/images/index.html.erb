@@ -1,6 +1,6 @@
 <h1>Lista de imagenes</h1>
 
-<div class="galeriaShowBotones"><%= link_to 'Agregar Imagen', imagen_nueva_path(@equip,@gallery.title) %></div>
+<div class="galeriaShowBotones"><%= link_to 'Agregar Imagen', imagen_nueva_path(@equip,@gallery.slug) %></div>
 
 <div class="contenedorImagenes">
   <div class="imagenesTituloGaleria">Galeria: <%= @gallery.title %></div>
