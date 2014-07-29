@@ -152,8 +152,7 @@ Rails.application.routes.draw do
     get 'Mi_Panel/:equip/:gal/videos' => :videos, :as => 'dashboard_videos'
     get 'Mi_Panel/Mis_Equipos' => :equip_history, :as => 'dashboard_equip_history'
   end  
-  #get '*unmatched_route', :to => 'application#raise_not_found2'
-
+  
   get 'auth/:provider/callback', to: 'sessions#createfb'
   post 'auth/:provider/callback', to: 'sessions#createfb'
   #, via: [:get, :post]
@@ -165,6 +164,8 @@ Rails.application.routes.draw do
   #, as: 'signout', via: [:get, :post]
 
   get 'auth/google_oauth2/callback?error=access_denied', to: redirect('/')
+
+  get '*unmatched_route', :to => 'application#raise_not_found2'
 
   #get 'welcome' => 'index#welcome'
   
