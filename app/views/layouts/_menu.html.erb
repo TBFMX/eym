@@ -1,10 +1,20 @@
-<div class="menu">
-	<ul>
+<div id="menu_eym">
+	<ul class="menu">
 		<li><%= link_to 'Inicio', root_url %></li>
 		<li><a href="#">Categorias</a>
 			<ul>
 			<% @category.each do |category| %>
-				<li><%= link_to category.title, venta_path('categoria' => category.title, 'tipo' => 1), method: :post %></a></li>
+				<% if category.father_id == 0 %>
+					<li><%= link_to category.title, venta_path('categoria' => category.title, 'tipo' => 1), method: :post %>
+					<ul>
+						<% @category.each do |category2| %>
+							<% if category2.father_id == category.id %>
+								<li><%= link_to category2.title, venta_path('categoria' => category2.title, 'tipo' => 1), method: :post %></li>
+							<% end %>
+						<% end %>
+					</ul>
+					</li>
+				<% end %>
 			<% end %>
 			</ul>
 		</li>
@@ -13,3 +23,5 @@
 	</ul>
 	<div class="menu_publica"><%= link_to '$ Publica tu Anuncio', "/equipment/new" %></div>
 </div>
+	
+
