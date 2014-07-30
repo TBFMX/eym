@@ -42,42 +42,47 @@ class Equipment < ActiveRecord::Base
 
   	def self.s_charge(zona)
   		aux =Equipment.where("package_id = ? and status <> 0", zona).count()
+  		
+
   		if aux > 4
 	  		count = 0
-	  		content_aux = " 1 = 1"
+	  		#content_aux = ""
 	  		array_aux = Array.new
+	  		equip = Equipment.select("id").where("package_id = ? and status <> 0", zona)
+  			array_conteiner = Array.new
+
+	  		 equip.each do |e|
+	  		 	array_conteiner.push(e.id)
+	  		 end	
+
 	  		if aux >= 20
-		  		while cont < 20 do
-		  			esta = false
-		  			i_aux = rand(0..aux)
-		  			content_aux.each do |ar|
-		  				if ar == i_aux
-		  					esta = true
-		  				end	
-		  			end	
-		  			unless esta
-		  				ar[cont] = i_aux
-		  				cont += 1
-		  			end	
+	  			
+		  		while count < 20 do
+
+		  			#esta = false
+		  			i_aux = array_conteiner.sample.to_i
+		  			puts "-----------------------------------------"
+		  			puts i_aux
+		  			puts "-----------------------------------------"
+	  				array_aux.push(i_aux)
+	  				array_conteiner.delete(i_aux)
+	  				count += 1	
 		  		end
 		  	elsif aux < 20
-		  		while cont < aux do
-		  			i_aux = rand(0..aux)
-		  			content_aux.each do |ar|
-		  				if ar == i_aux
-		  					esta = true
-		  				end	
-		  			end	
-		  			unless esta
-		  				ar[cont] = i_aux
-		  				cont += 1
-		  			end	
+
+		  		while count < aux.to_i do
+
+		  			i_aux = array_conteiner.sample.to_i
+	  				array_aux.push(i_aux)
+	  				array_conteiner.delete(i_aux)
+	  				count += 1
 		  		end		
 	  		end
-	  		where(id: content_aux)
+	  		where(id: array_aux)
 	  	else
 	  		where("package_id = ? and status <> 0", zona)
 	  	end	
+	  	
   	end	
 
   	def self.find_custom(equip)
@@ -172,7 +177,7 @@ class Equipment < ActiveRecord::Base
 		    end
 
 		    if !equipment[:preciod].blank? || !equipment[:precioh].blank?
-		    	puts "-----------hola ---------------"
+		    	puts "-----------hoboletos cinemex para doctor whola ---------------"
 		    	if !equipment[:preciod].blank? && !equipment[:precioh].blank?
 		    		if equipment[:preciod] != equipment[:precioh]
 			    		@aux= @aux + 'and precio between  ? and ? '
@@ -184,7 +189,7 @@ class Equipment < ActiveRecord::Base
 			    		
 			    	end	
 		    	elsif equipment[:preciod] && equipment[:precioh].blank?
-		    		@aux= @aux + 'and precio <= ? '
+		    		@aux= @aux + 'aboletos cinemex para doctor whond precio <= ? '
 		    		@aux2[@cont]= equipment[:preciod]
 		    	elsif equipment[:preciod].blank? && equipment[:precioh]
 		    		@aux= @aux + 'and precio >= ? '
@@ -196,10 +201,11 @@ class Equipment < ActiveRecord::Base
 	    #puts @cont	
 		      @aux2[0]=@aux
 	      where @aux2 
-	    else
+	    elseboletos cinemex para doctor who
 	      scoped
 	    end
 
 	end
+
 
 end

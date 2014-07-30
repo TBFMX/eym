@@ -19,7 +19,7 @@ class DashboardController < ApplicationController
   
   def equipos
     add_breadcrumb I18n.t("breadcrumbs.equipment"), dashboard_equipos_path()
-    @equipment = @equipsWhere
+    @equipment = Equipment.where("user_id = ?" , session[:user_id]).where_custom
   end
 
   def gallerias
@@ -97,36 +97,22 @@ class DashboardController < ApplicationController
   
   private
     def charge_all
-    #puts "---------------------------------"
-    #puts session[:user_id]   
-    #puts "---------------------------------"  
+ 
     @equips = Equipment.find_by("user_id = ?" , session[:user_id])
     unless  @equips.blank?
-        @equipsWhere = Equipment.where("user_id = ?" , session[:user_id])      
-      # puts "---------------------------------"
-      # puts @equips.inspect
-      # puts "---------------------------------"  
+        @equipsWhere = Equipment.where("user_id = ?" , session[:user_id]).where_custom    
+    
         #@galleries = Gallery.find_by("equipment_id = ?" , @equips.id)                 
         @galleriesWhere = Gallery.where("equipment_id = ?" , @equips.id)
         unless @galleries.blank?
-      # puts "----------Gallery-----------------------"
-      # puts @galleries.inspect
-      # puts "---------------------------------"                 
-          @images = Image.where("gallery_id = ?" , @galleries.id)
-      # puts "---------------------------------"
-      # puts @images.inspect
-      # puts "---------------------------------"                
-          @videos = Video.where("gallery_id = ?" , @galleries.id)
-      # puts "---------------------------------"
-      # puts @videos.inspect
-      # puts "---------------------------------"           
+          @images = Image.where("gallery_id = ?" , @galleries.id)             
+          @videos = Video.where("gallery_id = ?" , @galleries.id)    
         end
         @verificado = true
       else
         @verificado = false
       end
-      @verificado
-      
+      @verificado  
     end  
 
     

@@ -51,4 +51,8 @@ class WelcomeController < ApplicationController
         @equip = Equipment.where('package_id = ?',pack).where_custom.s_charge(pack).order('rank ASC, priority ASC').limit(20) 
         return @equip
       end
+
+      def lista
+         
+      end  
 end

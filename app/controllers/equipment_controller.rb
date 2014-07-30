@@ -12,6 +12,8 @@ class EquipmentController < ApplicationController
   # GET /equipment/1
   # GET /equipment/1.json
   def show
+    @categoria = Category.find(@equipment.category_id)
+    add_breadcrumb @categoria.slug.to_s, equipment_path(@equipment)
     add_breadcrumb @equipment.slug.to_s, equipment_path(@equipment)   
     if @equipment.image_id
       @image = Image.find(@equipment.image_id)
