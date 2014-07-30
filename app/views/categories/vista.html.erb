@@ -1,0 +1,33 @@
+<% @category.each do |categoria| %>
+	<div class="vista_categoria">
+		<div class="vista_categoria_titulo">
+			<% if categoria.father_id == 0 %>
+				<h6><%= categoria.title %></h6>
+			<% end %>
+		</div>
+
+		<div class="vista_categoria_productos">
+			
+			<% @equipment.each do |equipment| %>
+			<% if equipment.category_id == categoria.id %>
+				<div class="equipos">
+					<div class="imagenes">
+						<% @images = Image.find(equipment.image_id) %>
+						<% if @images.image_url %>
+						<div class="imagen">
+							<%= link_to image_tag(@images.image_url ), equipment_path(equipment) %>
+						</div>
+						<%else %>
+						<div class="imagen"><img src="/data/dommy.jpg"></div>  
+						<% end %>  
+					</div>
+					<div class="datos">
+					<%= link_to equipment.name, equipment_path(equipment) %><br />
+					<%= number_to_currency(equipment.currency_id) %>
+					</div>
+				</div>
+			<% end %>
+			<% end %> 
+		</div>	
+	</div>
+<% end %>   
