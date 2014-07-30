@@ -292,6 +292,7 @@ class EquipmentController < ApplicationController
   end
 
   def grid
+     aux = params[:categoria] 
     @categoria = Category.find_by('categories.title' => aux)
     if @categoria.father_id != 0
       categoria2 = Category.find(@categoria.father_id)
@@ -299,7 +300,7 @@ class EquipmentController < ApplicationController
     end 
     add_breadcrumb @categoria.slug.to_s, Filtro_path('categoria' => @categoria.title, 'tipo' => 1)
 
-    aux = params[:categoria] 
+   
     tipo = params[:tipo]    
     cat = Category.find_by('categories.title' => aux)    
     

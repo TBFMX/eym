@@ -1,12 +1,14 @@
 class WelcomeController < ApplicationController
   skip_before_action :authorize
   def index
-    @zone1 = frontpage(1)
-    @zone2 = frontpage(2)
-    @zone3 = frontpage(3)
-    #@zone4 = frontpage(4)
-    #@zone5 = frontpage(5)
-    #@zone6 = frontpage(6) 
+    @zone1_a = frontpage(1)
+    @zone2_a = frontpage(2)
+    @zone3_a = frontpage(3)
+
+    @zone1 = lista_ordenada( @zone1_a)
+    @zone2 = lista_ordenada( @zone2_a)
+    @zone3 = lista_ordenada( @zone3_a)
+   
   end
 
   def new
@@ -48,11 +50,23 @@ class WelcomeController < ApplicationController
   end
   private
       def frontpage(pack)
-        @equip = Equipment.where('package_id = ?',pack).where_custom.s_charge(pack).order('rank ASC, priority ASC').limit(20) 
+        @equip = Equipment.where('package_id = ?',pack).where_custom.s_charge(pack).order('rank ASC, priority ASC').limit(20)
         return @equip
       end
 
-      def lista
-         
+      def lista_ordenada(e_obj)
+        aux_array_e = Array.new()
+        e_obj.each do |e|
+          aux_array_e << e
+        end  
+        final_array = Array.new
+        #while aux_array_e.empty?
+        # aux_e = aux_array_e.sample
+        # 
+        # final_array << aux_e
+        # aux_array_e.delete(aux_e)
+        #end  
+        return final_array
+
       end  
 end
