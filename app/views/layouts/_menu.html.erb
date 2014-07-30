@@ -5,11 +5,11 @@
 			<ul>
 			<% @category.each do |category| %>
 				<% if category.father_id == 0 %>
-					<li><%= link_to category.title, venta_path('categoria' => category.title, 'tipo' => 1), method: :post %>
+					<li><%= link_to category.title, Filtro_path('categoria' => category.title, 'tipo' => 1), method: :post %>
 					<ul>
 						<% @category.each do |category2| %>
 							<% if category2.father_id == category.id %>
-								<li><%= link_to category2.title, venta_path('categoria' => category2.title, 'tipo' => 1), method: :post %></li>
+								<li><%= link_to category2.title, Filtro_path('categoria' => category2.title, 'tipo' => 1), method: :post %></li>
 							<% end %>
 						<% end %>
 					</ul>

@@ -13,7 +13,11 @@ class EquipmentController < ApplicationController
   # GET /equipment/1.json
   def show
     @categoria = Category.find(@equipment.category_id)
-    add_breadcrumb @categoria.slug.to_s, equipment_path(@equipment)
+    if @categoria.father_id != 0
+      categoria2 = Category.find(@categoria.father_id)
+      add_breadcrumb categoria2.slug.to_s, Filtro_path('categoria' => categoria2.title, 'tipo' => 1)
+    end 
+    add_breadcrumb @categoria.slug.to_s, Filtro_path('categoria' => @categoria.title, 'tipo' => 1)
     add_breadcrumb @equipment.slug.to_s, equipment_path(@equipment)   
     if @equipment.image_id
       @image = Image.find(@equipment.image_id)
@@ -288,6 +292,12 @@ class EquipmentController < ApplicationController
   end
 
   def grid
+    @categoria = Category.find_by('categories.title' => aux)
+    if @categoria.father_id != 0
+      categoria2 = Category.find(@categoria.father_id)
+      add_breadcrumb categoria2.slug.to_s, Filtro_path('categoria' => categoria2.title, 'tipo' => 1)
+    end 
+    add_breadcrumb @categoria.slug.to_s, Filtro_path('categoria' => @categoria.title, 'tipo' => 1)
 
     aux = params[:categoria] 
     tipo = params[:tipo]    

@@ -1,6 +1,6 @@
 <div class="grid">
     <div class="filtros">
-    <%= form_tag '/venta', :method => 'get' do %>
+    <%= form_tag '/Filtro', :method => 'get' do %>
     <%#= text_field_tag :search, params[:search] %>
     <%= select("equipment", "year", Equipment.all.collect {|p| [ p.year, p.year ] }.uniq, {include_blank: 'Año'}) %>
     <br>

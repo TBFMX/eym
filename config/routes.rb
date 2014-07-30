@@ -129,8 +129,8 @@ Rails.application.routes.draw do
   end   
 
   controller :equipment do
-    get 'venta' => :grid
-    post 'venta' => :grid    
+    get 'Filtro' => :grid 
+    post 'Filtro' => :grid    
     get '/equipo/contacto' => :contact
     post '/equipo/contacto' => :contact
     post '/send' => :sender

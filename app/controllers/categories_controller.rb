@@ -22,6 +22,10 @@ class CategoriesController < ApplicationController
   def edit
   end
 
+  def vista
+    @category = Category.all
+    @equipment = Equipment.where_custom
+  end  
   # POST /categories
   # POST /categories.json
   def create
