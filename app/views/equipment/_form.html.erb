@@ -58,7 +58,7 @@ $.each(inputFile.files, function() {
 
   <h1>Categoria</h1>
   <div class="grupo">
-      <%= select("equipment", "category_id", Category.all.collect {|p| [ p.title, p.id ] }.uniq, required: true) %>    
+      <%= select("equipment", "category_id", Category.where('father_id = 0').collect {|p| [ p.title, p.id ] }.uniq, required: true) %>    
   </div>
 
   <h1>Selecciona tu paquete</h1>
