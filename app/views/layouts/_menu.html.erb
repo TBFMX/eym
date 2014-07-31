@@ -1,7 +1,7 @@
 <div id="menu_eym">
 	<ul class="menu">
 		<li><%= link_to 'Inicio', root_url %></li>
-		<li><a href="#">Categorias</a>
+		<li><%= link_to 'Categorias', category_vista_path %>
 			<ul>
 			<% @category.each do |category| %>
 				<% if category.father_id == 0 %>

@@ -212,3 +212,49 @@ input:focus{
    margin: 0px auto 0px auto;
 }
 
+/*------------------Vista Categorias----------------------*/
+
+.vista_categoria{
+   width: 920px%;
+   margin: 10px 0 10px 0;
+}
+
+.vista_categoria_titulo{ /*se necesitan arreglar las posiciones*/
+   width: 920px;
+   height: auto;
+   position: relative;
+}
+
+.vista_categoria_productos{ /*se necesitan arreglar las posiciones*/
+   width: 100%;
+   height: auto;
+   position: relative;
+}
+
+.vista_categoria_productos .equipos{
+   width: 148px;
+   height: 198px;
+   margin: 10px 4px 10px 4px;
+   border: 1px solid #666666;
+}
+
+.vista_categoria_productos .equipos img{
+   width: 150px;
+   height: 150px;
+}
+
+.vista_categoria_productos .equipos .imagenes{
+   width: 140px;
+   height: 140px;
+   margin: 5px 4px 5px 4px;   
+   overflow: hidden;
+}
+
+.vista_categoria_productos .equipos .datos{
+   max-width: 140px;
+   max-height: 140px;
+   margin: 5px 4px 5px 4px;
+      text-overflow:ellipsis; 
+      white-space:nowrap;
+      overflow:hidden;     
+}
