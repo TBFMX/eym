@@ -56,16 +56,33 @@ class WelcomeController < ApplicationController
 
       def lista_ordenada(e_obj)
         aux_array_e = Array.new()
+        puts "-----------------------------------------------------------"
+        puts e_obj.inspect
+        puts "-----------------------------------------------------------"
         e_obj.each do |e|
           aux_array_e << e
-        end  
+        end
+        puts "-----------------------------------------------------------"
+        puts aux_array_e.inspect
+        puts "-----------------------------------------------------------"  
         final_array = Array.new
-        #while aux_array_e.empty?
-        # aux_e = aux_array_e.sample
-        # 
-        # final_array << aux_e
-        # aux_array_e.delete(aux_e)
-        #end  
+        cont = 0
+          while !aux_array_e.empty? && cont < 20
+            aux_e = aux_array_e.sample
+            puts "-----------------------------------------------------------"
+            puts aux_e.inspect
+            puts "-----------------------------------------------------------"
+            final_array << aux_e
+            aux_array_e.delete(aux_e)
+            cont += 1
+            puts "-----------------------------------------------------------"
+            puts cont
+            puts "-----------------------------------------------------------"
+          end 
+
+         puts "-----------------------------------------------------------"
+         puts final_array.inspect
+         puts "-----------------------------------------------------------" 
         return final_array
 
       end  

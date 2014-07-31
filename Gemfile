@@ -65,3 +65,5 @@ gem "social-buttons", git: "git://github.com/kristianmandrup/social-buttons.git"
 gem 'wkhtmltopdf-binary'
 gem 'wicked_pdf'
 #fin generar pdfs
+
+gem "airbrake"
