@@ -15,6 +15,17 @@ class SessionsController < ApplicationController
     user = User.from_omniauth(env["omniauth.auth"])
     unless user.blank?
       session[:user_id] = user.id
+      session[:uname] = user.username
+      session[:rol_id] = user.rol_id
+       puts "---------------------holaaaaaaaaaaa222222222222-------------------"
+      #variables de rol
+      rol =Rol.find_by(id: user.rol_id)
+      session[:mod0] =rol.admin
+      session[:mod1] =rol.module_1
+      session[:mod2] =rol.module_2
+      session[:mod3] =rol.module_3
+      session[:mod4] =rol.module_4
+      session[:mod5] =rol.module_5
       redirect_to root_url
     else
       
