@@ -12,14 +12,18 @@
 			<% if equipment.category_id == categoria.id %>
 				<div class="equipos">
 					<div class="imagenes">
-						<% @images = Image.find(equipment.image_id) %>
-						<% if @images.image_url %>
-						<div class="imagen">
-							<%= link_to image_tag(@images.image_url ), equipment_path(equipment) %>
-						</div>
-						<%else %>
-						<div class="imagen"><img src="/data/dommy.jpg"></div>  
-						<% end %>  
+						<% if equipment.image_id  %>
+							<% @images = Image.find(equipment.image_id) %>
+							<% if @images.image_url %>
+							<div class="imagen">
+								<%= link_to image_tag(@images.image_url ), equipment_path(equipment) %>
+							</div>
+							<%else %>
+							<div class="imagen"><img src="/data/dommy.jpg"></div>  
+							<% end %> 
+						<% else %>
+							<div class="imagen"><img src="/data/dommy.jpg"></div>  
+						<% end %> 
 					</div>
 					<div class="datos">
 					<%= link_to equipment.name, equipment_path(equipment) %><br />
