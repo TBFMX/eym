@@ -11,7 +11,8 @@
   <div class="imagenesContenido">
     <div class="imagenesGaleria"><img src="<%= image.image_url %>"></div>
     <div class="imagenesTitulo"><%= image.title %></div>
-    <div class="imagenesboton"><%= link_to 'Borrar Imagen', image, method: :delete, data: { confirm: 'Are you sure?' } %></div>    
+    <div class="imagenesboton"><%= link_to 'Volver Principal', select_image_path(image.id,@equip,@gallery) %></div> 
+    <div class="imagenesboton"><%= link_to 'Borrar Imagen', image, method: :delete, data: { confirm: 'Are you sure?' } %></div>   
   </div>
   <% end %>
 </div>  

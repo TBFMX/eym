@@ -5,7 +5,6 @@ class ImagesController < ApplicationController
   # GET galleries/images/:id
   def index
     add_breadcrumb I18n.t("breadcrumbs.equipment"), dashboard_equipos_path()
-
     if params[:gal].nil?
       redirect_to root_path
     end
@@ -46,6 +45,24 @@ class ImagesController < ApplicationController
   #get images/:id/edit/:equip
   #post images/:id/edit/:equip
   def edit
+  end
+  def select_image
+    image_p = params[:image] #id de la imagen
+    equip = params[:equipment]
+    @equipment = Equipment.friendly.find(equip)
+    gallery = params[:gallery]
+    respond_to do |format|
+      if @equipment.update(:image_id => image_p)
+        puts "asigno"
+        format.html { redirect_to galeria_show_path(@equipment,gallery), notice: 'La imagen principal a sido cambiada.'} 
+        format.json {}  
+      else
+        puts "no asigno"
+        format.html { redirect_to galeria_show_path(equipment,gallery), notice: 'La imagen principal no pudo ser cambiada, intente mas tarde.' }
+        format.json { render json: @image.errors, status: :unprocessable_entity }
+      end
+    end 
+    
   end
 
   # POST /images

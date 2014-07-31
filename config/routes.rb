@@ -117,6 +117,7 @@ Rails.application.routes.draw do
     post 'Mi_Panel/:equip/:gal/imagen_nueva' => :new
     get 'Mi_Panel/:equip/:gal/editar/:id' => :edit, :as => 'imagen_editar'
     post 'Mi_Panel/:equip/:gal/editar/:id' => :edit
+    get 'change_image/:image/:equipment/:gallery' => :select_image , :as => 'select_image'
   end
 
   controller :comments do
