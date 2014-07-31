@@ -1,7 +1,12 @@
 <% @category.each do |categoria| %>
 	<% if categoria.father_id == 0 %>
 		<div class="vista_categoria">
-			<div class="vista_categoria_titulo"><h6><%= categoria.title %></h6></div>
+			<div class="vista_categoria_titulo">
+				<h6>
+					<% @contcat = Equipment.where('category_id = ?', categoria.id).count %>
+					<%= link_to categoria.title+' ('+@contcat.to_s+')', Filtro_path('categoria' => categoria.title, 'tipo' => 1), method: :post %>
+				</h6>
+			</div>
 			<div class="vista_categoria_productos">
 				<% @equipment.each do |equipment| %>
 				<% if equipment.category_id == categoria.id %>
