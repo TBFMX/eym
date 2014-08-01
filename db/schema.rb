@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140717152134) do
+ActiveRecord::Schema.define(version: 20140801204443) do
 
   create_table "brands", force: true do |t|
     t.string   "name"
@@ -94,6 +94,7 @@ ActiveRecord::Schema.define(version: 20140717152134) do
     t.string   "state_id"
     t.string   "pagado"
     t.integer  "status"
+    t.integer  "subcategory_id"
   end
 
   add_index "equipment", ["slug"], name: "index_equipment_on_slug"
@@ -175,6 +176,13 @@ ActiveRecord::Schema.define(version: 20140717152134) do
   create_table "states", force: true do |t|
     t.string   "name"
     t.integer  "country_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "subcategories", force: true do |t|
+    t.string   "category_id"
+    t.string   "title"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

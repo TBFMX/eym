@@ -54,12 +54,16 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
+    puts "--------------------------------------"
+    puts params.inspect
+    puts user_params.inspect
+    puts "--------------------------------------"
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to @user, notice: "El usuario #{@user.username} fue actualizado exitosamente." }
+        format.html { redirect_to dashboard_login_path, notice: "El usuario #{@user.username} fue actualizado exitosamente." }
         format.json { render :show, status: :ok, location: @user }
       else
-        format.html { render :edit }
+        format.html { redirect_to dashboard_login_path }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
@@ -154,7 +158,11 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params[:user][:username] = params[:user][:email]
+      unless params[:user][:email].blank?
+        if params[:user][:username].blank?
+          params[:user][:username] = params[:user][:email]  
+        end
+      end  
       params[:user][:rol_id] = 2
       params.require(:user).permit(:username, :password, :password_confirmation, :name, :lastname, :email, :login_date, :password_date, :rol_id)
     end

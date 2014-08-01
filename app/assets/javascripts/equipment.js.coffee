@@ -14,6 +14,19 @@ jQuery ->
 	    else
 	      $('#equipment_state_id').empty()
 #	      $('#equipment_state_id').parent().hide()
+jQuery ->
+#	$('#equipment_subcategory_id').parent().hide()
+	  subcategory = $('#equipment_subcategory_id').html()
+	  $('#equipment_category_id').change ->
+	    category = $('#equipment_category_id :selected').text()
+	    escaped_category = category.replace(/([ #;&,.+*~\':"!^$[\]()=>|\/@])/g, '\\$1')
+	    options = $(subcategory).filter("optgroup[label='#{escaped_category}']").html()
+	    if options
+	      $('#equipment_subcategory_id').html(options)
+#	      $('#equipment_subcategory_id').parent().show()
+	    else
+	      $('#equipment_subcategory_id').empty()
+#	      $('#equipment_subcategory_id').parent().hide()
 
 
 			

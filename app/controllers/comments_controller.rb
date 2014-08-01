@@ -76,7 +76,6 @@ class CommentsController < ApplicationController
   # DELETE /comments/1.json
   def destroy
     @equipment = Equipment.find(@comment.equipment_id)
-    
     if session[:user_id] === @comment.user_id
       @comment.destroy
       respond_to do |format|
@@ -85,8 +84,7 @@ class CommentsController < ApplicationController
       end
     else
       redirect_to equipment_path(@equipment), notice: 'No tienes privilegios para borrar este comentario'
-    end
-   
+    end   
   end
 
   private
