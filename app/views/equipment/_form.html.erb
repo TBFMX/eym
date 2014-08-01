@@ -46,7 +46,7 @@ $.each(inputFile.files, function() {
   <div class="grupo">
       <div class="grupo_1">
         <%= f.label :publication_type %><br>
-        <%= f.number_field :publication_type, required: true %><br>
+        <%= select("equipment","publication_type", options_for_select([['Compra',1],['Renta',2]])) %><br>
       </div> 
       <div class="grupo_1">
         <%= f.label :precio, "Precio de Venta" %><br>
@@ -55,7 +55,6 @@ $.each(inputFile.files, function() {
         <%= select("equipment", "currency_id", Currency.all.collect {|p| [ p.name, p.id ] }.uniq, required: true) %><br><br>
       </div> 
   </div>
-
   <h1>Categoria</h1>
   <div class="grupo">
       <%= select("equipment", "category_id", Category.where('father_id = 0').collect {|p| [ p.title, p.id ] }.uniq, required: true) %>    

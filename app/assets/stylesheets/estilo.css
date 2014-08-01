@@ -140,10 +140,12 @@ h1,h2,h3,h4,h5,h6{
 }
 
 h1{font-size: 20px;}
-h2{font-size: 25px;}
-h3{font-size: 30px;}
-h4{font-size: 30px;text-align: left;}
-h5{font-size: 40px;}
+h2{font-size: 20px;}
+h3{font-size: 20px;}
+h4{font-size: 20px;
+   text-align: left;}
+h5{font-size: 20px;
+   margin-bottom: 10px;}
 h6{font-size: 20px;
  text-align: left;
 }
@@ -210,67 +212,4 @@ input:focus{
    width: 100%;
    text-align: right;
    margin: 0px auto 0px auto;
-}
-
-/*------------------Vista Categorias----------------------*/
-
-.vista_categoria{
-   width: 920px%;
-   margin: 10px 0 10px 0;
-}
-
-.vista_categoria_titulo{ 
-   width: 920px;
-   display: block;
-   position: relative;
-   float: left;      
-   padding:10px 0px 5px 0px; 
-   border-top: 1px solid #666666;
-}
-
-.vista_categoria_titulo h6 a{  
-   color: #000000;   
-   text-decoration: none;
-}
-
-.vista_categoria_titulo h6 a:hover{ 
-   background-color: #b3b3b3; 
-   color: #000000;   
-   text-decoration: none;
-}
-
-.vista_categoria_productos{ 
-   width: 920px;
-   display: block;
-   position: relative;
-   float: left;   
-}
-
-.vista_categoria_productos .equipos{
-   width: 148px;
-   height: 198px;
-   margin: 10px 4px 10px 4px;
-   border: 1px solid #666666;
-   float: left;
-}
-
-.vista_categoria_productos .equipos img{
-   width: 150px;
-   height: 150px;
-}
-
-.vista_categoria_productos .equipos .imagenes{
-   width: 140px;
-   height: 140px;
-   margin: 5px 4px 5px 4px;   
-   overflow: hidden;
-}
-
-.vista_categoria_productos .equipos .datos{
-   max-width: 140px;
-   max-height: 140px;
-   margin: 5px 4px 5px 4px;
-      text-overflow:ellipsis; 
-      white-space:nowrap;
-      overflow:hidden;     
 }
