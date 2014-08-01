@@ -15,4 +15,4 @@
 /log/*.log
 /tmp
 /public/data
-/config/initilizers/omniauth.rb
+/config/initializers/omniauth.rb
