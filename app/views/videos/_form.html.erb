@@ -17,11 +17,11 @@
   </div>
   <div class="field">
     <%= f.label :video_url %><br>
-    <%= f.text_field :video_url, required: true, pattern: "^<iframe+[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-/\s/]*+>$"  %>
+    <%= f.text_field :video_url, required: true, pattern:"^<iframe+[a-zA-Z0-9\s=<>\"\-\\?.]*<\/iframe>$", title: "El video debe contener iframes" %>
   </div>
   <div class="field">
     <%= f.label :title %><br>
-    <%= f.text_field :title %>
+    <%= f.text_field :title, required: true, pattern:"^[a-zA-Z0-9\s]*$", title: "Solo acepta caracteres alfanumericos" %>
   </div>
   <div class="actions">
     <%= f.submit %>

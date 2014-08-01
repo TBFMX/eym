@@ -91,7 +91,7 @@ class ImagesController < ApplicationController
 
     respond_to do |format|
       if @image.save
-        format.html { redirect_to galeria_index_path(@equipment), notice: 'Image was successfully created.' }
+        format.html { redirect_to dashboard_imagenes_path(@equipment, @gallery), notice: 'Image was successfully created.' }
         format.json { render :show, status: :created, location: @image }
       else
         format.html { render :new }
