@@ -44,7 +44,11 @@ class EquipmentController < ApplicationController
 
   # GET /equipment/1/edit
   def edit
-    add_breadcrumb @equipment.name.to_s, edit_equipment_path(@equipment)
+    if propiedad(@equipment.user_id)
+      add_breadcrumb @equipment.name.to_s, edit_equipment_path(@equipment)
+    else
+      redirect_to equipment_path(@equipment), notice: 'no esta autorizado a hacer cambios en ese equipo'
+    end  
   end
 
   # POST /equipment
@@ -138,8 +142,6 @@ class EquipmentController < ApplicationController
         format.json { render json: @equipment.errors, status: :unprocessable_entity }
       end
     end
-
-    
 =begin
     respond_to do |format|
       if @equipment.save
@@ -156,91 +158,94 @@ class EquipmentController < ApplicationController
   # PATCH/PUT /equipment/1
   # PATCH/PUT /equipment/1.json
   def update
-    @pic = params[:equipment][:image_id]
-    puts "-------------------Pic---------------------------"
-      puts @pic.inspect
-    puts "----------------------------------------------"
-    puts "-------------------Pics---------------------------"
-      puts @pics.inspect
-    puts "--------------------------------------------------" 
 
-    respond_to do |format|
-      if @equipment.update(equipment_params)
-        format.html { 
-          unless @pic.nil?
-            @pics = DataFile.save(@pic,@equipment.id.to_s, @equipment.slug.to_s)
-          else
-            @pics = nil
-          end
+    if propiedad(@equipment.user_id)
+      @pic = params[:equipment][:image_id]
+      puts "-------------------Pic---------------------------"
+        puts @pic.inspect
+      puts "----------------------------------------------"
+      puts "-------------------Pics---------------------------"
+        puts @pics.inspect
+      puts "--------------------------------------------------" 
 
-          unless @pics.nil?
-          #creo la galleria
-
-            @gal = Gallery.where("equipment_id = ? and title = 'principal' ", @equipment.id ).count
-            if @gal > 0 
-              puts "--------------------------gal count---------------------------------"
-              puts "-----" + @gal.to_s + "----------------------------------------------"
-              puts "--------------------------------------------------------------------"
-              @gallery=Gallery.where("equipment_id = ? and title = 'principal' ", @equipment.id ).first
+      respond_to do |format|
+        if @equipment.update(equipment_params)
+          format.html { 
+            unless @pic.nil?
+              @pics = DataFile.save(@pic,@equipment.id.to_s, @equipment.slug.to_s)
             else
-              @gallery=Gallery.new("equipment_id"=>@equipment.id, "title" =>"principal")
-            end    
-              puts "--------------------Galleria--------------------------"
-              puts @gallery.inspect
-              puts "------------------------------------------------------"
-              respond_to do |format|
-                if secure_save(@gallery)
-                  format.html {
-                    @galleries = Gallery.find(@gallery)
-                    
-                      puts "pase la validacion de pic"
-                        @image = Image.new("gallery_id" => @galleries.id, "image_url" => @pics)
-                        puts "--------------------Imagen--------------------------"
-                        puts @image.inspect
-                        puts "----------------------------------------------------"
-                        
-                        respond_to do |format|
-                          if secure_save(@image)
-                            puts "entre a imagen"
-                            format.html { 
-                              respond_to do |format|
-                                if @equipment.update("image_id" => @image.id)
-                                  format.html { 
-                                   #me voy al show del equipo
-                                    redirect_to dashboard_equipos_path, notice: 'Los cambios se han guardado con exito' 
-                                  }
-                                  format.json { }
-                                else
-                                  format.html { redirect_to root_path, alert: "fallo el update de proyecto" }
-                                  format.json {  }
-                                end
-                              end                      
-                            }
-                            format.json { }
-                          else
-                            puts "entre a imagen"
-                            format.html { redirect_to root_path, alert: "fallo el salvado de la imagen" }
-                            format.json {  }
-                          end
-                        end    
-                   }
-                  format.json {  }
-                else
-                  format.html { redirect_to root_path, alert: "fallo el salvado de la Galeria" }
-                  format.json {  }
+              @pics = nil
+            end
+            unless @pics.nil?
+            #creo la galleria
+              @gal = Gallery.where("equipment_id = ? and title = 'principal' ", @equipment.id ).count
+              if @gal > 0 
+                puts "--------------------------gal count---------------------------------"
+                puts "-----" + @gal.to_s + "----------------------------------------------"
+                puts "--------------------------------------------------------------------"
+                @gallery=Gallery.where("equipment_id = ? and title = 'principal' ", @equipment.id ).first
+              else
+                @gallery=Gallery.new("equipment_id"=>@equipment.id, "title" =>"principal")
+              end    
+                puts "--------------------Galleria--------------------------"
+                puts @gallery.inspect
+                puts "------------------------------------------------------"
+                respond_to do |format|
+                  if secure_save(@gallery)
+                    format.html {
+                      @galleries = Gallery.find(@gallery)
+                      
+                        puts "pase la validacion de pic"
+                          @image = Image.new("gallery_id" => @galleries.id, "image_url" => @pics)
+                          puts "--------------------Imagen--------------------------"
+                          puts @image.inspect
+                          puts "----------------------------------------------------"
+                          
+                          respond_to do |format|
+                            if secure_save(@image)
+                              puts "entre a imagen"
+                              format.html { 
+                                respond_to do |format|
+                                  if @equipment.update("image_id" => @image.id)
+                                    format.html { 
+                                     #me voy al show del equipo
+                                      redirect_to dashboard_equipos_path, notice: 'Los cambios se han guardado con exito' 
+                                    }
+                                    format.json { }
+                                  else
+                                    format.html { redirect_to root_path, alert: "fallo el update de proyecto" }
+                                    format.json {  }
+                                  end
+                                end                      
+                              }
+                              format.json { }
+                            else
+                              puts "entre a imagen"
+                              format.html { redirect_to root_path, alert: "fallo el salvado de la imagen" }
+                              format.json {  }
+                            end
+                          end    
+                     }
+                    format.json {  }
+                  else
+                    format.html { redirect_to root_path, alert: "fallo el salvado de la Galeria" }
+                    format.json {  }
+                  end
                 end
-              end
 
-          else
-            redirect_to dashboard_equipos_path, notice: 'Los cambios se han guardado con exito' 
-          end
-        }
-        format.json { render :show, status: :ok, location: @equipment }
-      else
-        format.html { render :edit }
-        format.json { render json: @equipment.errors, status: :unprocessable_entity }
+            else
+              redirect_to dashboard_equipos_path, notice: 'Los cambios se han guardado con exito' 
+            end
+          }
+          format.json { render :show, status: :ok, location: @equipment }
+        else
+          format.html { render :edit }
+          format.json { render json: @equipment.errors, status: :unprocessable_entity }
+        end
       end
-    end
+    else
+      redirect_to dashboard_equipos_path, notice: 'no esta autorizado a hacer cambios en ese equipo' 
+    end  
   end
 
   # DELETE /equipment/1
@@ -422,6 +427,15 @@ class EquipmentController < ApplicationController
       @equipment = Equipment.all
       puts "entre al manejador"
     end
+
+    def propiedad(user_id)
+      if user_id == session[:user_id]
+        aprovado = true
+      else
+        aprovado = false
+      end  
+      return aprovado
+    end  
 
     def sort_column
       params[:sort] || "name"

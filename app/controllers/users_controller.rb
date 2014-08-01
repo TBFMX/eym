@@ -84,10 +84,14 @@ class UsersController < ApplicationController
 
   def reset_password
     @user = User.where(["username= ? and email= ?",params[:username],params[:email]])
+    if @user.empty?
+      redirect_to root_path
+    else
     @user.update(user_params) 
     Mailer.reset_password(@user,params[:email]).deliver 
     end 
-
+  end
+  
   def cambiar_password
     @user = User.find(params[:id]) 
     Mailer.cambiar_password(@user).deliver  
