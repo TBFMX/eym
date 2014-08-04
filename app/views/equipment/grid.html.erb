@@ -28,7 +28,7 @@
 
     <%#= select("equipment", "category_id", Category.all.collect {|p| [ p.title, p.id ] }.uniq, {include_blank: 'Categoria'}) %>
     <br>
-
+    <%= hidden_field_tag :category , @categoria.title %>
     <%= submit_tag "Filtrar", :name => nil %>
     <% end %>
     </div>

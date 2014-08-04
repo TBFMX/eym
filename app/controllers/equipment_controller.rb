@@ -297,12 +297,22 @@ class EquipmentController < ApplicationController
   end
 
   def grid
-     aux = params[:categoria] 
-    @categoria = Category.find_by('categories.title' => aux)
-    if @categoria.father_id != 0
-      categoria2 = Category.find(@categoria.father_id)
-      add_breadcrumb categoria2.slug.to_s, Filtro_path('categoria' => categoria2.title, 'tipo' => 1)
+    puts "-------params---------"
+    puts params.inspect
+    puts params[:category]
+    puts "--------------------------"
+    simple = false
+    unless params[:categoria].blank?
+      aux = params[:categoria]
+      simple = true
+    else      
+      aux = params[:category]
+      simple = false
     end 
+    
+    @categoria = Category.find_by('categories.title' => aux)
+    
+    
     add_breadcrumb @categoria.slug.to_s, Filtro_path('categoria' => @categoria.title, 'tipo' => 1)
 
    
@@ -313,10 +323,12 @@ class EquipmentController < ApplicationController
     puts "-------parametros---------"
     puts params.inspect
     puts "--------------------------"
-    unless cat.blank?
+    if simple
       @equipments = Equipment.where('category_id = ?', cat.id).where_custom.order(sort_column + ' ' + sort_direction)
-    else  
-      @equipments = Equipment.query(params[:equipment]).where_custom.order(sort_column + ' ' + sort_direction)
+    else
+      #categoria2 = Subcategory.find_by(father_id: @categoria.id)
+      #add_breadcrumb categoria2.slug.to_s, Filtro_path('categoria' => categoria2.title, 'tipo' => 1) 
+      @equipments = Equipment.query(params[:equipment]).where('category_id = ?', cat.id).where_custom.order(sort_column + ' ' + sort_direction)
       #@equipments = Equipment.query(params[:equipment]).order(sort_column + ' ' + sort_direction).paginate(:per_page => 10, :page => params[:page])
     end
     puts "-------equipments---------"
