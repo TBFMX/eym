@@ -83,9 +83,10 @@ class EquipmentController < ApplicationController
             @pics = "/data/dommy.jpg"  
           end
           ########################
+          @gallery=Gallery.new("equipment_id"=>@equipments.id, "title" =>"principal")
           unless @pic.nil?
           #creo la galleria
-            @gallery=Gallery.new("equipment_id"=>@equipments.id, "title" =>"principal")
+            
             puts "--------------------Galleria--------------------------"
             puts @gallery.inspect
             puts "------------------------------------------------------"
