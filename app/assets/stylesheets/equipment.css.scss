@@ -186,10 +186,10 @@
 
 .show_equipment .producto .preview{
    width: 150px;
-   min-height: 100px;
-   max-height: 300px;
+   height: 300px;
    text-align: center;
    float: left;
+   overflow: scroll;
 }
 
 

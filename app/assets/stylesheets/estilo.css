@@ -38,6 +38,12 @@ body{
    float: left;
 }
 
+.header  .header_parte1 img{
+   width: 320px;
+   height: 80px;
+   float: left;
+}
+
 .header  .header_parte2{
    width: 120px;
    height: 80px;
