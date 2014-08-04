@@ -83,10 +83,10 @@ class EquipmentController < ApplicationController
             @pics = "/data/dommy.jpg"  
           end
           ########################
-          @gallery=Gallery.new("equipment_id"=>@equipments.id, "title" =>"principal")
-          unless @pic.nil?
+          
+          
           #creo la galleria
-            
+            @gallery=Gallery.new("equipment_id"=>@equipments.id, "title" =>"principal")
             puts "--------------------Galleria--------------------------"
             puts @gallery.inspect
             puts "------------------------------------------------------"
@@ -94,7 +94,7 @@ class EquipmentController < ApplicationController
               if secure_save(@gallery)
                 format.html {
                   @galleries = Gallery.find(@gallery)
-                  
+                    unless @pic.nil?
                     puts "pase la validacion de pic"
                       @image = Image.new("gallery_id" => @galleries.id, "image_url" => @pics)
                       puts "--------------------Imagen--------------------------"
@@ -125,17 +125,18 @@ class EquipmentController < ApplicationController
                           format.html { redirect_to root_path, alert: "fallo el salvado de la imagen" }
                           format.json {  }
                         end
-                      end    
-                 }
+                      end
+                    else
+                      redirect_to @equipment, notice: 'Equipment was successfully created.'
+                    end  
+                }
                 format.json {  }
               else
                 format.html { redirect_to root_path, alert: "fallo el salvado de la Galeria" }
                 format.json {  }
               end
             end
-          else
-            redirect_to @equipment, notice: 'Equipment was successfully created.'
-          end    
+              
         }
         format.json { render :show, status: :created, location: @equipment }
       else

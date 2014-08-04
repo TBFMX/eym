@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   skip_before_action :authorize, only: [:recover_password, :new_recover_password]
   skip_before_action :autorizar, only: [:cambiar_password, :new_cambiar_password]
-  skip_before_action :autorizar, only: [:new,:create]
+  skip_before_action :autorizar, only: [:new,:create, :update]
   skip_before_action :authorize, only: [:new,:create]
   # GET /users
   # GET /users.json
@@ -54,19 +54,29 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
-    puts "--------------------------------------"
-    puts params.inspect
-    puts user_params.inspect
-    puts "--------------------------------------"
-    respond_to do |format|
-      if @user.update(user_params)
-        format.html { redirect_to dashboard_login_path, notice: "El usuario #{@user.username} fue actualizado exitosamente." }
-        format.json { render :show, status: :ok, location: @user }
-      else
-        format.html { redirect_to dashboard_login_path }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
+    if session[:user_id] == @user.id or session[:uname] == "admin@admin.com"
+      puts "--------------------------------------"
+      puts params.inspect
+      puts user_params.inspect
+      puts "--------------------------------------"
+      respond_to do |format|
+        if @user.update(user_params)
+          puts "--------------------------------------"
+          puts " si se guardo"
+          puts "--------------------------------------"
+          format.html { redirect_to dashboard_login_path, notice: "El usuario #{@user.username} fue actualizado exitosamente." }
+          format.json { render :show, status: :ok, location: @user }
+        else
+          puts "--------------------------------------"
+          puts " no se guardo"
+          puts "--------------------------------------"
+          format.html { redirect_to dashboard_login_path, notice: "El usuario #{@user.username} no pudo ser actualizado." }
+          format.json { render json: @user.errors, status: :unprocessable_entity }
+        end
       end
-    end
+    else
+      redirect_to root_path , notice: " no esta autorizado para hacer esa accion"
+    end  
   end
 
   # DELETE /users/1
@@ -123,7 +133,7 @@ class UsersController < ApplicationController
 
     def autorizar
         unless session[:mod0] == true
-          redirect_to root_path
+          redirect_to root_path , notice: " no esta autorizado para hacer esa accion"
         end
     end
 

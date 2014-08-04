@@ -10,9 +10,9 @@ class DashboardController < ApplicationController
   def login
     add_breadcrumb "Administrar cuenta"
      @user = User.find(session[:user_id])  
-     puts "---------------------------------"
-     puts @user.inspect
-     puts "---------------------------------"     
+     #puts "---------------------------------"
+     #puts @user.inspect
+     #puts "---------------------------------"     
   end
 
   #mis equipos
