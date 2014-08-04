@@ -177,7 +177,7 @@ class Equipment < ActiveRecord::Base
 		    end
 
 		    if !equipment[:preciod].blank? || !equipment[:precioh].blank?
-		    	puts "-----------hoboletos cinemex para doctor whola ---------------"
+		    	puts "-----------hola ---------------"
 		    	if !equipment[:preciod].blank? && !equipment[:precioh].blank?
 		    		if equipment[:preciod] != equipment[:precioh]
 			    		@aux= @aux + 'and precio between  ? and ? '
@@ -189,7 +189,7 @@ class Equipment < ActiveRecord::Base
 			    		
 			    	end	
 		    	elsif equipment[:preciod] && equipment[:precioh].blank?
-		    		@aux= @aux + 'aboletos cinemex para doctor whond precio <= ? '
+		    		@aux= @aux + 'and precio <= ? '
 		    		@aux2[@cont]= equipment[:preciod]
 		    	elsif equipment[:preciod].blank? && equipment[:precioh]
 		    		@aux= @aux + 'and precio >= ? '
@@ -201,7 +201,7 @@ class Equipment < ActiveRecord::Base
 	    #puts @cont	
 		      @aux2[0]=@aux
 	      where @aux2 
-	    elseboletos cinemex para doctor who
+	    else
 	      scoped
 	    end
 
