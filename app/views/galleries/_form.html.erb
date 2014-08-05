@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= f.label :title %><br>
-    <%= f.text_field :title, required: true %>
+    <%= f.text_field :title, required: true, pattern: "^(principal.+|(?!principal).*)$", title: "Solo se aceptan caracteres alfa-numéricos" %>
   </div>
   <div class="field">
     <%#= f.label :equipment_id %><br>

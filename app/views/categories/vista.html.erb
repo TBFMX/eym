@@ -1,5 +1,4 @@
 <% @category.each do |categoria| %>
-	<% if categoria.father_id == 0 %>
 		<div class="vista_categoria">
 			<div class="vista_categoria_titulo">
 				<h6>
@@ -9,7 +8,7 @@
 			</div>
 			<div class="vista_categoria_productos">
 				<% @equipment.each do |equipment| %>
-				<% if equipment.category_id == categoria.id %>
+				<% if equipment.category_id.to_s == categoria.id.to_s %>
 					<div class="equipos">
 						<div class="imagenes">
 							<% if equipment.image_id  %>
@@ -34,5 +33,4 @@
 				<% end %>
 			</div>	
 		</div>
-	<% end %> 
 <% end %>   

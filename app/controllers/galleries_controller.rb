@@ -96,6 +96,7 @@ class GalleriesController < ApplicationController
   # DELETE /galleries/1.json
   def destroy
     #borramos archivos
+    @equip = Equipment.find(@gallery.equipment_id)
     @image = Image.where('gallery_id = ?', @gallery.id)
     @image.each do |image|
       pic = image.image_url
@@ -107,7 +108,7 @@ class GalleriesController < ApplicationController
 
     @gallery.destroy
     respond_to do |format|
-      format.html { redirect_to galleries_url, notice: 'Gallery was successfully destroyed.' }
+      format.html { redirect_to dashboard_gallerias_path(@equip), notice: 'Gallery was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
