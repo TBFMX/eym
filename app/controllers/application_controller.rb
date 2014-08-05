@@ -119,6 +119,7 @@ class ApplicationController < ActionController::Base
 
       def menu_categorias
         @category = Category.all
+        @subcategory = Subcategory.all
       end
       def current_user
         @current_user ||= User.find(session[:user_id]) if session[:user_id]
