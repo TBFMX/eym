@@ -52,7 +52,7 @@ class CommentsController < ApplicationController
         format.html { redirect_to equipment_path(@comment.equipment.id), notice: 'Comment was successfully created.' }
         format.json { render :show, status: :created, location: @comment }
       else
-        format.html { render :new }
+        format.html { redirect_to equipment_path(@comment.equipment.id), notice: 'El comentario no puede estar en blanco.' }
         format.json { render json: @comment.errors, status: :unprocessable_entity }
       end
     end
