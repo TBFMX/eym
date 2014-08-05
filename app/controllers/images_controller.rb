@@ -37,8 +37,6 @@ class ImagesController < ApplicationController
     #unless @permiso 
     #  redirect_to root_path
     #end
-
-
     #@image = Image.new
   end
 
@@ -61,19 +59,15 @@ class ImagesController < ApplicationController
         format.html { redirect_to galeria_show_path(equipment,gallery), notice: 'La imagen principal no pudo ser cambiada, intente mas tarde.' }
         format.json { render json: @image.errors, status: :unprocessable_entity }
       end
-    end 
-    
+    end  
   end
 
   # POST /images
   # POST /images.json
   def create
-    
     @gallery = Gallery.find(params[:image][:gallery_id])
     @equipment= Equipment.find(@gallery.equipment_id)
     @gallery2 = Gallery.find(@gallery)
-
-    
     #@image = Image.new(image_params)
     @pic = params[:image][:image_url]
     puts "---------------------------------datos-imagen------------------------------------------------------"
@@ -81,22 +75,19 @@ class ImagesController < ApplicationController
     puts "---------------------------------------------------------------------------------------------------"
     unless @pic.blank?
       @pics = DataFile.save(@pic,@equipment.id.to_s, @equipment.name.to_s)
+        @image = Image.new("image_url" => @pics, "gallery_id" => params[:image][:gallery_id], "title" => params[:image][:title])
+        respond_to do |format|
+          if @image.save
+            format.html { redirect_to dashboard_imagenes_path(@equipment, @gallery), notice: 'Image was successfully created.' }
+            format.json { render :show, status: :created, location: @image }
+          else
+            format.html { render :new }
+            format.json { render json: @image.errors, status: :unprocessable_entity }
+          end
+        end
     else
-      @pics = "/data/dommy.jpg"  
-    end
-
-
-    @image = Image.new("image_url" => @pics, "gallery_id" => params[:image][:gallery_id], "title" => params[:image][:title])
-
-
-    respond_to do |format|
-      if @image.save
-        format.html { redirect_to dashboard_imagenes_path(@equipment, @gallery), notice: 'Image was successfully created.' }
-        format.json { render :show, status: :created, location: @image }
-      else
-        format.html { render :new }
-        format.json { render json: @image.errors, status: :unprocessable_entity }
-      end
+      redirect_to imagen_nueva_path(@equipment,@gallery.slug), notice: 'Porfavor cargue una imagen'
+      #@pics = "/data/dommy.jpg"  
     end
   end
 

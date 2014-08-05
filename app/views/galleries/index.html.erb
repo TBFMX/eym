@@ -14,7 +14,7 @@
     <% @galleries.each do |gallery| %>
       <tr>
         <td><%= gallery.title %></td>
-        <td><%= gallery.equipment_id %></td>
+        <td><%= gallery.equipment.name %></td>
         <td><%= gallery.user_id %></td>
         <td><%= link_to 'Show', galeria_show_path(@equipment,gallery) %></td>
           <%# if @permiso %>

@@ -173,6 +173,9 @@ class UsersController < ApplicationController
           params[:user][:username] = params[:user][:email]  
         end
       end  
+
+
+      
       params[:user][:rol_id] = 2
       params.require(:user).permit(:username, :password, :password_confirmation, :name, :lastname, :email, :login_date, :password_date, :rol_id)
     end
