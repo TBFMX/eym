@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
     :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, 
     :message => ' - The email provided does not have a valid format.'
   validates :name, :lastname, presence: true
+  has_many :comments
 
   def send_password_reset
 	  generate_token(:password_reset_token)

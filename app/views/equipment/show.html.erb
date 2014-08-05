@@ -54,11 +54,10 @@
       <table>
         <tr><th colspan="2">Modelo: <%= @equipment.modelo %></th></tr>
         <tr><td>Año: <%= @equipment.year %></td><td>Color: <%= @equipment.color %></td></tr>
-        <tr><td>Marca: <%= @equipment.brand_id %></td><td> </td></tr>
-        <tr><th colspan="2">Venta / Renta</th></tr>
+        <tr><td>Marca: <%= @equipment.brand.name %></td><td> </td></tr>
+        <tr><th colspan="2"><%if @equipment.publication_type == 1 %>Venta<% else %>Renta<% end %>:</th></tr>
         <tr>
-          <td>Precio Venta:</td>
-          <td><%= number_to_currency(@equipment.precio) %> <%= @currency.name %></td>
+          <td colspan="2">Precio: <%= number_to_currency(@equipment.precio) %> <%= @currency.name %></td>
         </tr>
         <tr><th colspan="2">Contacto y localidad</th></tr> 
         <tr>

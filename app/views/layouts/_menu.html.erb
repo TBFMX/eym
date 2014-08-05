@@ -4,26 +4,16 @@
 		<li><%= link_to 'Categorias', category_vista_path %>
 			<ul>
 			<% @category.each do |category| %>
-				<% if category.father_id == 0 %>
 					<li><%= link_to category.title, Filtro_path('categoria' => category.title, 'tipo' => 1), method: :post %>
 					<ul>
 						<% @subcategory.each do |subcategory| %>
-							<% 
-							puts "#################Vuelta#########################"
-							puts "category_id =" + category.id.to_s
-							if subcategory.category_id.to_s == category.id.to_s 
-							puts "---------------------si pase-----------------------"
-							puts subcategory.category_id
-							puts category.id
-							puts "---------------------------------------------------"
-							%>
-								<li><%= link_to subcategory.title, Filtro_path('categoria' => subcategory.title, 'tipo' => 1), method: :post %></li>
-							<% end 
-							puts "#################Fin Vuelta#########################" %>
+							<% if subcategory.category_id.to_s == category.id.to_s %>
+								<li><%= link_to subcategory.title, Filtro_path('categoria' => category.title, 'tipo' => 1), method: :post %></li>
+							<% end %>
+
 						<% end %>
 					</ul>
 					</li>
-				<% end %>
 			<% end %>
 			</ul>
 		</li>
