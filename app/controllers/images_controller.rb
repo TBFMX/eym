@@ -133,22 +133,22 @@ class ImagesController < ApplicationController
             respond_to do |format|
               if @equip.update(:image_id => n_image.id)
                 puts "asigno"
-                format.html {  redirect_to dashboard_index_url, notice: 'Image was successfully destroyed.'} 
+                format.html {  redirect_to dashboard_equipos_url, notice: 'Image was successfully destroyed.'} 
                 format.json {}  
               else
                 puts "no asigno"
-                format.html { redirect_to dashboard_index_url, notice: 'Image wasnt successfully destroyed.' }
+                format.html { redirect_to dashboard_equipos_url, notice: 'Image wasnt successfully destroyed.' }
                 format.json { render json: @image.errors, status: :unprocessable_entity }
               end
             end 
           else
-            redirect_to dashboard_index_url, notice: 'Image was successfully destroyed.'  
+            redirect_to dashboard_equipos_url, notice: 'Image was successfully destroyed.'  
           end
         }
         format.json { head :no_content }
       end
     else
-      redirect_to dashboard_index_url, notice: 'La imagen no puede ser destruida'  
+      redirect_to dashboard_equipos_url, notice: 'La imagen no puede ser destruida'  
     end
   end
 
