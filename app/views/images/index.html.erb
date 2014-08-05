@@ -8,10 +8,14 @@
   <div class="imagenesContenido">
     <div class="imagenesGaleria"><img src="<%= image.image_url %>"></div>
     <div class="imagenesTitulo"><%= image.title %></div>
-    <% if session[:user_id] == @equip.user_id && @gallery.title == 'principal' %> 
-    	<div><%= link_to 'Volver Principal', select_image_path(image.id,@equip,@gallery) %></div>
+    <% if session[:user_id] == @equip.user_id %> 
+    	<div class="imagenesboton">
+        <%= link_to 'Borrar Imagen', image, method: :delete, data: { confirm: 'Are you sure?' } %> 
+          <% if @gallery.title == 'principal'  %> 
+            | <%= link_to 'Volver Principal', select_image_path(image.id,@equip,@gallery) %>
+          <% end %>
+      </div>
     <% end %>
-    <div class="imagenesboton"><%= link_to 'Borrar Imagen', image, method: :delete, data: { confirm: 'Are you sure?' } %></div>    
   </div>
   <% end %>
 </div>     
