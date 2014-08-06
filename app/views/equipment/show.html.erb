@@ -30,8 +30,12 @@
       </div>
       <div>
       <%
+        @video2 = nil
         @gallery.each do |g|
         @video = Video.where('gallery_id' => g.id)
+        if @video2 == nil
+          @video2 = Video.where('gallery_id' => g.id).first
+        end
         link_to g.title, 'equipment/galleries/'+ g.equipment_id.to_s
         %>
           <% unless @video.blank?
@@ -43,13 +47,19 @@
       </div>
     </div>
 
+      <!--      imagenes principal del equipo          -->
       
-      <% if @image.image_url %>
-          <div class="imagen"><img src="<%= @image.image_url %>"></div>
+      <% if @video2 != nil %>
+        <div class="imagen"><%= @video2.video_url.html_safe %></div>
       <%else %>
-          <div class="imagen"><img src="/data/dummy.jpg"></div>  
-      <% end %>        
-    
+        <% if @image.image_url %>
+            <div class="imagen"><img src="<%= @image.image_url %>"></div>
+        <%else %>
+            <div class="imagen"><img src="/data/dummy.jpg"></div>  
+        <% end %>        
+      <% end %>
+
+    <!--      tabla de detalles          -->
     <div class="modelo">
       <table>
         <tr><th colspan="2">Modelo: <%= @equipment.modelo %></th></tr>
@@ -70,15 +80,17 @@
       </table>
       </div> 
     </div>
-    
+  
+  <!--      etiquetas          -->  
   <p>Etiquetas: <%= @equipment.etiquetas %></p>
 
+  <!--      descripcion del equipo          -->
   <div class="descripcion">
     <h1>Description:</h1>
     <textarea readonly><%= @equipment.description %></textarea>
   </div>
 
-
+  <!--      comentarios          -->
   <h1>Comentarios:</h1>
     <%= render partial: '/comments/form', locals: {equipment: @equipment.slug, comment: @comment} %> 
     <%= render partial: '/comments/index', locals: {equipment: @equipment.slug, comments: @comments} %>
