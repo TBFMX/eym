@@ -73,7 +73,7 @@
   </div>
   <div class="field">
     <%= f.label :title %><br>
-    <%= f.text_field :title %>
+    <%= f.text_field :title, required: true, pattern:"^[a-zA-Z0-9\s]*$", title: "Solo acepta caracteres alfanumericos" %>
   </div>
   <div class="actions">
     <%= f.submit %>
