@@ -17,11 +17,15 @@
 								<div class="imagen">
 									<%= link_to image_tag(@images.image_url ), equipment_path(equipment) %>
 								</div>
-								<%else %>
-								<div class="imagen"><img src="/data/dommy.jpg"></div>  
+								<%else %> <%= link_to image_tag("/data/dummy.jpg"), equipment_path(equipment) %>
+								<div class="imagen">
+									<%= link_to image_tag("/data/dommy.jpg"), equipment_path(equipment) %>
+								</div>  
 								<% end %> 
 							<% else %>
-								<div class="imagen"><img src="/data/dommy.jpg"></div>  
+								<div class="imagen">
+									<%= link_to image_tag("/data/dummy.jpg"), equipment_path(equipment) %>
+								</div>  
 							<% end %> 
 						</div>
 						<div class="datos">

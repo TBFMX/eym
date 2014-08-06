@@ -204,7 +204,19 @@
    height: 50px;
 }
 
+.show_equipment .producto .preview .imagenprevia iframe{
+   width: 50px;
+   height: 50px;
+}
+
 .show_equipment .producto .imagen{
+   width: 470px;
+   height: 300px;
+   text-align: center;
+   float: left;
+}
+
+.show_equipment .producto .imagen iframe{
    width: 470px;
    height: 300px;
    text-align: center;
