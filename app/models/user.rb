@@ -47,7 +47,13 @@ class User < ActiveRecord::Base
           puts "--------------------------------------------------------------"
           puts auth.inspect
           puts "--------------------------------------------------------------"
-          user.save!             
+          begin
+            #some logic
+             user.save! 
+          rescue ActiveRecord::RecordNotSaved => e
+            redirect_to root_url ,notice: 'su correo ya esta registrado, use uno diferente' 
+          end
+                     
       end
     else
       user = @aux  
