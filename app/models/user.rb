@@ -28,15 +28,17 @@ class User < ActiveRecord::Base
       where(auth.slice(:provider, :uid)).first_or_initialize.tap do |user|
 
           user.provider = auth.provider
-          user.username = auth.info.name
           user.uid = auth.uid
           user.name = auth.info.first_name
         if :provider == "facebook"  
           user.password = "FBzRGEbIp-"
+          user.username = auth.info.name + "_fb"
         elsif :provider == "google_oauth2"
           user.password = "GLOTzRGEbIp-"
+          user.username = auth.info.name + "_gl"
         else
-          user.password = "OTzRGEbIp-"    
+          user.password = "OTzRGEbIp-" 
+          user.username = auth.info.name + "_ot"   
         end  
           user.email = auth.info.email
           user.lastname = auth.info.last_name

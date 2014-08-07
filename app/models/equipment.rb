@@ -9,6 +9,8 @@ class Equipment < ActiveRecord::Base
 	belongs_to :country
 	belongs_to :state
 	belongs_to :brand
+	belongs_to :package
+	belongs_to :category
 	
 
 	#validates :equipment_id, presence: true, uniqueness: true
@@ -25,6 +27,7 @@ class Equipment < ActiveRecord::Base
 
 	has_many :comments
 	#has_many :coments, dependent: :destroy
+	
 
 
 	validates :precio, numericality: {greater_than_or_equal_to: 0.01}
@@ -110,7 +113,8 @@ class Equipment < ActiveRecord::Base
 	def self.search(search)
 	  if search
 	  	aux = '%' + search + '%'
-	    where('description LIKE ? or etiquetas LIKE ?', aux,aux)
+	  	#aux = search 
+	    where('name LIKE ? or description LIKE ? or etiquetas LIKE ?', aux,aux,aux)
 	    #.order('package DESC,rank ASC, priority ASC')
 	  else
 	    all
@@ -173,6 +177,11 @@ class Equipment < ActiveRecord::Base
 		    if !equipment[:category_id].blank?
 		    	@aux= @aux + 'and category_id = ? '
 		    	@aux2[@cont]= equipment[:category_id]
+		    	@cont=@cont+1
+		    end
+		    if !equipment[:subcategory_id].blank?
+		    	@aux= @aux + 'and subcategory_id = ? '
+		    	@aux2[@cont]= equipment[:subcategory_id]
 		    	@cont=@cont+1
 		    end
 

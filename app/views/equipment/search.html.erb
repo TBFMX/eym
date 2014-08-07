@@ -31,15 +31,15 @@
 		        <td align="center"><%= equipment.name %></td>
 		        <td align="center"><%= equipment.year %></td>
 		        <td align="center"><%= equipment.color %></td>
-		        <td align="center"><%= equipment.brand_id %></td>
-		        <td align="center"><%= equipment.package_id %></td>
+		        <td align="center"><%= equipment.brand.name %></td>
+		        <td align="center"><%= equipment.package.name %></td>
 		        <td align="center"><%= number_to_currency(equipment.precio) %></td>
 		        <td align="center"><%= equipment.modelo %></td>
-		        <td align="center"><%= equipment.currency_id %></td>
-		        <td align="center"><%= equipment.country_id %></td>
-		        <td align="center"><%= equipment.state_id %></td>
+		        <td align="center"><%= equipment.currency.name %></td>
+		        <td align="center"><%= equipment.country.name %></td>
+		        <td align="center"><%= equipment.state.name %></td>
 		        <td align="center"><%= equipment.ciudad %></td>
-		        <td align="center"><%= equipment.category_id %></td>
+		        <td align="center"><%= equipment.category.title %></td>
 		      </tr>
 		    <% end %>
 		<% else %>
