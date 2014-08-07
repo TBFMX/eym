@@ -51,9 +51,9 @@ class User < ActiveRecord::Base
           puts "--------------------------------------------------------------"
           begin
             #some logic
-             user.save! 
+             user.save 
           rescue ActiveRecord::RecordNotSaved => e
-            redirect_to root_url ,notice: 'su correo ya esta registrado, use uno diferente' 
+            redirect_to root_url, notice: 'su correo ya esta registrado, use uno diferente' 
           end
                      
       end

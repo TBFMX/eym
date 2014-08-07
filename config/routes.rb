@@ -135,10 +135,10 @@ Rails.application.routes.draw do
     get '/equipo/contacto' => :contact
     post '/equipo/contacto' => :contact
     post '/send' => :sender
-    get '/preview/:id' => :preview , as: 'preview'
+    get '/previsalizar/:id' => :preview , as: 'preview'
     #delete '/equipo/:id' => :destroy , :as =>'destroy_equip'
-    get 'Mi_Panel/:equip/upgrade' => :master_console, :as => 'master_console'
-    post 'Mi_Panel/:equip/upgrade' => :master_console_exe , :as => 'master_console_exe'
+    get 'Mi_Panel/:equip/impulsar' => :master_console, :as => 'master_console'
+    post 'Mi_Panel/:equip/impulsar' => :master_console_exe , :as => 'master_console_exe'
     get  'equipos/resultados' => :search , :as => 'search'
     post 'equipos/resultados' => :search
     get 'equipos/listado' => :users_view, :as => 'users_view'
@@ -146,7 +146,7 @@ Rails.application.routes.draw do
 
   controller :dashboard do
     get 'Mi_Panel' => :index, :as => 'dashboard_index' 
-    get 'Mi_Panel/login' =>:login, :as => 'dashboard_login'
+    get 'Mi_Panel/Administracion_de_Cuenta' =>:login, :as => 'dashboard_login'
     get 'Mi_Panel/equipos' => :equipos, :as => 'dashboard_equipos'
     get 'Mi_Panel/:equip/galerias' => :gallerias, :as => 'dashboard_gallerias'
     get 'Mi_Panel/:equip/:gal/imagenes' => :imagenes, :as => 'dashboard_imagenes'
