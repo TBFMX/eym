@@ -19,7 +19,7 @@ class DashboardController < ApplicationController
   
   def equipos
     add_breadcrumb I18n.t("breadcrumbs.equipment"), dashboard_equipos_path()
-    @equipment = Equipment.where("user_id = ?" , session[:user_id]).where_custom
+    @equipment = Equipment.where("user_id = ?" , session[:user_id]).where_activo
   end
 
   def gallerias
@@ -100,7 +100,7 @@ class DashboardController < ApplicationController
  
     @equips = Equipment.find_by("user_id = ?" , session[:user_id])
     unless  @equips.blank?
-        @equipsWhere = Equipment.where("user_id = ?" , session[:user_id]).where_custom    
+        @equipsWhere = Equipment.where("user_id = ?" , session[:user_id]).where_activo    
     
         #@galleries = Gallery.find_by("equipment_id = ?" , @equips.id)                 
         @galleriesWhere = Gallery.where("equipment_id = ?" , @equips.id)

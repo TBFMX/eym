@@ -106,14 +106,27 @@ class Equipment < ActiveRecord::Base
   		end	
   	end
 
-  	def self.where_custom
+  	##############################
+	#status 0 = inactivo
+	#status 1 = pendiente de pagar
+	#status 2 = pagado/activo
+	#status 3 = desactivado
+	##############################
+  	def self.where_activo
   		where("status = 2")
-  		##############################
-  		#status 0 = inactivo
-  		#status 1 = pendiente de pagar
-  		#status 2 = pagado/activo
-  		#status 3 = desactivado
-  		##############################
+  		
+  	end
+  	def self.where_inactivo
+  		where("status = 0")
+  		
+  	end
+  	def self.where_pendiente
+  		where("status = 1")
+  		
+  	end
+  	def self.where_desactivado
+  		where("status = 3")
+  		
   	end	
 
   	def self.where_venta

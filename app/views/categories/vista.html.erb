@@ -2,7 +2,7 @@
 		<div class="vista_categoria">
 			<div class="vista_categoria_titulo">
 				<h6>
-					<% @contcat = Equipment.where('category_id = ?', categoria.id).count %>
+					<% @contcat = Equipment.where('category_id = ?', categoria.id).where_activo.count %>
 					<%= link_to categoria.title+' ('+@contcat.to_s+')', Filtro_path('categoria' => categoria.title, 'tipo' => 1), method: :post %>
 				</h6>
 			</div>

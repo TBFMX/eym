@@ -4,7 +4,7 @@
 <script type='text/javascript'>
            
 function validateFiles(inputFile) {
-var maxExceededMessage = "El Archivo excede el limite pérmitido (60 KB)";
+var maxExceededMessage = "El Archivo excede el limite pérmitido (1 MB)";
 var extErrorMessage = "Solo se aceptan extenciones: .jpg, .jpeg, .gif or .png ";
 var allowedExtension = ["jpg", "jpeg", "gif", "png"];
              
@@ -94,7 +94,7 @@ $.each(inputFile.files, function() {
         <%= f.label :modelo %><br>
         <%= f.text_field :modelo, required: true  %><br> 
         <%= f.label :year %><br>
-        <%= f.number_field :year, maxlength: "4" %><br>
+        <%= f.number_field :year, maxlength: "4" , in: 1950...2030%><br>
         <%= f.label :color %><br>
         <%= f.text_field :color %><br>
       </div>
