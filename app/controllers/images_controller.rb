@@ -29,8 +29,8 @@ class ImagesController < ApplicationController
   def new
     @gallery =Gallery.friendly.find(params[:gal])
     @equipment = Equipment.find(@gallery.equipment_id)
-    add_breadcrumb @equipment.name.to_s, equipment_path(@equipment)    
-    add_breadcrumb @gallery.title, galeria_index_path(@equipment)   
+    add_breadcrumb I18n.t("breadcrumbs.equipment"), dashboard_equipos_path()   
+    add_breadcrumb I18n.t("breadcrumbs.gallery"), dashboard_gallerias_path(params[:equip])   
     add_breadcrumb I18n.t("breadcrumbs.newimage"), imagen_nueva_path(@equipment.name, @gallery.slug) 
     @image = Image.new("gallery_id" => @gallery.id)
     #@permiso = check_propiety(@equipment)

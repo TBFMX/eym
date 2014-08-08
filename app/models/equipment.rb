@@ -108,7 +108,21 @@ class Equipment < ActiveRecord::Base
 
   	def self.where_custom
   		where("status = 2")
+  		##############################
+  		#status 0 = inactivo
+  		#status 1 = pendiente de pagar
+  		#status 2 = pagado/activo
+  		#status 3 = desactivado
+  		##############################
   	end	
+
+  	def self.where_venta
+  		where("publication_type = 1")
+  	end
+
+  	def self.where_renta
+  		where("publication_type = 2")
+  	end
 
 	def self.search(search)
 	  if search
