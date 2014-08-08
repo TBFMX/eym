@@ -46,7 +46,7 @@
                         </div>
                     <%else %>
                         <div class="imagen">
-                            <%= link_to image_tag("/data/dummy.jpg"), equipment_path(equipment) %>
+                            <%= link_to image_tag("/data/dommy.jpg"), equipment_path(equipment) %>
                         </div>  
                     <% end %>
                 <% else %>
@@ -57,7 +57,7 @@
             </div>
             <div class="datos"><%= link_to equipment.name, equipment_path(equipment) %>
                 <%#= equipment.name %><br />
-                <%= number_to_currency(equipment.currency_id) %>
+                <%= number_to_currency(equipment.precio) %>
             </div>
         </div>
      <% end %>                                      
