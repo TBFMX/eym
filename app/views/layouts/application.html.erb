@@ -11,10 +11,20 @@
 
 <body>
 	<!-- Validarlo para que no salga si no es el index -->
-	<%= render partial: "layouts/anuncio" %> 
+  <% puts "----------------------------" + request.url.to_s + "------------------------------------------------------------" %>
+  <%
+  if current_page?(root_path)
+   # puts "si se vale"
+    %>
+  <%= render partial: "layouts/anuncio" %>
+ <% else
+    
+    #puts "no se vale"
+  end     
+  %>
+	
 	<!-- Fin de la validación -->
   <%= render partial: "layouts/breadcrumb" %>
-	<div class="content"><div class="interior"><%= yield %></div></div>
 	    
   
 	<div class="content">
