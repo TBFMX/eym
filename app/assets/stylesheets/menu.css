@@ -1,14 +1,11 @@
 /* ----Menu desplegable --------*/
   #menu_eym{
-      width: 960px;
-      min-height: 30px;
+      width: 320px;
+      min-height: 34px;
       margin:0 auto 0 auto;  
       background-color: #ffffff;
       overflow: hidden; /*--para que el cuadro agarre todo lo interno.---*/    
-      font-size:13px;
-      font-weight:bold; 
-      border-radius: 10px 10px 0px 0px;
-      z-index: 100;
+      font-size:13px; 
   }
   
   #menu_eym ul, ol{
@@ -23,64 +20,49 @@
   }
   
   .menu li a{
-    background-color:#000;
-    color:#FFF;
+    background-color:#FFFFFF;
+    color:#52778d;
+    font-family: 'Oswald', sans-serif;
     text-decoration:none;
     padding:10px 15px;
     display: block;    
-    z-index: 100;
+    z-index: 2;
+    margin-top: -2px;
+      box-shadow: 0 2px 5px rgba(0,0,1,.25); /* drop shadow */
   }
   
   .menu li a:hover{
-    background-color: #666666;
-    z-index: 100;
+    background-color: #b3b3b3;
+    z-index: 2;
   }
   
   .menu > li{
     float: left;
     padding:0px;
-    width:120px;
-    z-index: 100;
+    width:105px;
+    z-index: 2;
   }
   
   .menu li ul{
     display:none;
     position:absolute;
     min-width:250px;
-    z-index: 100;
+    z-index: 2;
   }
   
   .menu li:hover > ul{
     display:block;
-    z-index: 100;
+    z-index: 2;
   }
   
   .menu li ul li{
     position: relative;
-    z-index: 100;
+    z-index: 2;
   }
   
   .menu li ul li ul{
     right: -250px;
     top: 0px;
-    z-index: 100;
+    z-index: 3;
   }
-
-  .menu_publica {
-    width: 150px;
-    margin: 0;
-    position: relative;
-    float: right;
-    background-color:#EBEBEB;
-    height: 20px;
-    padding: 5px;
-    border-radius: 10px 10px 0 0;
-    text-align: center;
-    z-index: 1;
-}
-
-.menu_publica:hover { 
-    background-color: #BEBEBE;
-    z-index: 1;
-}
 

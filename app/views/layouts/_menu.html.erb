@@ -1,6 +1,5 @@
 <div id="menu_eym">
 	<ul class="menu">
-		<li><%= link_to 'Inicio', root_url %></li>
 		<li><%= link_to 'Categorias', category_vista_path %>
 			<ul>
 			<% @category.each do |category| %>
@@ -20,7 +19,6 @@
 		<li><a href="#">Industria</a></li>
 		<li><a href="#">Blog</a></li>
 	</ul>
-	<div class="menu_publica"><%= link_to '$ Publica tu Anuncio', "/equipment/new" %></div>
 </div>
 	
 

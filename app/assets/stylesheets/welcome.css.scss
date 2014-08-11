@@ -2,7 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-
 /*------------ welcome -----------------*/
 
 .welcome_show_cuadro{
@@ -22,19 +21,33 @@
 
 .welcome_show_cuadro .centra_img{
    width: 190px;
-   height: 150px;
+   height: 310px;
    margin:10px 10px 0px 10px;
+   overflow: hidden;
+   z-index: -1;
 }
 
 .welcome_show_cuadro .centra_img img{
-   max-width: 150px;
-   max-height: 150px;
+   width: 190px;
+   height: 310px;
    display: block;
-   margin: auto;  
 }
 
-.welcome_show_cuadro .ajustar_titulo{
-   width: 200px;
+.welcome_show_cuadro .datos{
+   top:-160px;
+   height: 160px;
+   width: 190px;
+   float: left;
+   position: relative;
+   background-color: rgba(0, 0, 0, .5); /* color de fondo con opacity */
+   margin-left: 10px;
+   z-index: 1;
+   color: #FFFFFF;
+   filter:Alpha(opacity=50); /* IE8 and earlier */ 
+}
+
+.welcome_show_cuadro .datos .ajustar_titulo{
+   width: 185px;
    margin: 10px 0px 0px 3px;
    font-size: 15px;
    text-overflow:ellipsis; 
@@ -42,26 +55,26 @@
    overflow:hidden;  
 }
 
-.welcome_show_cuadro .ajustar_titulo a{
+.welcome_show_cuadro .datos .ajustar_titulo a{
    text-decoration: none;
+   color: #FFF;
+   font-weight: bold;
+   text-transform: uppercase;
 }
 
-.welcome_show_cuadro .detalles{
+.welcome_show_cuadro .datos .detalles{
    display:block;
-   width: 200px;
+   width: 185px;
    margin: 0px 5px 0px 5px;  
    text-overflow:ellipsis; 
    white-space:nowrap;
    overflow:hidden;   
 }
 
-.welcome_show_cuadro .detalles img{
+.welcome_show_cuadro .datos .detalles img{
    width: 12px;
    height: 12px;
 }
-
-
-
 
 .welcome_zona{
    width: 920px; 
