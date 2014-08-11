@@ -15,6 +15,7 @@ class Equipment < ActiveRecord::Base
 
 	#validates :equipment_id, presence: true, uniqueness: true
 	validates :name, presence: true, uniqueness: true
+	validates_format_of :name, :with => /^([^\/]*)$/i
 	validates :currency_id, presence: true
 	validates :modelo ,presence: true
 	validates :state_id, presence: true

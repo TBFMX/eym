@@ -6,4 +6,5 @@ class Image < ActiveRecord::Base
 	#belongs_to :gallery
 
 	#validates :gallery_id, presence: true
+	validates_format_of :name, :with => /^([^\/]*)$/i
 end
