@@ -61,12 +61,13 @@ class DashboardController < ApplicationController
   def cuenta       
   end 
 
+  ##generadores de pdf
   def contact_rep
     #@contacts = Contact.find_by_sql("select c.* from contactos c, equipment e where e.user_id = ? and e.id == c.equipment_id group by c.equipment_id order by c.name")
     respond_to do |format|
       format.html
       format.pdf do
-        render :pdf => "report", :layout => 'pdf.html.haml'
+        render :pdf => "report", :layout => 'pdf.html.erp'
       end
     end
   end 
@@ -81,6 +82,7 @@ class DashboardController < ApplicationController
     end
   end 
 =end
+  ##generadores de pdf
   def equipments_status_rep
     @equips = Equipment.where('user_id = ?', seesion[:user_id])
     respond_to do |format|
@@ -95,6 +97,26 @@ class DashboardController < ApplicationController
     @equipment = Equipment.where("user_id = ?", session[:user_id]).order('created_at ASC')
   end  
   
+  #def report_status
+  #  @equipments = Equipment.search(params[:search]).where_activo
+  #end
+
+  def report_status
+    #simple = false
+    ##aqui van los campos indispensables
+    @user_id = session[:user_id]
+    ##terminan indispensables
+    add_breadcrumb "Reporte de Status", reporte_status_path('tipo' => 1)
+
+    tipo = params[:tipo]    
+    #cat = Category.find_by('categories.title' => aux)    
+    puts "-------parametros---------"
+    puts params.inspect
+    puts "--------------------------"
+    @equipments = Equipment.query_rep_stat(params[:equipment]).where('user_id = ?', @user_id).where_activo.order(sort_column + ' ' + sort_direction)
+  end
+
+
   private
     def charge_all
  

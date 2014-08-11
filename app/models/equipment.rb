@@ -150,6 +150,55 @@ class Equipment < ActiveRecord::Base
 	end
 
 
+		
+	def self.query_rep_stat(equipment)
+	    @aux= " 1 = 1 "
+	    @aux2= Array.new
+	    @cont=1
+	    if equipment
+		    if !equipment[:name].blank?
+		    	@aux= @aux + 'and name = ? '
+		    	@aux2[@cont]=  equipment[:name]
+		    	@cont=@cont+1
+		    end
+		    if !equipment[:status].blank?
+		    	@aux= @aux + 'and status = ? '
+		    	@aux2[@cont]=  equipment[:status]
+		    	@cont=@cont+1
+		    end
+		    
+
+		    if !equipment[:desde].blank? || !equipment[:hasta].blank?
+		    	puts "-----------hola ---------------"
+		    	if !equipment[:desde].blank? && !equipment[:hasta].blank?
+		    		if equipment[:desde] != equipment[:hasta]
+			    		@aux= @aux + 'and updated_at between  ? and ? '
+			    		@aux2[@cont]= equipment[:desde]
+			    		@aux2[@cont+1]= equipment[:hasta]
+			    	else
+			    		@aux= @aux + 'and updated_at = ? '
+			    		@aux2[@cont]= equipment[:desde]
+			    		
+			    	end	
+		    	elsif equipment[:desde] && equipment[:hasta].blank?
+		    		@aux= @aux + 'and updated_at <= ? '
+		    		@aux2[@cont]= equipment[:desde]
+		    	elsif equipment[:desde].blank? && equipment[:hasta]
+		    		@aux= @aux + 'and updated_at >= ? '
+		    		@aux2[@cont]= equipment[:hasta]			
+		    	end
+		    end
+		end
+	    if @aux
+	    #puts @cont	
+		      @aux2[0]=@aux
+	      where @aux2 
+	    else
+	      scoped
+	    end
+
+	end
+
 	def self.query(equipment)
 	    @aux= " 1 = 1 "
 	    @aux2= Array.new
