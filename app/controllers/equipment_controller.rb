@@ -22,7 +22,7 @@ class EquipmentController < ApplicationController
     if @equipment.image_id
       @image = Image.find(@equipment.image_id)
     else
-      @image = Image.find_by(image_url: '/data/dommy.jpg')  
+      @image = Image.find_by(image_url: '/data/dummy.png')  
     end  
      @gallery = Gallery.where('equipment_id = ?', @equipment.id)
      @user = User.find(@equipment.user_id)
@@ -80,7 +80,7 @@ class EquipmentController < ApplicationController
           unless @pic.nil?
             @pics = DataFile.save(@pic,@equipments.id.to_s, @equipments.slug.to_s)
           else
-            @pics = "/data/dommy.jpg"  
+            @pics = "/data/dummy.png"  
           end
           ########################
           
@@ -274,7 +274,7 @@ class EquipmentController < ApplicationController
         puts"----------------------url de la imagen-------------------------------"
         puts pic
         puts"---------------------------------------------------------------------"
-        unless pic.equal?("/data/dummy.jpg")
+        unless pic.equal?("/data/dummy.png")
           #puts"-------------------------------------------------"
           #puts"-------------------------------------------------"
           pics = DataFile.destroy(pic)
@@ -365,7 +365,7 @@ class EquipmentController < ApplicationController
     if @equipment.image_id
       @image = Image.find(@equipment.image_id)
     else
-      @image = Image.find_by(image_url: '/data/dommy.jpg')  
+      @image = Image.find_by(image_url: '/data/dummy.png')  
     end  
       @gallery = Gallery.where('equipment_id' => @equipment.id)
       @user = User.find(@equipment.user_id)

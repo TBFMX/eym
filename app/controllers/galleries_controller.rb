@@ -100,7 +100,7 @@ class GalleriesController < ApplicationController
     @image = Image.where('gallery_id = ?', @gallery.id)
     @image.each do |image|
       pic = image.image_url
-      unless pic.equal?("/data/dummy.jpg")
+      unless pic.equal?("/data/dummy.png")
         pics = DataFile.destroy(pic)
         
       end

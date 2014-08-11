@@ -6,6 +6,7 @@
       background-color: #ffffff;
       overflow: hidden; /*--para que el cuadro agarre todo lo interno.---*/    
       font-size:13px; 
+      font-family: 'Oswald', sans-serif;
   }
   
   #menu_eym ul, ol{
@@ -20,9 +21,9 @@
   }
   
   .menu li a{
+    font-family: 'Oswald', sans-serif;
     background-color:#FFFFFF;
     color:#52778d;
-    font-family: 'Oswald', sans-serif;
     text-decoration:none;
     padding:10px 15px;
     display: block;    
@@ -32,6 +33,7 @@
   }
   
   .menu li a:hover{
+    font-family: 'Oswald', sans-serif;
     background-color: #b3b3b3;
     z-index: 2;
   }

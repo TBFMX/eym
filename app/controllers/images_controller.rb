@@ -87,7 +87,7 @@ class ImagesController < ApplicationController
         end
     else
       redirect_to imagen_nueva_path(@equipment,@gallery.slug), notice: 'Porfavor cargue una imagen'
-      #@pics = "/data/dommy.jpg"  
+      #@pics = "/data/dummy.png"  
     end
   end
 
