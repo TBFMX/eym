@@ -29,7 +29,7 @@
 				<strong><%= link_to 'Registrarse', new_user_path %> </strong>
 			<% else %>
 			    Bienvenido <strong> <%= session[:uname] %></br>
-			    <%= link_to "Mi Cuenta", dashboard_index_path %></strong> | <%= link_to 'Logout', logout_path, method: :delete %>
+			    <%= link_to "Mi Cuenta", dashboard_index_path %></strong> | <%= link_to 'Logout', logout_path, :method => :delete %>
 			<%end %>
 		</div>
 

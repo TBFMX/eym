@@ -46,9 +46,7 @@ class User < ActiveRecord::Base
           user.rol_id = @rol.id
           user.oauth_token = auth.credentials.token
           user.oauth_expires_at = Time.at(auth.credentials.expires_at)
-          puts "--------------------------------------------------------------"
-          puts auth.inspect
-          puts "--------------------------------------------------------------"
+          
           begin
             #some logic
              user.save 

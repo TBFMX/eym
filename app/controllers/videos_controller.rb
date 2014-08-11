@@ -38,9 +38,7 @@ class VideosController < ApplicationController
   def create
     @a_video = params[:video][:video_url].split(/\.?\s+/)
     @url_suprema =""
-    puts "----------------------------------------------------------------------"
-    puts @a_video.inspect
-    puts "----------------------------------------------------------------------"
+
     @a_video.each do |vid|
       if not vid.match("width=") || vid.match("height=")
         @url_suprema += " " + vid
@@ -79,7 +77,7 @@ class VideosController < ApplicationController
       end
       
     end
-    puts @url_suprema
+    #puts @url_suprema
     params[:video][:video_url] = @url_suprema
     respond_to do |format|
       if @video.update(video_params)

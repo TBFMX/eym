@@ -55,21 +55,14 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1.json
   def update
     if session[:user_id] == @user.id or session[:uname] == "admin@admin.com"
-      puts "--------------------------------------"
-      puts params.inspect
-      puts user_params.inspect
-      puts "--------------------------------------"
+      
       respond_to do |format|
         if @user.update(user_params)
-          puts "--------------------------------------"
-          puts " si se guardo"
-          puts "--------------------------------------"
+        
           format.html { redirect_to dashboard_login_path, notice: "El usuario #{@user.username} fue actualizado exitosamente." }
           format.json { render :show, status: :ok, location: @user }
         else
-          puts "--------------------------------------"
-          puts " no se guardo"
-          puts "--------------------------------------"
+         
           format.html { redirect_to dashboard_login_path, notice: "El usuario #{@user.username} no pudo ser actualizado." }
           format.json { render json: @user.errors, status: :unprocessable_entity }
         end
@@ -143,7 +136,7 @@ class UsersController < ApplicationController
         session[:user_id] = user.id
         session[:uname] = user.username
         session[:rol_id] = user.rol_id
-         puts "---------------------holaaaaaaaaaaa222222222222-------------------"
+      #   puts "---------------------holaaaaaaaaaaa222222222222-------------------"
         #variables de rol
         rol =Rol.find_by(id: user.rol_id)
         session[:mod0] =rol.admin

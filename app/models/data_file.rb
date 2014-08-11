@@ -1,9 +1,9 @@
 class DataFile < ActiveRecord::Base
 	#sobre-escribimos el save para guardar el file
 	def self.save(upload , id , name)
-		puts "-----------------direccion actual-1--------------"
-		puts Dir.pwd
-		puts "------------------------------------------------"
+		# puts "-----------------direccion actual-1--------------"
+		# puts Dir.pwd
+		# puts "------------------------------------------------"
 		carpeta = id.to_s + "_" + name.to_s
 
 		#variables de diferenciación
@@ -20,9 +20,9 @@ class DataFile < ActiveRecord::Base
     	Dir.chdir(directory) do
 	    	directory = carpeta.to_s
 	    	path = File.join(directory, name)
-			puts "-----------------direccion actual-2--------------"
-			puts Dir.pwd
-			puts "------------------------------------------------"
+			# puts "-----------------direccion actual-2--------------"
+			# puts Dir.pwd
+			# puts "------------------------------------------------"
 		   
 
 			##############
@@ -49,9 +49,9 @@ class DataFile < ActiveRecord::Base
 				return false	
 			end	
 		else
-		puts "no existe " + url_dir.to_s
-		puts url.to_s
-		puts Dir.pwd	
+		# puts "no existe " + url_dir.to_s
+		# puts url.to_s
+		# puts Dir.pwd	
 		end	
 		
 		#return true

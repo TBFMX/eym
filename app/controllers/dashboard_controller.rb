@@ -29,22 +29,22 @@ class DashboardController < ApplicationController
     #if params[:gal]
     #  @galleries = Gallery.friendly.find(params[:gal])
     #end  
-    puts "----------Gallery-----------------------"
-    puts @galleries.inspect
-    puts "----------------------------------------"
+    #puts "----------Gallery-----------------------"
+    #puts @galleries.inspect
+    # puts "----------------------------------------"
 
-    puts "---------------- equipment -----------------"
-    puts @equips.inspect
-    puts "---------------------------------"
+    # puts "---------------- equipment -----------------"
+    # puts @equips.inspect
+    # puts "---------------------------------"
       @e_id = @equips.slug
   end
 
   def imagenes
     @equips = Equipment.friendly.find(params[:equip])
     if params[:gal]
-      puts "----------Gallery-----------------------"
-      puts  params[:gal]
-      puts "----------------------------------------"
+     # puts "----------Gallery-----------------------"
+     # puts  params[:gal]
+     # puts "----------------------------------------"
       @galleries = Gallery.friendly.find(params[:gal])
       @images = Image.where("gallery_id = ?" , @galleries.id)
     else
@@ -110,9 +110,9 @@ class DashboardController < ApplicationController
 
     tipo = params[:tipo]    
     #cat = Category.find_by('categories.title' => aux)    
-    puts "-------parametros---------"
-    puts params.inspect
-    puts "--------------------------"
+    #puts "-------parametros---------"
+    #puts params.inspect
+    #puts "--------------------------"
     @equipments = Equipment.query_rep_stat(params[:equipment]).where('user_id = ?', @user_id).where_activo.order(sort_column + ' ' + sort_direction)
   end
 

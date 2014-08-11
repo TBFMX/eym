@@ -10,9 +10,6 @@ class ImagesController < ApplicationController
     end
     @gallery = Gallery.friendly.find(params[:gal])
     add_breadcrumb I18n.t("breadcrumbs.gallery"), dashboard_gallerias_path(params[:equip])
-    puts "----------Gallery-----------------------"
-    puts  params[:gal]
-    puts "----------------------------------------"
     @images = Image.where("gallery_id = ?", @gallery.id)
     @equip = Equipment.friendly.find(params[:equip])
   end
@@ -51,11 +48,11 @@ class ImagesController < ApplicationController
     gallery = params[:gallery]
     respond_to do |format|
       if @equipment.update(:image_id => image_p)
-        puts "asigno"
+      #  puts "asigno"
         format.html { redirect_to galeria_show_path(@equipment,gallery), notice: 'La imagen principal a sido cambiada.'} 
         format.json {}  
       else
-        puts "no asigno"
+      #  puts "no asigno"
         format.html { redirect_to galeria_show_path(equipment,gallery), notice: 'La imagen principal no pudo ser cambiada, intente mas tarde.' }
         format.json { render json: @image.errors, status: :unprocessable_entity }
       end
@@ -70,9 +67,7 @@ class ImagesController < ApplicationController
     @gallery2 = Gallery.find(@gallery)
     #@image = Image.new(image_params)
     @pic = params[:image][:image_url]
-    puts "---------------------------------datos-imagen------------------------------------------------------"
-    puts @pic.inspect
-    puts "---------------------------------------------------------------------------------------------------"
+    
     unless @pic.blank?
       @pics = DataFile.save(@pic,@equipment.id.to_s, @equipment.name.to_s)
         @image = Image.new("image_url" => @pics, "gallery_id" => params[:image][:gallery_id], "title" => params[:image][:title])
@@ -118,16 +113,16 @@ class ImagesController < ApplicationController
         format.html { 
           unless @equip.nil?
             n_image = Image.find_by('gallery_id' => @gal.id)
-            puts "-----------------------------------------------------------------------------------------"
-            puts "entro id: " + n_image.id.to_s
-            puts "-----------------------------------------------------------------------------------------"
+            # puts "-----------------------------------------------------------------------------------------"
+            # puts "entro id: " + n_image.id.to_s
+            # puts "-----------------------------------------------------------------------------------------"
             respond_to do |format|
               if @equip.update(:image_id => n_image.id)
-                puts "asigno"
+                #puts "asigno"
                 format.html {  redirect_to dashboard_equipos_url, notice: 'Image was successfully destroyed.'} 
                 format.json {}  
               else
-                puts "no asigno"
+                #puts "no asigno"
                 format.html { redirect_to dashboard_equipos_url, notice: 'Image wasnt successfully destroyed.' }
                 format.json { render json: @image.errors, status: :unprocessable_entity }
               end

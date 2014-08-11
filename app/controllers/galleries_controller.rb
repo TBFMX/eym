@@ -23,12 +23,7 @@ class GalleriesController < ApplicationController
     add_breadcrumb I18n.t("breadcrumbs.equipment"), dashboard_equipos_path()
     @equip = Equipment.friendly.find(params[:equip])
     @gallery = Gallery.find_by("slug" => params[:id], "equipment_id" => @equip)    
-    puts "-------------------------equipo-----------------------------------------------------"
-    puts @equip.inspect
-    puts "------------------------------------------------------------------------------------"
-    puts "-------------------------galeria----------------------------------------------------"
-    puts @gallery.inspect
-    puts "------------------------------------------------------------------------------------"
+   
 
 
     #add_breadcrumb @equip.name.to_s, equipment_path(@equip)    

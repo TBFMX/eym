@@ -65,9 +65,7 @@ class Equipment < ActiveRecord::Base
 
 		  			#esta = false
 		  			i_aux = array_conteiner.sample.to_i
-		  			puts "-----------------------------------------"
-		  			puts i_aux
-		  			puts "-----------------------------------------"
+		  			
 	  				array_aux.push(i_aux)
 	  				array_conteiner.delete(i_aux)
 	  				count += 1	
@@ -169,7 +167,7 @@ class Equipment < ActiveRecord::Base
 		    
 
 		    if !equipment[:desde].blank? || !equipment[:hasta].blank?
-		    	puts "-----------hola ---------------"
+		    	
 		    	if !equipment[:desde].blank? && !equipment[:hasta].blank?
 		    		if equipment[:desde] != equipment[:hasta]
 			    		@aux= @aux + 'and updated_at between  ? and ? '
@@ -263,7 +261,7 @@ class Equipment < ActiveRecord::Base
 		    end
 
 		    if !equipment[:preciod].blank? || !equipment[:precioh].blank?
-		    	puts "-----------hola ---------------"
+		    	
 		    	if !equipment[:preciod].blank? && !equipment[:precioh].blank?
 		    		if equipment[:preciod] != equipment[:precioh]
 			    		@aux= @aux + 'and precio between  ? and ? '

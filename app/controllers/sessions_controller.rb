@@ -39,7 +39,7 @@ class SessionsController < ApplicationController
   		session[:user_id] = user.id
       session[:uname] = params[:username]
   		session[:rol_id] = user.rol_id
-       puts "---------------------holaaaaaaaaaaa222222222222-------------------"
+       #puts "---------------------holaaaaaaaaaaa222222222222-------------------"
       #variables de rol
       rol =Rol.find_by(id: user.rol_id)
       session[:mod0] =rol.admin

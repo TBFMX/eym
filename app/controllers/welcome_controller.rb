@@ -20,8 +20,8 @@ class WelcomeController < ApplicationController
   		session[:user_id] = user.id
   		session[:uname] = user.name + " " + user.lastname
   		session[:rol_id] = user.rol_id
-      puts "dentro del if"
-      puts "hola" + user.name + " " + user.lastname
+      #puts "dentro del if"
+      #puts "hola" + user.name + " " + user.lastname
 
       #variables de rol
       rol =Rol.find_by(id: user.rol_id)
@@ -56,33 +56,19 @@ class WelcomeController < ApplicationController
 
       def lista_ordenada(e_obj)
         aux_array_e = Array.new()
-        puts "-----------------------------------------------------------"
-        puts e_obj.inspect
-        puts "-----------------------------------------------------------"
+        
         e_obj.each do |e|
           aux_array_e << e
         end
-        puts "-----------------------------------------------------------"
-        puts aux_array_e.inspect
-        puts "-----------------------------------------------------------"  
+       
         final_array = Array.new
         cont = 0
           while !aux_array_e.empty? && cont < 20
             aux_e = aux_array_e.sample
-            puts "-----------------------------------------------------------"
-            puts aux_e.inspect
-            puts "-----------------------------------------------------------"
             final_array << aux_e
             aux_array_e.delete(aux_e)
             cont += 1
-            puts "-----------------------------------------------------------"
-            puts cont
-            puts "-----------------------------------------------------------"
           end 
-
-         puts "-----------------------------------------------------------"
-         puts final_array.inspect
-         puts "-----------------------------------------------------------" 
         return final_array
 
       end  
