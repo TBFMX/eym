@@ -52,11 +52,15 @@
       <% if @video2 != nil %>
         <div class="imagen"><%= @video2.video_url.html_safe %></div>
       <%else %>
-        <% if @image.image_url %>
-            <div class="imagen"><img src="<%= @image.image_url %>"></div>
-        <%else %>
-            <div class="imagen"><img src="/data/dummy.png"></div>  
-        <% end %>        
+        <% unless @images.blank? %>
+          <% if @image.image_url %>
+              <div class="imagen"><img src="<%= @image.image_url %>"></div>
+          <%else %>
+              <div class="imagen"><img src="/data/dummy.png"></div>  
+          <% end %>  
+        <% else %>
+          <div class="imagen"><img src="/data/dummy.png"></div>    
+        <% end %>      
       <% end %>
 
     <!--      tabla de detalles          -->
