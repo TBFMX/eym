@@ -53,7 +53,7 @@ end
 
 ########################Imagenes##################################
 unless Image.count > 0
-	Image.create(title: 'dommy', image_url: '/data/dommy.jpg')
+	Image.create(title: 'dummy', image_url: '/data/dummy.png')
 end
 ########################Paises####################################
 unless Country.count > 0

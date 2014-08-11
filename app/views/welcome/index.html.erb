@@ -17,7 +17,7 @@
       @imagen = Image.find(zone.image_id)
       @image = @imagen.image_url
    else 
-      @image ="/data/dommy.jpg"
+      @image ="/data/dummy.png"
    end %>   
    <div class="welcome_show_cuadro">
       <div class="centra_img"><%= link_to image_tag(@image), equipment_path(zone) %></div>
@@ -27,7 +27,7 @@
             <strong>Marca:</strong> <%= zone.brand.name %><br>
             <strong>Modelo:</strong> <%= zone.modelo %><br>    
             <strong>Año:</strong> <%= zone.year %><br>
-            <%if zone.publication_type == 1 %>Venta<% else %>Renta<% end %>: <%= number_to_currency(zone.precio) %><br/> <%= zone.currency.name %><br>
+            <%if zone.publication_type == 1 %>Venta<% else %>Renta<% end %>: <%= number_to_currency(zone.precio) %> <%= zone.currency.name %><br>
             <img src="/images/iconos/mapa.png"> <%= zone.state.name %>, <%= zone.country.name %>
          </div>
       </div>
@@ -78,17 +78,19 @@
       @imagen = Image.find(zone.image_id)
       @image = @imagen.image_url
    else 
-      @image ="/data/dommy.jpg"
+      @image ="/data/dummy.png"
    end %>   
    <div class="welcome_show_cuadro">
       <div class="centra_img"><%= link_to image_tag(@image), equipment_path(zone) %></div>
+      <div class="datos">
       <div class="ajustar_titulo"><%= link_to zone.name, equipment_path(zone), class: "ajustar_titulo" %></div>
-      <div class="detalles">
-         <strong>Marca:</strong> <%= zone.brand.name %><br>
-         <strong>Modelo:</strong> <%= zone.modelo %><br>    
-         <strong>Año:</strong> <%= zone.year %><br>
-         <%if zone.publication_type == 1 %>Venta<% else %>Renta<% end %>: <%= number_to_currency(zone.precio) %><br/> <%= zone.currency.name %><br>
-         <img src="/images/iconos/mapa.png"> <%= zone.state.name %>, <%= zone.country.name %>
+         <div class="detalles">
+            <strong>Marca:</strong> <%= zone.brand.name %><br>
+            <strong>Modelo:</strong> <%= zone.modelo %><br>    
+            <strong>Año:</strong> <%= zone.year %><br>
+            <%if zone.publication_type == 1 %>Venta<% else %>Renta<% end %>: <%= number_to_currency(zone.precio) %><br/> <%= zone.currency.name %><br>
+            <img src="/images/iconos/mapa.png"> <%= zone.state.name %>, <%= zone.country.name %>
+         </div>
       </div>
    </div>      
    <% end %>
@@ -134,17 +136,19 @@
       @imagen = Image.find(zone.image_id)
       @image = @imagen.image_url
    else 
-      @image ="/data/dommy.jpg"
+      @image ="/data/dummy.png"
    end %>   
    <div class="welcome_show_cuadro">
       <div class="centra_img"><%= link_to image_tag(@image), equipment_path(zone) %></div>
+      <div class="datos">
       <div class="ajustar_titulo"><%= link_to zone.name, equipment_path(zone), class: "ajustar_titulo" %></div>
-      <div class="detalles">
-         <strong>Marca:</strong> <%= zone.brand.name %><br>
-         <strong>Modelo:</strong> <%= zone.modelo %><br>    
-         <strong>Año:</strong> <%= zone.year %><br>
-         <%if zone.publication_type == 1 %>Venta<% else %>Renta<% end %>: <%= number_to_currency(zone.precio) %><br/> <%= zone.currency.name %><br>
-         <img src="/images/iconos/mapa.png"> <%= zone.state.name %>, <%= zone.country.name %>
+         <div class="detalles">
+            <strong>Marca:</strong> <%= zone.brand.name %><br>
+            <strong>Modelo:</strong> <%= zone.modelo %><br>    
+            <strong>Año:</strong> <%= zone.year %><br>
+            <%if zone.publication_type == 1 %>Venta<% else %>Renta<% end %>: <%= number_to_currency(zone.precio) %><br/> <%= zone.currency.name %><br>
+            <img src="/images/iconos/mapa.png"> <%= zone.state.name %>, <%= zone.country.name %>
+         </div>
       </div>
    </div>      
    <% end %>
