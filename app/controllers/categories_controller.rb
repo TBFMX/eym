@@ -25,7 +25,7 @@ class CategoriesController < ApplicationController
 
   def vista
     @category = Category.all
-    @equipment = Equipment.where_custom
+    @equipment = Equipment.where_activo
   end  
   # POST /categories
   # POST /categories.json

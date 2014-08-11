@@ -6,7 +6,7 @@ class EquipmentController < ApplicationController
   # GET /equipment
   # GET /equipment.json
   def index
-    @equipment = Equipment.where_custom
+    @equipment = Equipment.where_activo
   end
 
   # GET /equipment/1
@@ -302,6 +302,7 @@ class EquipmentController < ApplicationController
     puts "-------params---------"
     puts params.inspect
     puts params[:category]
+    puts params[:subcategory]
     puts "--------------------------"
     simple = false
     unless params[:categoria].blank?
@@ -310,14 +311,26 @@ class EquipmentController < ApplicationController
     else      
       aux = params[:category]
       simple = false
-    end 
+    end
+
+    unless params[:subcategory].blank?
+      aux_sub = params[:subcategory]
+      simple_sub = true
+    else      
+      aux_sub = params[:subcategory]
+      simple_sub = false
+    end  
     
     @categoria = Category.find_by('categories.title' => aux)
+    @subcategoria = Subcategory.find_by('subcategories.title' => aux_sub)
     
-    
-    add_breadcrumb @categoria.slug.to_s, Filtro_path('categoria' => @categoria.title, 'tipo' => 1)
 
-   
+    
+    add_breadcrumb @categoria.slug.to_s, Filtro_path('categoria' => @categoria.title,  'tipo' => 1)
+
+    unless @subcategoria.nil?
+      add_breadcrumb @subcategoria.title.to_s, Filtro_path('categoria' => @categoria.title,'subcategory' => @subcategoria.title ,'tipo' => 1)
+    end
     tipo = params[:tipo]    
     cat = Category.find_by('categories.title' => aux)    
     
@@ -326,11 +339,15 @@ class EquipmentController < ApplicationController
     puts params.inspect
     puts "--------------------------"
     if simple
-      @equipments = Equipment.where('category_id = ?', cat.id).where_custom.order(sort_column + ' ' + sort_direction)
+      if simple_sub
+        @equipments = Equipment.where('category_id = ?', cat.id).where('subcategory_id = ?', @subcategoria.id).where_activo.order(sort_column + ' ' + sort_direction)
+      else
+        @equipments = Equipment.where('category_id = ?', cat.id).where_activo.order(sort_column + ' ' + sort_direction)
+      end  
     else
       #categoria2 = Subcategory.find_by(father_id: @categoria.id)
       #add_breadcrumb categoria2.slug.to_s, Filtro_path('categoria' => categoria2.title, 'tipo' => 1) 
-      @equipments = Equipment.query(params[:equipment]).where('category_id = ?', cat.id).where_custom.order(sort_column + ' ' + sort_direction)
+      @equipments = Equipment.query(params[:equipment]).where('category_id = ?', cat.id).where_activo.order(sort_column + ' ' + sort_direction)
       #@equipments = Equipment.query(params[:equipment]).order(sort_column + ' ' + sort_direction).paginate(:per_page => 10, :page => params[:page])
     end
     puts "-------equipments---------"
@@ -360,7 +377,7 @@ class EquipmentController < ApplicationController
   end  
 
   def search
-    @equipments = Equipment.search(params[:search]).where_custom
+    @equipments = Equipment.search(params[:search]).where_activo
   end  
 
   # GET upgrade

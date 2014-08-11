@@ -7,7 +7,7 @@
 					<ul>
 						<% @subcategory.each do |subcategory| %>
 							<% if subcategory.category_id.to_s == category.id.to_s %>
-								<li><%= link_to subcategory.title, Filtro_path('categoria' => category.title, 'tipo' => 1), method: :post %></li>
+								<li><%= link_to subcategory.title, Filtro_path('categoria' => category.title, 'subcategory' => subcategory.title,'tipo' => 1), method: :post %></li>
 							<% end %>
 
 						<% end %>

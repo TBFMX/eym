@@ -4,6 +4,10 @@
 
 <div class="comentarios">
 <% @comments.each do |comment| %>
+
+      	<% fecha = comment.created_at.strftime("%d/%m/%Y") %>
+        <div><%= fecha.to_s %></div>
+      
     <div class="comentarios_usuario"><%= comment.user.username %></div>
     <div class="comentarios_destroy">
       <%= link_to 'Borrar comentario', comment, method: :delete, data: { confirm: 'Are you sure?' } %>
