@@ -5,6 +5,7 @@ class Equipment < ActiveRecord::Base
 	#######################################
 	has_many :galleries, dependent: :destroy
 	has_many :images
+	has_many :ind_equipments
 	belongs_to :currency 
 	belongs_to :country
 	belongs_to :state

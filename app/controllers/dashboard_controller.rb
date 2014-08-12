@@ -109,10 +109,6 @@ class DashboardController < ApplicationController
     add_breadcrumb "Reporte de Status", reporte_status_path('tipo' => 1)
 
     tipo = params[:tipo]    
-    #cat = Category.find_by('categories.title' => aux)    
-    #puts "-------parametros---------"
-    #puts params.inspect
-    #puts "--------------------------"
     @equipments = Equipment.query_rep_stat(params[:equipment]).where('user_id = ?', @user_id).where_activo.order(sort_column + ' ' + sort_direction)
   end
 

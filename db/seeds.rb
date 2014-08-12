@@ -278,3 +278,16 @@ unless Category.count > 0
 	Subcategory.create(title: 'Carretera', category_id: @cat11.id)		
 end
 ##################################################################
+
+########################INDUSTRIAS################################
+
+unless Industry.count > 0
+	Industry.create(title: 'Agricultura')
+	Industry.create(title: 'Construcción compacta')
+	Industry.create(title: 'Minería')
+	Industry.create(title: 'Construcción Pesada')
+	Industry.create(title: 'Energía')
+	Industry.create(title: 'Camiones')
+	Industry.create(title: 'Ligeros')
+end
+##################################################################

@@ -142,6 +142,7 @@ Rails.application.routes.draw do
     get  'equipos/resultados' => :search , :as => 'search'
     post 'equipos/resultados' => :search
     get 'equipos/listado' => :users_view, :as => 'users_view'
+    get 'industrias/:industria' => :industry, :as => 'industry'
   end
 
   controller :dashboard do
@@ -152,6 +153,7 @@ Rails.application.routes.draw do
     get 'Mi_Panel/:equip/:gal/imagenes' => :imagenes, :as => 'dashboard_imagenes'
     get 'Mi_Panel/:equip/:gal/videos' => :videos, :as => 'dashboard_videos'
     get 'Mi_Panel/Mis_Equipos' => :equip_history, :as => 'dashboard_equip_history'
+    get 'Mi_Panel/Reporte_de_Estado' => :report_status, :as => 'dashboard_status_rep'
   end  
 
   controller :categories do
@@ -170,7 +172,7 @@ Rails.application.routes.draw do
 
   get 'auth/google_oauth2/callback?error=access_denied', to: redirect('/')
 
-  get '*unmatched_route', :to => 'application#raise_not_found2'
+  #get '*unmatched_route', :to => 'application#raise_not_found2'
 
 
 

@@ -1,7 +1,7 @@
 class EquipmentController < ApplicationController
   before_action :set_equipment, only: [:show, :edit, :update, :destroy]
   helper_method :sort_column, :sort_direction
-  skip_before_action :authorize, only: [:show,:grid]
+  skip_before_action :authorize, only: [:show,:grid,:search,:industry]
 
   # GET /equipment
   # GET /equipment.json
@@ -182,8 +182,8 @@ class EquipmentController < ApplicationController
             #creo la galleria
               @gal = Gallery.where("equipment_id = ? and title = 'principal' ", @equipment.id ).count
               if @gal > 0 
-#                puts "--------------------------gal count---------------------------------"
- #               puts "-----" + @gal.to_s + "----------------------------------------------"
+  #                puts "--------------------------gal count---------------------------------"
+  #               puts "-----" + @gal.to_s + "----------------------------------------------"
   #              puts "--------------------------------------------------------------------"
                 @gallery=Gallery.where("equipment_id = ? and title = 'principal' ", @equipment.id ).first
               else
@@ -298,11 +298,7 @@ class EquipmentController < ApplicationController
   end
 
   def grid
-    # puts "-------params---------"
-    # puts params.inspect
-    # puts params[:category]
-    # puts params[:subcategory]
-    # puts "--------------------------"
+    
     simple = false
     unless params[:categoria].blank?
       aux = params[:categoria]
@@ -333,10 +329,6 @@ class EquipmentController < ApplicationController
     tipo = params[:tipo]    
     cat = Category.find_by('categories.title' => aux)    
     
-    #@equipments = Equipment.all
-    # puts "-------parametros---------"
-    # puts params.inspect
-    # puts "--------------------------"
     if simple
       if simple_sub
         @equipments = Equipment.where('category_id = ?', cat.id).where('subcategory_id = ?', @subcategoria.id).where_activo.order(sort_column + ' ' + sort_direction)
@@ -344,17 +336,56 @@ class EquipmentController < ApplicationController
         @equipments = Equipment.where('category_id = ?', cat.id).where_activo.order(sort_column + ' ' + sort_direction)
       end  
     else
-      #categoria2 = Subcategory.find_by(father_id: @categoria.id)
-      #add_breadcrumb categoria2.slug.to_s, Filtro_path('categoria' => categoria2.title, 'tipo' => 1) 
+      
       @equipments = Equipment.query(params[:equipment]).where('category_id = ?', cat.id).where_activo.order(sort_column + ' ' + sort_direction)
       #@equipments = Equipment.query(params[:equipment]).order(sort_column + ' ' + sort_direction).paginate(:per_page => 10, :page => params[:page])
     end
+  end
 
-    #@equipments = Equipment.search(params[:search]).order(sort_column + ' ' + sort_direction).paginate(:per_page => 5, :page => params[:page])
-    #respond_to do |format|
-    #  format.html
-    #  format.json { render json: EquipmentsDatatable.new(view_context) }
-    #end
+  def industry
+    simple = false
+    unless params[:industria].blank?
+      aux = params[:industria]
+      simple = true
+    else      
+      redirect_to root_path,  notice: 'algo salio mal' 
+    end
+    unless params[:equipment].blank?
+      simple = false
+    else      
+      simple = true
+    end
+    
+    @industria = Industry.find_by('industries.title' => aux)
+
+    if @industria.nil?
+      redirect_to root_path,  notice: 'algo salio mal'
+    end  
+
+    add_breadcrumb @industria.title.to_s, Filtro_path('industria' => @industria.title,  'tipo' => 1)
+    
+    tipo = params[:tipo]    
+       
+    @aux = IndEquipment.select("equipment_id").where("industry_id = ? ", @industria.id)
+
+    array = Array.new
+    @aux.each do |a| 
+      array.push(a.equipment_id)
+    end  
+
+
+
+    if simple
+        @equipments = Equipment.where(:id => array).where_activo.order(sort_column + ' ' + sort_direction)
+        puts "#########################################es simple ######################################################"
+        puts @equipments.inspect
+        puts "#########################################################################################################"
+    else  
+      @equipments = Equipment.query(params[:equipment]).where(:id => array).where_activo.order(sort_column + ' ' + sort_direction)
+      puts "#########################################no es simple ######################################################"
+      #@equipments = Equipment.query(params[:equipment]).order(sort_column + ' ' + sort_direction).paginate(:per_page => 10, :page => params[:page])
+    end
+    
   end
 
   def preview
@@ -364,13 +395,10 @@ class EquipmentController < ApplicationController
     else
       @image = Image.find_by(image_url: '/data/dummy.png')  
     end  
-      @gallery = Gallery.where('equipment_id' => @equipment.id)
-      @user = User.find(@equipment.user_id)
-      @currency = Currency.find(@equipment.currency_id)
-      @pack = Package.find(@equipment.package_id)
-  #    puts "-------------------pack---------------------------"
-  #    puts @pack.inspect
-  #    puts "--------------------------------------------------" 
+    @gallery = Gallery.where('equipment_id' => @equipment.id)
+    @user = User.find(@equipment.user_id)
+    @currency = Currency.find(@equipment.currency_id)
+    @pack = Package.find(@equipment.package_id)
   end  
 
   def search
@@ -413,10 +441,6 @@ class EquipmentController < ApplicationController
     equipment = Equipment.friendly.find(params[:equipment])
     @user = User.find(equipment.user_id)
     seller = @user
-
-    #puts "----------------------parametros--------------------------------"
-    #puts params.inspect
-    #puts "----------------------------------------------------------------"
     Mailer.equipment_contact(buyer_m,buyer_n,buyer_ms,buyer_p,seller,equipment).deliver
     redirect_to equipment_path(equipment)
   end
@@ -425,22 +449,16 @@ class EquipmentController < ApplicationController
     user = params[:user_id]
     @users = User.find(user)
     @equips = Equipment.where('user_id = ?', user)
-      # puts params.inspect
-      # puts "-------------------equips---------------------------"
-      # puts @equips.inspect
-      # puts "--------------------------------------------------" 
   end
 
   def ver_payment
     #recibe la respuesta de paypal
-    
   end  
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_equipment
       @equipment = Equipment.friendly.find(params[:id])
-
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

@@ -28,7 +28,7 @@
 		<% unless @equipments.nil? %>		
 		    <% @equipments.each do |equipment| %>
 		      <tr>
-		        <td align="center"><%= equipment.name %></td>
+		        <td align="center"><%= link_to equipment.name, equipment_path(equipment) %></td>
 		        <td align="center"><%= equipment.year %></td>
 		        <td align="center"><%= equipment.color %></td>
 		        <td align="center"><%= equipment.brand.name %></td>

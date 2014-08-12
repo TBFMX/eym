@@ -1,5 +1,5 @@
 <div class="filtros">
-    <%#= form_tag '/Filtro', :method => 'get' do %>
+    <%= form_tag dashboard_status_rep_path(), :method => 'get' do %>
     <%#= text_field_tag :search, params[:search] %>
     <%= select("equipment", "name", Equipment.all.collect {|p| [ p.name, p.name ] }.uniq, {include_blank: 'Nombre'}) %>
     <br>
