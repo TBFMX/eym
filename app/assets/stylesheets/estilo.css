@@ -120,17 +120,19 @@ body{
 }
 
 .header .header_parte3 .buscador{
+   margin-top: -8px;
    width: 320px;
    height: 30px;
    float: left;
 }
 
 .header .header_parte3 .buscador form{
-   padding: 0px;
+   padding: 0px 0px 0px 0px; 
 }
 
 .header .header_parte3 .buscador form #search{
-   width: 250px;
+   width: 280px;
+   height: 21px;
 }
 /* ------------------ Anuncio ----------------*/
 
@@ -217,7 +219,6 @@ body{
    border: 1px 0px 0px 0px solid #f2f2f2;
    background-color: #FFF;
    font-family: 'Oswald', sans-serif;
-   color: #52778D;
 }
 
 .footer li{
@@ -230,6 +231,7 @@ body{
 
 .footer a{
    text-decoration: none;
+   color: #52778D;
 }
 
 .footer a:hover{

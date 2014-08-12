@@ -5,28 +5,27 @@
 /*------------------Vista Categorias----------------------*/
 
 .vista_categoria{
-   width: 920px%;
+   width: 920px;
    margin: 10px 0 10px 0;
 }
 
 .vista_categoria_titulo{ 
    width: 920px;
-   display: block;
+   heigh: 40px;
    position: relative;
    float: left;      
    padding:10px 0px 5px 0px; 
-   border-top: 1px solid #666666;
 }
 
 .vista_categoria_titulo h6 a{  
-   color: #000000;   
+   color: #52778d;   
    text-decoration: none;
 }
 
-.vista_categoria_titulo h6 a:hover{ 
-   background-color: #b3b3b3; 
-   color: #000000;   
+.vista_categoria_titulo h6 a:hover{  
    text-decoration: none;
+   background-color: transparent;
+   opacity:0.8;
 }
 
 .vista_categoria_productos{ 
@@ -38,15 +37,16 @@
 
 .vista_categoria_productos .equipos{
    width: 148px;
-   height: 198px;
+   height: 148px;
    margin: 10px 4px 10px 4px;
    border: 1px solid #666666;
    float: left;
 }
 
 .vista_categoria_productos .equipos img{
-   width: 150px;
-   height: 150px;
+   margin-left: -25px;
+   width: 200px;
+   heigth: 150px;
 }
 
 .vista_categoria_productos .equipos .imagenes{

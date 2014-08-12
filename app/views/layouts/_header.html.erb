@@ -14,10 +14,10 @@
 		<div class="superior"></div>
 		<div class="inferior">		
 			<%= javascript_include_tag "https://apis.google.com/js/plusone.js" %>
-			<%= link_to image_tag('/images/iconos/logo_fb.png'), root_path %>	
+			<%= link_to image_tag('/images/iconos/logo_fb.png'), "http://www.facebook.com/pages/getting_started?page_id=453713201357148" %>	
 			<%= link_to image_tag('/images/iconos/logo_twitter.png'), root_path %>
 			<%= link_to image_tag('/images/iconos/logo_gplus.png'), root_path %>
-			<%= link_to image_tag('/images/iconos/logo_yt.png'), root_path %>
+			<%= link_to image_tag('/images/iconos/logo_yt.png'), "http://www.youtube.com/user/EQUIPOYMAQUINARIA?feature=watch" %>
 		</div>
 	</div>
 <!-- Sesion y busqueda -->
@@ -25,8 +25,8 @@
 		<div class="sesion">
 			<img src="/images/iconos/usuario_icono.png">
 			<% unless User.find_by(id: session[:user_id]) %>
-				Bienvenido visitante <strong><%= link_to 'Iniciar sesión', login_path %></strong></br>
-				<strong><%= link_to 'Registrarse', new_user_path %> </strong>
+				Bienvenido visitante</br>
+				<strong><%= link_to 'Iniciar sesión', login_path %> | <%= link_to 'Registrarse', new_user_path %> </strong>
 			<% else %>
 			    Bienvenido <strong> <%= session[:uname] %></br>
 			    <%= link_to "Mi Cuenta", dashboard_index_path %></strong> | <%= link_to 'Logout', logout_path, :method => :delete %>
@@ -36,7 +36,7 @@
 		<div class="buscador">
 			<%=form_tag '/equipos/resultados'  do  %>
 				<%= text_field_tag :search %>
-				<%= submit_tag 'Buscar'%>
+				<%= image_submit_tag("/images/iconos/lupa_on.png")%>
 			<%end%>	
 		</div>
 	</div>
