@@ -5,29 +5,16 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-
-
 </head>
   <%= render partial: "layouts/header" %> 
-
 <body>
-	<!-- Validarlo para que no salga si no es el index -->
-  <%# puts "----------------------------" + request.url.to_s + "------------------------------------------------------------" %>
-  <%
-  if current_page?(root_path)
-   # puts "si se vale"
-    %>
-  <%= render partial: "layouts/anuncio" %>
- <% else
-    
-    #puts "no se vale"
-  end     
-  %>
-	
+  <% if current_page?(root_path) %>
+    <%= render partial: "layouts/anuncio" %>
+    <%= render partial: "layouts/breadcrumb" %>
+  <% else %>
+    <%= render partial: "layouts/breadcrumb2" %>
+  <% end %>    
 	<!-- Fin de la validación -->
-  <%= render partial: "layouts/breadcrumb" %>
-	    
-  
 	<div class="content">
   <div class="interior">
      <div id="fb-root"></div>
@@ -46,12 +33,6 @@
   </div>
   
 </body>
-
   <%= render partial: "layouts/footer" %>
   <%#= javascript_include_tag 'application', 'data-turbolinks-track' => true %>  
-
-
-
-
 </html>
-
