@@ -61,6 +61,14 @@ class DashboardController < ApplicationController
   def cuenta       
   end 
 
+  def favorites
+    @favoritos = Favorite.select("equipment_id").where("user_id = ?" , session[:user_id])
+    array = Array.new
+    @favoritos.each do |f|
+      array.push(f.equipment_id)
+    end
+    @equipment = Equipment.where(:id => array)
+  end
   ##generadores de pdf
   def contact_rep
     #@contacts = Contact.find_by_sql("select c.* from contactos c, equipment e where e.user_id = ? and e.id == c.equipment_id group by c.equipment_id order by c.name")

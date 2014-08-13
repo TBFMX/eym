@@ -18,21 +18,18 @@
     <br>
     <%= select("equipment", "currency_id", Currency.all.collect {|p| [ p.name, p.id ] }.uniq, {include_blank: 'Moneda'}) %>
     <br>
-
     <%= select("equipment", "country_id", Country.all.collect {|p| [p.name ,p.id] }.uniq, {include_blank: 'Pais'}) %>
     <br>
     <%= select("equipment", "state_id", State.all.collect {|p| [ p.name ,p.id ] }.uniq, {include_blank: 'Estado'}) %>
     <br>
     <%= select("equipment", "ciudad", Equipment.all.collect {|p| [ p.ciudad, p.ciudad ] }.uniq, {include_blank: 'Ciudad'}) %>
     <br>
-
     <%#= select("equipment", "category_id", Category.all.collect {|p| [ p.title, p.id ] }.uniq, {include_blank: 'Categoria'}) %>
     <br>
     <%= hidden_field_tag :industria , @industria.title %>
     <%= submit_tag "Filtrar", :name => nil %>
     <% end %>
     </div>
-
 
     <div class="galeria">
     <% @equipments.each do |equipment| %>

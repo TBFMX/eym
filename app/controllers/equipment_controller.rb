@@ -455,6 +455,38 @@ class EquipmentController < ApplicationController
     #recibe la respuesta de paypal
   end  
 
+  def equip_new
+    cpanel = ControlPanel.find_by(:system => "EYM")
+    cont = cpanel.newadv
+    @equipments = Equipment.where_activo.order("created_at desc").limit(cont)
+  end 
+
+  def add_favorito 
+    equip = params[:equip]
+    @equipment = Equipment.find(equip)
+    aux = Favorite.where('user_id = ? and equipment_id = ?' ,session[:user_id],  equip)
+    unless equip.nil?
+      if aux.nil?
+        @favorite = Favorite.new('user_id' => session[:user_id], 'equipment_id' => equip)
+       
+        respond_to do |format|
+          if  @favorite.save
+            format.html { redirect_to @equipment, notice: 'se a agregado a favoritos' }
+            format.json { render :show, status: :created, location: @equipment }
+          else
+            format.html { redirect_to @equipment }
+            format.json { render json: @favorite.errors, status: :unprocessable_entity }
+          end
+        end
+      else
+        redirect_to root_path
+      end  
+    else
+      redirect_to root_path
+    end
+  end
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_equipment

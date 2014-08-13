@@ -143,6 +143,7 @@ Rails.application.routes.draw do
     post 'equipos/resultados' => :search
     get 'equipos/listado' => :users_view, :as => 'users_view'
     get 'industrias/:industria' => :industry, :as => 'industry'
+    get 'add_new_favorite' => :add_favorito, :as => 'new_fav'
   end
 
   controller :dashboard do
@@ -154,6 +155,7 @@ Rails.application.routes.draw do
     get 'Mi_Panel/:equip/:gal/videos' => :videos, :as => 'dashboard_videos'
     get 'Mi_Panel/Mis_Equipos' => :equip_history, :as => 'dashboard_equip_history'
     get 'Mi_Panel/Reporte_de_Estado' => :report_status, :as => 'dashboard_status_rep'
+    get 'Mi_Panel/Mis_Equipos_Favoritos' => :favorites , :as => 'dashboard_favorite'
   end  
 
   controller :categories do

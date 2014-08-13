@@ -11,7 +11,13 @@
 <!--      Vista del equipo          -->
 <div class="show_equipment">
   <!--      titulo del equipo          -->
-  <div class="titulo"><h2><%= @equipment.name %></h2></div>
+  <div class="titulo"><h2><%= @equipment.name %></h2> 
+
+  <% if User.find_by(id: session[:user_id]) %>
+    <%=link_to "favoritos",new_fav_path(:equip => @equipment.id),remote: true %>
+  <% end %>  
+
+  </div>
   <!--      imagenes y detalles del equipo          -->
   <div class="producto">
     <div class="preview">

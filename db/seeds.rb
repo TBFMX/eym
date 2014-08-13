@@ -280,7 +280,6 @@ end
 ##################################################################
 
 ########################INDUSTRIAS################################
-
 unless Industry.count > 0
 	Industry.create(title: 'Agricultura')
 	Industry.create(title: 'Construcción compacta')
@@ -289,5 +288,11 @@ unless Industry.count > 0
 	Industry.create(title: 'Energía')
 	Industry.create(title: 'Camiones')
 	Industry.create(title: 'Ligeros')
+end
+##################################################################
+
+###########################Cpanel#################################
+unless ControlPanel.count > 0
+	ControlPanel.create(admin: 'admin@admin.com', system: 'EYM' , newadv: '20')	
 end
 ##################################################################
