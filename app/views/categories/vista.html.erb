@@ -14,13 +14,13 @@
 							<% if equipment.image_id  %>
 								<% @images = Image.find(equipment.image_id) %>
 								<% if @images.image_url %>
-								<div class="imagen">
-									<%= link_to image_tag(@images.image_url ), equipment_path(equipment) %>
-								</div>
+									<div class="imagen">
+										<%= link_to image_tag(@images.image_url ), equipment_path(equipment) %>
+									</div>
 								<%else %> <%= link_to image_tag("/data/dummy.png"), equipment_path(equipment) %>
-								<div class="imagen">
-									<%= link_to image_tag("/data/dummy.png"), equipment_path(equipment) %>
-								</div>  
+									<div class="imagen">
+										<%= link_to image_tag("/data/dummy.png"), equipment_path(equipment) %>
+									</div>  
 								<% end %> 
 							<% else %>
 								<div class="imagen">
@@ -29,8 +29,8 @@
 							<% end %> 
 						</div>
 						<div class="datos">
-						<%= link_to equipment.name, equipment_path(equipment) %><br />
-						<%= number_to_currency(equipment.precio) %>
+							<%= link_to equipment.name, equipment_path(equipment) %><br />
+							<%= number_to_currency(equipment.precio) %> <%= equipment.currency.name %>
 						</div>
 					</div>
 				<% end %>
