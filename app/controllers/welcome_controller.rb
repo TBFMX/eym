@@ -8,6 +8,8 @@ class WelcomeController < ApplicationController
     @zone1 = lista_ordenada( @zone1_a)
     @zone2 = lista_ordenada( @zone2_a)
     @zone3 = lista_ordenada( @zone3_a)
+
+    @equipment_slider = principal_slider(5)
    
   end
 
@@ -52,6 +54,10 @@ class WelcomeController < ApplicationController
       def frontpage(pack)
         @equip = Equipment.where('package_id = ?',pack).where_activo.s_charge(pack).order('rank ASC, priority ASC').limit(20)
         return @equip
+      end
+      def principal_slider(n)
+          @equip = Equipment.where('package_id = ?',pack).where_activo.s_principal_charge.order('rank ASC, priority ASC').limit(n)
+          return @equip     
       end
 
       def lista_ordenada(e_obj)

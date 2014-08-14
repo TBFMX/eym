@@ -47,8 +47,6 @@ class Equipment < ActiveRecord::Base
 
   	def self.s_charge(zona)
   		aux =Equipment.where("package_id = ? and status <> 0", zona).count()
-  		
-
   		if aux > 4
 	  		count = 0
 	  		#content_aux = ""
@@ -84,9 +82,36 @@ class Equipment < ActiveRecord::Base
 	  		where(id: array_aux)
 	  	else
 	  		where("package_id = ? and status <> 0", zona)
-	  	end	
-	  	
-  	end	
+	  	end	  	
+  	end
+
+  	def self.s_principal_charge
+  		aux =Equipment.where("priority = 100 ").where_activo.count()
+  		if aux > 5
+	  		count = 0
+	  		#content_aux = ""
+	  		array_aux = Array.new
+	  		equip = Equipment.select("id").where("priority = 100").where_activo
+  			array_conteiner = Array.new
+
+	  		 equip.each do |e|
+	  		 	array_conteiner.push(e.id)
+	  		 end	
+
+	  		while count < 5 do
+	  			#esta = false
+	  			i_aux = array_conteiner.sample.to_i
+
+  				array_aux.push(i_aux)
+  				array_conteiner.delete(i_aux)
+  				count += 1	
+	  		end
+		  	
+	  		where(id: array_aux)
+	  	else
+	  		where("priority = 100")
+	  	end	  	
+  	end
 
   	def self.find_custom(equip)
   		aux = Equipment.find(equip)
