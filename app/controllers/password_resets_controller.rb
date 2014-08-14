@@ -6,13 +6,21 @@ class PasswordResetsController < ApplicationController
 
 
 	def create
-	   user = User.find_by_email(params[:email])
-	   if user.nil?
-	    redirect_to root_path
-	   else
-	   	user.send_password_reset if user
-	   	redirect_to root_url, :notice => "Email sent with password reset instructions."
-	   end	
+		user = User.find_by_email(params[:email])
+		if user.nil?
+			redirect_to root_path, :notice => "No encontramos ningun usuario asociado a ese email"
+	    else
+	    	if user.provider.nil?
+	   			user.send_password_reset if user
+	   			redirect_to root_url, :notice => "Un email con sus datos de recuperacion a sido enviado a su buzon"
+	   		else
+	   			if user.provider == "facebook"
+	   				redirect_to "https://www.facebook.com/settings?tab=account&section=password&view"
+	   			elsif user.provider == "google_oauth2"
+	   				redirect_to "https://www.google.com/settings/security?ref=srch"
+	   			end	
+	   		end
+	    end	
 	end
 
 
