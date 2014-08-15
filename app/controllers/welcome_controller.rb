@@ -56,7 +56,7 @@ class WelcomeController < ApplicationController
         return @equip
       end
       def principal_slider(n)
-          @equip = Equipment.where('package_id = ?',pack).where_activo.s_principal_charge.order('rank ASC, priority ASC').limit(n)
+          @equip = Equipment.where_activo.s_principal_charge.order('rank ASC, priority ASC').limit(n)
           return @equip     
       end
 
