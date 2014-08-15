@@ -41,7 +41,7 @@
 
 
     <div class="galeria">
-        <%= @titulo %> </br>
+    <titulo><%= @titulo %></titulo> </br>
     <% @equipments.each do |equipment| %>
         <div class="equipos">
             <div class="imagenes">
@@ -53,18 +53,20 @@
                         </div>
                     <%else %>
                         <div class="imagen">
-                            <%= link_to image_tag("/data/dommy.png"), equipment_path(equipment) %>
+                            <%= link_to image_tag("/data/dummy.png"), equipment_path(equipment) %>
                         </div>  
                     <% end %>
                 <% else %>
                     <div class="imagen">
-                        <%= link_to image_tag("/data/dommy.png"), equipment_path(equipment) %>
+                        <%= link_to image_tag("/data/dummy.png"), equipment_path(equipment) %>
                     </div>  
                 <% end %>      
             </div>
-            <div class="datos"><%= link_to equipment.name, equipment_path(equipment) %>
-                <%#= equipment.name %><br />
-                <%= number_to_currency(equipment.precio) %>
+            <div class="datos">
+                <span class="titulo"><%= link_to equipment.name, equipment_path(equipment) %></span>
+                <span class="precio"><%= number_to_currency(equipment.precio) %> <%= equipment.currency.name %></span>
+                <span class="detalles"><%= equipment.modelo %></span>
+                <span class="detalles"><%= equipment.brand.name %></span>
             </div>
         </div>
      <% end %>                                      
