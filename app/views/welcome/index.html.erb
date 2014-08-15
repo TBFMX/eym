@@ -4,36 +4,42 @@
 
 <div class="slider_principal">
    <!-- contenedor para informacion -->
-   <div class="informacion">
+   <% 
+      contador = 1
+      arreglo = Array.new
+      @equipment_slider.each do |slider| 
+   %>
+   <div class="<%= "informacion" + contador.to_s %>"><% contador += 1 %>
       <!-- imagen de fondo -->
-     <img id="image1" src="http://i.imgur.com/dL3io.jpg" />
-     <img id="image2" src="http://i.imgur.com/qASVX.jpg" />
-     <img id="image3" src="http://i.imgur.com/fLuHO.jpg" />
-     <img id="image4" src="http://i.imgur.com/5Sd3Q.jpg" />
-     <img id="image5" src="http://i.imgur.com/fLuHO.jpg" />
+      <%if slider.image_id   
+         @imagen = Image.find(slider.image_id)
+         @image = @imagen.image_url
+         arreglo.push(@image)
+      else 
+         @image ="/data/dummy.png"
+         arreglo.push(@image)
+   end %>   
+      <div class="slider_imagenes"><img id="<%= "image" + contador.to_s %>" src="<%= @image %>" /></div>
       <!-- franja negra -->
       <div class="detalles">
          <!-- parte del logo -->
          <div class="parte1">
-            <div class="imagen"><img class="logo" src=""></div>
-            <p class="titulo">NOMBRE DEL PRODUCTO</p>
-            <p class="detalle">
-               <strong>Marca:</strong> Ford <br />
-               <strong>Modelo:</strong> 2000+ <br />
-               <strong>Año:</strong> 2000
-            </p>
+            <div class="imagen"><img class="logo" src="/images/iconos/isotipo03.png"></div>
+            <p class="titulo"><%= slider.name %></p>
+            <span class="parrafo">
+               <strong>Marca:</strong><%= slider.brand.name %><br />
+               <strong>Modelo:</strong><%= slider.modelo %><br />
+               <strong>Año:</strong><%= slider.year %>
+            </span>
          </div> 
          <!-- precio --> 
-         <div class="parte2"><p>$1,000,000.00 MNX</p></div>                   
+         <div class="parte2"><p><%= number_to_currency(slider.precio) %> <%= slider.currency.name %></p></div>          
       </div>            
    </div>  
+   <% end %>
    <!-- contenedor para los preview y controles-->
    <!-- for each para las 5 imagenes que se seleccionaran -->
-     <img id="image1" src="http://i.imgur.com/dL3io.jpg" />
-     <img id="image2" src="http://i.imgur.com/qASVX.jpg" />
-     <img id="image3" src="http://i.imgur.com/fLuHO.jpg" />
-     <img id="image4" src="http://i.imgur.com/5Sd3Q.jpg" />
-     <img id="image5" src="http://i.imgur.com/fLuHO.jpg" />
+   <% arreglo.each do |ar| %><img id="image" src="<%= ar %>" /><% end %>
 </div>
 
 <!-- ---------------------------------------- Zona 1 ----------------------------------------- -->
