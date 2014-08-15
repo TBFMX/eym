@@ -10,7 +10,7 @@ class WelcomeController < ApplicationController
     @zone3 = lista_ordenada( @zone3_a)
 
     @equipment_slider = principal_slider(5)
-   
+
   end
 
   def new
@@ -56,7 +56,7 @@ class WelcomeController < ApplicationController
         return @equip
       end
       def principal_slider(n)
-          @equip = Equipment.where('package_id = ?',pack).where_activo.s_principal_charge.order('rank ASC, priority ASC').limit(n)
+          @equip = Equipment.where_activo.s_principal_charge.order('rank ASC, priority ASC').limit(n)
           return @equip     
       end
 
@@ -77,5 +77,6 @@ class WelcomeController < ApplicationController
           end 
         return final_array
 
-      end  
+      end
+        
 end

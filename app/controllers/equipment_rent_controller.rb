@@ -1,12 +1,12 @@
-class EquipmentController < ApplicationController
-  before_action :set_equipment, only: [:show, :edit, :update, :destroy]
+class EquipmentRentController < ApplicationController
+before_action :set_equipment, only: [:show, :edit, :update, :destroy]
   helper_method :sort_column, :sort_direction
   skip_before_action :authorize, only: [:show,:grid,:search,:industry]
 
   # GET /equipment
   # GET /equipment.json
   def index
-    @equipment = Equipment.where_activo.where_venta
+    @equipment = Equipment.where_activo
   end
 
   # GET /equipment/1
@@ -163,6 +163,13 @@ class EquipmentController < ApplicationController
 
     if propiedad(@equipment.user_id)
       @pic = params[:equipment][:image_id]
+      # puts "-------------------Pic---------------------------"
+      #   puts @pic.inspect
+      # puts "----------------------------------------------"
+      # puts "-------------------Pics---------------------------"
+      #   puts @pics.inspect
+      # puts "--------------------------------------------------" 
+
       respond_to do |format|
         if @equipment.update(equipment_params)
           format.html { 
@@ -175,14 +182,22 @@ class EquipmentController < ApplicationController
             #creo la galleria
               @gal = Gallery.where("equipment_id = ? and title = 'principal' ", @equipment.id ).count
               if @gal > 0 
+  #                puts "--------------------------gal count---------------------------------"
+  #               puts "-----" + @gal.to_s + "----------------------------------------------"
+  #              puts "--------------------------------------------------------------------"
                 @gallery=Gallery.where("equipment_id = ? and title = 'principal' ", @equipment.id ).first
               else
                 @gallery=Gallery.new("equipment_id"=>@equipment.id, "title" =>"principal")
               end    
+   #             puts "--------------------Galleria--------------------------"
+    #            puts @gallery.inspect
+     #           puts "------------------------------------------------------"
                 respond_to do |format|
                   if secure_save(@gallery)
                     format.html {
                       @galleries = Gallery.find(@gallery)
+                      
+      #                  puts "pase la validacion de pic"
                           @image = Image.new("gallery_id" => @galleries.id, "image_url" => @pics)
                           puts "--------------------Imagen--------------------------"
                           puts @image.inspect
@@ -190,6 +205,7 @@ class EquipmentController < ApplicationController
                           
                           respond_to do |format|
                             if secure_save(@image)
+       #                       puts "entre a imagen"
                               format.html { 
                                 respond_to do |format|
                                   if @equipment.update("image_id" => @image.id)
@@ -206,7 +222,7 @@ class EquipmentController < ApplicationController
                               }
                               format.json { }
                             else
-      
+        #                      puts "entre a imagen"
                               format.html { redirect_to root_path, alert: "fallo el salvado de la imagen" }
                               format.json {  }
                             end
@@ -237,13 +253,31 @@ class EquipmentController < ApplicationController
   # DELETE /equipment/1
   # DELETE /equipment/1.json
   def destroy
-    
+    #antes hay que limpiar todo
     @gallery = Gallery.where('equipment_id = ?', @equipment.id)
+    #puts"---------------------galerias del equipo---------------------------------"
+    #puts @gallery.inspect
+    #puts"-------------------------------------------------------------------------"
     @gallery.each do |gallery|
-          @image.each do |image|
-          pic = image.image_url
+    #  puts"--------------------galeria--------------------------------------------"
+    #  puts gallery.inspect
+    #  puts"-----------------------------------------------------------------------"
+    #  @image = Image.where('gallery_id = ?', gallery.id)
+    #  puts"--------------------imagenes de la galeria-----------------------------"
+    #  puts @image.inspect
+    #  puts"-----------------------------------------------------------------------"
+      @image.each do |image|
+    #    puts"-------------------imagen--------------------------------------------"
+    #    puts image.inspect
+    #    puts"---------------------------------------------------------------------"
+        pic = image.image_url
+    #   puts"----------------------url de la imagen-------------------------------"
+    #   puts pic
+    #    puts"---------------------------------------------------------------------"
         unless pic.equal?("/data/dummy.png")
+        
           pics = DataFile.destroy(pic)
+     #     puts '-------Destrui la pic ' + pic + 'y ya no debe estar'
         end
       end
     end  
@@ -285,25 +319,25 @@ class EquipmentController < ApplicationController
     @categoria = Category.find_by('categories.title' => aux)
     @subcategoria = Subcategory.find_by('subcategories.title' => aux_sub)
     
+
+    
     add_breadcrumb @categoria.slug.to_s, Filtro_path('categoria' => @categoria.title,  'tipo' => 1)
-    @titulo = @categoria.title.to_s
 
     unless @subcategoria.nil?
       add_breadcrumb @subcategoria.title.to_s, Filtro_path('categoria' => @categoria.title,'subcategory' => @subcategoria.title ,'tipo' => 1)
-       @titulo = @subcategoria.title.to_s
     end
     tipo = params[:tipo]    
     cat = Category.find_by('categories.title' => aux)    
     
     if simple
       if simple_sub
-        @equipments = Equipment.where('category_id = ?', cat.id).where('subcategory_id = ?', @subcategoria.id).where_activo.where_venta.order(sort_column + ' ' + sort_direction)
+        @equipments = Equipment.where('category_id = ?', cat.id).where('subcategory_id = ?', @subcategoria.id).where_activo.order(sort_column + ' ' + sort_direction)
       else
-        @equipments = Equipment.where('category_id = ?', cat.id).where_activo.where_venta.order(sort_column + ' ' + sort_direction)
+        @equipments = Equipment.where('category_id = ?', cat.id).where_activo.order(sort_column + ' ' + sort_direction)
       end  
     else
       
-      @equipments = Equipment.query(params[:equipment]).where('category_id = ?', cat.id).where_activo.where_venta.order(sort_column + ' ' + sort_direction)
+      @equipments = Equipment.query(params[:equipment]).where('category_id = ?', cat.id).where_activo.order(sort_column + ' ' + sort_direction)
       #@equipments = Equipment.query(params[:equipment]).order(sort_column + ' ' + sort_direction).paginate(:per_page => 10, :page => params[:page])
     end
   end
@@ -338,13 +372,16 @@ class EquipmentController < ApplicationController
     @aux.each do |a| 
       array.push(a.equipment_id)
     end  
+
+
+
     if simple
-        @equipments = Equipment.where(:id => array).where_activo.where_venta.order(sort_column + ' ' + sort_direction)
+        @equipments = Equipment.where(:id => array).where_activo.order(sort_column + ' ' + sort_direction)
         puts "#########################################es simple ######################################################"
         puts @equipments.inspect
         puts "#########################################################################################################"
     else  
-      @equipments = Equipment.query(params[:equipment]).where(:id => array).where_activo.where_venta.order(sort_column + ' ' + sort_direction)
+      @equipments = Equipment.query(params[:equipment]).where(:id => array).where_activo.order(sort_column + ' ' + sort_direction)
       puts "#########################################no es simple ######################################################"
       #@equipments = Equipment.query(params[:equipment]).order(sort_column + ' ' + sort_direction).paginate(:per_page => 10, :page => params[:page])
     end
@@ -365,7 +402,7 @@ class EquipmentController < ApplicationController
   end  
 
   def search
-    @equipments = Equipment.search(params[:search]).where_activo.where_venta
+    @equipments = Equipment.search(params[:search]).where_activo
   end  
 
   # GET upgrade
@@ -411,7 +448,7 @@ class EquipmentController < ApplicationController
   def users_view
     user = params[:user_id]
     @users = User.find(user)
-    @equips = Equipment.where('user_id = ?', user).where_venta
+    @equips = Equipment.where('user_id = ?', user)
   end
 
   def ver_payment
@@ -421,7 +458,7 @@ class EquipmentController < ApplicationController
   def equip_new
     cpanel = ControlPanel.find_by(:system => "EYM")
     cont = cpanel.newadv
-    @equipments = Equipment.where_activo.where_venta.order("created_at desc").limit(cont)
+    @equipments = Equipment.where_activo.order("created_at desc").limit(cont)
   end 
 
   def add_favorito 
@@ -486,3 +523,4 @@ class EquipmentController < ApplicationController
         params[:direction] || "asc"
     end
 end
+

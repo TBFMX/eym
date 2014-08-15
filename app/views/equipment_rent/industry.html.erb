@@ -3,12 +3,6 @@
     <%= form_tag '/Filtro', :method => 'get' do %>
     <%#= text_field_tag :search, params[:search] %>
     <%= select("equipment", "year", Equipment.all.collect {|p| [ p.year, p.year ] }.uniq, {include_blank: 'Año'}) %>
-    <% años = Equipment.all.collect {|p| [p.year] }.uniq
-    puts "##########################################################################################"
-    puts años.inspect 
-    puts "##########################################################################################"
-    %>
-
     <br>
     <%= select("equipment", "color", Equipment.all.collect {|p| [ p.color, p.color ] }.uniq, {include_blank: 'Color'}) %>
     <br>
@@ -24,24 +18,20 @@
     <br>
     <%= select("equipment", "currency_id", Currency.all.collect {|p| [ p.name, p.id ] }.uniq, {include_blank: 'Moneda'}) %>
     <br>
-
     <%= select("equipment", "country_id", Country.all.collect {|p| [p.name ,p.id] }.uniq, {include_blank: 'Pais'}) %>
     <br>
     <%= select("equipment", "state_id", State.all.collect {|p| [ p.name ,p.id ] }.uniq, {include_blank: 'Estado'}) %>
     <br>
     <%= select("equipment", "ciudad", Equipment.all.collect {|p| [ p.ciudad, p.ciudad ] }.uniq, {include_blank: 'Ciudad'}) %>
     <br>
-
     <%#= select("equipment", "category_id", Category.all.collect {|p| [ p.title, p.id ] }.uniq, {include_blank: 'Categoria'}) %>
     <br>
-    <%= hidden_field_tag :category , @categoria.title %>
+    <%= hidden_field_tag :industria , @industria.title %>
     <%= submit_tag "Filtrar", :name => nil %>
     <% end %>
     </div>
 
-
     <div class="galeria">
-        <%= @titulo %> </br>
     <% @equipments.each do |equipment| %>
         <div class="equipos">
             <div class="imagenes">
@@ -53,12 +43,12 @@
                         </div>
                     <%else %>
                         <div class="imagen">
-                            <%= link_to image_tag("/data/dommy.png"), equipment_path(equipment) %>
+                            <%= link_to image_tag("/data/dummy.png"), equipment_path(equipment) %>
                         </div>  
                     <% end %>
                 <% else %>
                     <div class="imagen">
-                        <%= link_to image_tag("/data/dommy.png"), equipment_path(equipment) %>
+                        <%= link_to image_tag("/data/dummy.png"), equipment_path(equipment) %>
                     </div>  
                 <% end %>      
             </div>
