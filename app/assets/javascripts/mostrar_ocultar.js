@@ -1,4 +1,3 @@
-<script language="Javascript">
 	function mostrar(elem_id,botton) {
 		var miDiv, mostrar;
 		miDiv = document.getElementById(elem_id);
@@ -13,4 +12,3 @@
 			mostrar.data = "Mostrar";
 		}
 	}
-</script>
