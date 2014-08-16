@@ -264,25 +264,69 @@ class EquipmentController < ApplicationController
   end
 
   def grid
-    
+    url = request.url
+    puts "-----------------------------"
+    puts url
+    puts "-----------------------------"
+    puts "-----------------------------"
+    puts params.inspect
+    puts params[:array].inspect
+    puts params[:array].inspect
+    puts "-----------------------------"
     simple = false
-    unless params[:categoria].blank?
-      aux = params[:categoria]
-      simple = true
+
+    @array = params[:array]
+
+    nombre = params[:nuevo_n]
+    valor = params[:nuevo_v]
+
+    unless nombre.nil? and valor.nil?
+      @array[nombre] = valor
+    end
+    unless params[:array].blank?
+      unless params[:array][:categoria].blank?
+        aux = params[:array][:categoria]
+        simple = true
+      else
+        unless params[:categoria].blank?      
+          aux = params[:categoria]
+          simple = false     
+        else      
+          redirect_to root_path
+        end  
+      end
+    else
+      unless params[:categoria].blank?      
+        aux = params[:categoria]
+        simple = false     
+      else      
+        redirect_to root_path
+      end    
+    end
+    puts "------------------------------------"
+    puts "auxiliar: " + aux.to_s
+    puts "------------------------------------"
+
+
+
+    unless params[:array].blank?
+      unless params[:array][:subcategory].blank?
+        aux_sub = params[:array][:subcategory]
+        simple_sub = true
+      else      
+        aux_sub = params[:subcategory]
+        simple_sub = false
+      end
     else      
-      aux = params[:category]
-      simple = false
+        aux_sub = params[:subcategory]
+        simple_sub = false      
     end
 
-    unless params[:subcategory].blank?
-      aux_sub = params[:subcategory]
-      simple_sub = true
-    else      
-      aux_sub = params[:subcategory]
-      simple_sub = false
-    end  
-    
     @categoria = Category.find_by('categories.title' => aux)
+    puts "------------------------------------"
+    puts @categoria.inspect
+    puts "------------------------------------"
+
     @subcategoria = Subcategory.find_by('subcategories.title' => aux_sub)
     
     add_breadcrumb @categoria.slug.to_s, Filtro_path('categoria' => @categoria.title,  'tipo' => 1)
@@ -297,13 +341,13 @@ class EquipmentController < ApplicationController
     
     if simple
       if simple_sub
-        @equipments = Equipment.where('category_id = ?', cat.id).where('subcategory_id = ?', @subcategoria.id).where_activo.where_venta.order(sort_column + ' ' + sort_direction)
+        @equipments = Equipment.where('category_id = ?', cat.id).where('subcategory_id = ?', @subcategoria.id).query(@array).where_activo.where_venta.order(sort_column + ' ' + sort_direction)
       else
-        @equipments = Equipment.where('category_id = ?', cat.id).where_activo.where_venta.order(sort_column + ' ' + sort_direction)
+        @equipments = Equipment.where('category_id = ?', cat.id).query(@array).where_activo.where_venta.order(sort_column + ' ' + sort_direction)
       end  
     else
       
-      @equipments = Equipment.query(params[:equipment]).where('category_id = ?', cat.id).where_activo.where_venta.order(sort_column + ' ' + sort_direction)
+      @equipments = Equipment.query(@array).where('category_id = ?', cat.id).where_activo.where_venta.order(sort_column + ' ' + sort_direction)
       #@equipments = Equipment.query(params[:equipment]).order(sort_column + ' ' + sort_direction).paginate(:per_page => 10, :page => params[:page])
     end
   end
@@ -448,6 +492,7 @@ class EquipmentController < ApplicationController
       redirect_to root_path
     end
   end
+
 
 
   private

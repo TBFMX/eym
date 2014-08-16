@@ -4,11 +4,15 @@
 		<li><%= link_to 'Categorias', category_vista_path %>
 			<ul>
 			<% @category.each do |category| %>
-					<li><%= link_to category.title, Filtro_path('categoria' => category.title, 'tipo' => 1), method: :post %>
+				<% array = Hash['categoria' => category.title ,'tipo' => 1]
+							%>
+					<li><%= link_to category.title, Filtro_path("array" =>array), method: :post %>
 					<ul>
 						<% @subcategory.each do |subcategory| %>
 							<% if subcategory.category_id.to_s == category.id.to_s %>
-								<li><%= link_to subcategory.title, Filtro_path('categoria' => category.title, 'subcategory' => subcategory.title,'tipo' => 1), method: :post %></li>
+							<% array = Hash['categoria' => category.title ,'subcategory' => subcategory.title ,'tipo' => 1]
+							%>
+								<li><%= link_to subcategory.title, Filtro_path("array" =>array), method: :post %></li>
 							<% end %>
 
 						<% end %>

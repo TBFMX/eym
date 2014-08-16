@@ -6,6 +6,7 @@
   <%= csrf_meta_tags %>
   <meta name="keywords" content="Renta y venta de Equipo y Maquinaria, Renta de Equipo y maquinaria ,Venta de Equipo y Maquinaria ,Maquinaria usada, Maquinaria en venta ,Montacargas , Montacargas en renta, Montacargas en venta, Maquinaria y equipo para renta ,Equipo para construcción ,Equipo para mineria ,Equipo para rigging ,Maquinaria para construcción ,Renta de maquinaria para construcción ,Renta de maquinaria pesada ,Venta de maquinaria pesada ,Puro pesado ,puropesado" />
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <!-- <script type="text/javascript" src="codigo.js"></script>-->
 
   <meta name="description" content="">
 
@@ -36,14 +37,7 @@
 	<div class="content">
   <div class="interior">
      <div id="fb-root"></div>
-      <script>(function(d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s); js.id = id;
-        js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=<%=OORConstant.facebook_app_id%>";
-        fjs.parentNode.insertBefore(js, fjs);
-      }(document, 'script', 'facebook-jssdk'));
-      </script>
+      
 
     <%= yield %>
 
@@ -52,5 +46,13 @@
   
 </body>
   <%= render partial: "layouts/footer" %>
+  <script async type="text/javascript">(function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=<%=OORConstant.facebook_app_id%>";
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+      </script>
   <%#= javascript_include_tag 'application', 'data-turbolinks-track' => true %>  
 </html>
