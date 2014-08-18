@@ -64,7 +64,7 @@ Rails.application.routes.draw do
     #delete '/' => :destroy
     #delete '/logout' => :destroy
   end
-  
+
   get 'sessions/new'
 
   get 'sessions/create'

@@ -317,5 +317,8 @@ class Equipment < ActiveRecord::Base
 
 	end
 
+	def self.where_category(category)
+		where("category_id = ?", category)
+	end
 
 end

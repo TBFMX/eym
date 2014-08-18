@@ -271,7 +271,6 @@ class EquipmentController < ApplicationController
     puts "-----------------------------"
     puts params.inspect
     puts params[:array].inspect
-    puts params[:array].inspect
     puts "-----------------------------"
     simple = false
 
@@ -337,19 +336,46 @@ class EquipmentController < ApplicationController
        @titulo = @subcategoria.title.to_s
     end
     tipo = params[:tipo]    
-    cat = Category.find_by('categories.title' => aux)    
+    @cat = Category.find_by('categories.title' => aux)    
     
     if simple
       if simple_sub
-        @equipments = Equipment.where('category_id = ?', cat.id).where('subcategory_id = ?', @subcategoria.id).query(@array).where_activo.where_venta.order(sort_column + ' ' + sort_direction)
+        @equipments = Equipment.where('category_id = ?', @cat.id).where('subcategory_id = ?', @subcategoria.id).query(@array).where_activo.where_venta.order(sort_column + ' ' + sort_direction)
       else
-        @equipments = Equipment.where('category_id = ?', cat.id).query(@array).where_activo.where_venta.order(sort_column + ' ' + sort_direction)
+        @equipments = Equipment.where('category_id = ?', @cat.id).query(@array).where_activo.where_venta.order(sort_column + ' ' + sort_direction)
       end  
     else
       
-      @equipments = Equipment.query(@array).where('category_id = ?', cat.id).where_activo.where_venta.order(sort_column + ' ' + sort_direction)
+      @equipments = Equipment.query(@array).where('category_id = ?', @cat.id).where_activo.where_venta.order(sort_column + ' ' + sort_direction)
       #@equipments = Equipment.query(params[:equipment]).order(sort_column + ' ' + sort_direction).paginate(:per_page => 10, :page => params[:page])
     end
+
+    @marcas_a = Array.new
+    @paquetes_a = Array.new
+    @monedas_a = Array.new 
+    @paises_a = Array.new
+    @estados_a = Array.new
+
+    @equipments.each do |o|
+      @marcas_a.push(o.brand_id)
+    end
+
+    @equipments.each do |o|
+        @paquetes_a.push(o.package_id)
+    end
+
+    @equipments.each do |o|
+        @monedas_a.push(o.currency_id)
+    end
+    @equipments.each do |o|
+        @paises_a.push(o.country_id)
+    end
+
+    @equipments.each do |o|
+        @estados_a.push(o.state_id)
+    end
+
+
   end
 
   def industry
@@ -530,4 +556,13 @@ class EquipmentController < ApplicationController
     def sort_direction
         params[:direction] || "asc"
     end
+
+    def fill_array(equipo,campo)
+      aux = Array.new
+
+      objeto.each do |o|
+        aux.push(o.campo)
+      end 
+      return aux
+    end  
 end
