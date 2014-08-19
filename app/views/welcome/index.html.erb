@@ -2,44 +2,53 @@
 
 <!-- ---------------------------------------- Slider principal ----------------------------------------- -->
 
-<div class="slider_principal">
+<div id="slider_principal">
    <!-- contenedor para informacion -->
-   <% 
-      contador = 1
-      arreglo = Array.new
-      @equipment_slider.each do |slider| 
-   %>
-   <div class="<%= "informacion" + contador.to_s %>"><% contador += 1 %>
-      <!-- imagen de fondo -->
-      <%if slider.image_id   
-         @imagen = Image.find(slider.image_id)
-         @image = @imagen.image_url
-         arreglo.push(@image)
-      else 
-         @image ="/data/dummy.png"
-         arreglo.push(@image)
-   end %>   
-      <div class="slider_imagenes"><img id="<%= "image" + contador.to_s %>" src="<%= @image %>" /></div>
-      <!-- franja negra -->
-      <div class="detalles">
-         <!-- parte del logo -->
-         <div class="parte1">
-            <div class="imagen"><img class="logo" src="/images/iconos/isotipo03.png"></div>
-            <p class="titulo"><%= slider.name %></p>
-            <span class="parrafo">
-               <strong>Marca:</strong><%= slider.brand.name %><br />
-               <strong>Modelo:</strong><%= slider.modelo %><br />
-               <strong>Año:</strong><%= slider.year %>
-            </span>
-         </div> 
-         <!-- precio --> 
-         <div class="parte2"><p><%= number_to_currency(slider.precio) %> <%= slider.currency.name %></p></div>          
-      </div>            
-   </div>  
-   <% end %>
+   <div id="preview_contenido">
+      <% 
+         contador = 1
+         arreglo = Array.new
+         @equipment_slider.each do |slider| 
+      %>
+      <div id="<%= "informacion" + contador.to_s %>">
+         <!-- imagen de fondo -->
+         <%if slider.image_id   
+            @imagen = Image.find(slider.image_id)
+            @image = @imagen.image_url
+            arreglo.push(@image)
+         else 
+            @image ="/data/dummy.png"
+            arreglo.push(@image)
+      end %>   
+         <div id="slider_imagenes"><img id="<%= "image" + contador.to_s %>" src="<%#= @image %>" /></div>
+         <!-- franja negra -->
+         <div id="detalles">
+            <!-- parte del logo -->
+            <div id="parte1">
+               <div id="imagen"><img id="logo" src="/images/iconos/isotipo03.png"></div>
+               <p id="titulo"><%= slider.name %></p>
+               <span id="parrafo">
+                  <strong>Marca:</strong><%= slider.brand.name %><br />
+                  <strong>Modelo:</strong><%= slider.modelo %><br />
+                  <strong>Año:</strong><%= slider.year %>
+               </span>
+            </div> 
+            <!-- precio --> 
+            <div id="parte2"><p><%= number_to_currency(slider.precio) %> <%= slider.currency.name %></p></div>          
+         </div>            
+      </div> 
+         <% contador += 1 %> 
+      <% end %>
+   </div> 
    <!-- contenedor para los preview y controles-->
    <!-- for each para las 5 imagenes que se seleccionaran -->
-   <% arreglo.each do |ar| %><img id="image" src="<%= ar %>" /><% end %>
+   <div id="preview_imagenes">
+      <% contador = 1 %> 
+      <% arreglo.each do |ar| %>
+          <a href="<%= "#informacion" + contador.to_s %>"><img id="<%= "image" + contador.to_s %>" src="<%= ar %>" /></a>
+      <% contador += 1 %>
+      <% end %>
+   </div>
 </div>
 
 <!-- ---------------------------------------- Zona 1 ----------------------------------------- -->
