@@ -457,127 +457,114 @@
   transition: all 0.5s ease-out;
 }
 
-/*----------------------------- SLIDER EYM PRINCIAl ---------------------------*/
+/*informacion----------------------------- SLIDER EYM PRINCIAL ---------------------------*/
 
-.slider_principal {
-  width: 900px;
-  height: 270px;
-  overflow: hidden;
-  margin: 0 auto 0 auto;
-  box-shadow: 1px 1px 5px #b6b6b6;
+
+#slider_principal{
+    width: 900px;
+    height: 280px;
+    overflow: hidden;
 }
 
-.slider_principal .informacion1,
-.slider_principal .informacion2,
-.slider_principal .informacion3,
-.slider_principal .informacion4,
-.slider_principal .informacion5{
-  width: 820px;
-  height: 260px;
-  padding:5px;
-  float: left;
+#slider_principal #preview_contenido {
+    width: 820px;
+    height: 280px;
+    overflow: hidden;
+    position: relative;
+    float:left;
+    background-color: #FFF;
 }
 
-.slider_principal .informacion1 img,
-.slider_principal .informacion2 img,
-.slider_principal .informacion3 img,
-.slider_principal .informacion4 img,
-.slider_principal .informacion5 img{
-  width: 820px;
-  height: 260px;
-  padding:5px;
-  float: left;
-}
-
-.slider_principal .informacion1 .image1 img,
-.slider_principal .informacion2 .image2 img,
-.slider_principal .informacion3 .image3 img,
-.slider_principal .informacion4 .image4 img,
-.slider_principal .informacion5 .image5 img{
-  width: 820px;
-  height: 260px;
-  padding:5px;
-  float: left;
-}
-
-.slider_principal .informacion1 img,
-.slider_principal .informacion2 img,
-.slider_principal .informacion3 img,
-.slider_principal .informacion4 img,
-.slider_principal .informacion5 img{
-  width: 820px;
-  height: 260px;
-  padding:5px;
-  float: left;
-}
-
-.slider_principal img{
+#slider_principal #preview_imagenes{
   width: 60px;
-  height: 40px;
-  padding: 5px 5px 5px 5px;
+  height: 270px;
+  float:left;
+  padding:5px;
 }
 
-.slider_principal img:hover{
-  opacity: 0.7;
+#slider_principal #preview_contenido img{
+    width: 820px;
+    height: 270px;
+    padding: 10px;  
 }
 
-.slider_principal .informacion1 .detalles,
-.slider_principal .informacion2 .detalles,
-.slider_principal .informacion3 .detalles,
-.slider_principal .informacion4 .detalles,
-.slider_principal .informacion5 .detalles{
-  background-color: rgba(0, 0, 0, .5); /* color de fondo con opacity */
-  width: 820px;
+#slider_principal #preview_contenido #informacion1,
+#slider_principal #preview_contenido #informacion2,
+#slider_principal #preview_contenido #informacion3,
+#slider_principal #preview_contenido #informacion4,
+#slider_principal #preview_contenido #informacion5{
+    width: 830px;
+    height: 280px;
+    position: absolute;
+    top: 0;
+    left: -830px;
+    z-index: 1;
+    opacity: 0;
+    transition: all linear 500ms;
+    -o-transition: all linear 500ms;
+    -moz-transition: all linear 500ms;
+    -webkit-transition: all linear 500ms;
+}
+
+#slider_principal #preview_contenido #informacion1:target,
+#slider_principal #preview_contenido #informacion2:target,
+#slider_principal #preview_contenido #informacion3:target,
+#slider_principal #preview_contenido #informacion4:target,
+#slider_principal #preview_contenido #informacion5:target{
+    left: 0;
+    z-index: 1;
+    opacity: 1;
+}
+
+#slider_principal #preview_contenido #informacion1 #detalles,
+#slider_principal #preview_contenido #informacion2 #detalles,
+#slider_principal #preview_contenido #informacion3 #detalles,
+#slider_principal #preview_contenido #informacion4 #detalles,
+#slider_principal #preview_contenido #informacion5 #detalles{
+  width:810px;
   height: 100px;
-  position: relative;
-  margin: 150px 5px 0px 5px;
+  background-color: rgba(0, 0, 0, .5); /* color de fondo con opacity */
+  margin:-150px 0 0 10px;
 }
 
-.slider_principal .informacion1 .detalles .parte1,
-.slider_principal .informacion2 .detalles .parte1,
-.slider_principal .informacion3 .detalles .parte1,
-.slider_principal .informacion4 .detalles .parte1,
-.slider_principal .informacion5 .detalles .parte1{
+
+#slider_principal #informacion1 #detalles #parte1,
+#slider_principal #informacion2 #detalles #parte1,
+#slider_principal #informacion3 #detalles #parte1,
+#slider_principal #informacion4 #detalles #parte1,
+#slider_principal #informacion5 #detalles #parte1{
   width: 500px;
   height: 100px;
   float: left; 
   position: absolute;
 }
 
-.slider_principal .informacion1 .detalles .parte1 .imagen,
-.slider_principal .informacion2 .detalles .parte1 .imagen,
-.slider_principal .informacion3 .detalles .parte1 .imagen,
-.slider_principal .informacion4 .detalles .parte1 .imagen,
-.slider_principal .informacion5 .detalles .parte1 .imagen{
+#slider_principal #informacion1 #detalles #parte1 #imagen,
+#slider_principal #informacion2 #detalles #parte1 #imagen,
+#slider_principal #informacion3 #detalles #parte1 #imagen,
+#slider_principal #informacion4 #detalles #parte1 #imagen,
+#slider_principal #informacion5 #detalles #parte1 #imagen{
   width: 100px;
   height: 100px;
   float: left; 
   position: relative;
 }
 
-.slider_principal .informacion1 .detalles .parte1 .imagen img,
-.slider_principal .informacion2 .detalles .parte1 .imagen img,
-.slider_principal .informacion3 .detalles .parte1 .imagen img,
-.slider_principal .informacion4 .detalles .parte1 .imagen img,
-.slider_principal .informacion5 .detalles .parte1 .imagen img{
+#slider_principal #informacion1 #detalles #parte1 #imagen img,
+#slider_principal #informacion2 #detalles #parte1 #imagen img,
+#slider_principal #informacion3 #detalles #parte1 #imagen img,
+#slider_principal #informacion4 #detalles #parte1 #imagen img,
+#slider_principal #informacion5 #detalles #parte1 #imagen img{
   width: 70px;
   height: 70px;
   margin: 10px 10px 10px 10px;
 }
 
-.slider_principal .informacion1 .detalles .parte1 .imagen img:hover,
-.slider_principal .informacion2 .detalles .parte1 .imagen img:hover,
-.slider_principal .informacion3 .detalles .parte1 .imagen img:hover,
-.slider_principal .informacion4 .detalles .parte1 .imagen img:hover,
-.slider_principal .informacion5 .detalles .parte1 .imagen img:hover{
-  opacity: 1;
-}
-
-.slider_principal .informacion1 .detalles .parte1 .titulo,
-.slider_principal .informacion2 .detalles .parte1 .titulo,
-.slider_principal .informacion3 .detalles .parte1 .titulo,
-.slider_principal .informacion4 .detalles .parte1 .titulo,
-.slider_principal .informacion5 .detalles .parte1 .titulo{
+#slider_principal #informacion1 #detalles #parte1 #titulo,
+#slider_principal #informacion2 #detalles #parte1 #titulo,
+#slider_principal #informacion3 #detalles #parte1 #titulo,
+#slider_principal #informacion4 #detalles #parte1 #titulo,
+#slider_principal #informacion5 #detalles #parte1 #titulo{
   width: 400px;
   height: 25px;
   color: #FFF;
@@ -588,11 +575,11 @@
   overflow:hidden;     
 }
 
-.slider_principal .informacion1 .detalles .parte1 .parrafo,
-.slider_principal .informacion2 .detalles .parte1 .parrafo,
-.slider_principal .informacion3 .detalles .parte1 .parrafo,
-.slider_principal .informacion4 .detalles .parte1 .parrafo,
-.slider_principal .informacion5 .detalles .parte1 .parrafo{
+#slider_principal #informacion1 #detalles #parte1 #parrafo,
+#slider_principal #informacion2 #detalles #parte1 #parrafo,
+#slider_principal #informacion3 #detalles #parte1 #parrafo,
+#slider_principal #informacion4 #detalles #parte1 #parrafo,
+#slider_principal #informacion5 #detalles #parte1 #parrafo{
   width: 400px;
   color: #FFF;
   font-size: 15px;
@@ -602,45 +589,45 @@
   overflow:hidden;  
 }
 
-.slider_principal .informacion1 .detalles .parte2,
-.slider_principal .informacion2 .detalles .parte2,
-.slider_principal .informacion3 .detalles .parte2,
-.slider_principal .informacion4 .detalles .parte2,
-.slider_principal .informacion5 .detalles .parte2{
-  margin-top: -120px;
+#slider_principal #informacion1 #detalles #parte2,
+#slider_principal #informacion2 #detalles #parte2,
+#slider_principal #informacion3 #detalles #parte2,
+#slider_principal #informacion4 #detalles #parte2,
+#slider_principal #informacion5 #detalles #parte2{
   width: 320px;
   height: 100px;    
   float: right;
 }
 
-.slider_principal .informacion1 .detalles .parte2 p,
-.slider_principal .informacion2 .detalles .parte2 p,
-.slider_principal .informacion3 .detalles .parte2 p,
-.slider_principal .informacion4 .detalles .parte2 p,
-.slider_principal .informacion5 .detalles .parte2 p{
+#slider_principal #informacion1 #detalles #parte2 p,
+#slider_principal #informacion2 #detalles #parte2 p,
+#slider_principal #informacion3 #detalles #parte2 p,
+#slider_principal #informacion4 #detalles #parte2 p,
+#slider_principal #informacion5 #detalles #parte2 p{
   margin-top:65px; 
   font-size: 30px;
   color: #FFF;   
 }
 
-
-
-
-
-
-
-#slider_eym_images img:target {
-    left: 0;
-    z-index: 9;
-    opacity: 1;
-}
-#slider_eym_images img:first-child{
+#slider_principal #preview_contenido #informacion1{
     left: 0;
 }
-#slider_eym a {
+
+#slider_principal #preview_imagenes img{
+  width:60px;
+  height:40px;
+  padding:5px;
+}
+
+#slider_principal #preview_imagenes a {
     text-decoration: none;
-    background: #E3F1FA;
-    border: 1px solid #C6E4F2;
-    padding: 4px 6px;
-    color: #222;
+  background-color:transparent;
+}
+
+#slider_principal img{
+  z-index:-1;
+}
+
+#slider_principal img:hover {
+  opacity: 0.7;
 }

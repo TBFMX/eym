@@ -1,3 +1,4 @@
+<div class="comentarios_formulario">
 <%= form_for(@comment) do |f| %>
   <% if @comment.errors.any? %>
     <div id="error_explanation">
@@ -13,8 +14,9 @@
 
     <%= f.hidden_field :user_id %>
     <%= f.hidden_field :equipment_id %>
-  <div class="comentarios_formulario">
-    <%= f.label :comment, "Hacer un comentario sobre este equipo:" %> <%= f.submit "Publicar" %>
-    <br /><%= f.text_area :comment %> 
-  </div>
+  
+    <%#= f.label :comment, "Hacer un comentario sobre este equipo:" %> 
+    <%= f.text_area :comment %> <%= f.submit "Publicar" %>
+  
 <% end %>
+</div>

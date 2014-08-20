@@ -10,7 +10,7 @@
   <!-- <script type="text/javascript" src="codigo.js"></script>-->
 
   <meta name="description" content="">
-  <div id="fb-root"></div>
+  
 <!--EMPIEZA ANALYTICS-->
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -35,6 +35,7 @@
 </head>
   <%= render partial: "layouts/header" %> 
 <body>
+  <div id="fb-root"></div>
   <% if current_page?(root_path) %>
     <%= render partial: "layouts/anuncio" %>
     <%= render partial: "layouts/breadcrumb" %>
@@ -44,6 +45,7 @@
 	<!-- Fin de la validación -->
 	<div class="content">
   <div class="interior">
+
     <%= yield %>
   </div>
   </div>
