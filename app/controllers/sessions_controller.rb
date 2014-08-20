@@ -60,7 +60,7 @@ class SessionsController < ApplicationController
         redirect_to root_path
       end    
   	else
-  		redirect_to root_path, alert: "Invalid user/password combination"
+  		redirect_to root_path, alert: "La combinacion de Usuario y clave es incorrecta"
   	end
   end
 
@@ -87,7 +87,7 @@ class SessionsController < ApplicationController
         redirect_to "/equipment/new"
       end    
     else
-      redirect_to root_path, alert: "La combinacion de Usuario y contraseña es incorrecta"
+      redirect_to root_path, alert: "La combinacion de Usuario y clave es incorrecta"
     end
   end
 

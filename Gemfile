@@ -67,3 +67,7 @@ gem 'wicked_pdf'
 #fin generar pdfs
 
 gem "airbrake"
+
+###########################
+#google analytics
+gem "google-api-client"
