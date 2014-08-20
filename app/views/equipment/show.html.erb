@@ -1,7 +1,3 @@
-
-
-
-
 <p id="notice"><%= notice %></p>
 
 <!--      REDES SOCIALES          -->
@@ -11,13 +7,17 @@
 <!--      Vista del equipo          -->
 <div class="show_equipment">
   <!--      titulo del equipo          -->
-  <div class="titulo"><h2><%= @equipment.name %></h2> 
+  <div class="titulo"><h1><%= @equipment.name %><span class="azul">&nbsp<%= number_to_currency(@equipment.precio) %>&nbsp<%= @currency.name %>&nbsp(<%if @equipment.publication_type == 1 %>Venta<% else %>Renta<% end %>)</span></h1> 
 
   <% if User.find_by(id: session[:user_id]) %>
     <%=link_to "favoritos",new_fav_path(:equip => @equipment.id),remote: true %>
   <% end %>  
 
+  <%= button_to "contacto", equipo_contacto_path(:user_id => session[:user_id], :equipment => @equipment), :method => :post %>
+  <img src="/images/iconos/usuario_icono.png" height="12" width="12"> <%= link_to @user.username, users_view_path(:user_id => @equipment.user_id) %>
+
   </div>
+
   <!--      imagenes y detalles del equipo          -->
   <div class="producto">
     <div class="preview">
@@ -54,7 +54,6 @@
     </div>
 
       <!--      imagenes principal del equipo          -->
-      
       <% if @video2 != nil %>
         <div class="imagen"><%= @video2.video_url.html_safe %></div>
       <%else %>
@@ -69,44 +68,23 @@
         <% end %>      
       <% end %>
 
-    <!--      tabla de detalles          -->
-    <div class="modelo">
-      <table>
-        <tr><th colspan="2">Modelo: <%= @equipment.modelo %></th></tr>
-        <tr><td>Año: <%= @equipment.year %></td><td>Color: <%= @equipment.color %></td></tr>
-        <tr><td>Marca: <%= @equipment.brand.name %></td><td> </td></tr>
-        <tr><th colspan="2"><%if @equipment.publication_type == 1 %>Venta<% else %>Renta<% end %>:</th></tr>
-        <tr>
-          <td colspan="2">Precio: <%= number_to_currency(@equipment.precio) %> <%= @currency.name %></td>
-        </tr>
-        <tr><th colspan="2">Contacto y localidad</th></tr> 
-        <tr>
-          <td colspan="2">Lugar: <%= @equipment.ciudad %>, <%= @equipment.state.name %>, <%= @equipment.country.name %></td>
-        </tr>
-        <tr>
-          <td><%= button_to "contacto", equipo_contacto_path(:user_id => session[:user_id], :equipment => @equipment), :method => :post %></td>
-          <td><img src="/images/iconos/usuario_icono.png" height="12" width="12"> <%= link_to @user.username, users_view_path(:user_id => @equipment.user_id) %></td>
-        </tr>            
-      </table>
-      </div> 
-    </div>
-  
-  <!--      etiquetas          -->  
-  <p>Etiquetas: <%= @equipment.etiquetas %></p>
+  <div class="modelo">
+    <p>Etiquetas: <%= @equipment.etiquetas %></p>
+    <p>Modelo: <%= @equipment.modelo %></p>
+    <p>Marca: <%= @equipment.brand.name %> | Año: <%= @equipment.year %> | Color: <%= @equipment.color %></p>
+    <p>Lugar: <%= @equipment.ciudad %>, <%= @equipment.state.name %>, <%= @equipment.country.name %></p>
+  </div> 
 
-  <!--      descripcion del equipo          -->
   <div class="descripcion">
-    <h1>Description:</h1>
+    <h1><span class="azul2">Descripción:</span></h1>
     <textarea readonly><%= @equipment.description %></textarea>
   </div>
 
-  <!--      comentarios          -->
-  <h1>Comentarios:</h1>
+  <div class="comentarios">
+    <h1><span class="azul2">Comentarios:</span></h1>
     <%= render partial: '/comments/form', locals: {equipment: @equipment.slug, comment: @comment} %> 
     <%= render partial: '/comments/index', locals: {equipment: @equipment.slug, comments: @comments} %>
+  </div>  
+
+
 </div>
-
-<%#= link_to 'Edit', edit_equipment_path(@equipment) %>
-<%#= link_to 'Back', dashboard_equipos_path %>
-
-
