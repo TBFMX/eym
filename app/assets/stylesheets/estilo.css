@@ -397,6 +397,136 @@ input:focus{
 
 /*------------- código para crear anuncio -------------*/
 
+.alta_equipment{
+   width: 100%;
+   height: 950px;
+   background-color: #37A0DE;
+   margin: 0 auto 0 auto;
+}
+
+.alta_equipment p{
+   margin: 20px 0px 10px 10px;
+   font-size: 15px;
+   color: #FFF;
+   text-transform: uppercase;
+   font-weight: bold;
+}
+
+.alta_equipment p .leyenda{
+   margin: 20px 0 0 0;
+   font-size: 10px;
+   color: #FFF;
+}
+
+.alta_equipment .parte1{
+   width: 920px;
+   height: 600px;
+}
+
+.alta_equipment .parte1 .anuncio{
+   width: 600px;
+   max-height: 100%;   
+   float: left;
+}
+
+.alta_equipment .parte1 .anuncio input{
+   width: 90%;
+   height: 25px;
+}
+
+.alta_equipment .parte1 .anuncio textarea{
+   width: 90%;
+   height: 250px;
+}
+
+.alta_equipment .parte1 .detalles{
+   width: 269px;
+   min-height: 100%;
+   border-left: 1px solid #FFF;
+   float: left;
+}
+
+.alta_equipment .parte1 .detalles input,
+.alta_equipment .parte1 .detalles select{
+   width: 100%;
+   height: 25px;
+   margin-left: 10px;
+}
+
+.alta_equipment .precio{
+   width: 100%;   
+   height: 100px;   
+   border-top: 1px solid #FFF;
+   border-bottom: 1px solid #FFF;
+   max-height: 100%;
+}
+
+.alta_equipment .tercio{
+   width: 30%;
+   max-height: 100%;
+   text-align: left;
+   float: left;
+   margin-right: 11px;
+   margin-left: 11px;
+}
+
+.alta_equipment .tercio select{
+   width: 100%;
+   height: 30px;
+   margin-bottom: 20px;
+}
+
+.alta_equipment .tercio input{
+   width: 100%;
+   height: 25px;
+   margin-bottom: 20px;
+}
+
+.alta_equipment .paquete{
+   width: 100%;   
+   height: 200px;   
+   border-bottom: 1px solid #FFF;
+   max-height: 100%;
+}
+
+.alta_equipment .paquete .tercio{
+   width: 30%;
+   min-height: 100px;
+   max-height: 100%;
+   text-align: left;
+   float: left;
+   margin-right: 11px;
+   margin-left: 11px;
+}
+
+.alta_equipment .paquete .tercio2{
+   width: 30%;
+   min-height: 100px;   
+   max-height: 100%;
+   text-align: left;
+   float: left;
+   margin: 10px 11px 10px 11px;
+   border-left: 1px solid #FFF;
+   border-right: 1px solid #FFF; 
+}
+
+.alta_equipment .crear{
+   width: 100%;
+   height: 80px;
+   float: left;
+   text-align: center;
+}
+
+.alta_equipment .crear input{
+   width: 120px;
+   height: 50px;
+   font-size:10px;
+   font-weight:bold;
+   color:white;
+   background:#638cb5;
+   border:0px;
+}
+
 .alta_equipment .grupo{
    position: relative;
    display: block;
