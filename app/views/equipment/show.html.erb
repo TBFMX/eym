@@ -1,22 +1,21 @@
 <p id="notice"><%= notice %></p>
 
 <!--      REDES SOCIALES          -->
-
 <%= render 'layouts/social_section', :title => "I wanna share this", :url => request.original_url %>  
 
 <!--      Vista del equipo          -->
 <div class="show_equipment">
   <!--      titulo del equipo          -->
-  <div class="titulo"><h1><%= @equipment.name %><span class="azul">&nbsp<%= number_to_currency(@equipment.precio) %>&nbsp<%= @currency.name %>&nbsp(<%if @equipment.publication_type == 1 %>Venta<% else %>Renta<% end %>)</span></h1> 
-
-  <% if User.find_by(id: session[:user_id]) %>
-    <%=link_to "favoritos",new_fav_path(:equip => @equipment.id),remote: true %>
-  <% end %>  
-
-  <%= button_to "contacto", equipo_contacto_path(:user_id => session[:user_id], :equipment => @equipment), :method => :post %>
-  <img src="/images/iconos/usuario_icono.png" height="12" width="12"> <%= link_to @user.username, users_view_path(:user_id => @equipment.user_id) %>
-
-  </div>
+  <div class="titulo">
+    <h1>
+      <%= @equipment.name %><span class="azul">&nbsp<%= number_to_currency(@equipment.precio) %>&nbsp<%= @currency.name %>&nbsp(<%if @equipment.publication_type == 1 %>Venta<% else %>Renta<% end %>)</span> 
+      <span class="favoritos">
+        <% if User.find_by(id: session[:user_id]) %>
+          <%=link_to "agregar a favoritos",new_fav_path(:equip => @equipment.id),remote: true %>
+        <% end %>
+      </span>   
+    </h1>
+  </div> 
 
   <!--      imagenes y detalles del equipo          -->
   <div class="producto">
@@ -29,7 +28,7 @@
         %>
           <% unless @images.blank?
            @images.each do |img| %>
-            <div class="imagenprevia"><img src="<%= img.image_url %>"></div>
+            <img src="<%= img.image_url %>">
             <% end %>
           <% end %>
         <% end %>
@@ -46,7 +45,7 @@
         %>
           <% unless @video.blank?
            @video.each do |v| %>
-            <div class="imagenprevia"><%= v.video_url.html_safe %></div>
+            <%= v.video_url.html_safe %>
             <% end %>
           <% end %>
         <% end %>
@@ -67,24 +66,30 @@
           <div class="imagen"><img src="/data/dummy.png"></div>    
         <% end %>      
       <% end %>
+  <div class="contenido860">
+    <div class="modelo">
+      <p class="etiquetas">Etiquetas: <%= @equipment.etiquetas %></p>
+      <p class="modelo2">Modelo: <%= @equipment.modelo %></p>
+      <p>Marca: <%= @equipment.brand.name %> | Año: <%= @equipment.year %> | Color: <%= @equipment.color %></p>
+      <p>Lugar: <%= @equipment.ciudad %>, <%= @equipment.state.name %>, <%= @equipment.country.name %></p>
+    </div> 
+    <div class="contactar">
+      <%= button_to "Contactar vendedor", equipo_contacto_path(:user_id => session[:user_id], :equipment => @equipment), :method => :post %>
+      <img src="/images/iconos/usuario_icono.png" height="12" width="12"> 
+      <%= link_to @user.username, users_view_path(:user_id => @equipment.user_id) %>
+    </div>
 
-  <div class="modelo">
-    <p>Etiquetas: <%= @equipment.etiquetas %></p>
-    <p>Modelo: <%= @equipment.modelo %></p>
-    <p>Marca: <%= @equipment.brand.name %> | Año: <%= @equipment.year %> | Color: <%= @equipment.color %></p>
-    <p>Lugar: <%= @equipment.ciudad %>, <%= @equipment.state.name %>, <%= @equipment.country.name %></p>
+    <div class="descripcion">
+      <h1><span class="azul2">Descripción:</span></h1>
+      <textarea readonly><%= @equipment.description %></textarea>
+    </div>
+
+    <div class="comentarios">
+      <h1><span class="azul2">Comentarios:</span></h1>
+      <%= render partial: '/comments/form', locals: {equipment: @equipment.slug, comment: @comment} %> 
+      <%= render partial: '/comments/index', locals: {equipment: @equipment.slug, comments: @comments} %>
+    </div>  
   </div> 
-
-  <div class="descripcion">
-    <h1><span class="azul2">Descripción:</span></h1>
-    <textarea readonly><%= @equipment.description %></textarea>
-  </div>
-
-  <div class="comentarios">
-    <h1><span class="azul2">Comentarios:</span></h1>
-    <%= render partial: '/comments/form', locals: {equipment: @equipment.slug, comment: @comment} %> 
-    <%= render partial: '/comments/index', locals: {equipment: @equipment.slug, comments: @comments} %>
-  </div>  
 
 
 </div>

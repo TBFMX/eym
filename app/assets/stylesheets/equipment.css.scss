@@ -67,41 +67,7 @@
    float: left; 
 }
 
-/*------------- código para crear anuncio -------------*/
 
-.alta_equipment .grupo{
-   position: relative;
-   display: block;
-   width: 820px;
-   min-height: 50px;
-   max-height: auto;
-   border: 1px solid #A4A4A4;
-   margin: 10px auto 20px auto;
-   padding: 15px 30px 15px 30px;
-   float: left;
-}
-
-.alta_equipment h1{
-   font-size: 18px;
-   text-align: left;
-}
-
-.alta_equipment .grupo .grupo_1{
-   display: block;
-   width: 200px;
-   max-height: auto;
-   border: 1px solid #A4A4A4;
-   margin: 10px 10px 20px auto;
-   padding: 15px 30px 15px 30px;
-   float: left;
-}
-
-.alta_equipment .grupo input{
-   width: 91%;
-   height: 25px;
-   font-siza: 18px;
-   margin: 0px auto 0px auto;
-}
 
 /*-------------------Formulario---------------*/
 
@@ -172,3 +138,181 @@
    margin: 10px auto 10px auto;
 }
 
+/*---------------------*/
+.show_equipment .titulo{
+   width: 100%;
+   min-height:25px;
+   max-height: 75px;
+}
+
+.show_equipment h1{
+   font-size: 25px;
+   margin: 10px 0px 10px 0px;
+   position:relative;
+   text-align: left;
+   text-transform: capitalize;
+   line-height: 100%;
+}
+
+.show_equipment h1 .azul{
+   color: #37A0DE;
+}
+
+.show_equipment h1 .azul2{
+   color: #53788E;
+}
+
+.show_equipment h1 .favoritos{
+   font-size: 15px;
+   color: #b3b3b3;
+}
+
+.show_equipment .producto{
+   margin: 20px 0px 20px 0px;
+   float: left;   
+}
+
+.show_equipment .producto .preview{
+   width: 220px;
+   height: 320px;
+   text-align: center;
+   float: left;
+   background-color: #FFFFFF;
+   /*overflow: scroll;*/
+   /*box-shadow: black 0.05em 0.05em 0.1em;*/
+}
+
+.show_equipment .producto .preview img{
+   width: 90px;
+   height: 90px;
+   margin: 10px 5px 5px 10px;
+   float: left;
+}
+
+.show_equipment .producto .preview iframe{
+   width: 90px;
+   height: 90px;
+   margin: 10px 10px 10px 0px;
+   float: left;   
+}
+
+.show_equipment .producto .imagen{
+   width: 700px;
+   height: 320px;
+   text-align: center;
+   float: left;
+   background-color: #FFFFFF;
+   /*box-shadow: black 0.05em 0.05em 0.1em;*/
+}
+
+.show_equipment .producto .imagen iframe{
+   width: 490px;
+   height: 320px;
+   background-color: #FFFFFF;
+   text-align: center;
+   margin: 0 auto 0 auto;
+}
+
+.show_equipment .producto .imagen img{
+   max-width: 680px;
+   max-height: 300px;
+      padding: 10px;
+   margin: auto auto auto auto;
+}
+
+.show_equipment .producto .modelo{
+   width: 760px;
+   min-height: 50px;
+   max-height: 100%;
+   float: left;
+}
+.show_equipment .producto .contactar{
+   width: 100px;
+   min-height: 50px;
+   max-height: 100%;
+   float: right;
+}
+
+.show_equipment .producto .contactar form input{
+   width: 120px;
+   height: 50px;
+   float:right;
+   font-size:10px;
+   font-weight:bold;
+   color:white;
+   background:#638cb5;
+   border:0px;
+}
+
+.show_equipment .descripcion{
+   width: 860px;
+   min-height: 50px;
+   max-height: 100%;
+   float: left;   
+   text-align: left;
+
+}
+
+.show_equipment .descripcion textarea{
+   width: 840px;
+   height: 180px;
+   background-color: #FFFFFF;
+   border: 1px solid #A6A6A6;
+   padding: 10px;
+}
+
+.show_equipment .producto .modelo .etiquetas{
+   font-size: 12px;
+   margin-top: 10px;
+}
+
+.show_equipment .producto .modelo .modelo2{
+   font-size: 15px;
+   font-weight: bold;
+   margin-top: 5px;   
+}
+
+.show_equipment .comentarios{
+   width: 920px;
+   min-height: 30px;
+   max-height: 100%;
+   float: left;
+}
+
+/*------------------ social parts ----------------*/
+
+.oor-social-buttons{
+   width: 920px;
+   height:20px;
+   z-index: 1;
+   overflow: hidden;
+   margin-bottom:15px; 
+}
+
+.oor-social-buttons .fb-like{
+   width: 90px;
+   max-width: 100%;
+   float: left;
+   z-index: 1;   
+}
+
+.oor-social-buttons .google-plus{
+   width: 90px;   
+   max-width: 100%;   
+   float: left;
+   z-index: 1;   
+}
+
+.oor-social-buttons .twitter-tweet{
+   width: 90px;   
+   max-width: 100%;   
+   float: left;
+   z-index: 1;   
+}
+
+.fb-share-button{
+   width: 90px;   
+   max-width: 100%;   
+   float: left;  
+   z-index: 1;   
+}
