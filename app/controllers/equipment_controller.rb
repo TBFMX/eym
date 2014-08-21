@@ -40,6 +40,11 @@ class EquipmentController < ApplicationController
   def new
     add_breadcrumb 'newequipment', new_equipment_path
     @equipment = Equipment.new('user_id' => session[:user_id])
+    @package = Package.all
+    puts "---------------------------Paquetes---------------------------------"
+    puts @package.inspect
+    puts "--------------------------------------------------------------------"
+
   end
 
   # GET /equipment/1/edit
@@ -58,16 +63,18 @@ class EquipmentController < ApplicationController
     session[:url_to_return] = ""
     @user = User.find(session[:user_id])
     @equipment = Equipment.new(equipment_params)
-    # puts "-------------------Equipo---------------------------"
-    #   puts @equipment.inspect
-    # puts "----------------------------------------------"
-    #   @pic = params[:equipment][:image_id]
-    # puts "-------------------Pic---------------------------"
-    #   puts @pic.inspect
-    # puts "----------------------------------------------"
-    # puts "-------------------Pics---------------------------"
-    #   puts @pics.inspect
-    # puts "--------------------------------------------------" 
+    puts "-------------------Equipo---------------------------"
+      puts @equipment.inspect
+    puts "----------------------------------------------"
+
+      @pic = params[:equipment][:image_id]
+
+    puts "-------------------Pic---------------------------"
+      puts @pic.inspect
+    puts "----------------------------------------------"
+    puts "-------------------Pics---------------------------"
+      puts @pics.inspect
+    puts "--------------------------------------------------" 
     respond_to do |format|
       if secure_save(@equipment)
         format.html { 
@@ -83,8 +90,6 @@ class EquipmentController < ApplicationController
             @pics = "/data/dummy.png"  
           end
           ########################
-          
-          
           #creo la galleria
             @gallery=Gallery.new("equipment_id"=>@equipments.id, "title" =>"principal")
             # puts "--------------------Galleria--------------------------"
@@ -383,7 +388,7 @@ class EquipmentController < ApplicationController
     unless params[:industria].blank?
       aux = params[:industria]
       simple = true
-    else      
+    else      pruebasebas2
       redirect_to root_path,  notice: 'algo salio mal' 
     end
     unless params[:equipment].blank?
