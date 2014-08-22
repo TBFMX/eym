@@ -32,5 +32,4 @@
     js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=<%=OORConstant.facebook_app_id%>";
     fjs.parentNode.insertBefore(js, fjs);
   }(document, 'script', 'facebook-jssdk')
-window.alert("active el fb");
   );
