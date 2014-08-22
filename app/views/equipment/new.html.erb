@@ -91,20 +91,23 @@ $.each(inputFile.files, function() {
   </div>
 
   <div class="paquete">
-    <div class="tercio">
-      <%@package.each do |p|%>
-        <%= f.radio_button :package_id, p.name %> <%= p.name %>
-      <%end%>
-      <%#= select("equipment", "package_id", Package.all.collect {|p| [ p.name, p.id ] }.uniq, required: true) %>
-    </div>  
+    
+    
     <div class="tercio2">
     </div>  
     <div class="tercio">
     </div>
+    <%@package.each do |p|%>
+      <div class="tercio">
+        <%= f.radio_button :package_id, p.name %> <%= p.name %>
+      </div>
+    <%end%>
+      <%#= select("equipment", "package_id", Package.all.collect {|p| [ p.name, p.id ] }.uniq, required: true) %>
+
     <div class="crear">
       <!--<div class="actions">-->
       <%= f.hidden_field :user_id %>
-        <%= f.submit "Crear Anuncio" %>
+        <%= f.submit "Crear Anuncios" %>
       <!--</div>-->
     </div>
   </div>
