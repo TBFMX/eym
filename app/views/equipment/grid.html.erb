@@ -5,12 +5,12 @@
         if(miDiv.style.display == "none") {
             miDiv.style.display = "block";
             mostrar = document.getElementById(botton).childNodes[0];
-            mostrar.data = "Ocultar";
+            mostrar.data = "&#9650;";
         }
         else {
             miDiv.style.display = "none";
             mostrar = document.getElementById(botton).childNodes[0];
-            mostrar.data = "Mostrar";
+            mostrar.data = "&#9660;";
         }
     }
 </script>
@@ -19,82 +19,74 @@
 
     <% request.original_url %>
     <div class="filtros">
-    <p>año</p>    
-    <a id="mostrar_years" href="javascript:mostrar('years','mostrar_years');">Mostrar</a>    
+    <p>año <a id="mostrar_years" href="javascript:mostrar('years','mostrar_years');">&#9660;</a> </p>   
     <div id ="years" style= "display:none">    
         <ul>    
-        <% años = Equipment.all.order("year asc").collect {|p| [p.year] }.uniq
-        años.each do |añ|
-        %>
-
-            <li><%= link_to añ, Filtro_path("array" => @array, "nuevo_n" => "year", "nuevo_v" => añ) %></li>
-        <%end%>
+            <% años = Equipment.all.order("year asc").collect {|p| [p.year] }.uniq
+            años.each do |añ| %>
+            <li>
+                <%= link_to añ, Filtro_path("array" => @array, "nuevo_n" => "year", "nuevo_v" => añ) %>
+            </li>
+            <%end%>
         </ul>
     </div>
-    <br>
-    <p> color</p>
-     <a id="mostrar_color" href="javascript:mostrar('color','mostrar_color');">Mostrar</a>  
+
+    <p>color <a id="mostrar_color" href="javascript:mostrar('color','mostrar_color');">&#9660;</a></p>
     <div id = "color" style= "display:none">   
         <ul>
-           
-        <% colores = Equipment.all.where_category(@cat).order("color asc").collect {|p| [ p.color ] }.uniq  
-        colores.each do |cl|
-        %>
+            <% colores = Equipment.all.where_category(@cat).order("color asc").collect {|p| [ p.color ] }.uniq  
+            colores.each do |cl|
+            %>
             <li><%= link_to cl, Filtro_path("array" => @array, "nuevo_n" => "color", "nuevo_v" => cl) %></li>
-        <%end%>
+            <%end%>
         </ul>
     </div>
-    <br>
-    <p>marca</p>
-    <a id="mostrar_brand_id" href="javascript:mostrar('brand_id','mostrar_brand_id');">Mostrar</a>
+
+    <p>marca <a id="mostrar_brand_id" href="javascript:mostrar('brand_id','mostrar_brand_id');">&#9660;</a></p>
     <div id = "brand_id" style= "display:none">
         <ul>
-        <% marcas = Brand.all.where(id: @marcas_a).order("name asc").collect {|p| [  p.name ,p.id] }.uniq 
-        marcas.each do |m|
-        %>
+            <% marcas = Brand.all.where(id: @marcas_a).order("name asc").collect {|p| [  p.name ,p.id] }.uniq 
+            marcas.each do |m|
+            %>
             <li><%= link_to m.first, Filtro_path("array" => @array, "nuevo_n" => "brand_id", "nuevo_v" => m) %></li>
-        <%end%>
+            <%end%>
         </ul>
     </div>
-    <br>
-    <p>paquete</p>
-    <a id="mostrar_package_id" href="javascript:mostrar('package_id','mostrar_package_id');">Mostrar</a>
+
+    <p>paquete <a id="mostrar_package_id" href="javascript:mostrar('package_id','mostrar_package_id');">&#9660;</a></p>
     <div id = "package_id" style= "display:none">    
         <ul>
-        <% paquetes = Package.all.where(id: @paquetes_a).order("name asc").collect {|p| [ p.name ,p.id ] }.uniq  
-        paquetes.each do |pa|
-        %>
+            <% paquetes = Package.all.where(id: @paquetes_a).order("name asc").collect {|p| [ p.name ,p.id ] }.uniq  
+            paquetes.each do |pa|
+            %>
             <li><%= link_to pa.first, Filtro_path("array" => @array, "nuevo_n" => "package_id", "nuevo_v" => pa.first) %></li>
-        <%end%>
+            <%end%>
         </ul>
     </div>
-    <br>
-    <p>precio</p>
-    <a id="mostrar_precio" href="javascript:mostrar('precio','mostrar_precio');">Mostrar</a>
+
+    <p>precio <a id="mostrar_precio" href="javascript:mostrar('precio','mostrar_precio');">&#9660;</a></p>
     <div id = "precio" style= "display:none">    
         <ul>
-        <% precio = Equipment.all.where_category(@cat).order("precio asc").collect {|p| [ p.precio, number_to_currency(p.precio) ] }.uniq 
-        precio.each do |pr|
-        %>
+            <% precio = Equipment.all.where_category(@cat).order("precio asc").collect {|p| [ p.precio, number_to_currency(p.precio) ] }.uniq 
+            precio.each do |pr|
+            %>
             <li><%= link_to pr.first, Filtro_path("array" => @array, "nuevo_n" => "precio", "nuevo_v" => pr.first) %></li>
-        <%end%>
+            <%end%>
         </ul>
     </div>
-    <br>
-    <p>modelo</p>
-    <a id="mostrar_modelo" href="javascript:mostrar('modelo','mostrar_modelo');">Mostrar</a>
+
+    <p>modelo <a id="mostrar_modelo" href="javascript:mostrar('modelo','mostrar_modelo');">&#9660;</a></p>
     <div id = "modelo" style= "display:none">
         <ul>
-        <% modelo = Equipment.all.where_category(@cat).order("modelo asc").collect {|p| [ p.modelo, p.modelo ] }.uniq 
-        modelo.each do |mo|
-        %>
+            <% modelo = Equipment.all.where_category(@cat).order("modelo asc").collect {|p| [ p.modelo, p.modelo ] }.uniq 
+            modelo.each do |mo|
+            %>
             <li><%= link_to mo.first, Filtro_path("array" => @array, "nuevo_n" => "modelo", "nuevo_v" => mo.first) %></li>
-        <%end%>
+            <%end%>
         </ul>
     </div>
-    <br>
-    <p>moneda</p>
-    <a id="mostrar_currency_id" href="javascript:mostrar('currency_id','mostrar_currency_id');">Mostrar</a>
+
+    <p>moneda <a id="mostrar_currency_id" href="javascript:mostrar('currency_id','mostrar_currency_id');">&#9660;</a></p>
     <div id = "currency_id" style= "display:none">
         <ul>
         <% mondedas = Currency.all.where(id: @monedas_a).order("name asc").collect {|p| [ p.name, p.id ] }.uniq 
@@ -104,54 +96,40 @@
         <%end%>
         </ul>
     </div>
-    <br>
-    <p>pais</p>
-    <a id="mostrar_country_id" href="javascript:mostrar('country_id','mostrar_country_id');">Mostrar</a>
+
+    <p>pais <a id="mostrar_country_id" href="javascript:mostrar('country_id','mostrar_country_id');">&#9660;</a></p>
     <div id = "country_id" style= "display:none">    
         <ul>
-        <% paises = Country.all.where(id: @paises_a).order("name asc").collect {|p| [p.name ,p.id] }.uniq 
-        paises.each do |country|
-        %>
+            <% paises = Country.all.where(id: @paises_a).order("name asc").collect {|p| [p.name ,p.id] }.uniq 
+            paises.each do |country|
+            %>
             <li><%= link_to country.first, Filtro_path("array" => @array, "nuevo_n" => "country_id", "nuevo_v" => country.first) %></li>
-        <%end%>
+            <%end%>
         </ul>
     </div>
-    <br>
-    <p>estado</p>
-    <a id="mostrar_state_id" href="javascript:mostrar('state_id','mostrar_state_id');">Mostrar</a>
+
+    <p>estado <a id="mostrar_state_id" href="javascript:mostrar('state_id','mostrar_state_id');">&#9660;</a></p>
     <div id = "state_id" style= "display:none">
         <ul>
-        <% estados = State.all.where(id: @estados_a).order("country_id asc, name asc").collect {|p| [ p.name ,p.id ] }.uniq  
-        estados.each do |st|
-        %>
+            <% estados = State.all.where(id: @estados_a).order("country_id asc, name asc").collect {|p| [ p.name ,p.id ] }.uniq  
+            estados.each do |st|
+            %>
             <li><%= link_to st.first, Filtro_path("array" => @array, "nuevo_n" => "state_id", "nuevo_v" => st.first) %></li>
-        <%end%>
+            <%end%>
         </ul>
     </div>
-    <br>
-    <p>ciudad</p>
-    <a id="mostrar_ciudad" href="javascript:mostrar('ciudad','mostrar_ciudad');">Mostrar</a>
+
+    <p>ciudad <a id="mostrar_ciudad" href="javascript:mostrar('ciudad','mostrar_ciudad');">&#9660;</a></p>
     <div id = "ciudad" style= "display:none">
         <ul>
-        <% ciudades = Equipment.all.where_category(@cat).order("ciudad asc").collect {|p| [ p.ciudad, p.ciudad ] }.uniq  
-        ciudades.each do |city|
-        %>
+            <% ciudades = Equipment.all.where_category(@cat).order("ciudad asc").collect {|p| [ p.ciudad, p.ciudad ] }.uniq  
+            ciudades.each do |city|
+            %>
             <li><%= link_to city.first, Filtro_path("array" => @array, "nuevo_n" => "ciudad", "nuevo_v" => city.first) %></li>
-        <%end%>
+            <%end%>
         </ul>
-    </div>
-        
-    <!--<ul>
-    <%# categorias = Category.all.order("title asc").collect {|p| [ p.title, p.id ] }.uniq 
-    #categorias.each do |cat|
-    %>
-        <li><%#= cat.first %></li>
-    <%#end%>
-    </ul> -->
-  
-
-    
-    </div>
+    </div>   
+</div>
 
 
     <div class="galeria">

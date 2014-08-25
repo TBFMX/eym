@@ -23,6 +23,27 @@
 	font-family: 'Roboto', sans-serif;
 }
 
+.grid .filtros p{
+	font-weight: bold;
+	font-size: 15px; 
+	font-family: 'Roboto', sans-serif;
+	color: #52778d;
+	text-transform: capitalize;
+}
+
+.grid .filtros p a{
+	text-decoration: none;
+	font-weight: normal;
+}
+
+.grid .filtros p a:hover{
+	color: #666;
+}
+
+.grid .filtros ul{
+	margin-left: 20px;
+}
+
 .grid .filtros select, .grid .filtros input{
 	width: 230px;
 }
