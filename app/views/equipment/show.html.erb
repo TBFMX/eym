@@ -75,8 +75,8 @@
     </div> 
     <div class="contactar">
       <%= button_to "Contactar vendedor", equipo_contacto_path(:user_id => session[:user_id], :equipment => @equipment), :method => :post %>
-      <img src="/images/iconos/usuario_icono.png" height="12" width="12"> 
-      <%= link_to @user.username, users_view_path(:user_id => @equipment.user_id) %>
+      <p><img src="/images/iconos/usuario_icono.png" height="12" width="12"> 
+      <%= link_to @user.name, users_view_path(:user_id => @equipment.user_id) %></p>
     </div>
 
     <div class="descripcion">

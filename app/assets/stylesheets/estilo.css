@@ -213,7 +213,6 @@ body{
    font-weight: bold;
    /*background-color: #666666;*/ 
    float: left;
-   text-shadow: black 0.05em 0.05em 0.2em;
 }
 
 .breadcrumb2 .anuncio{
@@ -242,13 +241,13 @@ body{
 
 .breadcrumb2 .navegacion .linea{
    margin: 5px;
-   color:#FFFFFF;
+   color:#666;
    text-align: left;
 }
 
 .breadcrumb2 .navegacion .linea a{
    margin: 5px;
-   color:#FFFFFF;
+   color:#666;
    text-decoration: underline;   
 }
 
