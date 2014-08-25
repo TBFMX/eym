@@ -25,7 +25,8 @@ class Equipment < ActiveRecord::Base
 	validates :publication_type, presence: true
 	validates :category_id, presence: true
 	validates :ciudad, presence: true
-	#validates :package_id, presence: true
+	validates :package_id, presence: true
+
 
 	has_many :comments
 	#has_many :coments, dependent: :destroy

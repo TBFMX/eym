@@ -1,5 +1,6 @@
 class EquipmentController < ApplicationController
   before_action :set_equipment, only: [:show, :edit, :update, :destroy]
+  before_action :set_new_equipment, only: [:new]
   helper_method :sort_column, :sort_direction
   skip_before_action :authorize, only: [:show,:grid,:search,:industry]
 
@@ -38,9 +39,9 @@ class EquipmentController < ApplicationController
 
   # GET /equipment/new
   def new
-    add_breadcrumb 'newequipment', new_equipment_path
-    @equipment = Equipment.new('user_id' => session[:user_id])
-    @package = Package.all
+    add_breadcrumb I18n.t("breadcrumbs.newequipment"), new_equipment_path
+    #@equipment = Equipment.new('user_id' => session[:user_id])
+    #@package = Package.all
     puts "---------------------------Paquetes---------------------------------"
     puts @package.inspect
     puts "--------------------------------------------------------------------"
@@ -60,21 +61,22 @@ class EquipmentController < ApplicationController
   # POST /equipment.json
   def create
     #@equipment = Equipment.new(equipment_params)
+
     session[:url_to_return] = ""
     @user = User.find(session[:user_id])
     @equipment = Equipment.new(equipment_params)
-    puts "-------------------Equipo---------------------------"
-      puts @equipment.inspect
+    puts "-------------------parametros---------------------------"
+      puts params.inspect
     puts "----------------------------------------------"
 
       @pic = params[:equipment][:image_id]
 
-    puts "-------------------Pic---------------------------"
-      puts @pic.inspect
-    puts "----------------------------------------------"
-    puts "-------------------Pics---------------------------"
-      puts @pics.inspect
-    puts "--------------------------------------------------" 
+    #puts "-------------------Pic---------------------------"
+    #  puts @pic.inspect
+    #puts "----------------------------------------------"
+    #puts "-------------------Pics---------------------------"
+    #  puts @pics.inspect
+    #puts "--------------------------------------------------" 
     respond_to do |format|
       if secure_save(@equipment)
         format.html { 
@@ -123,7 +125,7 @@ class EquipmentController < ApplicationController
                                 format.json {  }
                               end
                             end                      
-                          }
+                          } #set_new_equipment
                           format.json { }
                         else
                         #  puts "entre a imagen"
@@ -145,21 +147,10 @@ class EquipmentController < ApplicationController
         }
         format.json { render :show, status: :created, location: @equipment }
       else
-        format.html { render :new }
+        format.html { redirect_to new_equipment_path , alert: "asegurece de llenar los campos obligatorios"  }
         format.json { render json: @equipment.errors, status: :unprocessable_entity }
       end
-    end
-=begin
-    respond_to do |format|
-      if @equipment.save
-        format.html { redirect_to @equipment, notice: 'Equipment was successfully created.' }
-        format.json { render :show, status: :created, location: @equipment }
-      else
-        format.html { render :new }
-        format.json { render json: @equipment.errors, status: :unprocessable_entity }
-      end
-    end
-=end    
+    end    
   end
 
   # PATCH/PUT /equipment/1
@@ -501,12 +492,28 @@ class EquipmentController < ApplicationController
 
   def add_favorito 
     equip = params[:equip]
+    #puts "------------------equip-------------------------------"
+    #puts equip.inspect
+    #puts "-------------------------------------------------"
     @equipment = Equipment.find(equip)
+    #puts "------------------@equipment-------------------------------"
+    #puts @equipment.inspect
+    #puts "-------------------------------------------------"
+
     aux = Favorite.where('user_id = ? and equipment_id = ?' ,session[:user_id],  equip)
+    #puts "-------------------auxiliar------------------------------"
+    #puts aux.inspect
+    #puts "-------------------------------------------------"
+
+
     unless equip.nil?
-      if aux.nil?
+      puts ">>>>>>>>>>>>>>>>>>>>>>>>>>equipo no nil"
+      if aux.blank?
         @favorite = Favorite.new('user_id' => session[:user_id], 'equipment_id' => equip)
-       
+        puts "-------------------favorito------------------------------"
+        puts @favorite.inspect
+        puts "---------------------------------------------------------"
+        #puts ">>>>>>>>>>>>>>>>>>>>>>>>>>aux blank"
         respond_to do |format|
           if  @favorite.save
             format.html { redirect_to @equipment, notice: 'se a agregado a favoritos' }
@@ -517,6 +524,7 @@ class EquipmentController < ApplicationController
           end
         end
       else
+        #puts ">>>>>>>>>>>>>>>>>>>>>>>>>>aux no blank"
         redirect_to root_path
       end  
     else
@@ -531,7 +539,10 @@ class EquipmentController < ApplicationController
     def set_equipment
       @equipment = Equipment.friendly.find(params[:id])
     end
-
+    def set_new_equipment
+      @equipment = Equipment.new('user_id' => session[:user_id])
+      @package = Package.all
+    end
     # Never trust parameters from the scary internet, only allow the white list through.
     def equipment_params
       params.require(:equipment).permit(:name, :year, :color, :brand_id, :package_id, :description, :publication_type, :precio, :modelo, :currency_id , :country_id, :state_id, :ciudad, :category_id, :etiquetas, :user_id, :subcategory_id)
