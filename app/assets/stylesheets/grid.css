@@ -29,9 +29,11 @@
 	font-family: 'Roboto', sans-serif;
 	color: #52778d;
 	text-transform: capitalize;
+	margin-top: 10px;
 }
 
 .grid .filtros p a{
+	font-size: 13px; 
 	text-decoration: none;
 	font-weight: normal;
 }
@@ -42,6 +44,30 @@
 
 .grid .filtros ul{
 	margin-left: 20px;
+}
+
+.grid .filtros ul li a{
+	text-decoration: none;
+	color: #666;
+}
+
+.grid .filtros ul li a:hover{
+	text-decoration: none;
+	color: #666;
+	font-weight: bold;
+}
+
+.grid #years,
+.grid #color,
+.grid #brand_id,
+.grid #package_id,
+.grid #precio,
+.grid #modelo,
+.grid #currency_id,
+.grid #country_id,
+.grid #state_id,
+.grid #ciudad{
+
 }
 
 .grid .filtros select, .grid .filtros input{
