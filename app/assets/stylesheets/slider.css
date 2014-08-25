@@ -461,31 +461,26 @@
 
 
 #slider_principal{
-    width: 900px;
-    height: 280px;
-    overflow: hidden;
+    width: 920px;
+    height: 290px;
+    /*overflow: hidden;*/
 }
 
 #slider_principal #preview_contenido {
-    width: 820px;
-    height: 280px;
+    width: 840px;
+    height: 290px;
     overflow: hidden;
     position: relative;
     float:left;
-    background-color: #FFF;
+    background-color: #fff;
 }
 
 #slider_principal #preview_imagenes{
-  width: 60px;
+  width: 70px;
   height: 270px;
-  float:left;
+  float:right;
   padding:5px;
-}
-
-#slider_principal #preview_contenido img{
-    width: 820px;
-    height: 270px;
-    padding: 10px;  
+  background-color: #fff;
 }
 
 #slider_principal #preview_contenido #informacion1,
@@ -495,10 +490,10 @@
 #slider_principal #preview_contenido #informacion5{
     width: 830px;
     height: 280px;
+    margin-top: 200px;
     position: absolute;
     top: 0;
     left: -830px;
-    z-index: 1;
     opacity: 0;
     transition: all linear 500ms;
     -o-transition: all linear 500ms;
@@ -512,59 +507,65 @@
 #slider_principal #preview_contenido #informacion4:target,
 #slider_principal #preview_contenido #informacion5:target{
     left: 0;
-    z-index: 1;
     opacity: 1;
 }
 
-#slider_principal #preview_contenido #informacion1 #detalles,
-#slider_principal #preview_contenido #informacion2 #detalles,
-#slider_principal #preview_contenido #informacion3 #detalles,
-#slider_principal #preview_contenido #informacion4 #detalles,
-#slider_principal #preview_contenido #informacion5 #detalles{
-  width:810px;
+#slider_principal #preview_contenido #informacion1 img,
+#slider_principal #preview_contenido #informacion2 img,
+#slider_principal #preview_contenido #informacion3 img,
+#slider_principal #preview_contenido #informacion4 img,
+#slider_principal #preview_contenido #informacion5 img{
+    width: 820px;
+    height: 270px;
+    padding: 10px;
+}
+
+#slider_principal #preview_contenido #detalles{
+  width:820px;
   height: 100px;
   background-color: rgba(0, 0, 0, .5); /* color de fondo con opacity */
   margin:-150px 0 0 10px;
+  z-index: 2;
 }
 
-
-#slider_principal #informacion1 #detalles #parte1,
-#slider_principal #informacion2 #detalles #parte1,
-#slider_principal #informacion3 #detalles #parte1,
-#slider_principal #informacion4 #detalles #parte1,
-#slider_principal #informacion5 #detalles #parte1{
-  width: 500px;
+#slider_principal #informacion1 #detalles,
+#slider_principal #informacion2 #detalles,
+#slider_principal #informacion3 #detalles,
+#slider_principal #informacion4 #detalles,
+#slider_principal #informacion5 #detalles{
+  width: 810px;
   height: 100px;
+  padding-right: 10px;
   float: left; 
   position: absolute;
 }
 
-#slider_principal #informacion1 #detalles #parte1 #imagen,
-#slider_principal #informacion2 #detalles #parte1 #imagen,
-#slider_principal #informacion3 #detalles #parte1 #imagen,
-#slider_principal #informacion4 #detalles #parte1 #imagen,
-#slider_principal #informacion5 #detalles #parte1 #imagen{
+#slider_principal #informacion1 #detalles #imagen,
+#slider_principal #informacion2 #detalles #imagen,
+#slider_principal #informacion3 #detalles #imagen,
+#slider_principal #informacion4 #detalles #imagen,
+#slider_principal #informacion5 #detalles #imagen{
   width: 100px;
   height: 100px;
   float: left; 
   position: relative;
 }
 
-#slider_principal #informacion1 #detalles #parte1 #imagen img,
-#slider_principal #informacion2 #detalles #parte1 #imagen img,
-#slider_principal #informacion3 #detalles #parte1 #imagen img,
-#slider_principal #informacion4 #detalles #parte1 #imagen img,
-#slider_principal #informacion5 #detalles #parte1 #imagen img{
+#slider_principal #informacion1 #detalles #imagen img,
+#slider_principal #informacion2 #detalles #imagen img,
+#slider_principal #informacion3 #detalles #imagen img,
+#slider_principal #informacion4 #detalles #imagen img,
+#slider_principal #informacion5 #detalles #imagen img{
   width: 70px;
   height: 70px;
-  margin: 10px 10px 10px 10px;
+  margin: -10px 10px 10px 10px;  
 }
 
-#slider_principal #informacion1 #detalles #parte1 #titulo,
-#slider_principal #informacion2 #detalles #parte1 #titulo,
-#slider_principal #informacion3 #detalles #parte1 #titulo,
-#slider_principal #informacion4 #detalles #parte1 #titulo,
-#slider_principal #informacion5 #detalles #parte1 #titulo{
+#slider_principal #informacion1 #detalles #titulo,
+#slider_principal #informacion2 #detalles #titulo,
+#slider_principal #informacion3 #detalles #titulo,
+#slider_principal #informacion4 #detalles #titulo,
+#slider_principal #informacion5 #detalles #titulo{
   width: 400px;
   height: 25px;
   color: #FFF;
@@ -572,14 +573,14 @@
   font-size: 25px;
   text-overflow:ellipsis; 
   white-space:nowrap;
-  overflow:hidden;     
+  overflow:hidden;    
 }
 
-#slider_principal #informacion1 #detalles #parte1 #parrafo,
-#slider_principal #informacion2 #detalles #parte1 #parrafo,
-#slider_principal #informacion3 #detalles #parte1 #parrafo,
-#slider_principal #informacion4 #detalles #parte1 #parrafo,
-#slider_principal #informacion5 #detalles #parte1 #parrafo{
+#slider_principal #informacion1 #detalles #parrafo,
+#slider_principal #informacion2 #detalles #parrafo,
+#slider_principal #informacion3 #detalles #parrafo,
+#slider_principal #informacion4 #detalles #parrafo,
+#slider_principal #informacion5 #detalles #parrafo{
   width: 400px;
   color: #FFF;
   font-size: 15px;
@@ -589,22 +590,13 @@
   overflow:hidden;  
 }
 
-#slider_principal #informacion1 #detalles #parte2,
-#slider_principal #informacion2 #detalles #parte2,
-#slider_principal #informacion3 #detalles #parte2,
-#slider_principal #informacion4 #detalles #parte2,
-#slider_principal #informacion5 #detalles #parte2{
-  width: 320px;
-  height: 100px;    
+#slider_principal #informacion1 #detalles #precio,
+#slider_principal #informacion2 #detalles #precio,
+#slider_principal #informacion3 #detalles #precio,
+#slider_principal #informacion4 #detalles #precio,
+#slider_principal #informacion5 #detalles #precio{
   float: right;
-}
-
-#slider_principal #informacion1 #detalles #parte2 p,
-#slider_principal #informacion2 #detalles #parte2 p,
-#slider_principal #informacion3 #detalles #parte2 p,
-#slider_principal #informacion4 #detalles #parte2 p,
-#slider_principal #informacion5 #detalles #parte2 p{
-  margin-top:65px; 
+  margin-top:-30px; 
   font-size: 30px;
   color: #FFF;   
 }
@@ -622,10 +614,6 @@
 #slider_principal #preview_imagenes a {
     text-decoration: none;
   background-color:transparent;
-}
-
-#slider_principal img{
-  z-index:-1;
 }
 
 #slider_principal img:hover {
