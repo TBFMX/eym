@@ -489,9 +489,9 @@
 #slider_principal #preview_contenido #informacion4,
 #slider_principal #preview_contenido #informacion5{
     width: 830px;
-    height: 280px;
+    height: 480px;
     position: absolute;
-    top: 0;
+    top: -200px;
     left: -830px;
     transition: all linear 500ms;
     -o-transition: all linear 500ms;
@@ -515,6 +515,7 @@
 #slider_principal #preview_contenido #informacion5 img{
     width: 820px;
     height: 270px;
+    margin-top: 200px;
     padding: 10px;
 }
 
@@ -616,10 +617,11 @@
 }
 
 #slider_principal #preview_imagenes a {
-    text-decoration: none;
+  text-decoration: none;
   background-color:transparent;
 }
 
-#slider_principal img:hover {
-  /*opacity: 0.7;*/
+#slider_principal a:hover {
+  text-decoration: none;
+  background-color:transparent;
 }

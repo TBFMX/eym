@@ -19,8 +19,10 @@
          else 
             @image ="/data/dummy.png"
             arreglo.push(@image)
-      end %>   
-         <div id="slider_imagenes"><img id="<%= "image" + contador.to_s %>" src="<%= @image %>" /></div>
+      end %> 
+         <div id="slider_imagenes">
+            <%= link_to image_tag(@image), equipment_path(slider), id: "image" + contador.to_s %>
+         </div>
          <!-- franja negra -->
          <div id="detalles">
             <!-- parte del logo -->
