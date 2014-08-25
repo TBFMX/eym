@@ -48,7 +48,7 @@
             <% marcas = Brand.all.where(id: @marcas_a).order("name asc").collect {|p| [  p.name ,p.id] }.uniq 
             marcas.each do |m|
             %>
-            <li><%= link_to m.first, Filtro_path("array" => @array, "nuevo_n" => "brand_id", "nuevo_v" => m) %></li>
+            <li><%= link_to m.first, Filtro_path("array" => @array, "nuevo_n" => "brand_id", "nuevo_v" => m.second) %></li>
             <%end%>
         </ul>
     </div>
@@ -59,12 +59,13 @@
             <% paquetes = Package.all.where(id: @paquetes_a).order("name asc").collect {|p| [ p.name ,p.id ] }.uniq  
             paquetes.each do |pa|
             %>
-            <li><%= link_to pa.first, Filtro_path("array" => @array, "nuevo_n" => "package_id", "nuevo_v" => pa.first) %></li>
+            <li><%= link_to pa.first, Filtro_path("array" => @array, "nuevo_n" => "package_id", "nuevo_v" => pa.second) %></li>
             <%end%>
         </ul>
     </div>
 
     <p>precio <a id="mostrar_precio" href="javascript:mostrar('precio','mostrar_precio');">&#9660;</a></p>
+    
     <div id = "precio" style= "display:none">    
         <ul>
             <% precio = Equipment.all.where_category(@cat).order("precio asc").collect {|p| [ p.precio, number_to_currency(p.precio) ] }.uniq 

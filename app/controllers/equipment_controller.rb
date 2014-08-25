@@ -233,7 +233,7 @@ class EquipmentController < ApplicationController
   # DELETE /equipment/1
   # DELETE /equipment/1.json
   def destroy
-    
+=begin
     @gallery = Gallery.where('equipment_id = ?', @equipment.id)
     @gallery.each do |gallery|
           @image.each do |image|
@@ -242,7 +242,8 @@ class EquipmentController < ApplicationController
           pics = DataFile.destroy(pic)
         end
       end
-    end  
+    end 
+=end    
     #@equipment.destroy
     respond_to do |format|
       if @equipment.update("status" => 0)
