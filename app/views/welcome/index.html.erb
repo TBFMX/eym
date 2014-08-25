@@ -20,21 +20,18 @@
             @image ="/data/dummy.png"
             arreglo.push(@image)
       end %>   
-         <div id="slider_imagenes"><img id="<%= "image" + contador.to_s %>" src="<%#= @image %>" /></div>
+         <div id="slider_imagenes"><img id="<%= "image" + contador.to_s %>" src="<%= @image %>" /></div>
          <!-- franja negra -->
          <div id="detalles">
             <!-- parte del logo -->
-            <div id="parte1">
                <div id="imagen"><img id="logo" src="/images/iconos/isotipo03.png"></div>
                <p id="titulo"><%= slider.name %></p>
                <span id="parrafo">
                   <strong>Marca:</strong><%= slider.brand.name %><br />
                   <strong>Modelo:</strong><%= slider.modelo %><br />
                   <strong>Año:</strong><%= slider.year %>
+                  <p id="precio"><%= number_to_currency(slider.precio) %> <%= slider.currency.name %></p>
                </span>
-            </div> 
-            <!-- precio --> 
-            <div id="parte2"><p><%= number_to_currency(slider.precio) %> <%= slider.currency.name %></p></div>          
          </div>            
       </div> 
          <% contador += 1 %> 

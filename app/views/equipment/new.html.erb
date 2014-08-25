@@ -1,6 +1,7 @@
 <h1>Crea tu Anuncio</h1>
 
 <%#= render 'form' %>
+<% @package = Package.all %>
 <script type='text/javascript'>
            
 function validateFiles(inputFile) {
@@ -104,7 +105,7 @@ $.each(inputFile.files, function() {
     </div>
     <%@package.each do |p|%>
       <div class="tercio">
-        <%= f.radio_button :package_id, p.name %> <%= p.name %>
+        <%= f.radio_button :package_id, p.id %> <%= p.name %>
       </div>
     <%end%>
       <%#= select("equipment", "package_id", Package.all.collect {|p| [ p.name, p.id ] }.uniq, required: true) %>
