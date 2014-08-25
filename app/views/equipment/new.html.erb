@@ -93,7 +93,7 @@ $.each(inputFile.files, function() {
   <div class="paquete">
     <div class="tercio">
       <%@package.each do |p|%>
-        <%= f.radio_button :package_id, p.name %> <%= p.name %>
+        <%= f.radio_button :package_id, p.id %> <%= p.name %>
       <%end%>
       <%#= select("equipment", "package_id", Package.all.collect {|p| [ p.name, p.id ] }.uniq, required: true) %>
     </div>  
