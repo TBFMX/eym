@@ -92,13 +92,12 @@ $.each(inputFile.files, function() {
   </div>
 
   <div class="paquete">
-
     <% cont = 1
     @package.each do |p|%>
       <div class="tercio_<%= cont%>">
-          <p class="centrado"><%= p.name %></p>
-          <p class="descripcion"><%= p.description %></p>
-          <p class="precio"><%= p.price %></p>
+          <p><%= p.name %></p>
+          <p><%= p.description %></p>
+          <p><%= p.price %></p>
           <%= f.radio_button :package_id, p.id %> 
       </div>
       <% cont += 1 %> 
@@ -110,6 +109,7 @@ $.each(inputFile.files, function() {
     <%= f.submit "Crear Anuncios" %>
     <!--</div>-->
   </div>
+    </div>
 </div>
 <% end %>
 
