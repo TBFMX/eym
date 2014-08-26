@@ -192,7 +192,9 @@ body{
 .breadcrumb .linea a:link   {}
 .breadcrumb .linea a:visited{}
 .breadcrumb .linea a:active {}
-.breadcrumb .linea a:hover  {font-weight: bold;}
+.breadcrumb .linea a:hover  {
+   background: transparent;
+   font-weight: bold;}
 
 /* ------------------breadcrumb 2 ----------------*/
 .breadcrumb2{
@@ -235,6 +237,7 @@ body{
 }
 
 .breadcrumb2 .anuncio a:hover{
+   background: transparent;
    opacity: 0.8;
    text-shadow: black 0.05em 0.05em 0.2em;
 }
@@ -254,7 +257,10 @@ body{
 .breadcrumb2 .navegacion .linea a:link   {}
 .breadcrumb2 .navegacion .linea a:visited{}
 .breadcrumb2 .navegacion .linea a:active {}
-.breadcrumb2 .navegacion .linea a:hover  {font-weight: bold;}
+.breadcrumb2 .navegacion .linea a:hover {
+      background: transparent;
+      font-weight: bold;
+}
 
 /* ------------------contenido ----------------*/
 
