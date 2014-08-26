@@ -65,7 +65,7 @@
     </div>
 
     <p>precio <a id="mostrar_precio" href="javascript:mostrar('precio','mostrar_precio');">&#9660;</a></p>
-    
+
     <div id = "precio" style= "display:none">    
         <ul>
             <% precio = Equipment.all.where_category(@cat).order("precio asc").collect {|p| [ p.precio, number_to_currency(p.precio) ] }.uniq 
@@ -93,7 +93,7 @@
         <% mondedas = Currency.all.where(id: @monedas_a).order("name asc").collect {|p| [ p.name, p.id ] }.uniq 
         mondedas.each do |mone|
         %>
-            <li><%= link_to mone.first, Filtro_path("array" => @array, "nuevo_n" => "currency_id", "nuevo_v" => mone.first) %></li>
+            <li><%= link_to mone.first, Filtro_path("array" => @array, "nuevo_n" => "currency_id", "nuevo_v" => mone.second) %></li>
         <%end%>
         </ul>
     </div>
@@ -104,7 +104,7 @@
             <% paises = Country.all.where(id: @paises_a).order("name asc").collect {|p| [p.name ,p.id] }.uniq 
             paises.each do |country|
             %>
-            <li><%= link_to country.first, Filtro_path("array" => @array, "nuevo_n" => "country_id", "nuevo_v" => country.first) %></li>
+            <li><%= link_to country.first, Filtro_path("array" => @array, "nuevo_n" => "country_id", "nuevo_v" => country.second) %></li>
             <%end%>
         </ul>
     </div>
@@ -115,7 +115,7 @@
             <% estados = State.all.where(id: @estados_a).order("country_id asc, name asc").collect {|p| [ p.name ,p.id ] }.uniq  
             estados.each do |st|
             %>
-            <li><%= link_to st.first, Filtro_path("array" => @array, "nuevo_n" => "state_id", "nuevo_v" => st.first) %></li>
+            <li><%= link_to st.first, Filtro_path("array" => @array, "nuevo_n" => "state_id", "nuevo_v" => st.second) %></li>
             <%end%>
         </ul>
     </div>

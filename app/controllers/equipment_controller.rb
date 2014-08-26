@@ -147,7 +147,7 @@ class EquipmentController < ApplicationController
         }
         format.json { render :show, status: :created, location: @equipment }
       else
-        format.html { redirect_to new_equipment_path , alert: "asegurece de llenar los campos obligatorios"  }
+        format.html { render :new , alert: "asegurece de llenar los campos obligatorios"  }
         format.json { render json: @equipment.errors, status: :unprocessable_entity }
       end
     end    
@@ -432,6 +432,9 @@ class EquipmentController < ApplicationController
   end  
 
   def search
+    if params[:search].blank?
+      params[:search] = "  "
+    end  
     @equipments = Equipment.search(params[:search]).where_activo.where_venta
   end  
 
