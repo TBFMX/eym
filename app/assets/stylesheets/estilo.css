@@ -480,7 +480,7 @@ input:focus{
 
 .alta_equipment{
    width: 100%;
-   min-height: 200px;
+   min-height: 800px;
    max-height: 100%;
    background-color: #37A0DE;
    margin: 0 auto 0 auto;
@@ -502,7 +502,7 @@ input:focus{
 
 .alta_equipment .parte1{
    width: 100%;
-   height: 600px;
+   height: 570px;
 }
 
 .alta_equipment .parte1 .anuncio{
@@ -518,7 +518,7 @@ input:focus{
 
 .alta_equipment .parte1 .anuncio textarea{
    width: 90%;
-   height: 290px;
+   height: 250px;
 }
 
 .alta_equipment .parte1 .detalles{
@@ -531,6 +531,13 @@ input:focus{
 .alta_equipment .parte1 .detalles input,
 .alta_equipment .parte1 .detalles select{
    width: 90%;
+   height: 25px;
+   margin-left: 10px;
+}
+
+.alta_equipment .parte1 .detalles #equipment_year,
+.alta_equipment .parte1 .detalles #equipment_color {
+   width: 44%;
    height: 25px;
    margin-left: 10px;
 }
@@ -568,25 +575,30 @@ input:focus{
    width: 100%;
    border-bottom: 1px solid #FFF;
    height: 300px;
+   margin: 0 auto 0 auto;
 }
 
 .alta_equipment .paquete .tercio_1,
 .alta_equipment .paquete .tercio_3{
-   width: 30%;
+   width: 33%;
    min-height: 200px;
    text-align: left;
    float: left;
-   margin: 10px 11px 10px 0px;
+   margin: 10px auto 10px auto;
 }
 
 .alta_equipment .paquete .tercio_2{
-   width: 30%;
+   width: 33%;
    min-height: 200px;   
    text-align: left;
    float: left;
-   margin: 10px 11px 10px 11px;
+   margin: 10px auto 10px auto;
    border-left: 1px solid #FFF;
    border-right: 1px solid #FFF; 
+}
+
+.alta_equipment .paquete h1{
+   color: #FFF;
 }
 
 .alta_equipment .paquete p{
@@ -612,7 +624,34 @@ input:focus{
 }
 
 .alta_equipment .crear input{
-   width: 120px;
+   width: 32%;
+   height: 50px;
+   font-size:10px;
+   font-weight:bold;
+   color:white;
+   background:#638cb5;
+   border:0px;
+}
+
+/*--------------- diferencias de crear al edit de anuncio ---------*/
+
+.alta_equipment .paquete_edit{
+   width: 100%;
+   border-bottom: 1px solid #FFF;
+   height: 80px;
+   margin: 20px auto 0 auto;
+}
+
+.alta_equipment .crear_edit{
+   width: 100%;
+   height: 80px;
+   float: left;
+   text-align: center;
+   margin-bottom: 20px;
+}
+
+.alta_equipment .crear_edit input{
+   width: 32%;
    height: 50px;
    font-size:10px;
    font-weight:bold;
