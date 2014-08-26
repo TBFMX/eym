@@ -35,7 +35,7 @@
 
 		<div class="buscador">
 			<%=form_tag '/equipos/resultados'  do  %>
-				<%= text_field_tag :search %>
+				<%= text_field_tag :search, nil, required: true, title: "La busqueda no puede estar en blanco" %>
 				<%= image_submit_tag("/images/iconos/lupa_on.png")%>
 			<%end%>	
 		</div>

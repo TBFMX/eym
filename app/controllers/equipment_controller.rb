@@ -342,23 +342,24 @@ class EquipmentController < ApplicationController
         @equipments = Equipment.where('category_id = ?', @cat.id).query(@array).where_activo.where_venta.order(sort_column + ' ' + sort_direction)
       end  
     else
-      
       @equipments = Equipment.query(@array).where('category_id = ?', @cat.id).where_activo.where_venta.order(sort_column + ' ' + sort_direction)
       #@equipments = Equipment.query(params[:equipment]).order(sort_column + ' ' + sort_direction).paginate(:per_page => 10, :page => params[:page])
     end
 
     @marcas_a = Array.new
-    @paquetes_a = Array.new
+    @equipos_a = Array.new
     @monedas_a = Array.new 
     @paises_a = Array.new
     @estados_a = Array.new
+
+
 
     @equipments.each do |o|
       @marcas_a.push(o.brand_id)
     end
 
     @equipments.each do |o|
-        @paquetes_a.push(o.package_id)
+        @equipos_a.push(o.id)
     end
 
     @equipments.each do |o|
