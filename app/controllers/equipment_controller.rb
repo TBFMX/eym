@@ -536,6 +536,16 @@ class EquipmentController < ApplicationController
     end
   end
 
+  def removed_favoritos
+    equip = params[:equip]
+    favorito = params[:favorito]
+    aux = Favorite.find(favorito)
+    aux.destroy
+    respond_to do |format|
+      format.html { redirect_to equipment_path(equip), notice: 'a sido removido de favoritos' }
+      format.json { head :no_content }
+    end
+  end
 
 
   private
