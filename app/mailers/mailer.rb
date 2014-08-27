@@ -84,6 +84,13 @@ class Mailer < ActionMailer::Base
     #puts "---------------------pase el primero---------------------"
     #mail(:to => buyer_m, :subject => "Nueva notificacion EYM anuncio" + equipment.name.to_s, :from => "\"EYM\" ", :reply_to =>"arturito@tbf.mx")
     #puts "---------------------pase el segundo---------------------"
-  end  
+  end 
+
+  def contact_send(obj)
+    @body_data = obj
+    mail(:to => @body_data.email, :subject => "Tiene una peticion de contacto de su sitio Equipos Y Maquinarias", :from => "\"EYM\" ", :reply_to => @body_data.email)
+
+
+  end 
 
 end

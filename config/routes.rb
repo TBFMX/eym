@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :contacts
+
 =begin
   get 'dashboard/index'
 
