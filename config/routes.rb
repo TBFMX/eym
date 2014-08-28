@@ -176,6 +176,10 @@ Rails.application.routes.draw do
   #, as: 'signout', via: [:get, :post]
 
   get 'auth/google_oauth2/callback?error=access_denied', to: redirect('/')
+  get 'nosotros', to: 'welcome#nosotros'
+  get 'especiales', to: 'welcome#especiales'
+  get 'marcas', to: 'welcome#marcas'
+  get 'contactanos', to: 'welcome#contactanos'      
 
   #get '*unmatched_route', :to => 'application#raise_not_found2'
 

@@ -50,6 +50,20 @@ class WelcomeController < ApplicationController
   	session[:user_id] = nil
   	redirect_to login_url, notice: "Logged out"
   end
+
+
+  def nosotros
+  end
+
+  def especiales
+  end
+
+  def marcas
+  end
+
+  def contactanos
+  end    
+
   private
       def frontpage(pack)
         @equip = Equipment.where('package_id = ?',pack).where_activo.s_charge(pack).order('rank ASC, priority ASC').limit(20)
