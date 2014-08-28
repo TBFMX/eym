@@ -62,6 +62,7 @@ class WelcomeController < ApplicationController
   end
 
   def contactanos
+    @contact = Contact.new
   end    
 
   private
@@ -91,6 +92,5 @@ class WelcomeController < ApplicationController
           end 
         return final_array
 
-      end
-        
+      end    
 end

@@ -30,7 +30,7 @@ class ContactsController < ApplicationController
       if @contact.save
         format.html { 
           Mailer.contact_send(@contact)
-          redirect_to @contact, notice: 'Contact was successfully created.' }
+          redirect_to contactanos_path, notice: 'Los datos de contacto fueron enviados exitosamente.' }
         format.json { render :show, status: :created, location: @contact }
       else
         format.html { render :new }
@@ -59,7 +59,7 @@ class ContactsController < ApplicationController
   def destroy
     @contact.destroy
     respond_to do |format|
-      format.html { redirect_to contacts_url, notice: 'Contact was successfully destroyed.' }
+      format.html { redirect_to contactanos_path, notice: 'Contact was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -72,6 +72,6 @@ class ContactsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def contact_params
-      params.require(:contact).permit(:name, :email, :contact)
+      params.require(:contact).permit(:name, :email, :contact, :mensaje)
     end
 end
