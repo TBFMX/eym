@@ -1,0 +1,42 @@
+.nosotros{
+   width: 920px;
+   height: 450px;
+}
+
+.nosotros .informacion{
+   width: 500px;
+   height: 450px;
+   float: left;
+}
+
+.nosotros .informacion h1{
+   padding: 10px;
+}
+
+.nosotros .informacion p{
+   padding-bottom: 20px;
+}
+
+.nosotros .informacion .imagen{
+   width: 100%;
+   height: 46px;
+   text-align: center;
+   overflow: hidden;
+}
+
+.nosotros .informacion .imagen img{
+   width: 320px;
+   height: 92px;
+}
+
+.nosotros .mapa{
+   width: 420px;
+   height: 450px;
+   float: right;
+   text-align: right;
+}
+
+.nosotros .mapa iframe{
+   margin: 0 auto 0 auto;
+   padding: 5px;
+}
