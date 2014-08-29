@@ -462,37 +462,46 @@
 
 #slider_principal{
     width: 920px;
-    height: 290px;
+    height: 320px;
     /*overflow: hidden;*/
 }
 
 #slider_principal #preview_contenido {
-    width: 840px;
-    height: 290px;
+    width: 700px;
+    height: 320px;
     overflow: hidden;
     position: relative;
-    float:left;
     background-color: #fff;
+    float: left;
 }
 
 #slider_principal #preview_imagenes{
-  width: 70px;
-  height: 270px;
-  float:right;
-  padding:5px;
+  width: 110px;
+  height: 320px;
   background-color: #fff;
+  float: left;
+}
+
+#slider_principal #preview_imagenes1{
+  width: 110px;
+  height: 320px;
+  background-color: #fff;
+  float: left;
 }
 
 #slider_principal #preview_contenido #informacion1,
 #slider_principal #preview_contenido #informacion2,
 #slider_principal #preview_contenido #informacion3,
 #slider_principal #preview_contenido #informacion4,
-#slider_principal #preview_contenido #informacion5{
-    width: 830px;
-    height: 480px;
+#slider_principal #preview_contenido #informacion5,
+#slider_principal #preview_contenido #informacion6,
+#slider_principal #preview_contenido #informacion7,
+#slider_principal #preview_contenido #informacion8{
+    width: 700px;
+    height: 520px;
     position: absolute;
     top: -200px;
-    left: -830px;
+    left: -700px;
     transition: all linear 500ms;
     -o-transition: all linear 500ms;
     -moz-transition: all linear 500ms;
@@ -503,7 +512,10 @@
 #slider_principal #preview_contenido #informacion2:target,
 #slider_principal #preview_contenido #informacion3:target,
 #slider_principal #preview_contenido #informacion4:target,
-#slider_principal #preview_contenido #informacion5:target{
+#slider_principal #preview_contenido #informacion5:target,
+#slider_principal #preview_contenido #informacion6:target,
+#slider_principal #preview_contenido #informacion7:target,
+#slider_principal #preview_contenido #informacion8:target{
     left: 0;
     opacity: 1;
 }
@@ -512,15 +524,18 @@
 #slider_principal #preview_contenido #informacion2 img,
 #slider_principal #preview_contenido #informacion3 img,
 #slider_principal #preview_contenido #informacion4 img,
-#slider_principal #preview_contenido #informacion5 img{
-    width: 820px;
-    height: 270px;
+#slider_principal #preview_contenido #informacion5 img,
+#slider_principal #preview_contenido #informacion6 img,
+#slider_principal #preview_contenido #informacion7 img,
+#slider_principal #preview_contenido #informacion8 img{
+    width: 680px;
+    height: 300px;
     margin-top: 200px;
     padding: 10px;
 }
 
 #slider_principal #preview_contenido #detalles{
-  width:820px;
+  width:700px;
   height: 100px;
 
   background-color: rgba(0, 0, 0, .5); /* color de fondo con opacity, ponerle una imagen con alpha */
@@ -532,10 +547,14 @@
 #slider_principal #informacion2 #detalles,
 #slider_principal #informacion3 #detalles,
 #slider_principal #informacion4 #detalles,
-#slider_principal #informacion5 #detalles{
-  width: 810px;
+#slider_principal #informacion5 #detalles,
+#slider_principal #informacion6 #detalles,
+#slider_principal #informacion7 #detalles,
+#slider_principal #informacion8 #detalles{
+  width: 660px;
   height: 100px;
   padding-right: 10px;
+  padding-left: 10px;
   float: left; 
   position: absolute;
 }
@@ -544,7 +563,10 @@
 #slider_principal #informacion2 #detalles #imagen,
 #slider_principal #informacion3 #detalles #imagen,
 #slider_principal #informacion4 #detalles #imagen,
-#slider_principal #informacion5 #detalles #imagen{
+#slider_principal #informacion5 #detalles #imagen,
+#slider_principal #informacion6 #detalles #imagen,
+#slider_principal #informacion7 #detalles #imagen,
+#slider_principal #informacion8 #detalles #imagen{
   width: 100px;
   height: 100px;
   float: left; 
@@ -555,7 +577,10 @@
 #slider_principal #informacion2 #detalles #imagen img,
 #slider_principal #informacion3 #detalles #imagen img,
 #slider_principal #informacion4 #detalles #imagen img,
-#slider_principal #informacion5 #detalles #imagen img{
+#slider_principal #informacion5 #detalles #imagen img,
+#slider_principal #informacion6 #detalles #imagen img,
+#slider_principal #informacion7 #detalles #imagen img,
+#slider_principal #informacion8 #detalles #imagen img{
   width: 70px;
   height: 70px;
   margin: 5px 10px 10px 10px;  
@@ -565,7 +590,10 @@
 #slider_principal #informacion2 #detalles #titulo,
 #slider_principal #informacion3 #detalles #titulo,
 #slider_principal #informacion4 #detalles #titulo,
-#slider_principal #informacion5 #detalles #titulo{
+#slider_principal #informacion5 #detalles #titulo,
+#slider_principal #informacion6 #detalles #titulo,
+#slider_principal #informacion7 #detalles #titulo,
+#slider_principal #informacion8 #detalles #titulo{
   width: 400px;
   height: 25px;
   color: #FFF;
@@ -580,7 +608,10 @@
 #slider_principal #informacion2 #detalles #parrafo,
 #slider_principal #informacion3 #detalles #parrafo,
 #slider_principal #informacion4 #detalles #parrafo,
-#slider_principal #informacion5 #detalles #parrafo{
+#slider_principal #informacion5 #detalles #parrafo,
+#slider_principal #informacion6 #detalles #parrafo,
+#slider_principal #informacion7 #detalles #parrafo,
+#slider_principal #informacion8 #detalles #parrafo{
   width: 400px;
   color: #FFF;
   font-size: 15px;
@@ -594,7 +625,10 @@
 #slider_principal #informacion2 #detalles #precio,
 #slider_principal #informacion3 #detalles #precio,
 #slider_principal #informacion4 #detalles #precio,
-#slider_principal #informacion5 #detalles #precio{
+#slider_principal #informacion5 #detalles #precio,
+#slider_principal #informacion6 #detalles #precio,
+#slider_principal #informacion7 #detalles #precio,
+#slider_principal #informacion8 #detalles #precio{
   float: right;
   margin-top:-30px; 
   font-size: 30px;
@@ -606,16 +640,19 @@
     opacity: 1;
 }
 
+#slider_principal #preview_imagenes1 img,
 #slider_principal #preview_imagenes img{
-  width:60px;
-  height:40px;
-  padding:5px;
+  width:100px;
+  height:70px;
+  padding: 5px 5px 0px 5px;
 }
 
+#slider_principal #preview_imagenes1 img:hover,
 #slider_principal #preview_imagenes img:hover{
   opacity: 0.7;
 }
 
+#slider_principal #preview_imagenes1 a,
 #slider_principal #preview_imagenes a {
   text-decoration: none;
   background-color:transparent;
@@ -625,3 +662,141 @@
   text-decoration: none;
   background-color:transparent;
 }
+
+
+
+/*informacion----------------------------- SLIDER SHOW equipment ---------------------------*/
+
+
+.show_equipment #slider_show{
+    width: 920px;
+    height: 330px;
+    /*overflow: hidden;*/
+}
+
+.show_equipment #slider_show #preview_imagenes{
+  width: 110px;
+  height: 330px;
+  background-color: #fff;
+  float: left;
+}
+
+.show_equipment #slider_show #preview_imagenes img{
+  width:100px;
+  height:95px;
+  padding: 5px 7px 5px 7px;
+}
+
+.show_equipment #slider_show #preview_imagenes img:hover{
+  opacity: 0.7;
+}
+
+.show_equipment #slider_show #preview_imagenes a{
+  text-decoration: none;
+  background-color:transparent;
+}
+
+.show_equipment #slider_show a:hover {
+  text-decoration: none;
+  background-color:transparent;
+}
+
+.show_equipment #slider_show #preview_contenido {
+    width: 700px;
+    height: 330px;
+    overflow: hidden;
+    position: relative;
+    background-color: #fff;
+    float: left;
+}
+
+.show_equipment #slider_show #preview_contenido #informacion1,
+.show_equipment #slider_show #preview_contenido #informacion2,
+.show_equipment #slider_show #preview_contenido #informacion3,
+.show_equipment #slider_show #preview_contenido #informacion4,
+.show_equipment #slider_show #preview_contenido #informacion5,
+.show_equipment #slider_show #preview_contenido #informacion6,
+.show_equipment #slider_show #preview_contenido #informacion7,
+.show_equipment #slider_show #preview_contenido #informacion8,
+.show_equipment #slider_show #preview_contenido #informacion9,
+.show_equipment #slider_show #preview_contenido #informacion10,
+.show_equipment #slider_show #preview_contenido #informacion11,
+.show_equipment #slider_show #preview_contenido #informacion12,
+.show_equipment #slider_show #preview_contenido #informacion13,
+.show_equipment #slider_show #preview_contenido #informacion14,
+.show_equipment #slider_show #preview_contenido #informacion15,
+.show_equipment #slider_show #preview_contenido #informacion16,
+.show_equipment #slider_show #preview_contenido #informacion17,
+.show_equipment #slider_show #preview_contenido #informacion18,
+.show_equipment #slider_show #preview_contenido #informacion19,
+.show_equipment #slider_show #preview_contenido #informacion20,
+.show_equipment #slider_show #preview_contenido #informacion21,
+.show_equipment #slider_show #preview_contenido #informacion22{
+    width: 680px;
+    height: 310px;
+    position: absolute;
+    left: -700px;
+    padding: 10px;
+    transition: all linear 500ms;
+    -o-transition: all linear 500ms;
+    -moz-transition: all linear 500ms;
+    -webkit-transition: all linear 500ms;
+}
+
+.show_equipment #slider_show #preview_contenido #informacion1:target,
+.show_equipment #slider_show #preview_contenido #informacion2:target,
+.show_equipment #slider_show #preview_contenido #informacion3:target,
+.show_equipment #slider_show #preview_contenido #informacion4:target,
+.show_equipment #slider_show #preview_contenido #informacion5:target,
+.show_equipment #slider_show #preview_contenido #informacion6:target,
+.show_equipment #slider_show #preview_contenido #informacion7:target,
+.show_equipment #slider_show #preview_contenido #informacion8:target,
+.show_equipment #slider_show #preview_contenido #informacion9:target,
+.show_equipment #slider_show #preview_contenido #informacion10:target,
+.show_equipment #slider_show #preview_contenido #informacion11:target,
+.show_equipment #slider_show #preview_contenido #informacion12:target,
+.show_equipment #slider_show #preview_contenido #informacion13:target,
+.show_equipment #slider_show #preview_contenido #informacion14:target,
+.show_equipment #slider_show #preview_contenido #informacion15:target,
+.show_equipment #slider_show #preview_contenido #informacion16:target,
+.show_equipment #slider_show #preview_contenido #informacion17:target,
+.show_equipment #slider_show #preview_contenido #informacion18:target,
+.show_equipment #slider_show #preview_contenido #informacion19:target,
+.show_equipment #slider_show #preview_contenido #informacion20:target,
+.show_equipment #slider_show #preview_contenido #informacion21:target,
+.show_equipment #slider_show #preview_contenido #informacion22:target{
+    left: 0;
+    opacity: 1;
+}
+
+.show_equipment #slider_show #preview_contenido #informacion1 img,
+.show_equipment #slider_show #preview_contenido #informacion2 img,
+.show_equipment #slider_show #preview_contenido #informacion3 img,
+.show_equipment #slider_show #preview_contenido #informacion4 img,
+.show_equipment #slider_show #preview_contenido #informacion5 img,
+.show_equipment #slider_show #preview_contenido #informacion6 img,
+.show_equipment #slider_show #preview_contenido #informacion7 img,
+.show_equipment #slider_show #preview_contenido #informacion8 img,
+.show_equipment #slider_show #preview_contenido #informacion9 img,
+.show_equipment #slider_show #preview_contenido #informacion10 img,
+.show_equipment #slider_show #preview_contenido #informacion11 img,
+.show_equipment #slider_show #preview_contenido #informacion12 img,
+.show_equipment #slider_show #preview_contenido #informacion13 img,
+.show_equipment #slider_show #preview_contenido #informacion14 img,
+.show_equipment #slider_show #preview_contenido #informacion15 img,
+.show_equipment #slider_show #preview_contenido #informacion16 img,
+.show_equipment #slider_show #preview_contenido #informacion17 img,
+.show_equipment #slider_show #preview_contenido #informacion18 img,
+.show_equipment #slider_show #preview_contenido #informacion19 img,
+.show_equipment #slider_show #preview_contenido #informacion20 img,
+.show_equipment #slider_show #preview_contenido #informacion21 img,
+.show_equipment #slider_show #preview_contenido #informacion22 img{
+    width: 680px;
+    height: 300px;
+}
+
+.show_equipment #slider_show #preview_contenido #informacion1{
+    left: 0;
+    opacity: 1;
+}
+

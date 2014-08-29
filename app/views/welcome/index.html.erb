@@ -8,18 +8,31 @@
       <% 
          contador = 1
          arreglo = Array.new
+         arreglo2 = Array.new
          @equipment_slider.each do |slider| 
       %>
       <div id="<%= "informacion" + contador.to_s %>">
          <!-- imagen de fondo -->
-         <%if slider.image_id   
-            @imagen = Image.find(slider.image_id)
-            @image = @imagen.image_url
-            arreglo.push(@image)
-         else 
-            @image ="/data/dummy.png"
-            arreglo.push(@image)
-      end %> 
+         <%if contador < 5 %>
+            <% if slider.image_id   
+               @imagen = Image.find(slider.image_id)
+               @image = @imagen.image_url
+               arreglo.push(@image)
+            else 
+               @image ="/data/dummy.png"
+               arreglo.push(@image)
+            end %> 
+         <% else %>
+            <% if slider.image_id   
+               @imagen = Image.find(slider.image_id)
+               @image = @imagen.image_url
+               arreglo2.push(@image)
+            else 
+               @image ="/data/dummy.png"
+               arreglo2.push(@image)
+            end %> 
+         <% end %> 
+
          <div id="slider_imagenes">
             <%= link_to image_tag(@image), equipment_path(slider), id: "image" + contador.to_s %>
          </div>
@@ -41,13 +54,19 @@
    </div> 
    <!-- contenedor para los preview y controles-->
    <!-- for each para las 5 imagenes que se seleccionaran -->
-   <div id="preview_imagenes">
-      <% contador = 1 %> 
-      <% arreglo.each do |ar| %>
-          <a href="<%= "#informacion" + contador.to_s %>"><img id="<%= "image" + contador.to_s %>" src="<%= ar %>" /></a>
-      <% contador += 1 %>
-      <% end %>
-   </div>
+   <% contador = 1 %> 
+      <div id="preview_imagenes">
+         <% arreglo.each do |ar| %>
+             <a href="<%= "#informacion" + contador.to_s %>"><img id="<%= "image" + contador.to_s %>" src="<%= ar %>" /></a>
+         <% contador += 1 %>
+         <% end %>
+      </div>
+      <div id="preview_imagenes1">
+         <% arreglo2.each do |ar| %>
+             <a href="<%= "#informacion" + contador.to_s %>"><img id="<%= "image" + contador.to_s %>" src="<%= ar %>" /></a>
+         <% contador += 1 %>
+         <% end %>
+      </div>     
 </div>
 
 <!-- ---------------------------------------- Cintilla ----------------------------------------- -->

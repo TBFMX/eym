@@ -9,7 +9,7 @@ class WelcomeController < ApplicationController
     @zone2 = lista_ordenada( @zone2_a)
     @zone3 = lista_ordenada( @zone3_a)
 
-    @equipment_slider = principal_slider(5)
+    @equipment_slider = principal_slider(8)
 
   end
 

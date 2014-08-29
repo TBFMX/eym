@@ -88,7 +88,7 @@ class Equipment < ActiveRecord::Base
 
   	def self.s_principal_charge
   		aux =Equipment.where("priority = 100 ").where_activo.count()
-  		if aux > 5
+  		if aux > 8
 	  		count = 0
 	  		#content_aux = ""
 	  		array_aux = Array.new
@@ -99,7 +99,7 @@ class Equipment < ActiveRecord::Base
 	  		 	array_conteiner.push(e.id)
 	  		 end	
 
-	  		while count < 5 do
+	  		while count < 8 do
 	  			#esta = false
 	  			i_aux = array_conteiner.sample.to_i
 
