@@ -22,23 +22,28 @@
     </h1> 
   </div> 
 
-  <!--      imagenes y detalles del equipo          -->
   <div class="producto">
-    <div class="preview">
-      <div>
-      <%
-        @gallery.each do |g|
-        @images = Image.where('gallery_id' => g.id)
-        link_to g.title, 'equipment/galleries/'+ g.equipment_id.to_s
-        %>
+  <!-- imagenes y detalles del equipo -->
+    <div id="slider_show">
+      <div id="slider_preview">
+      <%  contador = 0
+          arreglo = Array.new
+          arreglo2 = Array.new
+          @gallery.each do |g|
+          @images = Image.where('gallery_id' => g.id)
+          link_to g.title, 'equipment/galleries/'+ g.equipment_id.to_s
+      %>
           <% unless @images.blank?
-           @images.each do |img| %>
-            <img src="<%= img.image_url %>">
+           @images.each do |img| 
+            contador += 1 
+            arreglo.push(img.image_url)
+            %>
+            <a href="<%= "#informacion" + contador.to_s %>"><img src="<%= img.image_url %>"></a>
+
             <% end %>
           <% end %>
         <% end %>
-      </div>
-      <div>
+
       <%
         @video2 = nil
         @gallery.each do |g|
@@ -49,30 +54,34 @@
         link_to g.title, 'equipment/galleries/'+ g.equipment_id.to_s
         %>
           <% unless @video.blank?
-           @video.each do |v| %>
-            <%= v.video_url.html_safe %>
+           @video.each do |v| 
+            contador += 1 
+            arreglo2.push(v) %>
+            <%#= v.video_url.html_safe %>
+             <div id="video"><a href="<%= "#informacion" + contador.to_s %>"><%= "video " + contador.to_s %></a></div>
             <% end %>
           <% end %>
         <% end %>
       </div>
-    </div>
+
 
       <!--      imagenes principal del equipo          -->
-      <% if @video2 != nil %>
-        <div class="imagen"><%= @video2.video_url.html_safe %></div>
-      <%else %>
-        <% unless @images.blank? %>
-          <% if @image.image_url %>
-              <div class="imagen"><img src="<%= @image.image_url %>"></div>
-          <%else %>
-              <div class="imagen"><img src="/data/dummy.png"></div>  
-          <% end %>  
-        <% else %>
-          <div class="imagen"><img src="/data/dummy.png"></div>    
+      <%  contador = 1 %>
+      <div id="slider_imagen">
+        <% arreglo.each do |ar| %>
+          <img id="<%= "informacion" + contador.to_s %>" src="<%= ar %>" />
+          <% contador += 1 %>
         <% end %>      
-      <% end %>
+        <% arreglo2.each do |ar| %>
+          <div class="video" id="<%= "informacion" + contador.to_s %>" ><p><%= ar.video_url.html_safe %></p></div>
+          <% contador += 1 %>
+        <% end %> 
+      </div> 
 
-      
+  </div>
+
+<!--      imagenes y detalles del equipo          -->
+
   <div class="contenido860">
     <div class="modelo">
       <p class="etiquetas">Etiquetas: <%= @equipment.etiquetas %></p>
