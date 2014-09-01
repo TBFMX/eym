@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-
+@import url(http://fonts.googleapis.com/css?family=Roboto:500,700,400italic);
 
 /*-------------lista de anuncios-------------*/
 
@@ -38,7 +38,7 @@
    margin-top: 10px;
    text-overflow:ellipsis; 
    white-space:nowrap;
-   overflow:hidden;      
+   overflow:hidden;     
 }
 
 .lista_show_equipment .datos .descripcion{
@@ -393,6 +393,8 @@
    width: 100%;
    min-height:25px;
    max-height: 75px;
+   font-family: 'Roboto', sans-serif;
+   font-weight: 500;
 }
 
 .show_equipment h1{
@@ -402,14 +404,19 @@
    text-align: left;
    text-transform: capitalize;
    line-height: 100%;
+   font-weight: 700;   
 }
 
 .show_equipment h1 .azul{
    color: #37A0DE;
+   font-weight: 700;     
 }
 
 .show_equipment h1 .azul2{
+   font-size:20px;
    color: #53788E;
+   font-family: 'Roboto', sans-serif;
+   font-weight: 500;    
 }
 
 .show_equipment h1 .favoritos{
@@ -426,6 +433,12 @@
    width: 660px;
    height: 120px;
    float: left;
+}
+
+.show_equipment .producto .modelo .etiquetas{
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;   
+  font-style:italic; 
 }
 
 .show_equipment .producto .contactar{
@@ -467,6 +480,8 @@
    background-color: #FFFFFF;
    border: 1px solid #A6A6A6;
    padding: 10px;
+   font-family: 'Roboto', sans-serif;
+   font-weight: 400;     
 }
 
 .show_equipment .producto .modelo .etiquetas{
