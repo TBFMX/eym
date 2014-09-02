@@ -2,6 +2,9 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+@import url(http://fonts.googleapis.com/css?family=Roboto:500,700,400italic);
+
+
 /*------------------Vista Categorias----------------------*/
 
 .vista_categoria{
@@ -21,6 +24,8 @@
 .vista_categoria_titulo h6 a{  
    color: #52778d;   
    text-decoration: none;
+   font-family: 'Roboto', sans-serif;
+   font-weight: 500;   
 }
 
 .vista_categoria_titulo h6 a:hover{  
@@ -77,6 +82,8 @@
    text-overflow:ellipsis; 
    white-space:nowrap;
    overflow:hidden;     
+   font-family: 'Roboto', sans-serif;
+   font-weight: 400;     
 }
 
 .vista_categoria_productos .equipos .datos a{  
@@ -84,4 +91,11 @@
    padding-left: 5px;
    padding-right: 5px;
    font-weight: bold;
+   font-family: 'Roboto', sans-serif;
+   font-weight: 400;    
+   text-transform: capitalize; 
+}
+
+.vista_categoria_productos .equipos .datos a{  
+  text-decoration: none;
 }

@@ -1,7 +1,7 @@
 <div class="formulario_gris">
   <div class="centrado">
 
-    <h1>Registro de Usuarios</h1>
+    <h1>Creación de cuenta</h1>
 
     <%= form_for(@user) do |f| %>
       <% if @user.errors.any? %>
@@ -32,15 +32,15 @@
       </div>
 
       <div class="field">
-        <%= f.label :name %><br>
+        <%= f.label :name, "NOMBRE" %><br>
         <%= f.text_field :name, required: true %>
       </div>
       <div class="field">
-        <%= f.label :lastname %><br>
+        <%= f.label :lastname, "APELLIDO" %><br>
         <%= f.text_field :lastname, required: true %>
       </div>
       <div class="field">
-        <%= f.label :email %><br>
+        <%= f.label :email,"CORREO ELECTRÓNICO" %><br>
         <%= f.email_field :email, required: true, pattern: "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+([\.][a-zA-Z0-9-]{2,3}){1,2}$", title: "Ingrese un formato válido Micorreo@tupagina.com" %>
       </div>
       <!-- <div class="field">

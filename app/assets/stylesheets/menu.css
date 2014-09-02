@@ -1,4 +1,6 @@
 /* ----Menu desplegable --------*/
+  @import url(http://fonts.googleapis.com/css?family=Roboto:500,700,400italic);
+
   #menu_eym{
       width: 320px;
       min-height: 34px;
@@ -6,7 +8,8 @@
       background-color: #ffffff;
       overflow: hidden; /*--para que el cuadro agarre todo lo interno.---*/    
       font-size:13px; 
-      font-family: 'Oswald', sans-serif;
+     font-family: 'Roboto', sans-serif;
+     font-weight: 500;
   }
   
   #menu_eym ul, ol{
@@ -21,7 +24,7 @@
   }
   
   .menu li a{
-    font-family: 'Oswald', sans-serif;
+    font-family: 'Roboto', sans-serif;
     background-color:#FFFFFF;
     color:#52778d;
     text-decoration:none;
@@ -33,7 +36,7 @@
   }
   
   .menu li a:hover{
-    font-family: 'Oswald', sans-serif;
+    font-family: 'Roboto', sans-serif;
     background-color: #b3b3b3;
     z-index: 2;
   }

@@ -2,6 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+@import url(http://fonts.googleapis.com/css?family=Roboto:500,700,400italic);
 
 /*-------------Comentarios---------------*/
 
@@ -21,6 +22,8 @@
    width: 89%;
    height: 50px;
    float:left;
+   font-family: 'Roboto', sans-serif;
+   font-weight: 400;    
 }
 
 .comentarios_formulario form input{
@@ -43,6 +46,8 @@
    width: 860px;
    max-height: 150px;
    overflow: scroll;
+   font-family: 'Roboto', sans-serif;
+   font-weight: 400;    
 }
 
 .comentarios_usuario{
