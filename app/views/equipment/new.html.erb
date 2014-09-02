@@ -1,5 +1,3 @@
-<h1>Crea tu Anuncio</h1>
-
 <%#= render 'form' %>
 <% @package = Package.all %>
 <script type='text/javascript'>
@@ -31,6 +29,7 @@ $.each(inputFile.files, function() {
 </script>
 <!-- aqui-->
 <div class="alta_equipment">
+<h1>Crea tu Anuncio</h1>
 
   <%= form_for(@equipment) do |f| %>
     <% if @equipment.errors.any? %>

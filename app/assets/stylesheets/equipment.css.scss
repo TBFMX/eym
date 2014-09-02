@@ -120,12 +120,23 @@
    margin: 0 auto 0 auto;
 }
 
+.alta_equipment h1{
+  padding-top:10px;
+  color: #FFF;
+  font-size:26px;
+  text-align: center;
+   font-family: 'Roboto', sans-serif;
+   font-weight: 500;  
+}
+
+
 .alta_equipment p{
    margin: 20px 0px 10px 10px;
    font-size: 15px;
    color: #FFF;
    text-transform: capitalize;
-   font-weight: bold;
+   font-family: 'Roboto', sans-serif;
+   font-weight: 400;     
 }
 
 .alta_equipment p .leyenda{
@@ -259,13 +270,19 @@
 }
 
 .alta_equipment .crear input{
+   font-family: 'Roboto', sans-serif;
+   font-weight: 500;
    width: 32%;
    height: 50px;
    font-size:10px;
-   font-weight:bold;
    color:white;
    background:#638cb5;
    border:0px;
+   font-size: 18px;
+}
+
+.alta_equipment .crear input:hover{
+  opacity: 0.9;
 }
 
 /*--------------- diferencias de crear al edit de anuncio ---------*/
@@ -325,12 +342,19 @@
    width:90%;
    height: 25px;
    margin: 5px 20px 10px 20px;
+   font-family: 'Roboto', sans-serif;
+   font-weight: 400;   
+   padding-left:5px;
 }
 
 .forma_contacto .datos_comprador  textarea{
    width:90%;
    height: 100px;
    margin: 0px 20px 15px 20px;
+   font-family: 'Roboto', sans-serif;
+   font-style: italic;
+   font-weight: 400;
+   padding: 5px;    
 }
 
 .forma_contacto .datos_anuncio{
@@ -344,6 +368,9 @@
    width:90%;
    height: 220px;
    margin: 5px 20px 0px 20px;
+   font-family: 'Roboto', sans-serif;
+   font-weight: 400;
+   padding: 5px;
 }
 
 .forma_contacto .datos_anuncio h1{

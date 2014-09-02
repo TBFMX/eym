@@ -1,3 +1,5 @@
+@import url(http://fonts.googleapis.com/css?family=Roboto:500,700,400italic);
+
 body {
   background-color: #f2f2f2;
   color: #333;
@@ -7,7 +9,8 @@ body {
 }
 
 p, ol, ul, td {
-  font-family: verdana, arial, helvetica, sans-serif;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
   font-size: 13px;
   line-height: 18px;
 }
