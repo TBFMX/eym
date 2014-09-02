@@ -67,7 +67,7 @@ class DashboardController < ApplicationController
     @favoritos.each do |f|
       array.push(f.equipment_id)
     end
-    @equipment = Equipment.where(:id => array)
+    @equipment = Equipment.where(:id => array).where_activo
   end
   ##generadores de pdf
   def contact_rep

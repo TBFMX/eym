@@ -15,6 +15,38 @@
 //= require turbolinks
 //= require_tree 
 
+$(document).ready(function(){
+    callFB();
+    loginClick(); // Call function
+});
+
+function callFB(){
+    window.fbAsyncInit = function() {
+      FB.init({
+        appId      : '281783672006763', // App ID
+        status     : true, // check login status
+        cookie     : true, // enable cookies to allow the server to access the session
+        oauth      : true, // enable OAuth 2.0
+        xfbml      : true  // parse XFBML
+      });
+
+    // Additional initialization code here
+  };
+
+  // Load the SDK Asynchronously
+  (function(d){
+     var js, id = 'facebook-jssdk'; if (d.getElementById(id)) {return;}
+     js = d.createElement('script'); js.id = id; js.async = true;
+     js.src = "//connect.facebook.net/en_US/all.js";
+     d.getElementsByTagName('head')[0].appendChild(js);
+   }(document));     
+
+
+}
+
+
+
+
 
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -32,4 +64,6 @@
     js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=<%=OORConstant.facebook_app_id%>";
     fjs.parentNode.insertBefore(js, fjs);
   }(document, 'script', 'facebook-jssdk'));
+
+
 
