@@ -249,8 +249,7 @@ class EquipmentController < ApplicationController
     respond_to do |format|
       if @equipment.update("status" => 0)
         format.html {    
-          @equips = Equipment.find_by("user_id = ?" , session[:user_id])  <%= f.label :photo, "Photo" %>
-            <%= f.file_field :photo %>
+          @equips = Equipment.find_by("user_id = ?" , session[:user_id])  
           unless  @equips.blank?
             redirect_to dashboard_equipos_path, notice: 'El equipo fue borrado exitosamente'
           else
