@@ -13,6 +13,7 @@ class EquipmentController < ApplicationController
   # GET /equipment/1
   # GET /equipment/1.json
   def show
+    @photo = @equipment.photo.url
     @categoria = Category.find(@equipment.category_id)
     if @categoria.father_id != 0
       categoria2 = Category.find(@categoria.father_id)
@@ -248,7 +249,8 @@ class EquipmentController < ApplicationController
     respond_to do |format|
       if @equipment.update("status" => 0)
         format.html {    
-          @equips = Equipment.find_by("user_id = ?" , session[:user_id])  
+          @equips = Equipment.find_by("user_id = ?" , session[:user_id])  <%= f.label :photo, "Photo" %>
+            <%= f.file_field :photo %>
           unless  @equips.blank?
             redirect_to dashboard_equipos_path, notice: 'El equipo fue borrado exitosamente'
           else
@@ -560,7 +562,7 @@ class EquipmentController < ApplicationController
     end
     # Never trust parameters from the scary internet, only allow the white list through.
     def equipment_params
-      params.require(:equipment).permit(:name, :year, :color, :brand_id, :package_id, :description, :publication_type, :precio, :modelo, :currency_id , :country_id, :state_id, :ciudad, :category_id, :etiquetas, :user_id, :subcategory_id)
+      params.require(:equipment).permit(:name, :year, :color, :brand_id, :package_id, :description, :publication_type, :precio, :modelo, :currency_id , :country_id, :state_id, :ciudad, :category_id, :etiquetas, :user_id, :subcategory_id, :photo)
     end
 
     def manejador

@@ -54,8 +54,10 @@ $.each(inputFile.files, function() {
       <p><%= f.label :description, "Descripción" %></p>
       <%= f.text_area :description, cols: "90", rows: "10" %>
       <p>IMAGENES <span class="leyenda">(tamaño máximo de la imagen 1 MB)</span></p>
-      <%= f.label :image_id, "Seleccione una imagen" %> 
-      <%= f.file_field :image_id ,:onchange =>"validateFiles(this);",:data => {:max_file_size => 1.megabytes} %>      
+        <%= f.label :photo, "Photo" %>
+        <%= f.file_field :photo %>
+      <%#= f.label :image_id, "Seleccione una imagen" %> 
+      <%#= f.file_field :image_id ,:onchange =>"validateFiles(this);",:data => {:max_file_size => 1.megabytes} %>      
     </div>
     <div class="detalles">
       <p>Categoria</p>
