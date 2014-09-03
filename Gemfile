@@ -71,3 +71,4 @@ gem "airbrake"
 ###########################
 #google analytics
 gem "google-api-client"
+gem "paperclip", "~> 4.2"

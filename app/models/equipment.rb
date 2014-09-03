@@ -12,7 +12,17 @@ class Equipment < ActiveRecord::Base
 	belongs_to :brand
 	belongs_to :package
 	belongs_to :category
-	
+
+	######################## Prueba de Paperclip ###################################
+	has_attached_file :photo, :styles => { :small => "690x320#" , :large => "700x700>"},
+	  :url => "/data/:attachment/:id/:style/:basename.:extension",
+  	  :path => ":rails_root/public/data/:attachment/:id/:style/:basename.:extension"
+
+  	attr_accessor :crop_x, :crop_y, :crop_w, :crop_h  
+
+	validates_attachment_size :photo, :less_than => 5.megabytes
+	validates_attachment_content_type :photo, :content_type => ['image/jpeg', 'image/png']			
+	################################################################################	
 
 	#validates :equipment_id, presence: true, uniqueness: true
 	validates :name, presence: true, uniqueness: true

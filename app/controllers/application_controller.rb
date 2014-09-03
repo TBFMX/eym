@@ -104,7 +104,13 @@ class ApplicationController < ActionController::Base
     I18n.locale = :es || I18n.default_locale
   end
 
-
+  def var_get_verify(array, parametros)
+    array.each do |a|
+      if parametros[a].blank?
+        return false
+      end  
+    end  
+  end
  
 
  

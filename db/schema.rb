@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140828205258) do
+ActiveRecord::Schema.define(version: 20140829173844) do
 
   create_table "brands", force: true do |t|
     t.string   "name"
@@ -112,6 +112,10 @@ ActiveRecord::Schema.define(version: 20140828205258) do
     t.string   "pagado"
     t.integer  "status"
     t.integer  "subcategory_id"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
   end
 
   add_index "equipment", ["slug"], name: "index_equipment_on_slug"
