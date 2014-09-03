@@ -25,9 +25,13 @@
 
 .nosotros .informacion .imagen{
    width: 100%;
-   height: 46px;
+   height: 109px;
    text-align: center;
    overflow: hidden;
+}
+
+.nosotros .informacion .imagen a{
+   background-color: transparent;
 }
 
 .nosotros .informacion .imagen img{

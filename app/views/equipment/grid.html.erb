@@ -78,7 +78,7 @@
         <ul>
             <% precio.each do |pr| %>
 
-            <li><%= link_to pr.first, Filtro_path("array" => @array, "nuevo_n" => "precio", "nuevo_v" => pr.first) %></li>
+            <li><%= link_to number_to_currency(pr.first), Filtro_path("array" => @array, "nuevo_n" => "precio", "nuevo_v" => pr.first) %></li>
             <%end%>
         </ul>
     </div>
