@@ -3,6 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 @import url(http://fonts.googleapis.com/css?family=Roboto:500,700,400italic);
+@import url(http://fonts.googleapis.com/css?family=Oswald);
 
 /*------------- formularios grises -------------*/
 
@@ -58,17 +59,18 @@
    padding: 0 10px 0 10px;
    font-weight: bold;
    text-transform: uppercase;
+   font-family: 'Oswald', sans-serif;
 }
 
 .formulario_gris .centrado input{
    width: 250px;
    height: 25px;
-   font-size:15px;
-   border:0px;
+   font-size: 15px;
+   border: 0px;
    margin: 10px;
    padding: 0 10px 0 10px;
-   font-family: 'Roboto', sans-serif;  
-   font-weight: 500; 
+   font-family: 'Oswald', sans-serif;  
+   font-style: italic;
 }
 
 .formulario_gris .centrado input[name="commit"]{
