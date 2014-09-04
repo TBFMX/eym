@@ -145,8 +145,8 @@ Rails.application.routes.draw do
     post 'equipos/resultados' => :search
     get 'equipos/listado' => :users_view, :as => 'users_view'
     get 'industrias/:industria' => :industry, :as => 'industry'
-    get 'add_new_favorite' => :add_favorito, :as => 'new_fav'
-    get 'destroy_del_favorite' => :delete_favorito, :as => 'del_fav'
+    get 'fav_new' => :add_favorito, :as => 'new_fav'
+    get 'fav_destroy' => :removed_favoritos, :as => 'del_fav'
   end
 
   controller :dashboard do

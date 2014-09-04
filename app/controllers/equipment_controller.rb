@@ -522,6 +522,7 @@ class EquipmentController < ApplicationController
   end
 
   def removed_favoritos
+    
     equip = params[:equip]
     favorito = params[:favorito]
     aux = Favorite.find(favorito)
