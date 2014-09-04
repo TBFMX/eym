@@ -136,13 +136,15 @@
    color: #FFF;
    text-transform: capitalize;
    font-family: 'Roboto', sans-serif;
-   font-weight: 400;     
+   font-weight: 500; 
+   text-transform: uppercase;    
 }
 
 .alta_equipment p .leyenda{
    margin: 20px 0 0 0;
    font-size: 10px;
    color: #FFF;
+   font-family: 'Oswald', sans-serif;
 }
 
 .alta_equipment .parte1{
@@ -159,11 +161,17 @@
 .alta_equipment .parte1 .anuncio input{
    width: 90%;
    height: 25px;
+   padding-left: 10px;
+   font-family: 'Roboto', sans-serif;
+   font-style:italic; 
 }
 
 .alta_equipment .parte1 .anuncio textarea{
    width: 90%;
    height: 250px;
+   padding: 10px;
+   font-family: 'Roboto', sans-serif;
+   font-style:italic; 
 }
 
 .alta_equipment .parte1 .detalles{
@@ -178,12 +186,15 @@
    width: 90%;
    height: 25px;
    margin-left: 10px;
+   padding-left: 10px;
+   font-family: 'Roboto', sans-serif;  
+   font-style:italic; 
 }
 
 .alta_equipment .parte1 .detalles #equipment_year,
 .alta_equipment .parte1 .detalles #equipment_color
  {
-   width: 42%;
+   width: 40%;
    height: 25px;
    margin-left: 10px;
 }
@@ -338,6 +349,11 @@
    float: left;
 }
 
+.forma_contacto .datos_comprador label{
+  font-family: 'Oswald', sans-serif;
+}
+
+
 .forma_contacto .datos_comprador  input{
    width:90%;
    height: 25px;
@@ -345,6 +361,7 @@
    font-family: 'Roboto', sans-serif;
    font-weight: 400;   
    padding-left:5px;
+   font-style: italic;   
 }
 
 .forma_contacto .datos_comprador  textarea{
@@ -382,6 +399,10 @@
    font-size: 15px;
    color: #FFF;
    margin: 5px 20px 0px 20px;
+}
+
+.forma_contacto p strong{
+  font-family: 'Oswald', sans-serif;
 }
 
 .forma_contacto .datos_anuncio .detalles{
@@ -474,6 +495,31 @@
    float: right;
 }
 
+.show_equipment .producto .contactar .favoritos{
+  width:200px;
+  text-align: center;
+}
+
+.show_equipment .producto .contactar .favoritos img{
+  padding-right:5px;
+  margin-top:-5px;
+}
+
+.show_equipment .producto .contactar .favoritos a{
+  padding-left:50px;
+  color: #638cb5; 
+  text-decoration: none;  
+  font-weight: bold;
+}
+
+.show_equipment .producto .contactar .favoritos a:hover{
+  background-color:transparent; 
+  text-decoration: none;
+  color: #638cb5; 
+  font-weight: bold;
+  opacity: 0.9;  
+}
+
 .show_equipment .producto .contactar form input{
    width: 120px;
    height: 50px;
@@ -483,6 +529,10 @@
    color:white;
    background:#638cb5;
    border:0px;
+}
+
+.show_equipment .producto .contactar form input:hover{
+  opacity: 0.9;
 }
 
 .show_equipment .producto .contactar p{

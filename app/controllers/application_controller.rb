@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :authorize
   before_action :menu_categorias
+  before_action :menu_industrias
 
 #aplico las traducciones
  before_action :set_locale
@@ -130,9 +131,12 @@ class ApplicationController < ActionController::Base
       end
 
       def menu_categorias
-        @category = Category.all
-        @subcategory = Subcategory.all
+        @category_m = Category.all
+        @subcategory_m = Subcategory.all
       end
+      def menu_industrias
+        @industry_m = Industry.all
+      end      
       def current_user
         @current_user ||= User.find(session[:user_id]) if session[:user_id]
       end

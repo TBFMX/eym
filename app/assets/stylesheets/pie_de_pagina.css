@@ -1,5 +1,6 @@
 /*----------- Pie de pagina NOSOTROS -------------*/
 @import url(http://fonts.googleapis.com/css?family=Roboto:500,700,400italic);
+@import url(http://fonts.googleapis.com/css?family=Oswald);
 
 .nosotros{
    width: 920px;
@@ -24,9 +25,13 @@
 
 .nosotros .informacion .imagen{
    width: 100%;
-   height: 46px;
+   height: 109px;
    text-align: center;
    overflow: hidden;
+}
+
+.nosotros .informacion .imagen a{
+   background-color: transparent;
 }
 
 .nosotros .informacion .imagen img{
@@ -125,8 +130,7 @@
 
 .contactanos .parte1 .datos strong{
    text-transform: uppercase;
-   font-family: 'Roboto', sans-serif;
-   font-weight: 400;     
+   font-family: 'Oswald', sans-serif;     
 }
 
 .contactanos .parte1 .mapa{
@@ -137,8 +141,10 @@
 }
 
 .contactanos .formulario .field{
-   width: 33%;
+   width: 31%;
    float: left;
+   padding-left: 1%;
+   padding-right: 1%;
 }
 
 .contactanos .formulario form{
@@ -181,6 +187,7 @@
 .contactanos .formulario .field2 label{
    font-weight: bold;
    text-transform: uppercase;
+   font-family: 'Oswald', sans-serif;
 }
 
 .contactanos .mapa iframe{
