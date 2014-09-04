@@ -9,7 +9,14 @@ class CreateUsers < ActiveRecord::Migration
       t.date :login_date
       t.date :password_date
       t.integer :rol_id
-
+      t.string  :password_reset_token
+      t.integer :package_id
+      t.date  :password_reset_sent_at
+      t.string :uid
+      t.string :provider
+      t.string :oauth_token
+      t.date :oauth_expires_at
+      t.integer :active
       t.timestamps
     end
   end

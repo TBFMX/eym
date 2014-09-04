@@ -109,9 +109,15 @@ class ApplicationController < ActionController::Base
       if parametros[a].blank?
         return false
       end  
-    end  
+    end 
+    return true 
   end
  
+  def record_exist(obj)
+    if obj.blank?
+      redirect_to root_url
+    end  
+  end
 
  
 #funcion de control de acceso

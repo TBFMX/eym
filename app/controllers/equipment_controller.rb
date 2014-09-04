@@ -2,7 +2,7 @@ class EquipmentController < ApplicationController
   before_action :set_equipment, only: [:show, :edit, :update, :destroy]
   before_action :set_new_equipment, only: [:new]
   helper_method :sort_column, :sort_direction
-  skip_before_action :authorize, only: [:show,:grid,:search,:industry]
+  skip_before_action :authorize, only: [:show,:grid,:search,:industry,:listado]
 
   # GET /equipment
   # GET /equipment.json
@@ -233,18 +233,7 @@ class EquipmentController < ApplicationController
 
   # DELETE /equipment/1
   # DELETE /equipment/1.json
-  def destroy
-=begin
-    @gallery = Gallery.where('equipment_id = ?', @equipment.id)
-    @gallery.each do |gallery|
-          @image.each do |image|
-          pic = image.image_url
-        unless pic.equal?("/data/dummy.png")
-          pics = DataFile.destroy(pic)
-        end
-      end
-    end 
-=end    
+  def destroy   
     #@equipment.destroy
     respond_to do |format|
       if @equipment.update("status" => 0)
@@ -300,9 +289,9 @@ class EquipmentController < ApplicationController
         redirect_to root_path
       end    
     end
-    puts "------------------------------------"
-    puts "auxiliar: " + aux.to_s
-    puts "------------------------------------"
+    #puts "------------------------------------"
+    #puts "auxiliar: " + aux.to_s
+    #puts "------------------------------------"
 
 
 
@@ -320,12 +309,12 @@ class EquipmentController < ApplicationController
     end
 
     @categoria = Category.find_by('categories.title' => aux)
-    puts "------------------------------------"
-    puts @categoria.inspect
-    puts "------------------------------------"
+    #puts "------------------------------------"
+    #puts @categoria.inspect
+    #puts "------------------------------------"
 
     @subcategoria = Subcategory.find_by('subcategories.title' => aux_sub)
-    
+
     add_breadcrumb @categoria.slug.to_s, Filtro_path('categoria' => @categoria.title,  'tipo' => 1)
     @titulo = @categoria.title.to_s
 
@@ -333,6 +322,7 @@ class EquipmentController < ApplicationController
       add_breadcrumb @subcategoria.title.to_s, Filtro_path('categoria' => @categoria.title,'subcategory' => @subcategoria.title ,'tipo' => 1)
        @titulo = @subcategoria.title.to_s
     end
+
     tipo = params[:tipo]    
     @cat = Category.find_by('categories.title' => aux)    
     
@@ -347,12 +337,13 @@ class EquipmentController < ApplicationController
       #@equipments = Equipment.query(params[:equipment]).order(sort_column + ' ' + sort_direction).paginate(:per_page => 10, :page => params[:page])
     end
 
+    ##########varibles de contenido###############
     @marcas_a = Array.new
     @equipos_a = Array.new
     @monedas_a = Array.new 
     @paises_a = Array.new
     @estados_a = Array.new
-
+    ##############################################
 
 
     @equipments.each do |o|
@@ -373,8 +364,6 @@ class EquipmentController < ApplicationController
     @equipments.each do |o|
         @estados_a.push(o.state_id)
     end
-
-
   end
 
   def industry
@@ -409,12 +398,9 @@ class EquipmentController < ApplicationController
     end  
     if simple
         @equipments = Equipment.where(:id => array).where_activo.where_venta.order(sort_column + ' ' + sort_direction)
-        puts "#########################################es simple ######################################################"
-        puts @equipments.inspect
-        puts "#########################################################################################################"
     else  
       @equipments = Equipment.query(params[:equipment]).where(:id => array).where_activo.where_venta.order(sort_column + ' ' + sort_direction)
-      puts "#########################################no es simple ######################################################"
+      #puts "#########################################no es simple ######################################################"
       #@equipments = Equipment.query(params[:equipment]).order(sort_column + ' ' + sort_direction).paginate(:per_page => 10, :page => params[:page])
     end
     
@@ -426,11 +412,13 @@ class EquipmentController < ApplicationController
       @image = Image.find(@equipment.image_id)
     else
       @image = Image.find_by(image_url: '/data/dummy.png')  
-    end  
+    end 
+    ################contenido heredable##############
     @gallery = Gallery.where('equipment_id' => @equipment.id)
     @user = User.find(@equipment.user_id)
     @currency = Currency.find(@equipment.currency_id)
     @pack = Package.find(@equipment.package_id)
+    #################################################
   end  
 
   def search
@@ -481,9 +469,17 @@ class EquipmentController < ApplicationController
   end
 
   def users_view
-    user = params[:user_id]
-    @users = User.find(user)
-    @equips = Equipment.where('user_id = ?', user).where_venta
+    array = Array.new
+    array.push("user_id")
+    if var_get_verify(array, params)
+      user = params[:user_id]
+      @users = User.find(user)
+      record_exist(@users) #valida que el registro no sea blanco o nullo
+      @equips = Equipment.where('user_id = ?', user).where_venta
+      record_exist(@users)
+    else
+      redirect_to root_path  
+    end  
   end
 
   def ver_payment
@@ -498,27 +494,14 @@ class EquipmentController < ApplicationController
 
   def add_favorito 
     equip = params[:equip]
-    #puts "------------------equip-------------------------------"
-    #puts equip.inspect
-    #puts "-------------------------------------------------"
     @equipment = Equipment.find(equip)
-    #puts "------------------@equipment-------------------------------"
-    #puts @equipment.inspect
-    #puts "-------------------------------------------------"
-
+    
     aux = Favorite.where('user_id = ? and equipment_id = ?' ,session[:user_id],  equip)
-    #puts "-------------------auxiliar------------------------------"
-    #puts aux.inspect
-    #puts "-------------------------------------------------"
-
-
+    
     unless equip.nil?
-      puts ">>>>>>>>>>>>>>>>>>>>>>>>>>equipo no nil"
+      #puts ">>>>>>>>>>>>>>>>>>>>>>>>>>equipo no nil"
       if aux.blank?
         @favorite = Favorite.new('user_id' => session[:user_id], 'equipment_id' => equip)
-        puts "-------------------favorito------------------------------"
-        puts @favorite.inspect
-        puts "---------------------------------------------------------"
         #puts ">>>>>>>>>>>>>>>>>>>>>>>>>>aux blank"
         respond_to do |format|
           if  @favorite.save

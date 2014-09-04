@@ -9,10 +9,22 @@ class CreateEquipment < ActiveRecord::Migration
       t.text :description
       t.integer :publication_type
       t.integer :category_id
-      t.decimal :precio_venta
-      t.decimal :precio_renta
-
+      t.string  :etiquetas 
+      t.decimal :precio
+      t.integer :image_id
+      t.integer :user_id
+      t.string :modelo
+      t.string :currency_id
+      t.string :country_id
+      t.string :state_id
+      t.string :ciudad
+      t.integer :rank
+      t.integer :priority
+      t.string :pagado
+      t.integer :status
       t.timestamps
     end
   end
 end
+
+    

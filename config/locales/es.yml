@@ -30,14 +30,14 @@ es:
           color: 'Color'
           brand_id: 'Marca'
           package_id: 'Paquete'
-          description: 'Descripcion'
+          description: 'Descripción'
           publication_type: 'Tipo de Publicacion'
           category_id: 'Categoria'
           precio_venta: 'Precio de Venta'
           precio_renta: 'Precio de Renta'
         gallery:
           title: 'Titulo'
-          description: 'Descripcion'
+          description: 'Descripción'
         image:
           title: 'Titulo'
           image_url: 'Imagen'
@@ -59,7 +59,7 @@ es:
           brand_id: 'Marca'
           package_id: 'Paquete'
           description: 'Descripcion'
-          publication_type: 'Tipo de Publicacion'
+          publication_type: 'Tipo de Publicación'
           category_id: 'Categoria'
           precio_venta: 'Precio de Venta'
           precio_renta: 'Precio de Renta'
@@ -67,7 +67,7 @@ es:
           title: 'Titulo'
           video_url: 'Video'
           image_url: 'Imagen'
-          description: 'Descripcion'
+          description: 'Descripción'
 
  
   date:
