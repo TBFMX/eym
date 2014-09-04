@@ -60,7 +60,7 @@ class SessionsController < ApplicationController
         redirect_to root_path
       end    
   	else
-  		redirect_to root_path, alert: "La combinacion de Usuario y clave es incorrecta"
+  		redirect_to login_path, alert: "La combinacion de Usuario y clave es incorrecta"
   	end
   end
 
