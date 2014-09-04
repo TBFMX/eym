@@ -3,12 +3,10 @@
         miDiv = document.getElementById(elem_id);
         if(miDiv.style.display == "none") {
             miDiv.style.display = "block";
-            mostrar = document.getElementById(botton).childNodes[0];
-            mostrar.data = printf("&#9650;");
+            document.getElementById(botton).src = "/images/iconos/flecha_arriba.png";
         }
         else {
             miDiv.style.display = "none";
-            mostrar = document.getElementById(botton).childNodes[0];
-            mostrar.data = printf("&#9660;");
+            document.getElementById(botton).src = "/images/iconos/flecha_abajo.png";
         }
     }
