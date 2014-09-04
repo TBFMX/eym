@@ -46,9 +46,9 @@ $.each(inputFile.files, function() {
 
   <div class="parte1">
     <div class="anuncio">
-      <p><%= f.label :name, "Titulo del anuncio" %><span class="leyenda"> (Máximo 45 caractéres)</span></p>
+      <p><%= f.label :name, "Titulo del anuncio" %></p>
       <%= f.text_field :name, required: true %>
-      <p><%= f.label :name, "Etiquetas" %></p>
+      <p><%= f.label :etiquetas, "Etiquetas" %></p>
       <%= f.text_field :etiquetas %>    
       <p><%= f.label :description, "Descripción" %></p>
       <%= f.text_area :description, cols: "90", rows: "10" %>
