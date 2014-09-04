@@ -266,7 +266,7 @@ class EquipmentController < ApplicationController
     nombre = params[:nuevo_n]
     valor = params[:nuevo_v]
 
-    unless nombre.nil? and valor.nil?
+    unless nombre.blank? and valor.blank?
       @array[nombre] = valor
     end
     unless params[:array].blank?
@@ -314,12 +314,14 @@ class EquipmentController < ApplicationController
     #puts "------------------------------------"
 
     @subcategoria = Subcategory.find_by('subcategories.title' => aux_sub)
+    filtros = Hash['categoria' => @categoria.title ,'tipo' => 1]
 
-    add_breadcrumb @categoria.slug.to_s, Filtro_path('categoria' => @categoria.title,  'tipo' => 1)
+    add_breadcrumb @categoria.slug.to_s, Filtro_path('array' => filtros)
     @titulo = @categoria.title.to_s
 
     unless @subcategoria.nil?
-      add_breadcrumb @subcategoria.title.to_s, Filtro_path('categoria' => @categoria.title,'subcategory' => @subcategoria.title ,'tipo' => 1)
+      filtros = Hash['categoria' => category.title ,'subcategory' => subcategory.title ,'tipo' => 1]
+      add_breadcrumb @subcategoria.title.to_s, Filtro_path('array' => filtros)
        @titulo = @subcategoria.title.to_s
     end
 
@@ -367,18 +369,48 @@ class EquipmentController < ApplicationController
   end
 
   def industry
+#######################################
+    url = request.url
+    puts "-----------------------------"
+    puts url
+    puts "-----------------------------"
+    puts "-----------------------------"
+    puts params.inspect
+    puts params[:array].inspect
+    puts "-----------------------------"
     simple = false
-    unless params[:industria].blank?
-      aux = params[:industria]
-      simple = true
-    else      pruebasebas2
-      redirect_to root_path,  notice: 'algo salio mal' 
+
+    @array = params[:array]
+
+    nombre = params[:nuevo_n]
+    valor = params[:nuevo_v]
+
+    unless nombre.blank? and valor.blank?
+      @array[nombre] = valor
     end
-    unless params[:equipment].blank?
-      simple = false
-    else      
-      simple = true
+    unless params[:array].blank?
+      unless params[:array][:industria].blank?
+        aux = params[:array][:industria]
+        simple = true
+      else
+        unless params[:industria].blank?      
+          aux = params[:industria]
+          simple = false     
+        else      
+          redirect_to root_path
+        end  
+      end
+    else
+      unless params[:industria].blank?      
+        aux = params[:industria]
+        simple = false     
+      else      
+        redirect_to root_path
+      end    
     end
+#######################################
+
+    
     
     @industria = Industry.find_by('industries.title' => aux)
 
@@ -386,7 +418,7 @@ class EquipmentController < ApplicationController
       redirect_to root_path,  notice: 'algo salio mal'
     end  
 
-    add_breadcrumb @industria.title.to_s, Filtro_path('industria' => @industria.title,  'tipo' => 1)
+    add_breadcrumb @industria.title.to_s, industry_path('industria' => @industria.title)
     
     tipo = params[:tipo]    
        
@@ -402,6 +434,32 @@ class EquipmentController < ApplicationController
       @equipments = Equipment.query(params[:equipment]).where(:id => array).where_activo.where_venta.order(sort_column + ' ' + sort_direction)
       #puts "#########################################no es simple ######################################################"
       #@equipments = Equipment.query(params[:equipment]).order(sort_column + ' ' + sort_direction).paginate(:per_page => 10, :page => params[:page])
+    end
+
+    ##########varibles de contenido###############
+    @marcas_a = Array.new
+    @equipos_a = Array.new
+    @monedas_a = Array.new 
+    @paises_a = Array.new
+    @estados_a = Array.new
+    ##############################################
+    @equipments.each do |o|
+      @marcas_a.push(o.brand_id)
+    end
+
+    @equipments.each do |o|
+        @equipos_a.push(o.id)
+    end
+
+    @equipments.each do |o|
+        @monedas_a.push(o.currency_id)
+    end
+    @equipments.each do |o|
+        @paises_a.push(o.country_id)
+    end
+
+    @equipments.each do |o|
+        @estados_a.push(o.state_id)
     end
     
   end

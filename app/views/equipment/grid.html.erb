@@ -54,21 +54,6 @@
         </ul>
     </div>
 
-
-<!---
-    <p>paquete <a id="mostrar_package_id" href="javascript:mostrar('package_id','mostrar_package_id');">&#9660;</a></p>
-    <div id = "package_id" style= "display:none">    
-        <ul>
-            <%# paquetes = Package.all.where(id: @paquetes_a).order("name asc").collect {|p| [ p.name ,p.id ] }.uniq  
-            #paquetes.each do |pa|
-            %>
-            <li><%#= link_to pa.first, Filtro_path("array" => @array, "nuevo_n" => "package_id", "nuevo_v" => pa.second) %></li>
-            <%#end%>
-        </ul>
-    </div>
--->
-
-
     <p>precio <a id="mostrar_precio" href="javascript:mostrar('precio','imagen_precio');"><img id="imagen_precio" src="/images/iconos/flecha_abajo.png"></a>
     <% precio = Equipment.all.where_category(@cat).where(id: @equipos_a).order("precio asc").collect {|p| [ p.precio, number_to_currency(p.precio) ] }.uniq %>      
     (<%= precio.size %>)  </p>
