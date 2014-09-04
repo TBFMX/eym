@@ -39,16 +39,18 @@ div {
 }
 
 #notice {
-  color: green;
+  color: red;
 }
 
 .field_with_errors {
-  padding: 2px;
+  /*padding: 2px;*/
   background-color: red;
-  display: table;
+  /*display: table;*/
 }
 
 #error_explanation {
+  position: fixed;
+  top: 0;
   width: 450px;
   border: 2px solid red;
   padding: 7px;
@@ -68,5 +70,7 @@ div {
   ul li {
     font-size: 12px;
     list-style: square;
+    margin-left: 20px;
+    color: #000000;
   }
 }
