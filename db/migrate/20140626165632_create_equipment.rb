@@ -9,6 +9,7 @@ class CreateEquipment < ActiveRecord::Migration
       t.text :description
       t.integer :publication_type
       t.integer :category_id
+      t.integer :subcategory_id
       t.string  :etiquetas 
       t.decimal :precio
       t.integer :image_id

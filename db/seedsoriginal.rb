@@ -196,6 +196,10 @@ unless Brand.count > 28
 	Brand.create(name: 'Sterling')
 end
 
+unless Brand.count > 29
+	Brand.create(name: 'Raymond')
+end
+
 ##################################################################
 
 ########################Marcas####################################
