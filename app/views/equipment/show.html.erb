@@ -9,16 +9,6 @@
   <div class="titulo">
     <h1>
       <%= @equipment.name %><span class="azul">&nbsp<%= number_to_currency(@equipment.precio) %>&nbsp<%= @currency.name %>&nbsp(<%if @equipment.publication_type == 1 %>Venta<% else %>Renta<% end %>)</span> 
-      <span class="favoritos">
-        <% if User.find_by(id: session[:user_id]) %>
-          <% aux = Favorite.where('user_id = ? and equipment_id = ?' ,session[:user_id],  @equipment.id) 
-          if aux.blank? %>
-            <%=link_to "agregar a favoritos",new_fav_path(:equip => @equipment.id),remote: true %>
-          <% else %>
-            <%=link_to "borrar de favoritos",del_fav_path(:favoritos, :equip => @equipment.id),remote: true %> 
-          <% end %>
-        <% end %>
-      </span>   
     </h1> 
   </div> 
 
@@ -90,6 +80,16 @@
       <p>Lugar: <%= @equipment.ciudad %>, <%= @equipment.state.name %>, <%= @equipment.country.name %></p>
     </div> 
     <div class="contactar">
+        <span class="favoritos">
+        <% if User.find_by(id: session[:user_id]) %>
+          <% aux = Favorite.find_by(user_id: session[:user_id], equipment_id:  @equipment.id) 
+          if aux.blank? %>
+            <%=link_to image_tag('/images/iconos/estrella_off.png') + "Agregar a Favoritos",new_fav_path(:equip => @equipment.id),remote: true %>
+          <% else %>
+            <%=link_to image_tag('/images/iconos/estrella_on.png') + "Borrar a Favoritos",del_fav_path(:favorito => aux, :equip => @equipment.id),remote: true %>
+          <% end %>
+        <% end %>
+      </span>   
       <%= button_to "Contactar vendedor", equipo_contacto_path(:user_id => session[:user_id], :equipment => @equipment), :method => :post %>
       <p><img src="/images/iconos/usuario_icono.png" height="12" width="12"> 
       <%= link_to @user.name, users_view_path(:user_id => @equipment.user_id) %></p>

@@ -4,7 +4,8 @@ class CreatePackages < ActiveRecord::Migration
       t.string :name
       t.decimal :price
       t.string :description
-
+      t.text :botton_one
+      t.text :botton_suscription
       t.timestamps
     end
   end
