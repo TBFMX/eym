@@ -1,3 +1,5 @@
+#!/bin/env ruby
+# encoding: utf-8
 class RolsController < ApplicationController
   before_action :set_rol, only: [:show, :edit, :update, :destroy]
 

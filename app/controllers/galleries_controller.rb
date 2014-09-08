@@ -1,3 +1,5 @@
+#!/bin/env ruby
+# encoding: utf-8
 class GalleriesController < ApplicationController
   before_action :set_gallery, only: [:show, :edit, :update, :destroy]
   skip_before_action :authorize, only: [:show]

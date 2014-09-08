@@ -1,3 +1,5 @@
+#!/bin/env ruby
+# encoding: utf-8
 class EquipmentController < ApplicationController
   before_action :set_equipment, only: [:show, :edit, :update, :destroy]
   before_action :set_new_equipment, only: [:new]
@@ -245,7 +247,7 @@ class EquipmentController < ApplicationController
   def destroy   
     #@equipment.destroy
     respond_to do |format|
-      if @equipment.update("status" => 0)
+      if @equipment.update("status" => 3)
         format.html {    
           @equips = Equipment.find_by("user_id = ?" , session[:user_id])  
           unless  @equips.blank?
@@ -258,6 +260,24 @@ class EquipmentController < ApplicationController
       end
     end
   end
+
+  def reactivate
+    equip = params[:equipment]
+    @equipment = Equipment.friendly.find(equip)
+    if propiedad(@equipment.user_id)
+      respond_to do |format|
+        if @equipment.update(:status => 1)
+          format.html { redirect_to dashboard_equipos_path, notice: 'favor de realizar el pago para concluir la re-activación'}
+          format.json {}
+        else
+          format.html { redirect_to dashboard_equipos_path, notice: 'el equipo no pudo ser re-activado por favor intente de nuevo mas tarde'}
+          format.json {}
+        end
+      end    
+    else
+      redirect_to dashboard_equipos_path, notice: 'no esta autorizado a hacer cambios en ese equipo' 
+    end  
+  end  
 
   def grid
     url = request.url

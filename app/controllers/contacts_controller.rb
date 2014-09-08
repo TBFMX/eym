@@ -1,3 +1,5 @@
+#!/bin/env ruby
+# encoding: utf-8
 class ContactsController < ApplicationController
   before_action :set_contact, only: [:show, :edit, :update, :destroy]
   skip_before_action :authorize

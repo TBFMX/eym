@@ -1,3 +1,5 @@
+#!/bin/env ruby
+# encoding: utf-8
 class PackagesController < ApplicationController
   before_action :set_package, only: [:show, :edit, :update, :destroy]
 

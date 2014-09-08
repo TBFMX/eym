@@ -1,3 +1,5 @@
+#!/bin/env ruby
+# encoding: utf-8
 class DiscountsController < ApplicationController
   before_action :set_discount, only: [:show, :edit, :update, :destroy]
 

@@ -1,3 +1,5 @@
+#!/bin/env ruby
+# encoding: utf-8
 class WelcomeController < ApplicationController
   skip_before_action :authorize
   def index

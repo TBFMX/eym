@@ -1,3 +1,5 @@
+#!/bin/env ruby
+# encoding: utf-8
 class EquipmentRentController < ApplicationController
 before_action :set_equipment, only: [:show, :edit, :update, :destroy]
   helper_method :sort_column, :sort_direction
