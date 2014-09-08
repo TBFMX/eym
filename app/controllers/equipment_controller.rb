@@ -510,10 +510,11 @@ class EquipmentController < ApplicationController
   end  
 
   def search
-    if params[:search].blank?
-      params[:search] = "  "
-    end  
-    @equipments = Equipment.search(params[:search]).where_activo.where_venta
+    #if params[:search].blank?
+    #  params[:search] = "  "
+    #end
+    @search = params[:search]
+    @equipments = Equipment.search(params[:search]).where_activo.where_venta.order(sort_column + " " + sort_direction)
   end  
 
   # GET upgrade
