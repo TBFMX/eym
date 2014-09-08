@@ -399,3 +399,26 @@ input:focus{
    text-align: right;
    margin: 0px auto 0px auto;
 }
+
+/*------------ Busqueda -----------------*/
+
+.busqueda{
+   width: 920px;
+}
+
+.busqueda thead{
+   background-color: #EDEDED;
+}
+
+.busqueda thead a{
+   color: #53788E;
+   text-decoration: none;
+   text-transform: uppercase;
+}
+
+.busqueda thead a:hover{
+   background-color: transparent;
+}   
+
+.busqueda tbody tr:nth-child(even){background-color: #EDEDED }
+.busqueda tbody tr:nth-child(odd){background-color: #ffffff}

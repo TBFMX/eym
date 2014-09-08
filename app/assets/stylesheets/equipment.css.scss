@@ -652,7 +652,12 @@
    height: 90px;
    margin: 5px 5px 5px 5px;
    float: left;
-   background-color: #000000;
+   
+}
+
+.show_equipment .producto #slider_show #slider_preview #video img{
+   width: 80px;
+   height: 80px;
 }
 
 .show_equipment .producto #slider_show #slider_preview #video a{
@@ -674,7 +679,7 @@
 .show_equipment .producto #slider_show #slider_imagen img{
    max-width: 670px;
    max-height: 320px;
-  padding: 10px;
+   padding: 10px;
    margin: auto auto auto auto;
 }
 
