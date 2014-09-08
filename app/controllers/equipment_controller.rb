@@ -349,7 +349,7 @@ class EquipmentController < ApplicationController
     @titulo = @categoria.title.to_s
 
     unless @subcategoria.nil?
-      filtros = Hash['categoria' => category.title ,'subcategory' => subcategory.title ,'tipo' => 1]
+      filtros = Hash['categoria' => @categoria.title ,'subcategory' => @subcategoria.title ,'tipo' => 1]
       add_breadcrumb @subcategoria.title.to_s, Filtro_path('array' => filtros)
        @titulo = @subcategoria.title.to_s
     end
