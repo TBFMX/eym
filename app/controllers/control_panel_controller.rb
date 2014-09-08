@@ -1,3 +1,5 @@
+#!/bin/env ruby
+# encoding: utf-8
 class ControlPanelController < ApplicationController
 before_action :acceso_admin
 

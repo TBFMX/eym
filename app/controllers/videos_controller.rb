@@ -1,3 +1,6 @@
+
+#!/bin/env ruby
+# encoding: utf-8
 class VideosController < ApplicationController
   before_action :set_video, only: [:show, :edit, :update, :destroy]
 

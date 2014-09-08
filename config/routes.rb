@@ -148,6 +148,7 @@ Rails.application.routes.draw do
     post 'industrias/:industria' => :industry
     get 'fav_new' => :add_favorito, :as => 'new_fav'
     get 'fav_destroy' => :removed_favoritos, :as => 'del_fav'
+    get 'reactivar/:equipment' => :reactivate, :as => 'reactivate'
   end
 
   controller :dashboard do

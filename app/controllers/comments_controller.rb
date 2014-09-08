@@ -1,3 +1,5 @@
+#!/bin/env ruby
+# encoding: utf-8
 class CommentsController < ApplicationController
   before_action :set_comment, only: [:show, :edit, :update, :destroy]
 =begin

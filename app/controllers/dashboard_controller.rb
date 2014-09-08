@@ -1,3 +1,5 @@
+#!/bin/env ruby
+# encoding: utf-8
 class DashboardController < ApplicationController
   before_action :charge_all
   skip_before_action :authorize, only: [:login]
@@ -20,6 +22,8 @@ class DashboardController < ApplicationController
   def equipos
     add_breadcrumb I18n.t("breadcrumbs.equipment"), dashboard_equipos_path()
     @equipment = Equipment.where("user_id = ?" , session[:user_id]).where_activo
+    @equipment2 = Equipment.where("user_id = ?" , session[:user_id]).where_inactivo
+    @equipment3 = Equipment.where("user_id = ?" , session[:user_id]).where_desactivado
   end
 
   def gallerias
