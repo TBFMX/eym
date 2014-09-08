@@ -563,7 +563,7 @@ class EquipmentController < ApplicationController
       user = params[:user_id]
       @users = User.find(user)
       record_exist(@users) #valida que el registro no sea blanco o nullo
-      @equips = Equipment.where('user_id = ?', user).where_venta
+      @equips = Equipment.where('user_id = ?', user).where_venta.where_activo
       record_exist(@users)
     else
       redirect_to root_path  
