@@ -144,14 +144,14 @@ body{
    text-align: center;
    padding: 10px 0 5px 0;
    position: static;
-   /*background: linear-gradient(to right, #fba23c 0%, #fa9014 47%, #fa9014 100%);*/
    box-shadow: 0 2px 5px rgba(0,0,1,.25); /* drop shadow */
+   font-family: 'Roboto', sans-serif;
    z-index: 2;
    color: #FFF;
 }
 
 .publica_anuncio a{
-   /*font-family: 'Oswald', sans-serif;*/
+   font-family: 'Roboto', sans-serif;
    font-size: 25px;
    color: #FFFFFF;
    text-decoration: none;
@@ -159,10 +159,9 @@ body{
 }
 
 .publica_anuncio a:hover{
-   /*font-family: 'Oswald', sans-serif; */
+   font-family: 'Roboto', sans-serif;
    background: transparent;
    opacity: 0.8;
-   text-shadow: black 0.05em 0.05em 0.2em;   
 }
 
 
@@ -181,12 +180,14 @@ body{
    margin: 5px;
    color:#52778D;
    text-align: left;
+   font-family: 'Roboto', sans-serif;
 }
 
 .breadcrumb .linea a{
    margin: 5px;
    color:#52778D;
-   text-decoration: underline;   
+   text-decoration: underline;  
+   font-family: 'Roboto', sans-serif; 
 }
 
 .breadcrumb .linea a:link   {}

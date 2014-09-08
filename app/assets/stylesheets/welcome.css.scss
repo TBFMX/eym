@@ -2,8 +2,8 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-/*------------ welcome -----------------*/
-
+/*------------ welcome y lista de anuncios por usuario -----------------*/
+/*------------ parte compartida -----------------*/
 .welcome_show_cuadro{
    width: 208px;
    height: 300px;
@@ -103,5 +103,21 @@
    padding: 5px;
    font-family: 'Oswald', sans-serif;
    opacity: 0.7;  
+}
 
+/*------------ parte anuncios -----------------*/
+
+.lista_anuncios_gris{
+   font-size: 20px;
+   color: #A7A9AC; 
+   text-align: left;  
+   padding: 5px;    
+}
+
+.lista_anuncios_azul{
+   font-size: 25px;
+   color: #37A0DE;
+   text-align: left; 
+   padding: 5px; 
+   text-transform: capitalize;  
 }
