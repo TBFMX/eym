@@ -13,29 +13,33 @@ class EquipmentController < ApplicationController
   # GET /equipment/1
   # GET /equipment/1.json
   def show
-    @photo = @equipment.photo.url
-    @categoria = Category.find(@equipment.category_id)
-    if @categoria.father_id != 0
-      categoria2 = Category.find(@categoria.father_id)
-      add_breadcrumb categoria2.slug.to_s, Filtro_path('categoria' => categoria2.title, 'tipo' => 1)
-    end 
-    add_breadcrumb @categoria.slug.to_s, Filtro_path('categoria' => @categoria.title, 'tipo' => 1)
-    add_breadcrumb @equipment.slug.to_s, equipment_path(@equipment)   
-    if @equipment.image_id
-      @image = Image.find(@equipment.image_id)
-    else
-      @image = Image.find_by(image_url: '/data/dummy.png')  
-    end  
-     @gallery = Gallery.where('equipment_id = ?', @equipment.id)
-     @user = User.find(@equipment.user_id)
-     @currency = Currency.find(@equipment.currency_id)
-     @comments = Comment.where('equipment_id = ?', @equipment.id)
-     
-     # puts "-------------------Comments---------------------------"
-     # puts @comments.inspect
-     # puts "----------------------------------------------"    
+    if be_active (@equipment)
+      @photo = @equipment.photo.url
+      @categoria = Category.find(@equipment.category_id)
+      if @categoria.father_id != 0
+        categoria2 = Category.find(@categoria.father_id)
+        add_breadcrumb categoria2.slug.to_s, Filtro_path('categoria' => categoria2.title, 'tipo' => 1)
+      end 
+      add_breadcrumb @categoria.slug.to_s, Filtro_path('categoria' => @categoria.title, 'tipo' => 1)
+      add_breadcrumb @equipment.slug.to_s, equipment_path(@equipment)   
+      if @equipment.image_id
+        @image = Image.find(@equipment.image_id)
+      else
+        @image = Image.find_by(image_url: '/data/dummy.png')  
+      end  
+        @gallery = Gallery.where('equipment_id = ?', @equipment.id)
+        @user = User.find(@equipment.user_id)
+        @currency = Currency.find(@equipment.currency_id)
+        @comments = Comment.where('equipment_id = ?', @equipment.id)
+       
+       # puts "-------------------Comments---------------------------"
+       # puts @comments.inspect
+       # puts "----------------------------------------------"    
 
-     @comment = Comment.new('user_id' => session[:user_id],"equipment_id" => @equipment.id)
+        @comment = Comment.new('user_id' => session[:user_id],"equipment_id" => @equipment.id)
+    else
+      redirect_to root_path
+    end   
   end
 
   # GET /equipment/new
@@ -101,42 +105,47 @@ class EquipmentController < ApplicationController
             respond_to do |format|
               if secure_save(@gallery)
                 format.html {
-                  @galleries = Gallery.find(@gallery)
-                    unless @pic.nil?
-                    #puts "pase la validacion de pic"
-                      @image = Image.new("gallery_id" => @galleries.id, "image_url" => @pics)
-                      #puts "--------------------Imagen--------------------------"
-                      #puts @image.inspect
-                      #puts "----------------------------------------------------"
-                      
-                      respond_to do |format|
-                        if secure_save(@image)
-                       #   puts "entre a imagen"
-                          format.html { 
-                            respond_to do |format|
-                              if @equipments.update("image_id" => @image.id)
-                                format.html { 
-                                 #me voy al show del equipo
-                                  Mailer.create_equip(@user,@equipment).deliver
-                                  redirect_to @equipment, notice: 'Equipment was successfully created.'
-                                }
-                                format.json { }
-                              else
-                                format.html { redirect_to root_path, alert: "fallo el update de proyecto" }
-                                format.json {  }
-                              end
-                            end                      
-                          } #set_new_equipment
-                          format.json { }
-                        else
-                        #  puts "entre a imagen"
-                          format.html { redirect_to root_path, alert: "fallo el salvado de la imagen" }
-                          format.json {  }
+                  unless params[:equipment][:photo]
+                    @galleries = Gallery.find(@gallery)
+                      unless @pic.nil?
+                      #puts "pase la validacion de pic"
+                        @image = Image.new("gallery_id" => @galleries.id, "image_url" => @pics)
+                        #puts "--------------------Imagen--------------------------"
+                        #puts @image.inspect
+                        #puts "----------------------------------------------------"
+                        
+                        respond_to do |format|
+                          if secure_save(@image)
+                         #   puts "entre a imagen"
+                            format.html { 
+                              respond_to do |format|
+                                if @equipments.update("image_id" => @image.id)
+                                  format.html { 
+                                   #me voy al show del equipo
+                                    Mailer.create_equip(@user,@equipment).deliver
+                                    redirect_to @equipment, notice: 'Equipment was successfully created.'
+                                  }
+                                  format.json { }
+                                else
+                                  format.html { redirect_to root_path, alert: "fallo el update de proyecto" }
+                                  format.json {  }
+                                end
+                              end                      
+                            } #set_new_equipment
+                            format.json { }
+                          else
+                          #  puts "entre a imagen"
+                            format.html { redirect_to root_path, alert: "fallo el salvado de la imagen" }
+                            format.json {  }
+                          end
                         end
+                      else
+                        redirect_to @equipment, notice: 'Equipment was successfully created.'
                       end
                     else
+                      Mailer.create_equip(@user,@equipment).deliver
                       redirect_to @equipment, notice: 'Equipment was successfully created.'
-                    end  
+                    end    
                 }
                 format.json {  }
               else
@@ -345,7 +354,7 @@ class EquipmentController < ApplicationController
     @monedas_a = Array.new 
     @paises_a = Array.new
     @estados_a = Array.new
-    ##############################################
+    ############################################be_active (equip)##
 
 
     @equipments.each do |o|
@@ -359,6 +368,7 @@ class EquipmentController < ApplicationController
     @equipments.each do |o|
         @monedas_a.push(o.currency_id)
     end
+
     @equipments.each do |o|
         @paises_a.push(o.country_id)
     end
@@ -606,6 +616,16 @@ class EquipmentController < ApplicationController
       params.require(:equipment).permit(:name, :year, :color, :brand_id, :package_id, :description, :publication_type, :precio, :modelo, :currency_id , :country_id, :state_id, :ciudad, :category_id, :etiquetas, :user_id, :subcategory_id, :photo)
     end
 
+    def be_active (equip)
+      @aux = Equipment.where(id: equip.id).where_activo
+      unless @aux.blank?
+        answer = true
+      else
+        answer = false
+      end  
+      return answer
+
+    end
     def manejador
       #logger.error "hubo un problema xxyy"
       #redirect_to "/equipment/reporter_grid"
