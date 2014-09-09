@@ -19,6 +19,9 @@
       <%  contador = 0
           arreglo = Array.new
           arreglo2 = Array.new
+          ##### pongo la photo 
+          #arreglo.push(@equipment.photo.url.to_s)
+          ###empieza do
           @gallery.each do |g|
           @images = Image.where('gallery_id' => g.id)
           link_to g.title, 'equipment/galleries/'+ g.equipment_id.to_s

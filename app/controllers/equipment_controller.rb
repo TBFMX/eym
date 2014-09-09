@@ -52,7 +52,6 @@ class EquipmentController < ApplicationController
     puts "---------------------------Paquetes---------------------------------"
     puts @package.inspect
     puts "--------------------------------------------------------------------"
-
   end
 
   # GET /equipment/1/edit
@@ -266,7 +265,7 @@ class EquipmentController < ApplicationController
     @equipment = Equipment.friendly.find(equip)
     if propiedad(@equipment.user_id)
       respond_to do |format|
-        if @equipment.update(:status => 1)
+        if @equipment.update(:status => 0)
           format.html { redirect_to dashboard_equipos_path, notice: 'favor de realizar el pago para concluir la re-activación'}
           format.json {}
         else
