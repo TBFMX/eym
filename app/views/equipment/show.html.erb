@@ -29,7 +29,11 @@
           <% unless @images.blank?
            @images.each do |img| 
             contador += 1 
-            arreglo.push(img.image_url)
+            if img.photo.url
+              arreglo.push(img.photo.url.to_s)
+            elsif img.image_url  
+              arreglo.push(img.image_url)
+            end
             %>
             <a href="<%= "#informacion" + contador.to_s %>"><img src="<%= img.image_url %>"></a>
 

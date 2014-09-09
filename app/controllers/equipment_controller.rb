@@ -16,7 +16,7 @@ class EquipmentController < ApplicationController
   # GET /equipment/1.json
   def show
     if be_active (@equipment)
-      @photo = @equipment.photo.url
+      #@photo = @equipment.photo.url
       @categoria = Category.find(@equipment.category_id)
       if @categoria.father_id != 0
         categoria2 = Category.find(@categoria.father_id)
@@ -67,37 +67,21 @@ class EquipmentController < ApplicationController
   # POST /equipment.json
   def create
     #@equipment = Equipment.new(equipment_params)
-
     session[:url_to_return] = ""
     @user = User.find(session[:user_id])
     @equipment = Equipment.new(equipment_params)
     puts "-------------------parametros---------------------------"
       puts params.inspect
     puts "----------------------------------------------"
-
       @pic = params[:equipment][:image_id]
-
-    #puts "-------------------Pic---------------------------"
-    #  puts @pic.inspect
-    #puts "----------------------------------------------"
-    #puts "-------------------Pics---------------------------"
-    #  puts @pics.inspect
-    #puts "--------------------------------------------------" 
     respond_to do |format|
       if secure_save(@equipment)
         format.html { 
           #saco la id del proyecto
           @equipments = Equipment.find(@equipment)
-          # puts "-------------------Equipo---------------------------"
+          # puts "-------------------Equipo-----------------------------"
           # puts @equipments.inspect
           # puts "------------------------------------------------------"
-          ########################
-          unless @pic.nil?
-            @pics = DataFile.save(@pic,@equipments.id.to_s, @equipments.slug.to_s)
-          else
-            @pics = "/data/dummy.png"  
-          end
-          ########################
           #creo la galleria
             @gallery=Gallery.new("equipment_id"=>@equipments.id, "title" =>"principal")
             # puts "--------------------Galleria--------------------------"
@@ -106,15 +90,16 @@ class EquipmentController < ApplicationController
             respond_to do |format|
               if secure_save(@gallery)
                 format.html {
-                  unless params[:equipment][:photo]
+                  if params[:equipment][:photo]
                     @galleries = Gallery.find(@gallery)
-                      unless @pic.nil?
-                      #puts "pase la validacion de pic"
-                        @image = Image.new("gallery_id" => @galleries.id, "image_url" => @pics)
-                        #puts "--------------------Imagen--------------------------"
-                        #puts @image.inspect
-                        #puts "----------------------------------------------------"
-                        
+                      #unless @pic.nil?
+                        #puts "pase la validacion de pic"
+                        @image = Image.new("gallery_id" => @galleries.id, "photo" => params[:equipment][:photo])
+                        #@image = Image.new(params[:equipment][:photo])
+                        puts "--------------------Imagen--------------------------"
+                        puts "hola "
+                        puts @image.inspect
+                        puts "----------------------------------------------------"
                         respond_to do |format|
                           if secure_save(@image)
                          #   puts "entre a imagen"
@@ -140,13 +125,13 @@ class EquipmentController < ApplicationController
                             format.json {  }
                           end
                         end
-                      else
-                        redirect_to @equipment, notice: 'Equipment was successfully created.'
-                      end
-                    else
+                      #else
+                      #  redirect_to @equipment, notice: 'falle'
+                      #end
+                  else #else de si no hay params
                       Mailer.create_equip(@user,@equipment).deliver
                       redirect_to @equipment, notice: 'Equipment was successfully created.'
-                    end    
+                  end    
                 }
                 format.json {  }
               else
@@ -167,7 +152,6 @@ class EquipmentController < ApplicationController
   # PATCH/PUT /equipment/1
   # PATCH/PUT /equipment/1.json
   def update
-
     if propiedad(@equipment.user_id)
       @pic = params[:equipment][:image_id]
       respond_to do |format|
@@ -398,7 +382,7 @@ class EquipmentController < ApplicationController
   end
 
   def industry
-#######################################
+    #######################################
     url = request.url
     puts "-----------------------------"
     puts url
@@ -437,7 +421,7 @@ class EquipmentController < ApplicationController
         redirect_to root_path
       end    
     end
-#######################################
+    #######################################
 
     
     
@@ -639,7 +623,7 @@ class EquipmentController < ApplicationController
     end
     # Never trust parameters from the scary internet, only allow the white list through.
     def equipment_params
-      params.require(:equipment).permit(:name, :year, :color, :brand_id, :package_id, :description, :publication_type, :precio, :modelo, :currency_id , :country_id, :state_id, :ciudad, :category_id, :etiquetas, :user_id, :subcategory_id, :photo)
+      params.require(:equipment).permit(:name, :year, :color, :brand_id, :package_id, :description, :publication_type, :precio, :modelo, :currency_id , :country_id, :state_id, :ciudad, :category_id, :etiquetas, :user_id, :subcategory_id)
     end
 
     def be_active (equip)
