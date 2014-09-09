@@ -556,6 +556,12 @@ class EquipmentController < ApplicationController
     redirect_to equipment_path(equipment)
   end
 
+
+  def temporal
+
+  end  
+
+
   def users_view
     array = Array.new
     array.push("user_id")
