@@ -35,6 +35,9 @@ es:
           category_id: 'Categoria'
           precio_venta: 'Precio de Venta'
           precio_renta: 'Precio de Renta'
+          state_id: 'Estado'
+          country_id: 'País'
+          category_id: 'Categoría'
         gallery:
           title: 'Titulo'
           description: 'Descripción'

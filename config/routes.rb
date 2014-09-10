@@ -149,6 +149,7 @@ Rails.application.routes.draw do
     get 'fav_new' => :add_favorito, :as => 'new_fav'
     get 'fav_destroy' => :removed_favoritos, :as => 'del_fav'
     get 'reactivar/:equipment' => :reactivate, :as => 'reactivate'
+    get 'anuncios' => :temporal, :as => 'anuncios_t'
   end
 
   controller :dashboard do

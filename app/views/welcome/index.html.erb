@@ -16,8 +16,18 @@
          <%if contador < 5 %>
             <% if slider.image_id   
                @imagen = Image.find(slider.image_id)
-               @image = @imagen.image_url
-               arreglo.push(@image)
+               unless @imagen.image_url.blank?
+                  @image = @imagen.image_url
+                  arreglo.push(@image)
+               else
+                  unless @imagen.photo.url(:small).blank?
+                     @image = @imagen.photo.url(:small).to_s
+                     arreglo.push(@image)
+                  else 
+                     @image ="/data/dummy.png"
+                     arreglo.push(@image)    
+                  end   
+               end   
             else 
                @image ="/data/dummy.png"
                arreglo.push(@image)
@@ -25,8 +35,18 @@
          <% else %>
             <% if slider.image_id   
                @imagen = Image.find(slider.image_id)
-               @image = @imagen.image_url
-               arreglo2.push(@image)
+               unless @imagen.image_url.blank?
+                  @image = @imagen.image_url
+                  arreglo.push(@image)
+               else
+                  unless @imagen.photo.url(:small).blank?
+                     @image = @imagen.photo.url(:small).to_s
+                     arreglo.push(@image)
+                  else 
+                     @image ="/data/dummy.png"
+                     arreglo.push(@image)    
+                  end   
+               end
             else 
                @image ="/data/dummy.png"
                arreglo2.push(@image)
@@ -88,14 +108,29 @@
    <% contador = 0 %>
    <% @zone1.each do |zone| %>
    <% contador += 1 %>
+   <div class="welcome_show_cuadro">
    <%if zone.image_id   
       @imagen = Image.find(zone.image_id)
-      @image = @imagen.image_url
+
+      #@image = @imagen.image_url
+      unless @imagen.image_url.blank?
+         @image = @imagen.image_url %>
+         <div class="centra_img"><%= link_to image_tag(@image), equipment_path(zone) %></div>
+     <% else
+         unless @imagen.photo.url(:zona).blank?
+            @image = @imagen.photo.url(:zona).to_s %>
+            <div class="centra_img_2"><%= link_to image_tag(@image), equipment_path(zone) %></div>
+        <% else
+            @image ="/data/dummy.png" %>
+            <div class="centra_img"><%= link_to image_tag(@image), equipment_path(zone) %></div>   
+        <% end   
+      end
    else 
-      @image ="/data/dummy.png"
-   end %>   
-   <div class="welcome_show_cuadro">
+      @image ="/data/dummy.png" %>
       <div class="centra_img"><%= link_to image_tag(@image), equipment_path(zone) %></div>
+   <%end %>   
+   
+      
       <div class="datos">
       <div class="ajustar_titulo"><%= link_to zone.name, equipment_path(zone), class: "ajustar_titulo" %></div>
          <div class="detalles">
@@ -151,7 +186,20 @@
    <% contador += 1 %>
    <%if zone.image_id   
       @imagen = Image.find(zone.image_id)
-      @image = @imagen.image_url
+      #@image = @imagen.image_url
+      unless @imagen.image_url.blank?
+         @image = @imagen.image_url
+      else
+         unless @imagen.photo.url(:zona).blank?
+            @image = @imagen.photo.url(:zona).to_s
+         else
+            unless @imagen.photo.url(:small).blank?
+               @image = @imagen.photo.url(:small).to_s
+            else 
+               @image ="/data/dummy.png"    
+            end    
+         end   
+      end
    else 
       @image ="/data/dummy.png"
    end %>   
@@ -209,7 +257,20 @@
    <% contador += 1 %>
    <%if zone.image_id   
       @imagen = Image.find(zone.image_id)
-      @image = @imagen.image_url
+      #@image = @imagen.image_url
+      unless @imagen.image_url.blank?
+         @image = @imagen.image_url
+      else
+         unless @imagen.photo.url(:zona).blank?
+            @image = @imagen.photo.url(:zona).to_s
+         else
+            unless @imagen.photo.url(:small).blank?
+               @image = @imagen.photo.url(:small).to_s
+            else 
+               @image ="/data/dummy.png"    
+            end    
+         end   
+      end
    else 
       @image ="/data/dummy.png"
    end %>   

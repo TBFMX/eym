@@ -19,6 +19,9 @@
       <%  contador = 0
           arreglo = Array.new
           arreglo2 = Array.new
+          ##### pongo la photo 
+          #arreglo.push(@equipment.photo.url.to_s)
+          ###empieza do
           @gallery.each do |g|
           @images = Image.where('gallery_id' => g.id)
           link_to g.title, 'equipment/galleries/'+ g.equipment_id.to_s
@@ -26,7 +29,11 @@
           <% unless @images.blank?
            @images.each do |img| 
             contador += 1 
-            arreglo.push(img.image_url)
+            if img.photo.url
+              arreglo.push(img.photo.url.to_s)
+            elsif img.image_url  
+              arreglo.push(img.image_url)
+            end
             %>
             <a href="<%= "#informacion" + contador.to_s %>"><img src="<%= img.image_url %>"></a>
 

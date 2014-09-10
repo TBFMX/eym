@@ -96,6 +96,7 @@ class UsersController < ApplicationController
     if @user.empty?
       redirect_to root_path
     else
+    puts params  
     @user.update(user_params) 
     Mailer.reset_password(@user,params[:email]).deliver 
     end 
@@ -113,7 +114,6 @@ class UsersController < ApplicationController
       redirect_to root_path
     else
       #puts @user.inspect
-
       Mailer.recover_password(@user,params[:email]).deliver 
       redirect_to users_url
     end   
