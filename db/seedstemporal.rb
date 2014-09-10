@@ -308,3 +308,4 @@ status: '2')
 
 @galeria5 = Gallery.new(title: 'principal', equipment_id: @equip5.id)
 @galeria5.save
+################################
