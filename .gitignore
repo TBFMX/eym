@@ -15,4 +15,5 @@
 /log/*.log
 /tmp
 /public/data
+/public/assets
 /config/initializers/omniauth.rb
