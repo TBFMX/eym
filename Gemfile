@@ -32,7 +32,7 @@ gem 'spring',        group: :development
 gem 'bcrypt', '~> 3.1.7'
 gem 'rambling-slider-rails'
 group :production do
-	gem 'mysql2'
+	gem 'pg'
 end
 
 # Use unicorn as the app server
